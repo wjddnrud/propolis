@@ -32,5 +32,41 @@ public class HomeController {
 			
 			return "home";
 		}
+		
+		@RequestMapping(value = "/a", method = RequestMethod.GET)
+		public String a(Locale locale, Model model) {
+			System.out.println("kjygfik");
+			return "aLIst";
+		}
+		
+		@RequestMapping(value = "/b", method = RequestMethod.GET)
+		public String b(Locale locale, Model model) {
+			return "bLIst";
+		}
+		@RequestMapping(value = "/c", method = RequestMethod.GET)
+		public String c(Locale locale, Model model) {
+			return "cLIst";
+		}
+		@RequestMapping(value = "/d", method = RequestMethod.GET)
+		public String d(Locale locale, Model model) {
+			return "dLIst";
+		}
+		@RequestMapping(value = "/e", method = RequestMethod.GET)
+		public String e(Locale locale, Model model) {
+			return "eLIst";
+		}
+		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
+		public String CGL(Locale locale, Model model) {
+			
+			Date date = new Date();
+			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+			
+			String formattedDate = dateFormat.format(date);
+			
+			model.addAttribute("serverTime", formattedDate );
+			
+			return "codeGroupList";
+		}
+		
 	
 }
