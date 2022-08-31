@@ -7,8 +7,6 @@ public class CodeGroup {
 	
 	// infr_code_group
 	
-	
-	
 	private String seq;
 	private String ccg_name;
 	private String useNY;
@@ -43,11 +41,6 @@ public class CodeGroup {
 	//private Date
 	
 	//--------------------------
-	
-	
-	
-	
-	
 	
 
 }

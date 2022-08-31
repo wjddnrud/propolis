@@ -38,23 +38,8 @@ public class HomeController {
 			System.out.println("kjygfik");
 			return "aLIst";
 		}
+
 		
-		@RequestMapping(value = "/b", method = RequestMethod.GET)
-		public String b(Locale locale, Model model) {
-			return "bLIst";
-		}
-		@RequestMapping(value = "/c", method = RequestMethod.GET)
-		public String c(Locale locale, Model model) {
-			return "cLIst";
-		}
-		@RequestMapping(value = "/d", method = RequestMethod.GET)
-		public String d(Locale locale, Model model) {
-			return "dLIst";
-		}
-		@RequestMapping(value = "/e", method = RequestMethod.GET)
-		public String e(Locale locale, Model model) {
-			return "eLIst";
-		}
 		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
 		public String CGL(Locale locale, Model model) {
 			

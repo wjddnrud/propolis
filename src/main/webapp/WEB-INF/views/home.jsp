@@ -4,19 +4,22 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<title>Sports Mate</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<title>Home</title>
+	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+   	<!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/"> -->
 </head>
-	<body class="is-preload">
-			<!-- Page Wrapper -->
+<body class="sign is-preload">
+
+		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
-				<!-- Header -->
-				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
+				<!-- Header 상단 고정 네비바 -->
+				<header id="header" class="alt">
+					<h1><a href="#">Sports Mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
@@ -24,9 +27,8 @@
 								<div id="menu">
 									<ul>
 										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+										<li><a href="signUp.html">SIGN UP</a></li>
+										<li><a href="signIn.html">SIGN IN</a></li>
 									</ul>
 								</div>
 							</li>
@@ -34,240 +36,44 @@
 					</nav>
 				</header>
 
-				<!-- Main -->
-				<article id="main">
-					<header>
-						<h2>코드그룹 관리</h2>
-						<P>  현재시간 : ${serverTime}. </P>
-					</header>
-					<section class="wrapper style5">
-						<div class="inner">
-
-							
-							<section>
-								<div>
-									<ul class="nav nav-tabs">
-										<li class="nav-item">
-											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="#">코드그룹관리</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">코드관리</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">회원관리</a>
-										</li>
-									</ul>
-								</div>
-								<br>
-								<div>
-									<form class="d-flex" role="search">
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">삭제여부</option>
-											<option value="">N</option>
-											<option value="">Y</option>
-										</select>
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">수정일</option>
-											<option value="">1</option>
-											<option value="">2</option>
-										</select>
-										<input class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
-										<input class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">검색구분</option>
-											<option value="">1</option>
-											<option value="">2</option>
-										</select>
-										<input class="form-control me-1" type="search" placeholder="검색어" aria-label="Search">
-										<button class="btn btn-outline-success me-1" type="submit"><i
-												class="fa-solid fa-magnifying-glass"></i></button>
-										<button class="btn btn-outline-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-									</form>
-								</div>
-								<div class="table-wrapper">
-									<table class="alt">
-										<thead>
-											<tr>
-												<th>
-													<input type="checkbox" id="demo-human" name="demo-human">
-													<label for="demo-human">Remember</label>
-												</th>
-												<th>No</th>
-												<th>코드그룹 코드</th>
-												<th>코드그룹 이름(한글)</th>
-												<th>코드그룹 이름(영문)</th>
-												<th>코드갯수</th>
-												<th>등록일</th>
-												<th>수정일</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
-												<td>1</td>
-												<td>1</td>
-												<td></td>
-												<td></td>
-												<td>0</td>
-												<td></td>
-												<td></td>
-											</tr>
-											
-										</tbody>
-										<tfoot>
-											<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제
-											마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
-										</tfoot>
-									</table>
-									<center>
-										<a href="boardReg.html" class="button primary">작성</a>
-										<a href="index.html" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
-										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
-									</center>
-								</div>
-							</section>
-
-
-
+				<!-- Banner 메인화면 처음 모션부분 -->
+				<section id="banner">
+					<div class="inner">
+						<h2>Sports Mate</h2>
+						<p>만나서 반갑습니다!<br /></p>
+						<section class="wrapper style6">
+							<div class="inner">
+								<section>
+									<div class="row gtr-uniform">
+										<div class="col-12">
+											<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+										</div>
+										<div class="col-12 col-12-xsmall">
+											<center>
+												<input type="email" placeholder="ID" style="width: 300px;">
+											</center>
+										</div>
+										<div class="col-12 col-12-xsmall">
+											<center>
+												<input type="password" placeholder="PASSWORD" style="width: 300px;">
+											</center>
+										</div>
+										<div class="col-6 col-12">
+											<input type="checkbox" id="demo-human" name="demo-human">
+											<label for="demo-human">Remember</label>
+										</div>
+										<div class="col-12">
+											<ul class="actions stacked">
+												<li><input type="submit" value="Sign-in" class="button primary small" onclick="location.href='index.html'"></li>
+												<li><input type="button" class="button small" value="Sign-up" onclick="location.href='signUp.html'" style="background-color: aliceblue;"></li>
+											</ul>
+										</div>
+									</div>
+								</section>
 							</div>
 						</section>
-					</article>
+					</div>
+				</section>
 
 				<!-- Footer -->
 				<footer id="footer">
@@ -282,20 +88,21 @@
 						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</footer>
-
 			</div>
 
+
+
+
 		<!-- Scripts -->
-			<script src="/resources/images/assets/js/jquery.min.js"></script>
-			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/resources/images/assets/js/browser.min.js"></script>
-			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
-			<script src="/resources/images/assets/js/util.js"></script>
-			<script src="/resources/images/assets/js/main.js"></script>
-			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
-
-
-
-</body>
+			<script src="/resources/assets/js/jquery.min.js"></script>
+			<script src="/resources/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/resources/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/resources/assets/js/browser.min.js"></script>
+			<script src="/resources/assets/js/breakpoints.min.js"></script>
+			<script src="/resources/assets/js/util.js"></script>
+			<script src="/resources/assets/js/main.js"></script>
+		<!-- 폰트어썸 -->
+			<!-- <script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script> -->
+			<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> -->
+	</body>
 </html>
