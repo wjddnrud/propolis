@@ -16,4 +16,4 @@
 			AND useNY = 1
 	</select>
 
-</mapper>
+</mapper>	

@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/codegroup/")
 public class CodeGroupController {
-	
-//	new와 같이 객체를 만드는것이라고 보면된다.
+
 	@Autowired
 	CodeGroupServiceImpl service;
 	
@@ -24,5 +23,5 @@ public class CodeGroupController {
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
-
+	
 }
