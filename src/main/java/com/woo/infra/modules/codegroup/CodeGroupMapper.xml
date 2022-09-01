@@ -9,11 +9,12 @@
     <resultMap id="resultMapObj" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.*
-		FROM ccg a
-		WHERE 1=1
-			AND useNY = 1
+		SELECT distinct
+			seq
+	    	,ccg_name
+	    	,useNY
+	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as codeCount
+		FROM ccg a;
 	</select>
 
-</mapper>	
+</mapper>

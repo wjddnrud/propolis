@@ -1,4 +1,4 @@
-package com.woo.infra.modules.codegroup;
+package com.woo.infra.modules.member;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CodeGroupServiceImpl implements CodeGroupService{
-	
+public class MemberServiceImpl implements MemberService{
+
 	@Autowired
-	CodeGroupDao dao;
+	MemberDao dao;
 	
 	@Override
-	public List<CodeGroup> selectList() throws Exception {
+	public List<Member> selectList() throws Exception {
 		return dao.selectList();
 	}
-
+	
 }

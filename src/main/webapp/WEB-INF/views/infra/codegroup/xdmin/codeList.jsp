@@ -40,7 +40,7 @@
 				<!-- Main -->
 				<article id="main">
 					<header>
-						<h2>코드그룹 관리</h2>
+						<h2>코드 관리</h2>
 					</header>
 					<section class="wrapper style5">
 						<div class="inner">
@@ -53,10 +53,10 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="#">코드그룹관리</a>
+											<a class="nav-link" aria-current="page" href="#">코드그룹관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">코드관리</a>
+											<a class="nav-link active" aria-current="page" href="#">코드관리</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="#">회원관리</a>
@@ -98,10 +98,10 @@
 													<label for="demo-human">선택</label>
 												</th>
 												<th>#</th>
-												<th>코드그룹 코드</th>
-												<th>코드그룹 이름(한글)</th>
-												<th>코드갯수</th>
+												<th>코드 이름(한글)</th>
 												<th>사용여부</th>
+												<th>코드 key</th>
+												<th>코드그룹_seq</th>
 												<th>등록일</th>
 												<th>수정일</th>
 											</tr>
@@ -112,10 +112,10 @@
 												<td><input type="checkbox" id="demo-human" name="demo-human">
 													<label></label></td>
 												<td><c:out value="${list.seq }"/></td>
-												<td>1</td>
-												<td><c:out value="${list.ccg_name }"/></td>
-												<%-- <td><c:out value="${list.codeCount }"/></td> --%>
+												<td><c:out value="${list.cc_name }"/></td>
 												<td><c:out value="${list.useNY }"/></td>
+												<td><c:out value="${list.cc_key }"/></td>
+												<td><c:out value="${list.ccg_seq }"/></td>
 												<td>2022-09-01 00:00:00</td>
 												<td>2022-09-01 00:00:00</td>
 											</tr>

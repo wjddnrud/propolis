@@ -43,15 +43,21 @@ public class HomeController {
 		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
 		public String CGL(Locale locale, Model model) {
 			
-			Date date = new Date();
-			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-			
-			String formattedDate = dateFormat.format(date);
-			
-			model.addAttribute("serverTime", formattedDate );
-			
 			return "codeGroupList";
 		}
+		
+		@RequestMapping(value = "/codeList", method = RequestMethod.GET)
+		public String codeList(Locale locale, Model model) {
+			
+			return "codeList";
+		}
+		
+		@RequestMapping(value = "/memberList", method = RequestMethod.GET)
+		public String memberList(Locale locale, Model model) {
+			
+			return "memberList";
+		}
+		
 		
 	
 }

@@ -2347,7 +2347,8 @@ input, select, textarea {
 			border: solid 1px #fff;
 			border-left: 0;
 			border-right: 0;
-			font-size: 14px;
+			/* font-size: 14px; */
+			font-size: 1px;
 		}
 
 			table tbody tr:nth-child(2n + 1) {
@@ -2367,7 +2368,7 @@ input, select, textarea {
 			padding: 6px;
 			text-align: center;
 			border: 1px solid rgb(100, 100, 100);
-			background-color: #000000;
+			background-color: #454545;
 		}
 
 		table thead {
@@ -4439,7 +4440,6 @@ input, select, textarea {
 
 	.mapBox {
 		position: relative;
-		text
 		width: 600px;
 		height: 600px;
 		background: #fff;
@@ -4449,7 +4449,6 @@ input, select, textarea {
 		width: 100%;
 		height: 100%;
 	}
-
 
 
 	/* tab */

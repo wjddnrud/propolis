@@ -1,17 +1,19 @@
 package com.woo.infra.modules.codegroup;
 
 public class CodeGroup {
-	
-	
-//	첫번째 DTO
-	
-	// infr_code_group
+
 	
 	private String seq;
 	private String ccg_name;
 	private String useNY;
+	private String codeCount;
 	
-	
+	public String getCodeCount() {
+		return codeCount;
+	}
+	public void setCodeCount(String codeCount) {
+		this.codeCount = codeCount;
+	}
 	public String getSeq() {
 		return seq;
 	}
@@ -32,15 +34,4 @@ public class CodeGroup {
 	}
 	
 	
-//	private String cgCreator;
-//	private String cgMessageCheck;
-//	private String cgSports;
-//	private String cgTelecom;
-	
-	//private Integer
-	//private Date
-	
-	//--------------------------
-	
-
 }
