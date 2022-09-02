@@ -84,7 +84,7 @@
 											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
 											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
 											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>ID</option>
-											<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>PASSWORD</option>
+											<option value="3" <c:if test="${vo.shOption eq 3 }"></c:if>>PASSWORD</option>
 											<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이름</option>
 											<option value="5" <c:if test="${vo.shOption eq 5 }">selected</c:if>>생년월일</option>
 											<option value="6" <c:if test="${vo.shOption eq 6 }">selected</c:if>>성별</option>
