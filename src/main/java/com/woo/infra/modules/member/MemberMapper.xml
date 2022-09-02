@@ -10,8 +10,34 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
-		FROM member a
+			*
+		FROM member
+	</select>
+	
+	<resultMap id="resultMapObjsrc" type="com.woo.infra.modules.member.Member"></resultMap>
+	
+	<select id="srcList" resultMap="resultMapObjsrc">
+		SELECT
+			*
+		FROM member
+		WHERE
+		<choose>
+			<when test="shOption == 1">seq</when>
+			<when test="shOption == 2">id</when>
+			<when test="shOption == 3">password</when>
+			<when test="shOption == 4">name</when>
+			<when test="shOption == 5">dob</when>
+			<when test="shOption == 6">gender</when>
+			<when test="shOption == 7">job</when>
+			<when test="shOption == 8">zipcode</when>
+			<when test="shOption == 9">address</when>
+			<when test="shOption == 10">address_detail</when>
+			<when test="shOption == 11">mobileCarrier</when>
+			<when test="shOption == 12">phonenumber</when>
+			<when test="shOption == 13">way_to_regist</when>
+		</choose>
+		LIKE
+		CONCAT('%',#{shValue},'%')
 	</select>
 
 </mapper>	

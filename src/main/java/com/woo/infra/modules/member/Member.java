@@ -11,10 +11,11 @@ public class Member {
 	private String job;
 	private String zipcode;
 	private String address;
-	private String addressDetail;
-	private String telecom;
+	private String address_detail;
+	private String mobileCarrier;
 	private String phoneNumber;
-	private String wayToRegist;
+	private String way_to_regist;
+	
 	
 	public String getSeq() {
 		return seq;
@@ -70,17 +71,17 @@ public class Member {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAddressDetail() {
-		return addressDetail;
+	public String getAddress_detail() {
+		return address_detail;
 	}
-	public void setAddressDetail(String addressDetail) {
-		this.addressDetail = addressDetail;
+	public void setAddress_detail(String address_detail) {
+		this.address_detail = address_detail;
 	}
-	public String getTelecom() {
-		return telecom;
+	public String getMobileCarrier() {
+		return mobileCarrier;
 	}
-	public void setTelecom(String telecom) {
-		this.telecom = telecom;
+	public void setMobileCarrier(String mobileCarrier) {
+		this.mobileCarrier = mobileCarrier;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -88,12 +89,15 @@ public class Member {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getWayToRegist() {
-		return wayToRegist;
+	public String getWay_to_regist() {
+		return way_to_regist;
 	}
-	public void setWayToRegist(String wayToRegist) {
-		this.wayToRegist = wayToRegist;
+	public void setWay_to_regist(String way_to_regist) {
+		this.way_to_regist = way_to_regist;
 	}
+	
+	
+	
 	
 	
 	

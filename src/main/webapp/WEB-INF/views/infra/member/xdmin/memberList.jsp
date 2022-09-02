@@ -65,6 +65,7 @@
 								</div>
 								<br>
 								<div>
+								<form  action="http://localhost:8080/member/src">
 									<form class="d-flex" role="search">
 										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
 											<option value="gender">삭제여부</option>
@@ -78,12 +79,25 @@
 										</select>
 										<input class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
 										<input class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">검색구분</option>
-											<option value="">1</option>
-											<option value="">2</option>
+										
+										<select id="shOption" name="shOption" class="form-select form-select-sm">
+											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
+											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
+											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>ID</option>
+											<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>PASSWORD</option>
+											<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이름</option>
+											<option value="5" <c:if test="${vo.shOption eq 5 }">selected</c:if>>생년월일</option>
+											<option value="6" <c:if test="${vo.shOption eq 6 }">selected</c:if>>성별</option>
+											<option value="7" <c:if test="${vo.shOption eq 7 }">selected</c:if>>직업</option>
+											<option value="8" <c:if test="${vo.shOption eq 8 }">selected</c:if>>우편번호</option>
+											<option value="9" <c:if test="${vo.shOption eq 9 }">selected</c:if>>주소</option>
+											<option value="10" <c:if test="${vo.shOption eq 10 }">selected</c:if>>상세주소</option>
+											<option value="11" <c:if test="${vo.shOption eq 11 }">selected</c:if>>통신사</option>
+											<option value="12" <c:if test="${vo.shOption eq 12 }">selected</c:if>>휴대전화 번호</option>
+											<option value="13" <c:if test="${vo.shOption eq 13 }">selected</c:if>>가입경로</option>
 										</select>
-										<input class="form-control me-1" type="search" placeholder="검색어" aria-label="Search">
+										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
+										
 										<button class="btn btn-outline-success me-1" type="submit"><i
 												class="fa-solid fa-magnifying-glass"></i></button>
 										<button class="btn btn-outline-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
@@ -128,10 +142,10 @@
 												<td><c:out value="${list.job }"/></td>
 												<td><c:out value="${list.zipcode }"/></td>
 												<td><c:out value="${list.address }"/></td>
-												<td><c:out value="${list.addressDetail }"/></td>
-												<td><c:out value="${list.telecom }"/></td>
+												<td><c:out value="${list.address_detail }"/></td>
+												<td><c:out value="${list.mobileCarrier }"/></td>
 												<td><c:out value="${list.phoneNumber }"/></td>
-												<td><c:out value="${list.wayToRegist }"/></td>
+												<td><c:out value="${list.way_to_regist }"/></td>
 												<td>2022-09-01 00:00:00</td>
 												<td>2022-09-01 00:00:00</td>
 											</tr>

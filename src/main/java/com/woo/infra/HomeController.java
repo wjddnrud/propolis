@@ -38,7 +38,6 @@ public class HomeController {
 			System.out.println("kjygfik");
 			return "aLIst";
 		}
-
 		
 		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
 		public String CGL(Locale locale, Model model) {

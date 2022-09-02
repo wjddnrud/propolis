@@ -16,12 +16,28 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberList")
-	public String memberList(Model model) throws Exception {
+	public String memberList(Model model, MemberVo vo) throws Exception {
 
-		List<Member> list = service.selectList();
+		
+		System.out.println("vo.getShValue(): " + vo.getShValue());
+		System.out.println("vo.getShOption(): " + vo.getShOption());
+		
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
-		return "infra/codegroup/xdmin/memberList";
+		return "infra/member/xdmin/memberList";
+	}
+	
+	@RequestMapping(value = "src")
+	public String membersrc(Model model, MemberVo vo) throws Exception {
+
+		System.out.println("vo.getShValue(): " + vo.getShValue());
+		System.out.println("vo.getShOption(): " + vo.getShOption());
+		
+		List<Member> list = service.srcList(vo);
+		model.addAttribute("list", list);
+		
+		return "infra/member/xdmin/memberList";
 	}
 	
 }

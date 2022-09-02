@@ -65,7 +65,8 @@
 								</div>
 								<br>
 								<div>
-									<form class="d-flex" role="search">
+								<form  action="http://localhost:8080/codegroup/src">
+									<!-- <form class="d-flex" role="search"> -->
 										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
 											<option value="gender">삭제여부</option>
 											<option value="">N</option>
@@ -78,15 +79,21 @@
 										</select>
 										<input class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
 										<input class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">검색구분</option>
-											<option value="">1</option>
-											<option value="">2</option>
+										
+										
+										<select id="shOption" name="shOption" class="form-select form-select-sm">
+											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
+											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>사용여부</option>
 										</select>
-										<input class="form-control me-1" type="search" placeholder="검색어" aria-label="Search">
-										<button class="btn btn-outline-success me-1" type="submit"><i
-												class="fa-solid fa-magnifying-glass"></i></button>
-										<button class="btn btn-outline-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
+										
+										
+										
+										
+										<button class="btn btn-outline-success me-1" type="submit">
+										<i class="fa-solid fa-magnifying-glass"></i></button>
+										<button class="btn btn-outline-warning" type="reset">
+										<i class="fa-solid fa-arrow-rotate-left"></i></button>
 									</form>
 								</div>
 								<div class="table-wrapper">
@@ -106,7 +113,14 @@
 												<th>수정일</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody style="color: black;">
+											<c:choose>
+												<c:when test="${fn:length(list) eq 0}">
+													<tr>
+														<td class="text-center" colspan="8">There is no data!</td>
+													</tr>
+												</c:when>
+											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human">
@@ -114,7 +128,7 @@
 												<td><c:out value="${list.seq }"/></td>
 												<td>1</td>
 												<td><c:out value="${list.ccg_name }"/></td>
-												<%-- <td><c:out value="${list.codeCount }"/></td> --%>
+												<td><c:out value="${list.xCodeCount }"/></td>
 												<td><c:out value="${list.useNY }"/></td>
 												<td>2022-09-01 00:00:00</td>
 												<td>2022-09-01 00:00:00</td>
@@ -135,7 +149,9 @@
 								</div>
 							</section>
 
-
+		
+		
+							
 
 							</div>
 						</section>

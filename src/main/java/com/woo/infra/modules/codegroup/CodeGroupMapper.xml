@@ -13,8 +13,27 @@
 			seq
 	    	,ccg_name
 	    	,useNY
-	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as codeCount
+	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
 		FROM ccg a;
 	</select>
+   
+	<resultMap id="resultMapObjsrc" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
+	
+	<select id="srcList" resultMap="resultMapObjsrc">
+		SELECT
+			*
+		FROM ccg
+		WHERE
+		<choose>
+			<when test="shOption == 1"> ccg_name </when>
+			<when test="shOption == 2"> useNY </when>
+		</choose>
+		LIKE 
+		CONCAT
+		('%',#{shValue},'%')
+		
+	</select>
+	
+	
 
 </mapper>

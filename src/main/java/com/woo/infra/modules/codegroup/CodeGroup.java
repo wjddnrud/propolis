@@ -6,13 +6,14 @@ public class CodeGroup {
 	private String seq;
 	private String ccg_name;
 	private String useNY;
-	private String codeCount;
+	private String xCodeCount;
 	
-	public String getCodeCount() {
-		return codeCount;
+	
+	public String getxCodeCount() {
+		return xCodeCount;
 	}
-	public void setCodeCount(String codeCount) {
-		this.codeCount = codeCount;
+	public void setxCodeCount(String xCodeCount) {
+		this.xCodeCount = xCodeCount;
 	}
 	public String getSeq() {
 		return seq;
