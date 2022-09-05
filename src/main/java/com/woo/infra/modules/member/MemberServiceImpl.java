@@ -12,13 +12,18 @@ public class MemberServiceImpl implements MemberService{
 	MemberDao dao;
 	
 	@Override
-	public List<Member> selectList(MemberVo vo) throws Exception {
-		return dao.selectList(vo);
+	public List<Member> selectList() throws Exception {
+		return dao.selectList();
 	}
 
 	@Override
 	public List<Member> srcList(MemberVo vo) throws Exception {
 		// TODO Auto-generated method stub
+		
+		System.out.println(vo.getShStartDate());
+		System.out.println(vo.getShEndDate());
+
+		
 		return dao.srcList(vo);
 	}
 	

@@ -11,6 +11,8 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
 	<title>Home</title>
 </head>
 	<body class="is-preload">
@@ -77,8 +79,10 @@
 											<option value="">1</option>
 											<option value="">2</option>
 										</select>
-										<input class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
-										<input class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
+										
+										<p>Date: <input <%-- value="<c:out value="${vo.shStartDate }" />" --%> class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
+										
+										<p>Date: <input <%-- value="<c:out value="${vo.shEndDate }" />" --%> class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
 											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
@@ -129,6 +133,13 @@
 											</tr>
 										</thead>
 										<tbody>
+											<c:choose>
+												<c:when test="${fn:length(list) eq 0}">
+													<tr>
+														<td class="text-center" colspan="16" style="color: black;">There is no data!</td>
+													</tr>
+												</c:when>
+											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human">
@@ -196,6 +207,29 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+			<script>
+			$( function() {
+			  	$( "#datepicker1" ).datepicker({
+			  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+				    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+				    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+				    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+				    yearRange: "1900:2023"
+			  	});
+			} );
+			$( function() {
+			  	$( "#datepicker2" ).datepicker({
+			  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+				    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+				    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+				    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+				    yearRange: "1900:2023"
+			  	});
+			} );
+			
+			</script>
 
 
 

@@ -94,7 +94,7 @@
 										<thead>
 											<tr>
 												<th>
-													<input type="checkbox" id="demo-human" name="demo-human">
+													<input type="checkbox" id="demo-human" name="demo-human" onclick="selectAll(this)">
 													<label for="demo-human">선택</label>
 												</th>
 												<th>#</th>
@@ -109,8 +109,8 @@
 										<tbody>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
+												<td><input type="checkbox" id="checkbox" name="checkbox">
+													<label for="checkbox"></label></td>
 												<td><c:out value="${list.seq }"/></td>
 												<td><c:out value="${list.cc_name }"/></td>
 												<td><c:out value="${list.useNY }"/></td>
@@ -166,7 +166,16 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
-
+			<script>
+				function selectAll(selectAll)  {
+					const checkboxes 
+						= document.getElementsByName("checkbox");
+					
+					checkboxes.forEach((checkbox) => {
+					checkbox.checked = selectAll.checked;
+					})
+				}
+			</script>
 
 
 </body>

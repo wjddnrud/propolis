@@ -1836,7 +1836,7 @@ input, select, textarea {
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background-color: rgba(144, 144, 144, 0.5);
+		background-color: rgba(0, 0, 0, 0.07);
 		border-radius: 3px;
 		border: none;
 		color: inherit;
@@ -1867,8 +1867,8 @@ input, select, textarea {
 		background-size: 1.25em;
 		background-repeat: no-repeat;
 		background-position: calc(100% - 1em) center;
-		height: 2.75em;
-		padding-right: 2.75em;
+		/* height: 2.75em; */
+		/* padding-right: 2.75em; */
 		text-overflow: ellipsis;
 	}
 
@@ -1898,7 +1898,7 @@ input, select, textarea {
 		-ms-appearance: none;
 		appearance: none;
 		display: block;
-		float: left;
+		/* float: left; */
 		margin-right: -2em;
 		opacity: 0;
 		width: 1em;
@@ -1912,7 +1912,7 @@ input, select, textarea {
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
-			font-weight: 400;
+			/* font-weight: 400; */
 			padding-left: 2.4em;
 			padding-right: 0.75em;
 			position: relative;
@@ -2347,8 +2347,8 @@ input, select, textarea {
 			border: solid 1px #fff;
 			border-left: 0;
 			border-right: 0;
-			/* font-size: 14px; */
-			font-size: 1px;
+			font-size: 14px;
+			
 		}
 
 			table tbody tr:nth-child(2n + 1) {
@@ -2368,7 +2368,7 @@ input, select, textarea {
 			padding: 6px;
 			text-align: center;
 			border: 1px solid rgb(100, 100, 100);
-			background-color: #454545;
+			background-color: rgb(57, 57, 57);
 		}
 
 		table thead {
@@ -2806,7 +2806,7 @@ input, select, textarea {
 	}
 
 		.wrapper > .inner {
-			width: 85%;
+			width: 80%;
 			margin: 0 auto;
 		}
 
@@ -3203,7 +3203,7 @@ input, select, textarea {
 			.wrapper.style5 input[type="email"],
 			.wrapper.style5 select,
 			.wrapper.style5 textarea {
-				background-color: rgba(0, 0, 0, 0.0375);
+				/* background-color: rgba(0, 0, 0, 0.0375); */
 			}
 
 			.wrapper.style5 select {
@@ -3212,15 +3212,15 @@ input, select, textarea {
 
 				.wrapper.style5 select option {
 					color: #2E3842;
-					background: #ffffff;
+					background: #ffffff83;
 				}
 
 			.wrapper.style5 input[type="checkbox"] + label,
 			.wrapper.style5 input[type="radio"] + label {
-				color: #4E4852;
+				/* color: #4E4852; */
 			}
 
-				.wrapper.style5 input[type="checkbox"] + label:before,
+				/* .wrapper.style5 input[type="checkbox"] + label:before,
 				.wrapper.style5 input[type="radio"] + label:before {
 					background: rgba(0, 0, 0, 0.0375);
 				}
@@ -3229,7 +3229,7 @@ input, select, textarea {
 			.wrapper.style5 input[type="radio"]:checked + label:before {
 				background: #2E3842;
 				color: #ffffff;
-			}
+			} */
 
 			.wrapper.style5 ::-webkit-input-placeholder {
 				color: #8E8892 !important;

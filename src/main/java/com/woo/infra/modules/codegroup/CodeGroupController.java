@@ -18,8 +18,8 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
 
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+//		System.out.println("vo.getShValue(): " + vo.getShValue());
+//		System.out.println("vo.getShOption(): " + vo.getShOption());
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
@@ -30,8 +30,8 @@ public class CodeGroupController {
 	@RequestMapping(value = "src")
 	public String codeGroupListsrc(Model model, CodeGroupVo vo) throws Exception {
 		
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+//		System.out.println("vo.getShValue(): " + vo.getShValue());
+//		System.out.println("vo.getShOption(): " + vo.getShOption());
 		
 		List<CodeGroup> list = service.srcList(vo);
 		model.addAttribute("list", list);

@@ -4,6 +4,8 @@ public class MemberVo {
 
 	private Integer shOption;
 	private String shValue;
+	private String shStartDate;
+	private String shEndDate;
 	
 	//---------------
 	public Integer getShOption() {
@@ -17,6 +19,18 @@ public class MemberVo {
 	}
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
+	}
+	public String getShStartDate() {
+		return shStartDate;
+	}
+	public void setShStartDate(String shStartDate) {
+		this.shStartDate = shStartDate;
+	}
+	public String getShEndDate() {
+		return shEndDate;
+	}
+	public void setShEndDate(String shEndDate) {
+		this.shEndDate = shEndDate;
 	}
 	
 	
