@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value ="/code2/")
 public class Code2Controller {
 
 	@Autowired
@@ -15,11 +16,11 @@ public class Code2Controller {
 	
 
 	@RequestMapping(value = "code2List")
-	public String codeGroupList(Model model) throws Exception {
+	public String codeList(Model model) throws Exception {
 
 		List<Code2> list = service.selectList();
 		model.addAttribute("list", list);
 		
-		return "infra/codegroup/xdmin/codeGroupList";
+		return "infra/code/xdmin/codeList";
 	}
 }

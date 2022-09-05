@@ -11,7 +11,8 @@
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			*
-		FROM cc a
+		FROM cc
 	</select>
 
 </mapper>
+
