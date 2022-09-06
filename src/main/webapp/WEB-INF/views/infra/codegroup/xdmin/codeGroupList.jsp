@@ -65,25 +65,31 @@
 								</div>
 								<br>
 								<div>
-								<form  action="http://localhost:8080/codegroup/src">
+								<form action="http://localhost:8080/codegroup/codeGroupSearch">
 									<!-- <form class="d-flex" role="search"> -->
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">삭제여부</option>
-											<option value="">N</option>
-											<option value="">Y</option>
+										<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">사용여부</option>
+											<option value="0">N</option>
+											<option value="1">Y</option>
 										</select>
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">수정일</option>
-											<option value="">1</option>
-											<option value="">2</option>
+										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">삭제여부</option>
+											<option value="0">N</option>
+											<option value="1">Y</option>
 										</select>
-										<input class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
-										<input class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
+										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">날짜 구분</option>
+											<option value="0">등록일</option>
+											<option value="1">수정일</option>
+										</select>
+										<input name="shStartDate" class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
+										<input name="shEndDate" class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
 										
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
-											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>사용여부</option>
+											<option value="">검색 구분</option>
+											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
+											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option>
 										</select>
 										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
 										
@@ -105,10 +111,10 @@
 													<label for="demo-human">선택</label>
 												</th>
 												<th>#</th>
-												<th>코드그룹 코드</th>
 												<th>코드그룹 이름(한글)</th>
 												<th>코드갯수</th>
 												<th>사용여부</th>
+												<th>삭제여부</th>
 												<th>등록일</th>
 												<th>수정일</th>
 											</tr>
@@ -123,15 +129,24 @@
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
+												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
 												<td><c:out value="${list.seq }"/></td>
-												<td>1</td>
 												<td><c:out value="${list.ccg_name }"/></td>
 												<td><c:out value="${list.xCodeCount }"/></td>
-												<td><c:out value="${list.useNY }"/></td>
-												<td>2022-09-01 00:00:00</td>
-												<td>2022-09-01 00:00:00</td>
+												<td>
+												<c:choose>
+													<c:when test="${list.useNY eq 0}">N</c:when>
+													<c:when test="${list.useNY eq 1}">Y</c:when>
+												</c:choose>
+												</td>
+												<td>
+													<c:choose>
+														<c:when test="${list.delNY eq 0}">N</c:when>
+														<c:when test="${list.delNY eq 1}">Y</c:when>
+													</c:choose>
+												</td>
+												<td><c:out value="${list.createDate }"/></td>
+												<td><c:out value="${list.modiDate }"/></td>
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -142,7 +157,7 @@
 									</table>
 									
 									<center>
-										<a href="boardReg.html" class="button primary">작성</a>
+										<a href="/codegroup/codeGroupForm" class="button primary">코드그룹 등록</a>
 										<a href="index.html" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>

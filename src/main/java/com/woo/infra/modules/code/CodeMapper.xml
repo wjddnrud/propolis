@@ -10,8 +10,41 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
-		FROM cc a
+			*
+		FROM cc
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO cc (
+			cc_name
+			,useNY
+			,cc_key
+			,ccg_seq
+		)
+		VALUES (
+			#{cc_name}
+			,#{useNY}
+			,#{cc_key}
+			,#{ccg_seq}
+		)
+	</insert>
+	
+	<resultMap id="resultMapObjSearch" type="com.woo.infra.modules.code.Code"></resultMap>
+	
+	<select id="SearchList" resultMap="resultMapObjSearch">
+		SELECT
+			*
+		FROM cc
+		WHERE
+		<choose>
+			<when test="shOption == 1">cc_name</when>
+			<when test="shOption == 2">useNY</when>
+			<when test="shOption == 3">cc_key</when>
+			<when test="shOption == 4">ccg_seq</when>
+			<when test="shOption == 5">creatDate</when>
+			<when test="shOption == 6">modiDate</when>
+		</choose>
+		LIKE CONCAT ('%',#{shValue}, '%')
 	</select>
 
 </mapper>	

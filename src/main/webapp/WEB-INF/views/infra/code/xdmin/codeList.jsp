@@ -65,25 +65,27 @@
 								</div>
 								<br>
 								<div>
-									<form class="d-flex" role="search">
+									<form>
 										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">삭제여부</option>
-											<option value="">N</option>
-											<option value="">Y</option>
+											<option value="">삭제여부</option>
+											<option value="0">N</option>
+											<option value="1">Y</option>
 										</select>
 										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">수정일</option>
-											<option value="">1</option>
-											<option value="">2</option>
+											<option value="">날짜 검색</option>
+											<option value="0">등록일</option>
+											<option value="1">수정일</option>
 										</select>
 										<input class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
 										<input class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">검색구분</option>
-											<option value="">1</option>
-											<option value="">2</option>
+										<select id="shOption" name="shOption" class="form-select form-control me-1 text-center">
+											<option value="">검색 구분</option>
+											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드이름(한글)</option>
+											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option>
+											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드key</option>
+											<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹_seq</option>
 										</select>
-										<input class="form-control me-1" type="search" placeholder="검색어" aria-label="Search">
+										<input id="<c:out value= "${vo.shValue }"/>" name="shValue" class="form-control me-1" type="text" placeholder="검색어">
 										<button class="btn btn-outline-success me-1" type="submit"><i
 												class="fa-solid fa-magnifying-glass"></i></button>
 										<button class="btn btn-outline-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
@@ -107,17 +109,23 @@
 											</tr>
 										</thead>
 										<tbody>
+											<c:choose>
+												<c:when test="${fn:length(list) eq 0}">
+													<tr>
+														<td class="text-center" colspan="8">There is no data!</td>
+													</tr>
+												</c:when>
+											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td><input type="checkbox" id="checkbox" name="checkbox">
-													<label for="checkbox"></label></td>
+												<td><input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox"></label></td>
 												<td><c:out value="${list.seq }"/></td>
 												<td><c:out value="${list.cc_name }"/></td>
 												<td><c:out value="${list.useNY }"/></td>
 												<td><c:out value="${list.cc_key }"/></td>
 												<td><c:out value="${list.ccg_seq }"/></td>
-												<td>2022-09-01 00:00:00</td>
-												<td>2022-09-01 00:00:00</td>
+												<td><c:out value="${list.createDate }"/></td>
+												<td><c:out value="${list.modiDate }"/></td>
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -128,7 +136,7 @@
 									</table>
 									
 									<center>
-										<a href="boardReg.html" class="button primary">작성</a>
+										<a href="/code/codeForm" class="button primary">코드 등록</a>
 										<a href="index.html" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>

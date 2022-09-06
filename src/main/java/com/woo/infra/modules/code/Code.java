@@ -7,6 +7,8 @@ public class Code {
 	private String useNY;
 	private String cc_key;
 	private String ccg_seq;
+	private String createDate;
+	private String modiDate;
 	
 	public String getSeq() {
 		return seq;
@@ -38,6 +40,19 @@ public class Code {
 	public void setCcg_seq(String ccg_seq) {
 		this.ccg_seq = ccg_seq;
 	}
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	public String getModiDate() {
+		return modiDate;
+	}
+	public void setModiDate(String modiDate) {
+		this.modiDate = modiDate;
+	}
+	
 	
 	
 }

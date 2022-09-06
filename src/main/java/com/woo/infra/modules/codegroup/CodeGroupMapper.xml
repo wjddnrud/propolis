@@ -13,27 +13,59 @@
 			seq
 	    	,ccg_name
 	    	,useNY
+	    	,delNY
+	    	,createDate
+	    	,modiDate
 	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
 		FROM ccg a;
 	</select>
    
-	<resultMap id="resultMapObjsrc" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
-	
-	<select id="srcList" resultMap="resultMapObjsrc">
+   <resultMap id="resultMapObjSearch" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
+   
+	<select id="search" resultMap="resultMapObjSearch">
 		SELECT
-			*
-		FROM ccg
-		WHERE
-		<choose>
-			<when test="shOption == 1"> ccg_name </when>
-			<when test="shOption == 2"> useNY </when>
-		</choose>
-		LIKE 
-		CONCAT
-		('%',#{shValue},'%')
+			a.*
+			,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
+		FROM ccg a
+		WHERE 1=1
 		
+		<choose>
+			<when test="shUseNY == 0"> AND useNY LIKE 0 </when>
+			<when test="shUseNY == 1"> AND useNY LIKE 1 </when>
+		</choose>
+		
+		<choose>
+			<when test="shDelNY == 0"> AND delNY LIKE 0</when>
+			<when test="shDelNY == 1"> AND delNY LIKE 1</when>
+		</choose>
+		
+		<choose>
+			<when test="shDate == 0"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 1"> AND modiDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 0">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND useNY LIKE CONCAT ('%',#{shValue},'%')</when>
+		</choose>
+	
 	</select>
 	
-	
-
+	<insert id="insert">
+		<!-- <if test="shUseNy != null and !shUseNy.equals('')">AND ccgUseNy = #{shUseNy}</if> -->
+		INSERT INTO ccg (
+		    ccg_name
+		    ,useNY
+		)
+		VALUES (
+			#{ccg_name}    <!-- 내가 직접 입력하는 값일때는 #{}로 쓰고 안에는 알아볼수 있게 동일한 이름으로 표시해준다. -->
+		    ,#{useNY}
+		)
+		;
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		<!-- AI auto increment 생성해주기 내가 만들었던 ai를 keyProperty에 입력해주기 -->
+		
+	</insert>
 </mapper>

@@ -24,10 +24,41 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	
 
 	@Override
-	public List<CodeGroup> srcList(CodeGroupVo vo) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.srcList(vo);
+	public List<CodeGroup> search(CodeGroupVo vo) throws Exception {
+		
+		if(vo.getShUseNY() == null)
+			vo.setShUseNY(2);
+		
+		if(vo.getShDelNY() == null)
+			vo.setShDelNY(2);
+		
+		if(vo.getShDate() == null)
+			vo.setShDate(0);
+		
+		if(vo.getShStartDate() == null)
+			vo.setShStartDate("1900-01-01 00:00:00");
+		
+		if(vo.getShEndDate() == null)
+			vo.setShEndDate("2023-12-31 00:00:00");
+		
+		if(vo.getShValue() == null)
+			vo.setShValue("");
+		
+		if(vo.getShOption() == null)
+			vo.setShOption(0);
+		
+		
+		return dao.search(vo);
 	}
+
+
+	@Override
+	public int insert(CodeGroup dto) throws Exception {
+		int result = dao.insert(dto);
+		System.out.println("service result : " + result);
+		return result;
+	}
+	
 	
 	
 

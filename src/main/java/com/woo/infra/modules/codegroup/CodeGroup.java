@@ -7,6 +7,10 @@ public class CodeGroup {
 	private String ccg_name;
 	private String useNY;
 	private String xCodeCount;
+	private String createDate;
+	private String modiDate;
+	private String delNY;
+	
 	
 	
 	public String getxCodeCount() {
@@ -33,6 +37,25 @@ public class CodeGroup {
 	public void setUseNY(String useNY) {
 		this.useNY = useNY;
 	}
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	public String getModiDate() {
+		return modiDate;
+	}
+	public void setModiDate(String modiDate) {
+		this.modiDate = modiDate;
+	}
+	public String getDelNY() {
+		return delNY;
+	}
+	public void setDelNY(String delNY) {
+		this.delNY = delNY;
+	}
+	
 	
 	
 }

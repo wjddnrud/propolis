@@ -21,6 +21,7 @@
 			*
 		FROM member
 		WHERE
+		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 		<choose>
 			<when test="shOption == 0">name</when>
 			<when test="shOption == 1">seq</when>

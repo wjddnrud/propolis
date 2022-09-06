@@ -27,6 +27,12 @@ public class CodeGroupDao {
 		return list;
 	}
 	
-	public List<CodeGroup> srcList(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".srcList", vo); }
+	public List<CodeGroup> search(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".search", vo); }
+	
+	public int insert(CodeGroup dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result : " + result);
+		return result;
+	}
 	
 }
