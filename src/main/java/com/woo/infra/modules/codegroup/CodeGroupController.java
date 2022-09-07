@@ -54,4 +54,40 @@ public class CodeGroupController {
 		return "redirect:/codegroup/codeGroupList";
 	}
 	
+
+	//----------------------------- 페이지 이동
+	
+	
+	@RequestMapping(value = "main")
+	public String main() throws Exception {
+
+		return "infra/SportsMate/main";
+	}
+	
+	@RequestMapping(value = "board")
+	public String board() throws Exception {
+
+		return "infra/SportsMate/board";
+	}
+	
+	@RequestMapping(value = "findMate")
+	public String findMate() throws Exception {
+
+		return "infra/SportsMate/findMate";
+	}
+	
+	@RequestMapping(value = "signIn")
+	public String signIn() throws Exception {
+
+		return "infra/SportsMate/signIn";
+	}
+	
+	@RequestMapping(value = "signUp")
+	public String signUp() throws Exception {
+
+		return "infra/SportsMate/signUp";
+	}
+	
+	
+	
 }

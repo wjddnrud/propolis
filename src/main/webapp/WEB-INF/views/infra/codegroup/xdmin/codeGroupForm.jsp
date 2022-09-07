@@ -9,14 +9,47 @@ codegroup
 
 
 <form action="/codegroup/codeGroupInst">
-	<input name="ccg_name" type="text">
-	<input name="useNY" type="text">
-	<button type="submit">저장</button>
+	<input name="ccg_name" type="text" id="ccg_name">
+	<input name="useNY" type="text" id="useNY">
+	<button type="submit" onclick="test();">등록</button>
 </form>
 
 <br>
-<%-- 
-<c:forEach items="${list}" var="list" varStatus="status">
-	<c:out value="${list.ifcgSeq }"/> / <c:out value="${list.ifcgName }"/>
-	<br>		
-</c:forEach> --%>
+
+<script type="text/javascript">
+	function test() {
+		
+		if(document.getElementById('ccg_name').value == "") {
+			alert("빈칸이 있습니다. 내용을 입력해주세요.");
+			
+			document.getElementById("ccg_name").value="";
+			document.getElementById("ccg_name").focus();
+			
+			return false;
+		}
+		
+		if(document.getElementById('useNY').value == "") {
+			alert("빈칸이 있습니다. 내용을 입력해주세요.");
+			
+			document.getElementById("useNY").value="";
+			document.getElementById("useNY").focus();
+			
+			return false;
+		}
+		
+		alert("코드그룹이 정상적으로 등록되었습니다.");
+		
+		alert("코드그룹 이름 : " + document.getElementById('ccg_name').value);
+		
+		alert("사용여부 : " + document.getElementById('useNY').value);
+		
+		
+		
+		
+		alert(document.getElementById('telecom').options[document.getElementById('telecom').selectedIndex].value);
+		
+		alert(document.querySelector("input[name='gender']:checked").value);
+		
+		return false;
+	}
+</script>

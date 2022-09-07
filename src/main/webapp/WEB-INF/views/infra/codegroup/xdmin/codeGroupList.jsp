@@ -68,17 +68,17 @@
 								<form action="http://localhost:8080/codegroup/codeGroupSearch">
 									<!-- <form class="d-flex" role="search"> -->
 										<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">사용여부</option>
+											<option value="" hidden selected>사용여부</option>
 											<option value="0">N</option>
 											<option value="1">Y</option>
 										</select>
 										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">삭제여부</option>
+											<option value="" hidden selected>삭제여부</option>
 											<option value="0">N</option>
 											<option value="1">Y</option>
 										</select>
 										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">날짜 구분</option>
+											<option value="" hidden selected>날짜 구분</option>
 											<option value="0">등록일</option>
 											<option value="1">수정일</option>
 										</select>
@@ -87,7 +87,7 @@
 										
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="">검색 구분</option>
+											<option value="" hidden selected>검색 구분</option>
 											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
 											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option>
 										</select>
