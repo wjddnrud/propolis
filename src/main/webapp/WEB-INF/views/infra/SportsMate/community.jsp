@@ -14,7 +14,7 @@
 -->
 <html>
 	<head>
-		<title>Elements - Spectral by HTML5 UP</title>
+		<title>Community</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,17 +29,17 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="/codegroup/main">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="/codegroup/main">Home</a></li>
-										<li><a href="/codegroup/findMate">Find Mate</a></li>
-										<li><a href="/codegroup/board">Community</a></li>
-										<li><a href="/codegroup/signIn">LOG-OUT</a></li>
+										<li><a href="/main">Home</a></li>
+										<li><a href="/findMate">Find Mate</a></li>
+										<li><a href="/community">Community</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -70,7 +70,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr onclick="location.href='boardView.html'" style="cursor: pointer;">
+											<tr onclick="location.href='/communityView'" style="cursor: pointer;">
 												<td>FOOD</td>
 												<td>dnwk101</td>
 												<td>먹는것 식단 질문 드려요</td>
@@ -165,8 +165,8 @@
 									</nav>
 									<br>
 									<center>
-										<a href="boardReg.html" class="button primary">작성</a>
-										<a href="/codegroup/main" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="/communityForm" class="button primary">작성</a>
+										<a href="/main" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>
 								</div>

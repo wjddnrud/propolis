@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-
 <!DOCTYPE HTML>
 <!--
 	Spectral by HTML5 UP
@@ -14,11 +13,13 @@
 -->
 <html>
 	<head>
-		<title>Elements - Spectral by HTML5 UP</title>
+		<title>Community Notify</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -27,17 +28,17 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+										<li><a href="/main">Home</a></li>
+										<li><a href="/findMate">Find Mate</a></li>
+										<li><a href="/community">Community</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -48,40 +49,43 @@
 				<!-- Main -->
 					<article id="main">
 						<header>
-							<h2>Community</h2>
-							<p>공유할 정보나 궁금한것들을 글로 작성해보세요.</p>
+							<h2>notify</h2>
+							<p>부적절한 내용이 포함된 게시물을 신고해주세요.</p>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
 
+								
 
 								<section>
 									<form method="post" action="#">
 										<div class="row gtr-uniform">
-											<div class="col-4 col-12-xsmall">
+											<div class="col-3 col-12-xsmall">
 												<select>
-													<option value="">카테고리</option>
-													<option value="1">Diet</option>
-													<option value="1">Weight</option>
-													<option value="1">Food</option>
+													<option value="">- 분류 -</option>
+													<option value="1">Community</option>
+													<option value="1">Find Mate</option>
 												</select>
 											</div>
-											<div class="col-8 col-12-xsmall">
+											<div class="col-6 col-12-xsmall">
 												<input type="text" value="" placeholder="제목을 입력해주세요.">
 											</div>
+											<div class="col-3 col-12-xsmall">
+												<input type="text" value="" placeholder="신고할 닉네임">
+											</div>
 											<div class="col-12 col-12-xsmall filebox">
-												<input class="upload-name" value="" placeholder="첨부파일">
+												<input class="upload-name" value="" placeholder="첨부파일 (게시물 캡쳐본)">
 												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
 												<input type="file" id="file">
 											</div>
 											<div class="col-12">
-												<textarea placeholder="여기에 내용을 입력해주세요." rows="15"></textarea>
+												<textarea placeholder="여기에 신고 사유를 입력해주세요." rows="15"></textarea>
 											</div>
 											<div class="col-12">
 												<ul class="actions" style="justify-content: center;">
 													<li><input type="reset" value="Reset"></li>
-													<li><a href="board.html" class="button primary">Sign-up</a></li>
-													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
+													<li><a href="board.html" class="button primary">Sign-up(이동)</a></li>
+													<li><button type="submit" class="button primary">Sign-up(제출)</button></li>
 													<li><a href="board.html" class="button">Cancle</a></li>
 												</ul>
 											</div>
@@ -126,13 +130,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/resources/images/assets/js/jquery.min.js"></script>
+			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/resources/images/assets/js/browser.min.js"></script>
+			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
+			<script src="/resources/images/assets/js/util.js"></script>
+			<script src="/resources/images/assets/js/main.js"></script>
 
 			<script>
 				$("#file").on('change',function(){

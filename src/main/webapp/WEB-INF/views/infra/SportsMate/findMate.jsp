@@ -14,15 +14,16 @@
 -->
 <html>
 	<head>
-		<title>Elements - Spectral by HTML5 UP</title>
+		<title>FindMate</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
 	</head>
+	
 	<body class="is-preload">
 
 		<!-- Page Wrapper -->
@@ -30,17 +31,17 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+										<li><a href="/main">Home</a></li>
+										<li><a href="/findMate">Find Mate</a></li>
+										<li><a href="/community">Community</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -63,7 +64,7 @@
 									<div class="container">
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/서핑.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/서핑.jpg"></div>
 												<div class="contentBx">
 													<h3>서핑<br><span>함께 서핑해요@</span></h3>
 												</div>
@@ -82,7 +83,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/바다러닝.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/바다러닝.jpg"></div>
 												<div class="contentBx">
 													<h3>러닝<br><span>아침 러닝 같이해요!!</span></h3>
 												</div>
@@ -101,7 +102,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/친구 농구2.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/친구 농구2.jpg"></div>
 												<div class="contentBx">
 													<h3>농구<br><span>3대3 반코트 농구하실분 구해요~</span></h3>
 												</div>
@@ -111,7 +112,7 @@
 													<a href="#"><i class="fa-regular fa-envelope"></i></a>
 												</li>
 												<li style="--i:2">
-													<a href="findMateView.html"><i class="fa-regular fa-eye"></i></a>
+													<a href="/findMateView"><i class="fa-regular fa-eye"></i></a>
 												</li>
 												<li style="--i:3">
 													<a href="#"><i class="fa-regular fa-map"></i></a>
@@ -120,7 +121,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/계단 러닝.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/계단 러닝.jpg"></div>
 												<div class="contentBx">
 													<h3>러닝<br><span>공원 러닝 메이트 구해요~^^</span></h3>
 												</div>
@@ -139,7 +140,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/바이셉컬.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/바이셉컬.jpg"></div>
 												<div class="contentBx">
 													<h3>웨이트 트레이닝<br><span>헬스 메이트 구합니다!</span></h3>
 												</div>
@@ -158,7 +159,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/사이클.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/사이클.jpg"></div>
 												<div class="contentBx">
 													<h3>사이클<br><span>#윈드브레이커#</span></h3>
 												</div>
@@ -177,7 +178,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/요가.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/요가.jpg"></div>
 												<div class="contentBx">
 													<h3>필라테스<br><span>@필라테스 회원 모집중@</span></h3>
 												</div>
@@ -196,7 +197,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/러닝머신.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/러닝머신.jpg"></div>
 												<div class="contentBx">
 													<h3>러닝<br><span>10kg감량 함께해요!!!!!</span></h3>
 												</div>
@@ -215,7 +216,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/아이 배드민턴.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/아이 배드민턴.jpg"></div>
 												<div class="contentBx">
 													<h3>배드민턴<br><span>배드민턴 2대2</span></h3>
 												</div>
@@ -234,7 +235,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/나이키2.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/나이키2.jpg"></div>
 												<div class="contentBx">
 													<h3>농구<br><span>@고등학교 농구 대항전@</span></h3>
 												</div>
@@ -253,7 +254,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/여자 웨이트.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/여자 웨이트.jpg"></div>
 												<div class="contentBx">
 													<h3>웨이트 트레이닝<br><span>함께 할 메이트 구해요!!</span></h3>
 												</div>
@@ -272,7 +273,7 @@
 										</div>
 										<div class="card">
 											<div class="content">
-												<div class="imgBx"><img src="images/푸쉬업.jpg"></div>
+												<div class="imgBx"><img src="/resources/images/images/푸쉬업.jpg"></div>
 												<div class="contentBx">
 													<h3>웨이트 트레이닝<br><span>헬린이 모여라!!</span></h3>
 												</div>
@@ -309,8 +310,8 @@
 									</nav>
 									<br>
 									<center>
-										<a href="groupReg.html" class="button primary">등록</a>
-										<a href="index.html" class="button" style="background-color: white; color: black;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="/findMateForm" class="button primary">등록</a>
+										<a href="/main" class="button" style="background-color: white; color: black;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
 								</section>
@@ -341,13 +342,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/resources/images/assets/js/jquery.min.js"></script>
+			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/resources/images/assets/js/browser.min.js"></script>
+			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
+			<script src="/resources/images/assets/js/util.js"></script>
+			<script src="/resources/images/assets/js/main.js"></script>
 
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 	</body>

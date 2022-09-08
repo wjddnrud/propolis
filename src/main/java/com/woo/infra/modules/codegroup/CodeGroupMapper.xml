@@ -62,10 +62,18 @@
 		    ,#{useNY}
 		)
 		;
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<!-- <selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
-		</selectKey>
+		</selectKey> -->
 		<!-- AI auto increment 생성해주기 내가 만들었던 ai를 keyProperty에 입력해주기 -->
 		
 	</insert>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			*
+		FROM ccg
+		WHERE 1=1
+			AND seq = #{seq} 
+	</select>
 </mapper>

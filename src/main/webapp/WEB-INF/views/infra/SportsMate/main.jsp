@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-
 <!DOCTYPE HTML>
 <!--
 	Spectral by HTML5 UP
@@ -27,19 +26,19 @@
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
-				<!-- Header ìë¨ ê³ ì  ë¤ë¹ë° -->
+				<!-- Header 상단 고정 네비바 -->
 				<header id="header">
-					<h1><a href="main.jsp">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="/codegroup/main">Home</a></li>
-										<li><a href="/codegroup/findMate">Find Mate</a></li>
-										<li><a href="/codegroup/board">Community</a></li>
-										<li><a href="/codegroup/signIn">LOG-OUT</a></li>
+										<li><a href="/main">Home</a></li>
+										<li><a href="/findMate">Find Mate</a></li>
+										<li><a href="/community">Community</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -47,15 +46,15 @@
 					</nav>
 				</header>
 
-				<!-- Banner ë©ì¸íë©´ ì²ì ëª¨ìë¶ë¶ -->
+				<!-- Banner 메인화면 처음 모션부분 -->
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
-							<p>ë°©ë¬¸í´ì£¼ìì ê°ì¬í©ëë¤!<br /><br />
-							í¨ê» ì´ëí  ì¹êµ¬ë¥¼ ì°¾ìë³´ì¸ì.<br /></p>
+							<p>방문해주셔서 감사합니다!<br /><br />
+							함께 운동할 친구를 찾아보세요.<br /></p>
 							<!-- crafted by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 							<ul class="actions special">
-								<li><a href="findMate.jsp" class="button primary">Find Mate</a></li>
+								<li><a href="/findMate" class="button primary">Find Mate</a></li>
 							</ul>
 						</div>
 						<a href="#one" class="more scrolly">Learn More</a>
@@ -65,10 +64,10 @@
 					<section id="one" class="wrapper style1 special">
 						<div class="inner">
 							<header class="major">
-								<h2>ê²ìíì íµí´ ì ë³´ë¥¼ ê³µì í´ ë³´ì¸ì.</h2>
-								<p>ë¤ìí ì¹´íê³ ë¦¬ë³ë¡ ì ìµí ì ë³´ë¥¼ í¨ê» ê³µì íì¤ì ììµëë¤.<br>
+								<h2>게시판을 통해 정보를 공유해 보세요.</h2>
+								<p>다양한 카테고리별로 유익한 정보를 함께 공유하실수 있습니다.<br>
 								</p>
-								<a href="board.jsp" class="button primary">Community</a>
+								<a href="/community" class="button primary">Community</a>
 							</header>
 						</div>
 					</section>
@@ -76,7 +75,7 @@
 				<!-- Two -->
 					<section id="two" class="wrapper alt style2">
 						<section class="spotlight">
-							<div class="image"><img src="images/ìê°.jpg" alt="" /></div><div class="content">
+							<div class="image"><img src="/resources/images/images/요가.jpg" alt="" /></div><div class="content">
 								<h2>diet<br>
 								loose your weight</h2>
 								<p>NEW 17</p>
@@ -85,7 +84,7 @@
 							</div>
 						</section>
 						<section class="spotlight">
-							<div class="image"><img src="images/ì¨ì´í¸.jpg" alt="" /></div><div class="content">
+							<div class="image"><img src="/resources/images/images/웨이트.jpg" alt="" /></div><div class="content">
 								<h2>weight<br>
 								grow up your muscle</h2>
 								<p>NEW 8</p>
@@ -94,7 +93,7 @@
 							</div>
 						</section>
 						<section class="spotlight">
-							<div class="image"><img src="images/food1.jpg" alt="" /></div><div class="content">
+							<div class="image"><img src="/resources/images/images/food1.jpg" alt="" /></div><div class="content">
 								<h2>food<br>
 								healthy menu & recipe</h2>
 								<p>NEW 11</p>
@@ -128,7 +127,7 @@
 			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
-		<!-- í°í¸ì´ì¸ -->
+		<!-- 폰트어썸 -->
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 
 	</body>

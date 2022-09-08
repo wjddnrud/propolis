@@ -14,13 +14,13 @@
 -->
 <html>
 	<head>
-		<title>Sports Mate</title>
+		<title>SingIn</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     	<!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/"> -->
 	</head>
@@ -29,17 +29,17 @@
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
-				<!-- Header ìë¨ ê³ ì  ë¤ë¹ë° -->
+				<!-- Header 상단 고정 네비바 -->
 				<header id="header" class="alt">
-					<h1><a href="#">Sports Mate</a></h1>
+					<h1><a href="/signIn">Sports Mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="/codegroup/signUp">SIGN UP</a></li>
-										<li><a href="/codegroup/signIn">SIGN IN</a></li>
+										<li><a href="/signUp">SIGN UP</a></li>
+										<li><a href="/signIn">SIGN IN</a></li>
 									</ul>
 								</div>
 							</li>
@@ -47,11 +47,12 @@
 					</nav>
 				</header>
 
-				<!-- Banner ë©ì¸íë©´ ì²ì ëª¨ìë¶ë¶ -->
-				<section id="banner">
+				<!-- Banner 메인화면 처음 모션부분 -->
+				<!-- <section id="banner"> -->
+				<form action="/main">
 					<div class="inner">
 						<h2>Sports Mate</h2>
-						<p>ë§ëì ë°ê°ìµëë¤!<br /></p>
+						<p>만나서 반갑습니다!<br /></p>
 						<section class="wrapper style6">
 							<div class="inner">
 								<section>
@@ -61,7 +62,7 @@
 										</div>
 										<div class="col-12 col-12-xsmall">
 											<center>
-												<input id="login_id" type="email" placeholder="ID" style="width: 300px;">
+												<input id="login_id" type="text" placeholder="ID" style="width: 300px;">
 											</center>
 										</div>
 										<div class="col-12 col-12-xsmall">
@@ -75,9 +76,8 @@
 										</div>
 										<div class="col-12">
 											<ul class="actions stacked">
-												<li><input type="button" value="Sign-in" class="button primary small" onclick="location.href='/codegroup/main'; login();"></li>
-												<li><a href="/codegroup/main" onclick="login();">sign-IN</a></li>
-												<li><input type="button" class="button small" value="Sign-up" onclick="location.href='signUp.html'" style="background-color: aliceblue;"></li>
+												<li><input type="submit" value="Sign-in" class="button primary small" onclick="login();"></li>
+												<li><input type="button" class="button small" value="Sign-up" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 											</ul>
 										</div>
 									</div>
@@ -85,6 +85,7 @@
 							</div>
 						</section>
 					</div>
+					</form>
 				</section>
 
 				<!-- Footer -->

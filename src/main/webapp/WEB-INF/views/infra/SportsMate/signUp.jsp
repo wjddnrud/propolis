@@ -15,13 +15,13 @@
 <html>
 
 <head>
-	<title>Elements - Spectral by HTML5 UP</title>
+	<title>SignUp</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 </head>
 
 <body class="is-preload">
@@ -31,16 +31,15 @@
 
 		<!-- Header -->
 		<header id="header">
-			<h1><a href="#">sports mate</a></h1>
+			<h1><a href="/signIn">sports mate</a></h1>
 			<nav id="nav">
 				<ul>
 					<li class="special">
 						<a href="#menu" class="menuToggle"><span>Menu</span></a>
 						<div id="menu">
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="signUp.html">SIGN UP</a></li>
-								<li><a href="signIn.html">SIGN IN</a></li>
+								<li><a href="/signUp">SIGN UP</a></li>
+								<li><a href="/signIn">SIGN IN</a></li>
 							</ul>
 						</div>
 					</li>
@@ -51,68 +50,68 @@
 		<!-- Main -->
 		<article id="main">
 			<header>
-				<h2>sports Mate íìê°ì</h2>
-				<p>ë©¤ë²ê° ëì´ sports mateê° ì ê³µíë ë¤ìí ì ë³´ì ì¹êµ¬ë¤ì ë§ëë³´ì¸ì.</p>
+				<h2>sports Mate 회원가입</h2>
+				<p>멤버가 되어 sports mate가 제공하는 다양한 정보와 친구들을 만나보세요.</p>
 			</header>
 			<section class="wrapper style5">
 				<div class="inner">
 					<section>
-						<!-- <h2>íìê°ì</h2> -->
+						<!-- <h2>회원가입</h2> -->
 						<form method="post" action="#">
 							<div class="row gtr-uniform">
 								<div class="col-12 col-12-xsmall">
 									<label for="demo-id">ID</label>
-									<input type="text" name="demo-id" id="demo-id" value="" placeholder="ìë¬¸,ì«ì 5~10ì" />
+									<input type="text" name="demo-id" id="demo-id" value="" placeholder="영문,숫자 5~10자" />
 								</div>
 								<div class="col-12 col-12-xsmall">
 									<label for="demo-password">PASSWORD</label>
 									<input type="password" name="demo-password" id="demo-password" value=""
-										placeholder="ì«ì,ìë¬¸,í¹ìë¬¸ì ì¡°í© ìµì 8ì" />
+										placeholder="숫자,영문,특수문자 조합 최소 8자" />
 									<input type="password" name="demo-passwordRe" id="demo-passwordRe" value=""
-										placeholder="ë¹ë°ë²í¸ ì¬ìë ¥" style="margin-top: 10px;" />
+										placeholder="비밀번호 재입력" style="margin-top: 10px;" />
 								</div>
 								<div class="col-12 col-12-xsmall">
-									<label for="demo-name">ì´ë¦</label>
+									<label for="demo-name">이름</label>
 									<input type="text" name="demo-name" id="demo-name" value="" placeholder="" />
 								</div>
 								<div class="col-12">
-									<label for="demo-name">ì±ë³</label>
+									<label for="demo-name">성별</label>
 									<select name="demo-gender" id="demo-gender">
-										<option value="">- ì í -</option>
-										<option value="1">ë¨ì±</option>
-										<option value="2">ì¬ì±</option>
-										<option value="3">ê¸°í</option>
+										<option value="">- 선택 -</option>
+										<option value="1">남성</option>
+										<option value="2">여성</option>
+										<option value="3">기타</option>
 									</select>
 								</div>
 								<div class="col-12 col-12-xsmall">
-									<label for="demo-job">ì§ì</label>
+									<label for="demo-job">직업</label>
 									<input type="text" name="demo-job" id="demo-job" value="" placeholder="" />
 								</div>
 								<div class="col-12 col-12-xsmall">
-									<label for="demo-birth">ìëìì¼</label>
+									<label for="demo-birth">생년월일</label>
 									<input type="text" name="demo-birth" id="demo-birth" value=""
-										placeholder="ì)19951027(ëëìì¼)" />
+										placeholder="예)19951027(년도월일)" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-phone">í´ëì í</label>
+									<label for="demo-phone">휴대전화</label>
 									<input type="text" name="demo-phone" id="demo-phone" value=""
-										placeholder="'-'ìì´ ë²í¸ë§ ìë ¥í´ì£¼ì¸ì." />
-									<input type="button" class="primary" value="ì¸ì¦ë²í¸ ì ì¡" style="margin-top: 10px;" />
+										placeholder="'-'없이 번호만 입력해주세요." />
+									<input type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-name">í´ëì í ì¸ì¦</label>
+									<label for="demo-name">휴대전화 인증</label>
 									<input type="text" name="demo-name" id="demo-name" value=""
-										placeholder="ì¸ì¦ë²í¸ë¥¼ ìë ¥í´ì£¼ì¸ì." />
-									<input type="button" class="primary" value="íì¸" style="margin-top: 10px;" />
+										placeholder="인증번호를 입력해주세요." />
+									<input type="button" class="primary" value="확인" style="margin-top: 10px;" />
 								</div>
 								<div class="col-12 col-12-xsmall">
 									<label for="demo-email">Email</label>
 									<input type="text" name="demo-email" id="demo-email" value=""
 										placeholder="Email@example.com" />
-									<span>ê³ì  ë¶ì¤ ì ë³¸ì¸ì¸ì¦ ì ë³´ë¡ íì©ë©ëë¤.</span>
+									<span>계정 분실 시 본인인증 정보로 활용됩니다.</span>
 								</div>
 								<div class="col-8 col-12-xsmall">
-									<label for="demo-address">ì£¼ì</label>
+									<label for="demo-address">주소</label>
 									<input type="text" name="demo-address" id="demo-address" value="" placeholder="" />
 									<input type="text" name="demo-address" id="demo-address" value="" placeholder=""
 										style="margin-top: 10px;" />
@@ -120,44 +119,44 @@
 								<div class="col-4 col-12-xsmall">
 									<label for="demo-address">Zip Code</label>
 									<input type="text" name="demo-address" id="demo-address" value="" placeholder="" />
-									<input type="button" class="primary" value="ì£¼ì ê²ì" style="margin-top: 10px;" />
+									<input type="button" class="primary" value="주소 검색" style="margin-top: 10px;" />
 								</div>
 								<div class="col-12">
-									<label for="demo-name">ê°ìê²½ë¡</label>
+									<label for="demo-name">가입경로</label>
 									<select name="demo-route" id="demo-route">
-										<option value="">- ì í -</option>
-										<option value="1">ì§ì¸ì¶ì²</option>
-										<option value="1">ì¸í°ë· ê´ê³ </option>
-										<option value="1">ì íë¸</option>
-										<option value="1">ë¸ë¡ê·¸</option>
+										<option value="">- 선택 -</option>
+										<option value="1">지인추천</option>
+										<option value="1">인터넷 광고</option>
+										<option value="1">유튜브</option>
+										<option value="1">블로그</option>
 									</select>
 								</div>
 								<div class="col-12 col-12-small" style="padding-top: 80px;">
 									<input type="checkbox" id="demo-allAgree" name="demo-allAgree" onclick="selectAll(this)">
-									<label for="demo-allAgree">ì½ê´ ì ì²´ ëìíê¸°</label>
+									<label for="demo-allAgree">약관 전체 동의하기</label>
 								</div>
 								<div class="col-12 col-12-small">
 									<input type="checkbox" id="demo-agree1" name="demo-agree">
-									<label for="demo-agree1">[íì] ê°ì¸ì ë³´ ìì§ ë° ì´ì© ëì&nbsp;<a href="#" target="_blank">ìì¸í</a></label>
+									<label for="demo-agree1">[필수] 개인정보 수집 및 이용 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
 								</div>
 								<div class="col-12 col-12-small">
 									<input type="checkbox" id="demo-agree2" name="demo-agree">
-									<label for="demo-agree2">[íì] SPORTS MATE ì´ì© ì½ê´ ëì&nbsp;<a href="#" target="_blank">ìì¸í</a></label>
+									<label for="demo-agree2">[필수] SPORTS MATE 이용 약관 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
 								</div>
 								<div class="col-12 col-12-small">
 									<input type="checkbox" id="demo-agree3" name="demo-agree">
-									<label for="demo-agree3">[íì] ë§ 14ì¸ ë¯¸ë§ ê°ì ì í</label>
+									<label for="demo-agree3">[필수] 만 14세 미만 가입 제한</label>
 								</div>
 								<div class="col-12 col-12-small">
 									<input type="checkbox" id="demo-agree4" name="demo-agree">
-									<label for="demo-agree4">[ì í] ë§ì¼í íì© ë° ê´ê³ ì± ì ë³´ ìì  ëì&nbsp;<a href="#" target="_blank">ìì¸í</a></label>
+									<label for="demo-agree4">[선택] 마케팅 활용 및 광고성 정보 수신 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
 								</div>
 								<div class="col-12">
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
-										<li><a class="button primary" href="signIn.html">sign-up</a></li>
-										<li><input type="button" value="cancle" onclick="location.href='signIn.html'" /></li>
+										<li><a class="button primary" href="/signUp">sign-up</a></li>
+										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
 									</ul>
 								</div>
 							</div>
@@ -185,13 +184,13 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script src="/resources/images/assets/js/jquery.min.js"></script>
+	<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
+	<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/resources/images/assets/js/browser.min.js"></script>
+	<script src="/resources/images/assets/js/breakpoints.min.js"></script>
+	<script src="/resources/images/assets/js/util.js"></script>
+	<script src="/resources/images/assets/js/main.js"></script>
 	<script>
 		function selectAll(selectAll)  {
 			const checkboxes 

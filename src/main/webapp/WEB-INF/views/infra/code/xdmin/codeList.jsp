@@ -11,7 +11,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
-	<title>Home</title>
+	<title>Admin_CodeList</title>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -19,17 +19,18 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
+					<h1><a href="#">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+									<li><a href="#">Administor</a></li>
+										<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
+										<li><a href="/code/codeList">CodeList</a></li>
+										<li><a href="/member/memberList">MemberList</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -53,13 +54,13 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" aria-current="page" href="#">코드그룹관리</a>
+											<a class="nav-link" aria-current="page" href="/codegroup/codeGroupList">코드그룹관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="#">코드관리</a>
+											<a class="nav-link active" aria-current="page" href="/code/codeList">코드관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">회원관리</a>
+											<a class="nav-link" href="/member/memberList">회원관리</a>
 										</li>
 									</ul>
 								</div>
@@ -137,7 +138,7 @@
 									
 									<center>
 										<a href="/code/codeForm" class="button primary">코드 등록</a>
-										<a href="index.html" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="#" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>
 								</div>

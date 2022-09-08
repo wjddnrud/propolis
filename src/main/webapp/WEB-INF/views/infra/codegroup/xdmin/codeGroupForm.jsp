@@ -5,14 +5,89 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-codegroup
+
+<html>
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+	<title>Admin_CodeGroupForm</title>
+</head>
+	<body class="is-preload">
+		<!-- Page Wrapper -->
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<h1><a href="#">sports mate</a></h1>
+				<nav id="nav">
+					<ul>
+						<li class="special">
+							<a href="#menu" class="menuToggle"><span>Menu</span></a>
+							<div id="menu">
+								<ul>
+								<li><a href="#">Administor</a></li>
+									<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
+									<li><a href="/code/codeList">CodeList</a></li>
+									<li><a href="/member/memberList">MemberList</a></li>
+									<li><a href="/signIn">LOG-OUT</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<!-- Main -->
+			<article id="main">
+				<header>
+					<h2>코드그룹 등록</h2>
+				</header>
+				<section class="wrapper style5">
+					<div class="inner">
+						<form action="/codegroup/codeGroupInst">
+							<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="<c:out value="${item.ccg_name}"/>">
+							<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${item.seq }"/>">
+							<button type="button" onclick="test();">등록</button>
+						</form>
+						<center>
+							<a href="/codegroup/codeGroupForm" class="button primary">등록</a>
+							<a href="#" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+							<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
+						</center>
+					</div>
+				</section>
+			</article>
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+		</div>
+		<!-- Scripts -->
+		<script src="/resources/images/assets/js/jquery.min.js"></script>
+		<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
+		<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
+		<script src="/resources/images/assets/js/browser.min.js"></script>
+		<script src="/resources/images/assets/js/breakpoints.min.js"></script>
+		<script src="/resources/images/assets/js/util.js"></script>
+		<script src="/resources/images/assets/js/main.js"></script>
+		<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+	</body>
+</html>
 
 
-<form action="/codegroup/codeGroupInst">
-	<input name="ccg_name" type="text" id="ccg_name">
-	<input name="useNY" type="text" id="useNY">
-	<button type="submit" onclick="test();">등록</button>
-</form>
+
+
 
 <br>
 
@@ -37,7 +112,7 @@ codegroup
 			return false;
 		}
 		
-		alert("코드그룹이 정상적으로 등록되었습니다.");
+		/* alert("코드그룹이 정상적으로 등록되었습니다.");
 		
 		alert("코드그룹 이름 : " + document.getElementById('ccg_name').value);
 		
@@ -48,7 +123,7 @@ codegroup
 		
 		alert(document.getElementById('telecom').options[document.getElementById('telecom').selectedIndex].value);
 		
-		alert(document.querySelector("input[name='gender']:checked").value);
+		alert(document.querySelector("input[name='gender']:checked").value); */
 		
 		return false;
 	}

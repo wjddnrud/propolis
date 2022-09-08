@@ -14,11 +14,13 @@
 -->
 <html>
 	<head>
-		<title>Elements - Spectral by HTML5 UP</title>
+		<title>FindMateNotify</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -27,17 +29,17 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+										<li><a href="/main">Home</a></li>
+										<li><a href="/findMate">Find Mate</a></li>
+										<li><a href="/community">Community</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -83,9 +85,9 @@
 											<div class="col-12">
 												<ul class="actions" style="justify-content: center;">
 													<li><input type="reset" value="Reset"></li>
-													<li><a href="findMate.html" class="button primary">Sign-up</a></li>
+													<li><a href="/findMate" class="button primary">Sign-up</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
-													<li><a href="findMate.html" class="button">Cancle</a></li>
+													<li><a href="/findMate" class="button">Cancle</a></li>
 												</ul>
 											</div>
 										</div>
@@ -129,13 +131,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/resources/images/assets/js/jquery.min.js"></script>
+			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/resources/images/assets/js/browser.min.js"></script>
+			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
+			<script src="/resources/images/assets/js/util.js"></script>
+			<script src="/resources/images/assets/js/main.js"></script>
 
 			<script>
 				$("#file").on('change',function(){

@@ -11,7 +11,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
-	<title>Home</title>
+	<title>Admin_CodeGroupList</title>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -19,17 +19,18 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
+					<h1><a href="#">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+									<li><a href="#">Administor</a></li>
+										<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
+										<li><a href="/code/codeList">CodeList</a></li>
+										<li><a href="/member/memberList">MemberList</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -44,8 +45,6 @@
 					</header>
 					<section class="wrapper style5">
 						<div class="inner">
-
-							
 							<section>
 								<div>
 									<ul class="nav nav-tabs">
@@ -53,13 +52,13 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="#">코드그룹관리</a>
+											<a class="nav-link active" aria-current="page" href="/codegroup/codeGroupList">코드그룹관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">코드관리</a>
+											<a class="nav-link" href="/code/codeList">코드관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">회원관리</a>
+											<a class="nav-link" href="/member/memberList">회원관리</a>
 										</li>
 									</ul>
 								</div>
@@ -68,17 +67,17 @@
 								<form action="http://localhost:8080/codegroup/codeGroupSearch">
 									<!-- <form class="d-flex" role="search"> -->
 										<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="" hidden selected>사용여부</option>
+											<option value="">사용여부</option>
 											<option value="0">N</option>
 											<option value="1">Y</option>
 										</select>
 										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="" hidden selected>삭제여부</option>
+											<option value="">삭제여부</option>
 											<option value="0">N</option>
 											<option value="1">Y</option>
 										</select>
 										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="" hidden selected>날짜 구분</option>
+											<option value="">날짜 구분</option>
 											<option value="0">등록일</option>
 											<option value="1">수정일</option>
 										</select>
@@ -87,15 +86,11 @@
 										
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="" hidden selected>검색 구분</option>
+											<option value="" >검색 구분</option>
 											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
 											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option>
 										</select>
 										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
-										
-										
-										
-										
 										<button class="btn btn-outline-success me-1" type="submit">
 										<i class="fa-solid fa-magnifying-glass"></i></button>
 										<button class="btn btn-outline-warning" type="reset">
@@ -130,7 +125,10 @@
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
-												<td><c:out value="${list.seq }"/></td>
+												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
+												<td><a href="/codegroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <!-- seq 데이터 보여주고 a태그로 넘어가지는 버튼 만들기 -->
+												<c:out value="${list.seq}"/>
+												</a></td>
 												<td><c:out value="${list.ccg_name }"/></td>
 												<td><c:out value="${list.xCodeCount }"/></td>
 												<td>
@@ -158,16 +156,11 @@
 									
 									<center>
 										<a href="/codegroup/codeGroupForm" class="button primary">코드그룹 등록</a>
-										<a href="index.html" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="#" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>
 								</div>
 							</section>
-
-		
-		
-							
-
 							</div>
 						</section>
 					</article>

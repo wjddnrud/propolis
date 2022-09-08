@@ -10,4 +10,6 @@ public interface CodeGroupService {
 	
 	public int insert(CodeGroup dto) throws Exception;
 	
+	public CodeGroup selectOne(CodeGroupVo vo) throws Exception;
+	
 }

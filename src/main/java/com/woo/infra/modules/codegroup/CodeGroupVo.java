@@ -9,6 +9,7 @@ public class CodeGroupVo {
 	private Integer shUseNY;
 	private Integer shDelNY;
 	private Integer shDate;
+	private Integer seq;
 	
 //	-----------
 	
@@ -54,6 +55,15 @@ public class CodeGroupVo {
 	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
 	}
+	public Integer getSeq() {
+		return seq;
+	}
+	public void setSeq(Integer seq) {
+		this.seq = seq;
+	}
+	
+	
+	
 
 	
 	

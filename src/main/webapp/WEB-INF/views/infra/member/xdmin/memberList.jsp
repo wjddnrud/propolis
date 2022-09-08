@@ -13,7 +13,7 @@
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
-	<title>Home</title>
+	<title>Admin_memberList</title>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -28,10 +28,10 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="findMate.html">Find Mate</a></li>
-										<li><a href="board.html">Community</a></li>
-										<li><a href="signIn.html">LOG-OUT</a></li>
+										<li><a href="/codegroup/main">Home</a></li>
+										<li><a href="/codegroup/findMate">Find Mate</a></li>
+										<li><a href="/codegroup/board">Community</a></li>
+										<li><a href="/codegroup/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
