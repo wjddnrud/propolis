@@ -24,10 +24,46 @@ public class CommonController {
 		return "infra/SportsMate/community";
 	}
 	
+	@RequestMapping(value = "communityForm")
+	public String communityForm() throws Exception {
+
+		return "infra/SportsMate/communityForm";
+	}
+	
+	@RequestMapping(value = "communityNotify")
+	public String communityNotify() throws Exception {
+
+		return "infra/SportsMate/communityNotify";
+	}
+	
+	@RequestMapping(value = "communityView")
+	public String communityView() throws Exception {
+
+		return "infra/SportsMate/communityView";
+	}
+	
 	@RequestMapping(value = "findMate")
 	public String findMate() throws Exception {
 
 		return "infra/SportsMate/findMate";
+	}
+	
+	@RequestMapping(value = "findMateForm")
+	public String findMateForm() throws Exception {
+
+		return "infra/SportsMate/findMateForm";
+	}
+	
+	@RequestMapping(value = "findMateNotify")
+	public String findMateNotify() throws Exception {
+
+		return "infra/SportsMate/findMateNotify";
+	}
+
+	@RequestMapping(value = "findMateView")
+	public String findMateView() throws Exception {
+
+		return "infra/SportsMate/findMateView";
 	}
 	
 	@RequestMapping(value = "")

@@ -14,34 +14,65 @@
 		FROM member
 	</select>
 	
-	<resultMap id="resultMapObjsrc" type="com.woo.infra.modules.member.Member"></resultMap>
+	<resultMap id="resultMapObjSearch" type="com.woo.infra.modules.member.Member"></resultMap>
 	
-	<select id="srcList" resultMap="resultMapObjsrc">
+	<select id="SearchList" resultMap="resultMapObjSearch">
 		SELECT
-			*
+			seq
+			,id
+			,password
+			,name
+			,dob
+			,gender
+			,job
+			,zipcode
+			,address
+			,address_detail
+			,telecom
+			,phoneNumber
+			,way_to_regist
+			,createDate
+			,lastLoginDate
+			,delNY
 		FROM member
-		WHERE
+		WHERE 1=1
 		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 		<choose>
-			<when test="shOption == 0">name</when>
-			<when test="shOption == 1">seq</when>
-			<when test="shOption == 2">id</when>
-			<when test="shOption == 3">password</when>
-			<when test="shOption == 4">name</when>
-			<when test="shOption == 5">dob</when>
-			<when test="shOption == 6">gender</when>
-			<when test="shOption == 7">job</when>
-			<when test="shOption == 8">zipcode</when>
-			<when test="shOption == 9">address</when>
-			<when test="shOption == 10">address_detail</when>
-			<when test="shOption == 11">mobileCarrier</when>
-			<when test="shOption == 12">phonenumber</when>
-			<when test="shOption == 13">way_to_regist</when>
+			<when test="shGender == 0">AND gender LIKE 0</when>
+			<when test="shGender == 1">AND gender LIKE 1</when>
+			<when test="shGender == 2">AND gender LIKE 2</when>
 		</choose>
-		LIKE
-		CONCAT('%',#{shValue},'%')
-		AND 
-		dob BETWEEN #{shStartDate} AND #{shEndDate}
+		<choose>
+			<when test="shTelecom == 0">AND telecom LIKE 0</when>
+			<when test="shTelecom == 1">AND telecom LIKE 1</when>
+			<when test="shTelecom == 2">AND telecom LIKE 2</when>
+		</choose>
+		<choose>
+			<when test="shWayReg == 0">AND way_to_regist LIKE 0</when>
+			<when test="shWayReg == 1">AND way_to_regist LIKE 1</when>
+			<when test="shWayReg == 2">AND way_to_regist LIKE 2</when>
+			<when test="shWayReg == 3">AND way_to_regist LIKE 3</when>
+		</choose>
+		<choose>
+			<when test="shDate == 0"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 1"> AND lastLoginDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 2"> AND dob BETWEEN #{shStartDate} AND #{shEndDate}</when>
+		</choose>
+		<choose>
+			<when test="shDelNY == 0"> AND delNY LIKE 0</when>
+			<when test="shDelNY == 1"> AND delNY LIKE 1</when>
+		</choose>
+		<choose>
+			<when test="shOption == 1">AND seq LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND id LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND password LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND name LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 5">AND job LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 6">AND zipcode LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 7">AND address LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 8">AND address_detail LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 9">AND phoneNumber LIKE CONCAT ('%',#{shValue},'%')</when>
+		</choose>
 	</select>
 
 </mapper>	

@@ -17,14 +17,36 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<Member> srcList(MemberVo vo) throws Exception {
-		// TODO Auto-generated method stub
+	public List<Member> SearchList(MemberVo vo) throws Exception {
 		
-		System.out.println(vo.getShStartDate());
-		System.out.println(vo.getShEndDate());
-
+		if(vo.getShGender() == null)
+			vo.setShGender(0);
 		
-		return dao.srcList(vo);
+		if(vo.getShTelecom() == null)
+			vo.setShTelecom(1);
+		
+		if(vo.getShWayReg() == null)
+			vo.setShWayReg(3);
+		
+		if(vo.getShStartDate() == null || vo.getShStartDate() == "")
+			vo.setShStartDate("1900-01-01 00:00:00");
+		
+		if(vo.getShEndDate() == null || vo.getShEndDate() == "")
+			vo.setShEndDate("2023-12-31 00:00:00");
+		
+		if(vo.getShValue() == null)
+			vo.setShValue("");
+		
+		if(vo.getShOption() == null)
+			vo.setShOption(0);
+		
+		if(vo.getShDelNY() == null)
+			vo.setShOption(0);
+		
+		
+		return dao.SearchList(vo);
 	}
+	
+	
 	
 }

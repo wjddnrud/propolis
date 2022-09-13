@@ -156,7 +156,7 @@
 									
 									<center>
 										<a href="/codegroup/codeGroupForm" class="button primary">코드그룹 등록</a>
-										<a href="#" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="/codegroup/codeGroupList" class="button"><i class="fa-solid fa-house"></i>취소</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>
 								</div>

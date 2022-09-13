@@ -94,14 +94,14 @@
 													<td colspan="4" class="fmtd">부천시 원미구</td>
 												</tr>
 												<tr>
-													<td colspan="4">
+													<td colspan="4">	
 														<div class="mapBox">
 															<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.3296762520304!2d126.76537019999999!3d37.500141899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d3ea96c634f%3A0xba34348dc1f04dc!2z67aA7LKc7KSR7JWZ6rO17JuQ!5e0!3m2!1sko!2skr!4v1661474723176!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 														</div>
 													</td>
 												</tr>
 												<tr style="height: 500px;">
-													<td colspan="4" style="text-align: start; vertical-align: middle;">
+													<td colspan="4" style="text-align: start; padding-left: 30px; vertical-align: middle;">
 														20대 남자 3명이서 농구중인데 3대3 반코트 농구 하실분 3명 구해요~<br>
 														재밌게 농구하실분 JOIN해 주세요~!!
 													</td>

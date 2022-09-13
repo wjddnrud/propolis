@@ -6,6 +6,12 @@ public class MemberVo {
 	private String shValue;
 	private String shStartDate;
 	private String shEndDate;
+	private Integer shTelecom;
+	private Integer shWayReg;
+	private Integer shGender;
+	private Integer shDelNY;
+	private String shDate;
+	
 	
 	//---------------
 	public Integer getShOption() {
@@ -32,6 +38,38 @@ public class MemberVo {
 	public void setShEndDate(String shEndDate) {
 		this.shEndDate = shEndDate;
 	}
+	public Integer getShTelecom() {
+		return shTelecom;
+	}
+	public void setShTelecom(Integer shTelecom) {
+		this.shTelecom = shTelecom;
+	}
+	public Integer getShGender() {
+		return shGender;
+	}
+	public void setShGender(Integer shGender) {
+		this.shGender = shGender;
+	}
+	public Integer getShWayReg() {
+		return shWayReg;
+	}
+	public void setShWayReg(Integer shWayReg) {
+		this.shWayReg = shWayReg;
+	}
+	public Integer getShDelNY() {
+		return shDelNY;
+	}
+	public void setShDelNY(Integer shDelNY) {
+		this.shDelNY = shDelNY;
+	}
+	public String getShDate() {
+		return shDate;
+	}
+	public void setShDate(String shDate) {
+		this.shDate = shDate;
+	}
+	
+	
 	
 	
 }

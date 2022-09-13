@@ -55,50 +55,66 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">코드그룹관리</a>
+											<a class="nav-link" href="/codegroup/codeGroupList">코드그룹관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">코드관리</a>
+											<a class="nav-link" href="/code/codeList">코드관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="#">회원관리</a>
+											<a class="nav-link active" aria-current="page" href="/member/memberList">회원관리</a>
 										</li>
 									</ul>
 								</div>
 								<br>
 								<div>
-								<form  action="http://localhost:8080/member/src">
+								<form  action="http://localhost:8080/member/search">
 									<form class="d-flex" role="search">
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">삭제여부</option>
-											<option value="">N</option>
-											<option value="">Y</option>
+										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">삭제여부</option>
+											<option value="0">N</option>
+											<option value="1">Y</option>
 										</select>
-										<select class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="gender">수정일</option>
-											<option value="">1</option>
-											<option value="">2</option>
+										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">날짜구분</option>
+											<option value="0">등록일</option>
+											<option value="1">최근접속일</option>
+											<option value="2">생년월일</option>
+										</select>
+										<select name="shGender" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">성별</option>
+											<option value="0">남성</option>
+											<option value="1">여성</option>
+											<option value="2">기타</option>
+										</select>
+										<select name="shTelecom" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">통신사</option>
+											<option value="0">SKT</option>
+											<option value="1">KT</option>
+											<option value="2">LG</option>
+										</select>
+										<select name="shWayReg" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">가입경로</option>
+											<option value="0">지인추천</option>
+											<option value="1">인터넷</option>
+											<option value="2">유튜브</option>
+											<option value="3">기타</option>
 										</select>
 										
-										<p>Date: <input <%-- value="<c:out value="${vo.shStartDate }" />" --%> class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
+										<p>Date: <input class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
 										
-										<p>Date: <input <%-- value="<c:out value="${vo.shEndDate }" />" --%> class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
+										<p>Date: <input class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
 											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
 											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
 											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>ID</option>
-											<option value="3" <c:if test="${vo.shOption eq 3 }"></c:if>>PASSWORD</option>
+											<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>PASSWORD</option>
 											<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이름</option>
-											<option value="5" <c:if test="${vo.shOption eq 5 }">selected</c:if>>생년월일</option>
-											<option value="6" <c:if test="${vo.shOption eq 6 }">selected</c:if>>성별</option>
-											<option value="7" <c:if test="${vo.shOption eq 7 }">selected</c:if>>직업</option>
-											<option value="8" <c:if test="${vo.shOption eq 8 }">selected</c:if>>우편번호</option>
-											<option value="9" <c:if test="${vo.shOption eq 9 }">selected</c:if>>주소</option>
-											<option value="10" <c:if test="${vo.shOption eq 10 }">selected</c:if>>상세주소</option>
-											<option value="11" <c:if test="${vo.shOption eq 11 }">selected</c:if>>통신사</option>
-											<option value="12" <c:if test="${vo.shOption eq 12 }">selected</c:if>>휴대전화 번호</option>
-											<option value="13" <c:if test="${vo.shOption eq 13 }">selected</c:if>>가입경로</option>
+											<option value="7" <c:if test="${vo.shOption eq 5 }">selected</c:if>>직업</option>
+											<option value="8" <c:if test="${vo.shOption eq 6 }">selected</c:if>>우편번호</option>
+											<option value="9" <c:if test="${vo.shOption eq 7 }">selected</c:if>>주소</option>
+											<option value="10" <c:if test="${vo.shOption eq 8 }">selected</c:if>>상세주소</option>
+											<option value="12" <c:if test="${vo.shOption eq 9 }">selected</c:if>>휴대전화 번호</option>
 										</select>
 										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
 										
@@ -142,8 +158,7 @@
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td><input type="checkbox" id="demo-human" name="demo-human">
-													<label></label></td>
+												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
 												<td><c:out value="${list.seq }"/></td>
 												<td><c:out value="${list.id }"/></td>
 												<td><c:out value="${list.password }"/></td>
@@ -154,11 +169,11 @@
 												<td><c:out value="${list.zipcode }"/></td>
 												<td><c:out value="${list.address }"/></td>
 												<td><c:out value="${list.address_detail }"/></td>
-												<td><c:out value="${list.mobileCarrier }"/></td>
+												<td><c:out value="${list.telecom }"/></td>
 												<td><c:out value="${list.phoneNumber }"/></td>
 												<td><c:out value="${list.way_to_regist }"/></td>
-												<td>2022-09-01 00:00:00</td>
-												<td>2022-09-01 00:00:00</td>
+												<td><c:out value="${list.createDate }"/></td>
+												<td><c:out value="${list.lastLoginDate }"/></td>
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -169,8 +184,8 @@
 									</table>
 									
 									<center>
-										<a href="boardReg.html" class="button primary">작성</a>
-										<a href="index.html" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="/member/memberForm" class="button primary">등록</a>
+										<a href="/member/memberList" class="button">취소</a>
 										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 									</center>
 								</div>

@@ -12,9 +12,12 @@ public class Member {
 	private String zipcode;
 	private String address;
 	private String address_detail;
-	private String mobileCarrier;
+	private String telecom;
 	private String phoneNumber;
 	private String way_to_regist;
+	private String createDate;
+	private String lastLoginDate;
+	private String delNY;
 	
 	
 	public String getSeq() {
@@ -77,12 +80,6 @@ public class Member {
 	public void setAddress_detail(String address_detail) {
 		this.address_detail = address_detail;
 	}
-	public String getMobileCarrier() {
-		return mobileCarrier;
-	}
-	public void setMobileCarrier(String mobileCarrier) {
-		this.mobileCarrier = mobileCarrier;
-	}
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -95,9 +92,30 @@ public class Member {
 	public void setWay_to_regist(String way_to_regist) {
 		this.way_to_regist = way_to_regist;
 	}
-	
-	
-	
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	public String getLastLoginDate() {
+		return lastLoginDate;
+	}
+	public void setLastLoginDate(String lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
+	}
+	public String getTelecom() {
+		return telecom;
+	}
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
+	}
+	public String getDelNY() {
+		return delNY;
+	}
+	public void setDelNY(String delNY) {
+		this.delNY = delNY;
+	}
 	
 	
 	

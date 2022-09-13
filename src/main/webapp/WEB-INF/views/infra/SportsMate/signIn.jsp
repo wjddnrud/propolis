@@ -49,44 +49,45 @@
 
 				<!-- Banner 메인화면 처음 모션부분 -->
 				<!-- <section id="banner"> -->
-				<form action="/main">
-					<div class="inner">
-						<h2>Sports Mate</h2>
-						<p>만나서 반갑습니다!<br /></p>
-						<section class="wrapper style6">
-							<div class="inner">
-								<section>
-									<div class="row gtr-uniform">
-										<div class="col-12">
-											<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+				<form action="/main" id="loginForm">
+					<section id="banner">
+						<div class="inner">
+							<h2>Sports Mate</h2>
+							<p>만나서 반갑습니다!<br /></p>
+							<section class="wrapper style6">
+								<div class="inner">
+									<section>
+										<div class="row gtr-uniform">
+											<div class="col-12">
+												<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+											</div>
+											<div class="col-12 col-12-xsmall">
+												<center>
+													<input id="login_id" type="text" placeholder="ID" style="width: 300px;">
+												</center>
+											</div>
+											<div class="col-12 col-12-xsmall">
+												<center>
+													<input id="login_password" type="password" placeholder="PASSWORD" style="width: 300px;">
+												</center>
+											</div>
+											<div class="col-6 col-12">
+												<input type="checkbox" id="demo-human" name="demo-human">
+												<label for="demo-human">Remember</label>
+											</div>
+											<div class="col-12">
+												<ul class="actions stacked">
+													<li><input type="button" value="Sign-in" class="button primary small" onclick="login();"></li>
+													<li><input type="button" class="button small" value="Sign-up" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
+												</ul>
+											</div>
 										</div>
-										<div class="col-12 col-12-xsmall">
-											<center>
-												<input id="login_id" type="text" placeholder="ID" style="width: 300px;">
-											</center>
-										</div>
-										<div class="col-12 col-12-xsmall">
-											<center>
-												<input id="login_password" type="password" placeholder="PASSWORD" style="width: 300px;">
-											</center>
-										</div>
-										<div class="col-6 col-12">
-											<input type="checkbox" id="demo-human" name="demo-human">
-											<label for="demo-human">Remember</label>
-										</div>
-										<div class="col-12">
-											<ul class="actions stacked">
-												<li><input type="submit" value="Sign-in" class="button primary small" onclick="login();"></li>
-												<li><input type="button" class="button small" value="Sign-up" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</div>
-						</section>
-					</div>
-					</form>
-				</section>
+									</section>
+								</div>
+							</section>
+						</div>
+					</section>
+				</form>
 
 				<!-- Footer -->
 				<footer id="footer">
@@ -117,7 +118,7 @@
 			<script type="text/javascript">
 				function login() {
 					
-					if(document.getElementById('login_id').value == "") {
+					if(document.getElementById('login_id').value == '' || document.getElementById('login_id').value == null) {
 						alert("아이디를 입력해주세요.");
 						
 						document.getElementById("login_id").value="";
@@ -126,7 +127,7 @@
 						return false;
 					}
 					
-					if(document.getElementById('login_password').value == "") {
+					if(document.getElementById('login_password').value == '' || document.getElementById('login_password').value == null) {
 						alert("비밀번호를 입력해주세요.");
 						
 						document.getElementById("login_password").value="";
@@ -135,6 +136,7 @@
 						return false;
 					}
 					
+					$('#loginForm').submit();
 				}
 				
 			</script>

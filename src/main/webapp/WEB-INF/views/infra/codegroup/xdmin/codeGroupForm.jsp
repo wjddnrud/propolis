@@ -53,7 +53,7 @@
 						</form>
 						<center>
 							<a href="/codegroup/codeGroupForm" class="button primary">등록</a>
-							<a href="#" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+							<a href="/codegroup/codeGroupList" class="button">취소</a>
 							<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 						</center>
 					</div>
@@ -127,4 +127,38 @@
 		
 		return false;
 	}
+	
+	
+	var goUrlList = "/codeGroup/codeGroupList";    /* # -> */
+	var goUrlInst = "/codeGroup/codeGroupInst";    /* # -> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";    /* # -> */
+	var goUrlUele = "/codeGroup/codeGroupUele";    /* # -> */
+	var goUrlDele = "/codeGroup/codeGroupDele";    /* # -> */
+	
+	var seq = $("input:hidden[name=ccg_seq]");     /* # -> */
+	
+	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
+	
+	$("#btnSave").on("click", function() {
+		if(seq.val() == "0" || seq.val() == ""){
+			//insert
+			if(validationInst() == false) return false;
+			form.attr("action", goUrlInst).submit();
+			/* form action을 goUrlInst로 바꾸고 "/codeGroup/codeGroupInst"로 submit 하겠다. */
+			/* 바꿀수 있는 조건이 seq값이 들어왔느냐 안들어왔느냐로 구별한다. */ /* --> 판별하는 프로세스인 var seq = hidden */
+		} else {
+			//update
+			/* keyName.val(atob(keyName.val())); */
+			if(validationUpdt() == false) return false;
+			form.attr("action", goUrlUpdt).submit();
+		}
+	});
+	
+	validationInst=function() {
+		if(validationUpdt() == false) return false;
+	}
+	
+	
+	
 </script>

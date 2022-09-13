@@ -59,22 +59,23 @@
 						<!-- <h2>회원가입</h2> -->
 						<form method="post" action="#">
 							<div class="row gtr-uniform">
-								<div class="col-12 col-12-xsmall">
+								<div class="col-6 col-4-medium">
 									<label for="demo-id">ID</label>
 									<input type="text" name="demo-id" id="demo-id" value="" placeholder="영문,숫자 5~10자" />
+									<input type="button" class="primary" value="중복확인" style="margin-top: 10px;" />
 								</div>
-								<div class="col-12 col-12-xsmall">
+								<div class="col-6 col-12-xsmall">
 									<label for="demo-password">PASSWORD</label>
 									<input type="password" name="demo-password" id="demo-password" value=""
 										placeholder="숫자,영문,특수문자 조합 최소 8자" />
 									<input type="password" name="demo-passwordRe" id="demo-passwordRe" value=""
 										placeholder="비밀번호 재입력" style="margin-top: 10px;" />
 								</div>
-								<div class="col-12 col-12-xsmall">
+								<div class="col-6 col-12-xsmall">
 									<label for="demo-name">이름</label>
 									<input type="text" name="demo-name" id="demo-name" value="" placeholder="" />
 								</div>
-								<div class="col-12">
+								<div class="col-6">
 									<label for="demo-name">성별</label>
 									<select name="demo-gender" id="demo-gender">
 										<option value="">- 선택 -</option>
@@ -83,11 +84,11 @@
 										<option value="3">기타</option>
 									</select>
 								</div>
-								<div class="col-12 col-12-xsmall">
+								<div class="col-6 col-12-xsmall">
 									<label for="demo-job">직업</label>
 									<input type="text" name="demo-job" id="demo-job" value="" placeholder="" />
 								</div>
-								<div class="col-12 col-12-xsmall">
+								<div class="col-6 col-12-xsmall">
 									<label for="demo-birth">생년월일</label>
 									<input type="text" name="demo-birth" id="demo-birth" value=""
 										placeholder="예)19951027(년도월일)" />
@@ -104,12 +105,7 @@
 										placeholder="인증번호를 입력해주세요." />
 									<input type="button" class="primary" value="확인" style="margin-top: 10px;" />
 								</div>
-								<div class="col-12 col-12-xsmall">
-									<label for="demo-email">Email</label>
-									<input type="text" name="demo-email" id="demo-email" value=""
-										placeholder="Email@example.com" />
-									<span>계정 분실 시 본인인증 정보로 활용됩니다.</span>
-								</div>
+								
 								<div class="col-8 col-12-xsmall">
 									<label for="demo-address">주소</label>
 									<input type="text" name="demo-address" id="demo-address" value="" placeholder="" />
@@ -121,7 +117,13 @@
 									<input type="text" name="demo-address" id="demo-address" value="" placeholder="" />
 									<input type="button" class="primary" value="주소 검색" style="margin-top: 10px;" />
 								</div>
-								<div class="col-12">
+								<div class="col-6 col-12-xsmall">
+									<label for="demo-email">Email</label>
+									<input type="text" name="demo-email" id="demo-email" value=""
+										placeholder="Email@example.com" />
+									<span>계정 분실 시 본인인증 정보로 활용됩니다.</span>
+								</div>
+								<div class="col-6">
 									<label for="demo-name">가입경로</label>
 									<select name="demo-route" id="demo-route">
 										<option value="">- 선택 -</option>
@@ -155,7 +157,7 @@
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
-										<li><a class="button primary" href="/signUp">sign-up</a></li>
+										<li><a class="button primary" href="/signIn" onclick ="signUp();">sign-up</a></li>
 										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
 									</ul>
 								</div>
@@ -199,6 +201,10 @@
 			checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;
 			})
+		}
+		
+		function signUp() {
+			alert("SportsMate 회원가입을 축하합니다!");
 		}
 	</script>
 </body>

@@ -24,11 +24,15 @@
    
 	<select id="search" resultMap="resultMapObjSearch">
 		SELECT
-			a.*
-			,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
+			seq
+	    	,ccg_name
+	    	,useNY
+	    	,delNY
+	    	,createDate
+	    	,modiDate
+	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
 		FROM ccg a
 		WHERE 1=1
-		
 		<choose>
 			<when test="shUseNY == 0"> AND useNY LIKE 0 </when>
 			<when test="shUseNY == 1"> AND useNY LIKE 1 </when>
@@ -48,7 +52,6 @@
 			<when test="shOption == 0">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
 			<when test="shOption == 1">AND useNY LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>
-	
 	</select>
 	
 	<insert id="insert">
@@ -75,5 +78,42 @@
 		FROM ccg
 		WHERE 1=1
 			AND seq = #{seq} 
+	</select>
+	
+	<update id="update">
+		UPDATE CodeGroup
+		SET
+			SeqAnother = #{SeqAnother}
+			,ccg_name = #{ccg_name}
+			,useNY = #{useNY}
+			,createDate = #{createDate}
+			,modiDate = #{modiDate}
+			,delNY = #{delNY}
+			<!-- <include refid="Base.updateModColumnValue" /> -->
+		WHERE
+			seq = #{seq}
+	</update>
+	<update id="uelete">
+		UPDATE CodeGroup
+		SET
+			delNY = 1
+			<!-- <include refid="Base.updateModColumnValue" /> -->
+		WHERE seq = #{seq} 
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM CodeGroup
+		WHERE seq = #{seq}
+	</delete>
+	
+	<select id="selectListWithoutPaging" resultMap="resultMapObj">
+		SELECT
+			seq
+			,ccg_name
+		FROM CodeGroup
+		WHERE 1=1
+			AND delNY = 0
+			AND useNY = 1
+		ORDER BY seq DESC
 	</select>
 </mapper>
