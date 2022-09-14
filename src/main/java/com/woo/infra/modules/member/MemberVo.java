@@ -10,7 +10,7 @@ public class MemberVo {
 	private Integer shWayReg;
 	private Integer shGender;
 	private Integer shDelNY;
-	private String shDate;
+	private Integer shDate;
 	
 	
 	//---------------
@@ -62,10 +62,10 @@ public class MemberVo {
 	public void setShDelNY(Integer shDelNY) {
 		this.shDelNY = shDelNY;
 	}
-	public String getShDate() {
+	public Integer getShDate() {
 		return shDate;
 	}
-	public void setShDate(String shDate) {
+	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
 	}
 	

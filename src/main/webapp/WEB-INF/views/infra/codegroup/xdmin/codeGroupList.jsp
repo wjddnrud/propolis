@@ -86,9 +86,9 @@
 										
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="" >검색 구분</option>
+											<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
 											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
-											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option>
+											<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
 										</select>
 										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
 										<button class="btn btn-outline-success me-1" type="submit">
@@ -102,7 +102,7 @@
 										<thead>
 											<tr>
 												<th>
-													<input type="checkbox" id="demo-human" name="demo-human">
+													<input type="checkbox">
 													<label for="demo-human">선택</label>
 												</th>
 												<th>#</th>
@@ -126,7 +126,7 @@
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
 												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
-												<td><a href="/codegroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <!-- seq 데이터 보여주고 a태그로 넘어가지는 버튼 만들기 -->
+												<td><a href="/codegroup/codeGroupForm/?seq=<c:out value="${list.seq }"/>"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->
 												<c:out value="${list.seq}"/>
 												</a></td>
 												<td><c:out value="${list.ccg_name }"/></td>
@@ -154,16 +154,54 @@
 										</tfoot>
 									</table>
 									
-									<center>
-										<a href="/codegroup/codeGroupForm" class="button primary">코드그룹 등록</a>
-										<a href="/codegroup/codeGroupList" class="button"><i class="fa-solid fa-house"></i>취소</a>
-										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
-									</center>
+									<nav aria-label="Page navigation example">
+										<ul class="pagination justify-content-center">
+											<li class="page-item">
+												<a class="page-link" href="#" aria-label="Previous">
+													<span aria-hidden="true">&laquo;</span>
+												</a>
+											</li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item">
+												<a class="page-link" href="#" aria-label="Next">
+													<span aria-hidden="true">&raquo;</span>
+												</a>
+											</li>
+										</ul>
+									</nav>
+									
+									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
+									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
+									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button>
+									<button class="btn btn-success me-1" style="float: right;" href="#"><i class="fa-solid fa-file-excel"></i></button>
+									
 								</div>
 							</section>
 							</div>
 						</section>
 					</article>
+					
+				<!-- Modal -->
+				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+					aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="staticBackdropLabel">삭제 여부 재확인</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								정말로 삭제를 원하십니까?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" onclick="remove();">Delete</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<!-- Footer -->
 				<footer id="footer">
@@ -190,6 +228,11 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+				function regist() {
+					location.href = "/codegroup/codeGroupForm/?seq=0";
+				}
+			</script>
 
 
 

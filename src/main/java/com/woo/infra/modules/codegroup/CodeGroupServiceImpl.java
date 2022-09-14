@@ -27,10 +27,10 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	public List<CodeGroup> search(CodeGroupVo vo) throws Exception {
 		
 		if(vo.getShUseNY() == null)
-			vo.setShUseNY(2);
+			vo.setShUseNY(1);
 		
 		if(vo.getShDelNY() == null)
-			vo.setShDelNY(2);
+			vo.setShDelNY(0);
 		
 		if(vo.getShDate() == null)
 			vo.setShDate(0);
@@ -47,9 +47,11 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		if(vo.getShOption() == null)
 			vo.setShOption(0);
 		
-		System.out.println("------------------------------");
-		System.out.println(vo.getShStartDate());
-		System.out.println("------------------------------");
+		/*
+		 * System.out.println("------------------------------");
+		 * System.out.println(vo.getShStartDate());
+		 * System.out.println("------------------------------");
+		 */
 		
 		return dao.search(vo);
 	}
@@ -57,8 +59,16 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 
 	@Override
 	public int insert(CodeGroup dto) throws Exception {
+		
+//		delNY가 null값일때 N으로 default값 정해주기
+		if(dto.getDelNY() == null)
+			dto.setDelNY(0);
+		
 		int result = dao.insert(dto);
+		
 		System.out.println("service result : " + result);
+	
+		
 		return result;
 	}
 
@@ -94,11 +104,6 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	public List<CodeGroup> selectListWithoutPaging(CodeGroupVo vo) throws Exception {
 		return dao.selectListWithoutPaging();
 	}
-	
-	
-	
-	
-	
-	
+
 
 }

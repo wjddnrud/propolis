@@ -12,7 +12,7 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
-	<title>Admin_CodeGroupForm</title>
+	<title>Admin_MemberForm</title>
 </head>
 	<body class="is-preload">
 		<!-- Page Wrapper -->
@@ -42,10 +42,7 @@
 			<!-- Main -->
 			<article id="main">
 				<header>
-					<c:choose>
-						<c:when test="${vo.seq eq 0}"><h2>코드그룹 등록</h2></c:when>
-						<%-- <c:when test="${vo.seq ne 0}"><h2>코드그룹 수정</h2></c:when> --%>
-					</c:choose>
+					<h2>코드그룹 등록</h2>
 				</header>
 				<section class="wrapper style5">
 					<div class="inner">

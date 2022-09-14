@@ -20,5 +20,4 @@ public interface CodeGroupService {
 	
 	public List<CodeGroup> selectListWithoutPaging(CodeGroupVo vo) throws Exception;
 	
-	
 }

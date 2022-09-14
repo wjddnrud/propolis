@@ -5,11 +5,11 @@ public class CodeGroup {
 	
 	private String seq;
 	private String ccg_name;
-	private String useNY;
+	private Integer useNY;
 	private String xCodeCount;
 	private String createDate;
 	private String modiDate;
-	private String delNY;
+	private Integer delNY;
 	
 	
 	
@@ -31,12 +31,6 @@ public class CodeGroup {
 	public void setCcg_name(String ccg_name) {
 		this.ccg_name = ccg_name;
 	}
-	public String getUseNY() {
-		return useNY;
-	}
-	public void setUseNY(String useNY) {
-		this.useNY = useNY;
-	}
 	public String getCreateDate() {
 		return createDate;
 	}
@@ -49,10 +43,16 @@ public class CodeGroup {
 	public void setModiDate(String modiDate) {
 		this.modiDate = modiDate;
 	}
-	public String getDelNY() {
+	public Integer getUseNY() {
+		return useNY;
+	}
+	public void setUseNY(Integer useNY) {
+		this.useNY = useNY;
+	}
+	public Integer getDelNY() {
 		return delNY;
 	}
-	public void setDelNY(String delNY) {
+	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
 	

@@ -43,37 +43,80 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm() throws Exception {
-
+	public String codeGroupForm(CodeGroupVo vo, Model model) throws Exception {
+		
+		if(vo.getSeq() == null)
+			vo.setSeq(0);
+		 
+		System.out.println("-------------"+vo.getSeq());
+		
+		CodeGroup result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception {
+	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int result = service.insert(dto);
 		System.out.println("controller result : " + result);
+		
+		/* vo.setSeq(dto.getSeq()); */
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/codegroup/codeGroupList";
 	}
 	
 	@RequestMapping(value = "codeGroupView")
-	public String codeGroupView(CodeGroupVo vo, Model model) throws Exception {
-		System.out.println(vo.getSeq());
-		CodeGroup result = service.selectOne(vo);
-		model.addAttribute("item", result);
+	public String codeGroupView() throws Exception {
+		
+		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
+	
+	
+	@SuppressWarnings(value= {"all"})
+
 	@RequestMapping(value="codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+		
 		service.update(dto);
 		
-		/* redirectAttributes.addFlashAttribute("vo", vo); */ 
+		redirectAttributes.addFlashAttribute("vo", vo);  
 		
-		return "redirect:/codeGroup/codeGrouplist";
+		return "redirect:/codegroup/codeGroupList";
 	}
 
+	@RequestMapping(value="codeGroupUele")
+	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.uelete(dto);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/codegroup/codeGroupList";
+	}
 	
+	@RequestMapping(value="codeGroupDele")
+	public String nationalityDele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.delete(vo);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/codegroup/codeGroupList";
+	}
+	 
+//	@RequestMapping(value="codeGroupMultiUele")
+//	public String codeGroupMultiUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+//		
+//		for(String checkboxSeq : vo.getCheckboxSeqArray()) {
+//			vo.setSeq(checkboxSeq);
+//			service.uelete(dto);
+//		}
+//	}
 	
 }

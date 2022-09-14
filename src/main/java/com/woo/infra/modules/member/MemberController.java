@@ -26,13 +26,13 @@ public class MemberController {
 	}
 	
 	
-	  @RequestMapping(value = "search") 
+	  @RequestMapping(value = "memberSearch") 
 	  public String memberSearch(Model model, MemberVo vo) throws Exception {
 	  
 		  System.out.println("vo.getShValue(): " + vo.getShValue());
 		  System.out.println("vo.getShOption(): " + vo.getShOption());
 		  
-		  List<Member> list = service.SearchList(vo);
+		  List<Member> list = service.search(vo);
 		  model.addAttribute("list", list);
 		  
 		  return "infra/member/xdmin/memberList"; 

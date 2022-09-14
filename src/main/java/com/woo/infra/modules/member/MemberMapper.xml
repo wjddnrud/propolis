@@ -16,7 +16,7 @@
 	
 	<resultMap id="resultMapObjSearch" type="com.woo.infra.modules.member.Member"></resultMap>
 	
-	<select id="SearchList" resultMap="resultMapObjSearch">
+	<select id="search" resultMap="resultMapObjSearch">
 		SELECT
 			seq
 			,id

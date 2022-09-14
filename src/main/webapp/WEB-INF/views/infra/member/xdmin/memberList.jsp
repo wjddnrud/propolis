@@ -67,18 +67,12 @@
 								</div>
 								<br>
 								<div>
-								<form  action="http://localhost:8080/member/search">
+								<form  action="http://localhost:8080/member/memberSearch">
 									<form class="d-flex" role="search">
 										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 											<option value="">삭제여부</option>
 											<option value="0">N</option>
 											<option value="1">Y</option>
-										</select>
-										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">날짜구분</option>
-											<option value="0">등록일</option>
-											<option value="1">최근접속일</option>
-											<option value="2">생년월일</option>
 										</select>
 										<select name="shGender" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 											<option value="">성별</option>
@@ -99,13 +93,19 @@
 											<option value="2">유튜브</option>
 											<option value="3">기타</option>
 										</select>
+										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<option value="">날짜구분</option>
+											<option value="0"<c:if test="${vo.shDate eq 0 }">selected</c:if>>등록일</option>
+											<option value="1"<c:if test="${vo.shDate eq 1 }">selected</c:if>>최근접속일</option>
+											<option value="2"<c:if test="${vo.shDate eq 2 }">selected</c:if>>생년월일</option>
+										</select>
 										
 										<p>Date: <input class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
 										
 										<p>Date: <input class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
+											<option value="">검색구분</option>
 											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
 											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>ID</option>
 											<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>PASSWORD</option>
@@ -164,16 +164,44 @@
 												<td><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
 												<td><c:out value="${list.dob }"/></td>
-												<td><c:out value="${list.gender }"/></td>
+												<td>
+													<c:choose>
+														<c:when test="${list.gender eq 0}">남성</c:when>
+														<c:when test="${list.gender eq 1}">여성</c:when>
+														<c:when test="${list.gender eq 2}">기타</c:when>
+													</c:choose>
+												</td>
 												<td><c:out value="${list.job }"/></td>
 												<td><c:out value="${list.zipcode }"/></td>
 												<td><c:out value="${list.address }"/></td>
 												<td><c:out value="${list.address_detail }"/></td>
-												<td><c:out value="${list.telecom }"/></td>
+												<td>
+													<c:choose>
+														<c:when test="${list.telecom eq 0 }">SKT</c:when>
+														<c:when test="${list.telecom eq 1 }">KT</c:when>
+														<c:when test="${list.telecom eq 2 }">LGT</c:when>
+													</c:choose>
+												</td>
 												<td><c:out value="${list.phoneNumber }"/></td>
-												<td><c:out value="${list.way_to_regist }"/></td>
+												<td>
+													<c:choose>
+														<c:when test="${list.way_to_regist eq 0 }">지인추천</c:when>
+														<c:when test="${list.way_to_regist eq 1 }">인터넷</c:when>
+														<c:when test="${list.way_to_regist eq 2 }">유튜브</c:when>
+														<c:when test="${list.way_to_regist eq 3 }">기타</c:when>
+													</c:choose>
+												</td>
 												<td><c:out value="${list.createDate }"/></td>
 												<td><c:out value="${list.lastLoginDate }"/></td>
+												
+												
+												
+												
+								
+						
+												
+												
+												
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -182,20 +210,56 @@
 											마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
 										</tfoot>
 									</table>
+									<nav aria-label="Page navigation example">
+										<ul class="pagination justify-content-center">
+											<li class="page-item">
+												<a class="page-link" href="#" aria-label="Previous">
+													<span aria-hidden="true">&laquo;</span>
+												</a>
+											</li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item">
+												<a class="page-link" href="#" aria-label="Next">
+													<span aria-hidden="true">&raquo;</span>
+												</a>
+											</li>
+										</ul>
+									</nav>
 									
-									<center>
-										<a href="/member/memberForm" class="button primary">등록</a>
-										<a href="/member/memberList" class="button">취소</a>
-										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
-									</center>
+									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
+									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
+									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button>
+									<button class="btn btn-success me-1" style="float: right;" href="#"><i class="fa-solid fa-file-excel"></i></button>
+									
 								</div>
 							</section>
-
-
+								
 
 							</div>
 						</section>
 					</article>
+
+				<!-- Modal -->
+				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+					aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="staticBackdropLabel">삭제 여부 재확인</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								정말로 삭제를 원하십니까?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" onclick="remove();">Delete</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<!-- Footer -->
 				<footer id="footer">

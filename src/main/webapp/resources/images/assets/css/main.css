@@ -16,7 +16,6 @@ u, i, center, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -1824,7 +1823,7 @@ input, select, textarea {
 		display: block;
 		font-size: 0.9em;
 		font-weight: 600;
-		margin: 0 0 1em 0;
+		/* margin: 0 0 1em 0; */
 	}
 
 	input[type="text"],
@@ -3194,9 +3193,9 @@ input, select, textarea {
 				color: #4E4852;
 			}
 
-			.wrapper.style5 label {
+			/* .wrapper.style5 label {
 				color: #2E3842;
-			}
+			} */
 			
 
 			.wrapper.style5 input[type="text"],

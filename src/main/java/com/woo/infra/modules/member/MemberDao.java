@@ -18,6 +18,6 @@ public class MemberDao {
 	private static String namespace = "com.woo.infra.modules.member.MemberMapper";
 	
 	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList",""); }
-	public List<Member> SearchList(MemberVo vo){ return sqlSession.selectList(namespace + ".SearchList", vo); }
+	public List<Member> search(MemberVo vo){ return sqlSession.selectList(namespace + ".search", vo); }
 	
 }

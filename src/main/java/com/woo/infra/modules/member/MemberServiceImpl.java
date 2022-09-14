@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class MemberServiceImpl implements MemberService{
 
@@ -17,34 +18,41 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<Member> SearchList(MemberVo vo) throws Exception {
+	public List<Member> search(MemberVo vo) throws Exception {
 		
-		if(vo.getShGender() == null)
-			vo.setShGender(0);
 		
-		if(vo.getShTelecom() == null)
-			vo.setShTelecom(1);
-		
-		if(vo.getShWayReg() == null)
-			vo.setShWayReg(3);
-		
-		if(vo.getShStartDate() == null || vo.getShStartDate() == "")
-			vo.setShStartDate("1900-01-01 00:00:00");
-		
-		if(vo.getShEndDate() == null || vo.getShEndDate() == "")
-			vo.setShEndDate("2023-12-31 00:00:00");
+		/*
+		 * if(vo.getShGender() == null) vo.setShGender(0);
+		 * 
+		 * if(vo.getShTelecom() == null) vo.setShTelecom(1);
+		 * 
+		 * if(vo.getShWayReg() == null) vo.setShWayReg(3);
+		 */
+		  
+		  if(vo.getShStartDate() == null || vo.getShStartDate() == "")
+		  vo.setShStartDate("1900-01-01 00:00:00");
+		  
+		  if(vo.getShEndDate() == null || vo.getShEndDate() == "")
+		  vo.setShEndDate("2023-12-31 00:00:00");
+		 
 		
 		if(vo.getShValue() == null)
 			vo.setShValue("");
 		
 		if(vo.getShOption() == null)
-			vo.setShOption(0);
+			vo.setShOption(2);
+		System.out.println("----------------");
+		System.out.println(vo.getShOption());
+		/*
+		 * if(vo.getShDelNY() == null) vo.setShOption(0);
+		 * 
+		 * if(vo.getShDate() == null) vo.setShDate(0);
+		 */
 		
-		if(vo.getShDelNY() == null)
-			vo.setShOption(0);
 		
 		
-		return dao.SearchList(vo);
+		
+		return dao.search(vo);
 	}
 	
 	
