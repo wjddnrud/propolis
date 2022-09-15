@@ -2,6 +2,9 @@ package com.woo.infra.modules.codegroup;
 
 import java.util.List;
 
+import com.woo.infra.modules.paging.BaseVo;
+
+
 public interface CodeGroupService {
 
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception; 
@@ -19,5 +22,10 @@ public interface CodeGroupService {
 	public int delete(CodeGroupVo vo) throws Exception;
 	
 	public List<CodeGroup> selectListWithoutPaging(CodeGroupVo vo) throws Exception;
+	
+	public int selectOneCount(BaseVo vo) throws Exception;
+	
+	
+	
 	
 }

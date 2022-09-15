@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping(value = "/codegroup/")
 public class CodeGroupController {
@@ -25,6 +26,7 @@ public class CodeGroupController {
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
+		vo.setParamsPaging(service.selectOneCount(vo));		
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
@@ -118,5 +120,6 @@ public class CodeGroupController {
 //			service.uelete(dto);
 //		}
 //	}
+	
 	
 }

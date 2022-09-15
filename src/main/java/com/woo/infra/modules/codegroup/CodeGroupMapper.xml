@@ -8,17 +8,40 @@
 
     <resultMap id="resultMapObj" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT distinct
-			seq
-	    	,ccg_name
-	    	,useNY
-	    	,delNY
-	    	,createDate
-	    	,modiDate
-	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
-		FROM ccg a;
+	<sql id ="selectCommon">
+		FROM ccg a
+		WHERE 1=1
+			<if test="shDelNY != null and !shDelNY.equals('')">AND DelNY = #{shDelNY}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND ccg_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<!-- <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
+			</choose>
+	</sql>
+	
+	<!-- ===paging=== -->
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.seq
+				,a.ccg_name
+				,a.useNY
+		    	,a.delNY
+		    	,a.createDate
+		    	,a.modiDate
+				<!-- , a.ifcgNameEng -->
+		   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
+			<include refid="selectCommon" />
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+   <!-- ===paging=== -->
    
    <resultMap id="resultMapObjSearch" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
    
@@ -55,7 +78,7 @@
 	</select>
 	
 	<insert id="insert">
-		<!-- <if test="shUseNy != null and !shUseNy.equals('')">AND ccgUseNy = #{shUseNy}</if> -->
+		<!-- <if test="shUseNY != null and !shUseNY.equals('')">AND ccgUseNY = #{shUseNY}</if> -->
 		INSERT INTO ccg (
 		    ccg_name
 		    ,useNY
@@ -116,20 +139,6 @@
 	</select>
 	
 	
-	<!-- ===paging=== -->
-	<!-- <select id="countCcg" resultType="int">
-		SELECT COUNT(*) FROM ccg
-	</select>
-	<select id="selectCcg" resultType="com.my.spring.domain.ccgVo">
-		SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						SELECT * 
-						FROM ccg 
-						ORDER BY seq DESC 
-						) A
-				)
-		WHERE RN BETWEEN #{start} AND #{end}
-	</select> -->
+	
+	
 </mapper>

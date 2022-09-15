@@ -8,6 +8,10 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.woo.infra.modules.paging.BaseVo;
+
+
+
 @Repository
 public class CodeGroupDao {
 
@@ -46,6 +50,9 @@ public class CodeGroupDao {
 	public int delete(CodeGroupVo vo) {return sqlSession.delete(namespace + ".delete", vo);}
 	
 	public List<CodeGroup> selectListWithoutPaging() {return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");}
+	
+	public int selectOneCount(BaseVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	
 	
 	
 }

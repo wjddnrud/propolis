@@ -1,6 +1,8 @@
 package com.woo.infra.modules.codegroup;
 
-public class CodeGroupVo {
+import com.woo.infra.modules.paging.BaseVo;
+
+public class CodeGroupVo extends BaseVo{
 
 	private Integer shOption;
 	private String shValue;
