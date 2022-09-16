@@ -64,38 +64,42 @@
 								</div>
 								<br>
 								<div>
-								<form action="http://localhost:8080/codegroup/codeGroupSearch">
+								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
+									<!-- <input type="hidden" name="mainKey"> -->
+									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
-										<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">사용여부</option>
-											<option value="0">N</option>
-											<option value="1">Y</option>
-										</select>
-										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">삭제여부</option>
-											<option value="0">N</option>
-											<option value="1">Y</option>
-										</select>
-										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">날짜 구분</option>
-											<option value="0">등록일</option>
-											<option value="1">수정일</option>
-										</select>
-										<input name="shStartDate" class="form-control me-1" type="search" placeholder="시작일" aria-label="Search">
-										<input name="shEndDate" class="form-control me-1" type="search" placeholder="종료일" aria-label="Search">
+									<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+										<option value="">사용여부</option>
+										<option value="0">N</option>
+										<option value="1">Y</option>
+									</select>
+									<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+										<option value="">삭제여부</option>
+										<option value="0">N</option>
+										<option value="1">Y</option>
+									</select>
+									<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+										<option value="">날짜 구분</option>
+										<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
+										<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
+									</select>
+									
+									<p>Date: <input autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
 										
-										
-										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
-											<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
-											<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
-										</select>
-										<input id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
-										<button class="btn btn-outline-success me-1" type="submit">
-										<i class="fa-solid fa-magnifying-glass"></i></button>
-										<button class="btn btn-outline-warning" type="reset">
-										<i class="fa-solid fa-arrow-rotate-left"></i></button>
-									</form>
+									<p>Date: <input autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
+									
+									<select id="shOption" name="shOption" class="form-select form-select-sm">
+										<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
+										<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
+										<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
+									</select>
+									<input autocomplete="off" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
+									<button class="btn btn-outline-success me-1" type="submit">
+									<i class="fa-solid fa-magnifying-glass"></i></button>
+									<button class="btn btn-outline-warning" type="reset">
+									<i class="fa-solid fa-arrow-rotate-left"></i></button>
 								</div>
 								<div class="table-wrapper">
 									<table class="alt">
@@ -160,10 +164,11 @@
 									
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
-									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button>
-									<button class="btn btn-success me-1" style="float: right;" href="#"><i class="fa-solid fa-file-excel"></i></button>
+									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
+									<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 									
 								</div>
+								</form> 
 							</section>
 							</div>
 						</section>
@@ -215,9 +220,47 @@
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript">
-				function regist() {
+			function regist() {
 					location.href = "/codegroup/codeGroupForm";
 				}
+				
+			/* $(function() {
+			       //input을 datepicker로 선언
+			       $("#datepicker1, #datepicker2").datepicker({
+			           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+			           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+			           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+			           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+			           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+			           ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+			       });                    
+			   }); */
+			   
+			   $( function() {
+				  	$( "#datepicker1, #datepicker2" ).datepicker({
+				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+					    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+					    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+					    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+					    yearRange: "1900:2023"
+				  	});
+				} );
+			
+			
+			var form = $("form[name=formList]");
+			
+			var goUrlList = "/codegroup/codeGroupList";    /* # -> */
+			var goUrlInst = "/codegroup/codeGroupInst";    /* # -> */
+			var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
+			var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
+			var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */	
+			
+			goList = function(thisPage) {
+				alert("=======================");
+				$("input:hidden[name=thisPage]").val(thisPage);
+				form.attr("action", goUrlList).submit();
+			}
+			버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
 			</script>
 
 

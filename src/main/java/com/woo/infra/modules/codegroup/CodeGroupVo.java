@@ -11,7 +11,7 @@ public class CodeGroupVo extends BaseVo{
 	private Integer shUseNY;
 	private Integer shDelNY;
 	private Integer shDate;
-	private Integer seq;
+	private String seq;
 	
 	
 //	-----------
@@ -58,10 +58,10 @@ public class CodeGroupVo extends BaseVo{
 	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
 	}
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	

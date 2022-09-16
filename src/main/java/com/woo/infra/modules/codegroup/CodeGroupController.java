@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,23 +17,48 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 	
-
+	
+	public void setParamsPaging(CodeGroupVo vo) throws Exception {
+		
+//		검색 초기값 설정
+		vo.setParamsPaging(service.selectOneCount(vo)); 
+		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
+		vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
+//		vo.setShStartDate(vo.getShStartDate() == null || vo.getShStartDate() == "" ? null : vo.getShStartDate());
+//		vo.setShEndDate(vo.getShEndDate() == null || vo.getShEndDate() == "" ? null : vo.getShEndDate());
+		
+		
+//		페이징
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+	}
+	
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 
 //		System.out.println("vo.getShValue(): " + vo.getShValue());
 //		System.out.println("vo.getShOption(): " + vo.getShOption());
+//		System.out.println("vo.getStartRnumForMysql() : " + vo.getStartRnumForMysql());
+//		System.out.println("vo.getThisPage() : " + vo.getThisPage());
+//		System.out.println("vo.getRowNumToShow() : " + vo.getRowNumToShow());
+		
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		
+//		System.out.println("vo.getStartRnumForMysql() : " + vo.getStartRnumForMysql());
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
-		vo.setParamsPaging(service.selectOneCount(vo));		
+		setParamsPaging(vo);
+		
+		
+
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
 	@RequestMapping(value = "codeGroupSearch")
-	public String codeGroupSearch(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupSearch( @ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
 //		System.out.println("vo.getShValue(): " + vo.getShValue());
 //		System.out.println("vo.getShOption(): " + vo.getShOption());
@@ -45,12 +71,17 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm(CodeGroupVo vo, Model model) throws Exception {
+	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
-		if(vo.getSeq() == null)
-			vo.setSeq(0);
+		
+//		 if(vo.getSeq().equals("0") || vo.getSeq().equals("")) {
+//			 //insert
+//		 } else {
+//			 CodeGroup item = service.selectOne(vo);
+//			 model.addAttribute("item", item);
+//		 }
 		 
-		System.out.println("-------------"+vo.getSeq());
+		 
 		
 		CodeGroup result = service.selectOne(vo);
 		model.addAttribute("item", result);
@@ -62,13 +93,14 @@ public class CodeGroupController {
 	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int result = service.insert(dto);
-		System.out.println("controller result : " + result);
+		System.out.println("controller inst : " + result);
 		
-		/* vo.setSeq(dto.getSeq()); */
+		vo.setSeq(dto.getSeq());
+		
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/codegroup/codeGroupList";
+		return "redirect:/codegroup/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupView")

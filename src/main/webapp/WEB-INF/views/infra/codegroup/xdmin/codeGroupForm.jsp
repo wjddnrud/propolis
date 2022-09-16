@@ -43,16 +43,17 @@
 			<article id="main">
 				<header>
 					<c:choose>
-						<c:when test="${vo.seq eq 0}"><h2>코드그룹 등록</h2></c:when>
+						<c:when test="${seq eq 0}"><h2>코드그룹 등록</h2></c:when>
 						<%-- <c:when test="${vo.seq ne 0}"><h2>코드그룹 수정</h2></c:when> --%>
 					</c:choose>
 				</header>
 				<section class="wrapper style5">
 					<div class="inner">
 						<form name="forma">
+							<input type="hidden" value="${vo.seq }" name="seq">
 							<center>
-								<input name="seq" style="width:300px; margin-bottom: 10px; color: black;" type="hidden" value="<c:out value="${item.seq}"/>">
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="<c:out value="${item.ccg_name}"/>" placeholder="코드그룹명">
+								<input type="hidden" style="width:300px; margin-bottom: 10px; color: black;" value="${item.seq }">
+								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${item.ccg_name}" placeholder="코드그룹명">
 								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${item.useNY }"/>" placeholder="사용여부 0=N or 1=Y">
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
@@ -166,7 +167,7 @@
 			document.getElementById("useNY").focus();
 			
 			return false;
-		}
+		} 
 		
 		if(seq.val() == "0" || seq.val() == ""){
 			//insert

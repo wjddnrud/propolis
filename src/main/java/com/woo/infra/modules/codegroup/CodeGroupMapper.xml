@@ -36,9 +36,9 @@
 		    	,a.modiDate
 				<!-- , a.ifcgNameEng -->
 		   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
-			<include refid="selectCommon" />
-			ORDER BY a.seq DESC
-			<include refid="Base.orderByLimitForMysql" />
+		<include refid="selectCommon" />
+			ORDER BY a.seq ASC
+		<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
    <!-- ===paging=== -->
@@ -90,10 +90,9 @@
 		    ,#{delNY}
 		)
 		;
-		<!-- <selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
-		</selectKey> -->
-		<!-- AI auto increment 생성해주기 내가 만들었던 ai를 keyProperty에 입력해주기 -->
+		</selectKey>
 	</insert>
 	
 	<select id="selectOne" resultMap="resultMapObj">

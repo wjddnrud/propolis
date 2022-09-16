@@ -100,9 +100,9 @@
 											<option value="2"<c:if test="${vo.shDate eq 2 }">selected</c:if>>생년월일</option>
 										</select>
 										
-										<p>Date: <input class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
+										<p>Date: <input autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
 										
-										<p>Date: <input class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
+										<p>Date: <input autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
 										
 										<select id="shOption" name="shOption" class="form-select form-select-sm">
 											<option value="">검색구분</option>
@@ -290,7 +290,7 @@
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script>
 			$( function() {
-			  	$( "#datepicker1" ).datepicker({
+			  	$( "#datepicker1, #datepicker2" ).datepicker({
 			  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
 				    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
 				    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
@@ -298,16 +298,6 @@
 				    yearRange: "1900:2023"
 			  	});
 			} );
-			$( function() {
-			  	$( "#datepicker2" ).datepicker({
-			  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
-				    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
-				    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
-				    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
-				    yearRange: "1900:2023"
-			  	});
-			} );
-			
 			</script>
 
 

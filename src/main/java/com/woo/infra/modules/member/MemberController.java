@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,11 +17,17 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberList")
-	public String memberList(Model model) throws Exception {
+	public String memberList(Model model, @ModelAttribute("vo")MemberVo vo) throws Exception {
 
 		
 		List<Member> list = service.selectList();
 		model.addAttribute("list", list);
+		
+		
+		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
+		vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());
+		vo.setShStartDate(vo.getShStartDate() == null || vo.getShStartDate() == "" ? null : vo.getShStartDate());
+		vo.setShEndDate(vo.getShEndDate() == null || vo.getShEndDate() == "" ? null : vo.getShEndDate());
 		
 		return "infra/member/xdmin/memberList";
 	}
@@ -34,6 +41,7 @@ public class MemberController {
 		  
 		  List<Member> list = service.search(vo);
 		  model.addAttribute("list", list);
+		  model.addAttribute("vo", vo);
 		  
 		  return "infra/member/xdmin/memberList"; 
 	}

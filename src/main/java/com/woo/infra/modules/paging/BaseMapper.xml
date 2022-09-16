@@ -8,18 +8,20 @@
 	
 	<!-- SQL Upper -->
 	<sql id="selectListUpperForMysql">
-		select aa.* from (
+		SELECT
+			aa.* 
+		FROM (
 	</sql>
 	
 	<!-- SQL Lower -->
 	<sql id="selectListLowerForMysql">	
 		) aa
-		limit #{rowNumToShow} offset #{startRnumForMysql}
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</sql>
 	
 	<!-- 많은 데이터를 가져올때 limit이 있어야 잘리지 않고 다 가져올수 있다. -->
 	<sql id="orderByLimitForMysql">
-		limit 99999999999
+		LIMIT 99999999999
 	</sql>
     
 
