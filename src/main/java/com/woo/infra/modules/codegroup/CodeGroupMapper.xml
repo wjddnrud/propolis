@@ -6,7 +6,7 @@
 
 <mapper namespace="com.woo.infra.modules.codegroup.CodeGroupMapper">
 
-    <resultMap id="resultMapObj" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.codegroup.CodeGroup"></resultMap>  <!-- dto type으로 결과값을 가져온다. -->
 	
 	<sql id ="selectCommon">
 		FROM ccg a
@@ -57,21 +57,25 @@
 		FROM ccg a
 		WHERE 1=1
 		<choose>
+			<when test="shUseNY == null"></when>
 			<when test="shUseNY == 0"> AND useNY LIKE 0 </when>
 			<when test="shUseNY == 1"> AND useNY LIKE 1 </when>
 		</choose>
 		
 		<choose>
+			<when test="shDelNY == null"></when>
 			<when test="shDelNY == 0"> AND delNY LIKE 0</when>
 			<when test="shDelNY == 1"> AND delNY LIKE 1</when>
 		</choose>
 		
 		<choose>
+			<when test="shDate == null"></when>
 			<when test="shDate == 0"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
 			<when test="shDate == 1"> AND modiDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
 		</choose>
 		
 		<choose>
+			<when test="shOption == null"></when>
 			<when test="shOption == 0">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
 			<when test="shOption == 1">AND useNY LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>

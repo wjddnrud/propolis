@@ -20,4 +20,5 @@ public class MemberDao {
 	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList",""); }
 	public List<Member> search(MemberVo vo){ return sqlSession.selectList(namespace + ".search", vo); }
 	
+	
 }

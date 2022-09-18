@@ -22,8 +22,8 @@ public class CodeGroupController {
 		
 //		검색 초기값 설정
 		vo.setParamsPaging(service.selectOneCount(vo)); 
-		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
-		vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
+//		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
+//		vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
 //		vo.setShStartDate(vo.getShStartDate() == null || vo.getShStartDate() == "" ? null : vo.getShStartDate());
 //		vo.setShEndDate(vo.getShEndDate() == null || vo.getShEndDate() == "" ? null : vo.getShEndDate());
 		
@@ -51,6 +51,8 @@ public class CodeGroupController {
 		
 		setParamsPaging(vo);
 		
+		System.out.println("===========");
+		System.out.println("vo.getShStartDate : " + vo.getShStartDate());
 		
 
 		
@@ -66,7 +68,6 @@ public class CodeGroupController {
 		List<CodeGroup> list = service.search(vo);
 		model.addAttribute("list", list);
 		
-		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
@@ -81,10 +82,17 @@ public class CodeGroupController {
 //			 model.addAttribute("item", item);
 //		 }
 		 
-		 
+		
+		
+		System.out.println("================");
+		System.out.println("vo.getShDelNY : " + vo.getShDelNY());
+		System.out.println("vo.getShDate : " + vo.getShDate());
 		
 		CodeGroup result = service.selectOne(vo);
-		model.addAttribute("item", result);
+		model.addAttribute("one", result);
+		
+		List<CodeGroup> list = service.search(vo);
+		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}

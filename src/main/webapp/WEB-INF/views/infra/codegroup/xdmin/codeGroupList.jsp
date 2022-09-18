@@ -65,20 +65,31 @@
 								<br>
 								<div>
 								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
+									
+									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
 									<!-- <input type="hidden" name="mainKey"> -->
 									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
+									<input type="hidden" name="seq">
+									
+									
 									<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 										<option value="">사용여부</option>
-										<option value="0">N</option>
-										<option value="1">Y</option>
+										<option value="0" <c:if test="${vo.shUseNY eq 0}">selected</c:if>>N</option>
+										<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>Y</option>
+										
+										<%-- <c:choose>
+											<c:when test="${list.useNY eq 0}">N</c:when>
+											<c:when test="${list.useNY eq 1}">Y</c:when>
+										</c:choose> --%>
+										
 									</select>
 									<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 										<option value="">삭제여부</option>
-										<option value="0">N</option>
-										<option value="1">Y</option>
+										<option value="0" <c:if test="${vo.shDelNY eq 0}">selected</c:if>>N</option>
+										<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>Y</option>
 									</select>
 									<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 										<option value="">날짜 구분</option>
@@ -86,16 +97,16 @@
 										<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
 									</select>
 									
-									<p>Date: <input autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
+									<p>Date: <input value="${vo.shStartDate}" autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
 										
-									<p>Date: <input autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
+									<p>Date: <input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
 									
 									<select id="shOption" name="shOption" class="form-select form-select-sm">
 										<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
 										<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
 										<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
 									</select>
-									<input autocomplete="off" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
+									<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
 									<button class="btn btn-outline-success me-1" type="submit">
 									<i class="fa-solid fa-magnifying-glass"></i></button>
 									<button class="btn btn-outline-warning" type="reset">
@@ -130,7 +141,7 @@
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
 												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
-												<td><a href="/codegroup/codeGroupForm/?seq=<c:out value="${list.seq }"/>"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->
+												<td><a href="javascript:editForm(${list.seq })"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->
 												<c:out value="${list.seq}"/>
 												</a></td>
 												<td><c:out value="${list.ccg_name }"/></td>
@@ -224,7 +235,7 @@
 					location.href = "/codegroup/codeGroupForm";
 				}
 				
-			/* $(function() {
+			$(function() {
 			       //input을 datepicker로 선언
 			       $("#datepicker1, #datepicker2").datepicker({
 			           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
@@ -234,9 +245,9 @@
 			           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
 			           ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
 			       });                    
-			   }); */
+			   });
 			   
-			   $( function() {
+			  /*  $( function() {
 				  	$( "#datepicker1, #datepicker2" ).datepicker({
 				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
 					    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
@@ -244,7 +255,7 @@
 					    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
 					    yearRange: "1900:2023"
 				  	});
-				} );
+				} ); */
 			
 			
 			var form = $("form[name=formList]");
@@ -260,7 +271,17 @@
 				$("input:hidden[name=thisPage]").val(thisPage);
 				form.attr("action", goUrlList).submit();
 			}
-			버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
+			// 버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
+			
+			var form = $("#formList");
+			// var form = $("form[name=formList]");
+			var editSeq = $("input:hidden[name=seq]");
+			/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+			
+			editForm = function(seq) {
+				editSeq.attr("value", seq);
+				form.attr("action", "/codegroup/codeGroupForm").submit();
+			}
 			</script>
 
 

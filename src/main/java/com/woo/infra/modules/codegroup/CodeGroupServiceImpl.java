@@ -33,17 +33,17 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		if(vo.getShUseNY() == null)
 			vo.setShUseNY(1);
 		
-		if(vo.getShDelNY() == null)
-			vo.setShDelNY(0);
-		
-		if(vo.getShDate() == null)
-			vo.setShDate(0);
-		
-		if(vo.getShStartDate() == null || vo.getShStartDate() == "")
-			vo.setShStartDate("1900-01-01 00:00:00");
-		
-		if(vo.getShEndDate() == null || vo.getShEndDate() == "")
-			vo.setShEndDate("2023-12-31 00:00:00");
+//		if(vo.getShDelNY() == null)
+//			vo.setShDelNY(0);
+//		
+//		if(vo.getShDate() == null)
+//			vo.setShDate(0);
+//		
+//		if(vo.getShStartDate() == null || vo.getShStartDate() == "")
+//			vo.setShStartDate("1900-01-01 00:00:00");
+//		
+//		if(vo.getShEndDate() == null || vo.getShEndDate() == "")
+//			vo.setShEndDate("2023-12-31 00:00:00");
 		
 		if(vo.getShValue() == null)
 			vo.setShValue("");

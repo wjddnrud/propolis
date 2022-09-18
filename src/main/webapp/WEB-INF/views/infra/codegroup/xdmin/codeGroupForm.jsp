@@ -50,14 +50,55 @@
 				<section class="wrapper style5">
 					<div class="inner">
 						<form name="forma">
-							<input type="hidden" value="${vo.seq }" name="seq">
 							<center>
-								<input type="hidden" style="width:300px; margin-bottom: 10px; color: black;" value="${item.seq }">
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${item.ccg_name}" placeholder="코드그룹명">
-								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${item.useNY }"/>" placeholder="사용여부 0=N or 1=Y">
+								<input name="shUseNY" value="${vo.shUseNY }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input name="shDelNY" value="${vo.shDelNY }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input name="shDate" value="${vo.shDate }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input name="shStartDate" value="${vo.shStartDate }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input name="shEndDate" value="${vo.shEndDate }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input name="shOption" value="${vo.shOption }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input name="shValue" value="${vo.shValue }" style="width:300px; margin-bottom: 10px; color: black;">
+								<input value="${one.seq }" type="" style="width:300px; margin-bottom: 10px; color: black;">
+								
+								<%-- <select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+										<option value="">사용여부</option>
+										<option value="0" <c:if test="${one.useNY eq 0}">selected</c:if>>N</option>
+										<option value="1" <c:if test="${one.useNY eq 1}">selected</c:if>>Y</option>
+										
+										<c:choose>
+											<c:when test="${list.useNY eq 0}">N</c:when>
+											<c:when test="${list.useNY eq 1}">Y</c:when>
+										</c:choose>
+										
+									</select>
+									<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+										<option value="">삭제여부</option>
+										<option value="0" <c:if test="${vo.shDelNY eq 0}">selected</c:if>>N</option>
+										<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>Y</option>
+									</select>
+									<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+										<option value="">날짜 구분</option>
+										<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
+										<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
+									</select>
+									
+									<p>Date: <input value="${vo.shStartDate}" autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
+										
+									<p>Date: <input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
+									
+									<select id="shOption" name="shOption" class="form-select form-select-sm">
+										<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
+										<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
+										<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option>
+									</select>
+									<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어"> --%>
+								
+								
+								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}" placeholder="코드그룹명">
+								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 0=N or 1=Y">
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
-								<a href="/codegroup/codeGroupList" class="button">취소</a>
+								<a href="javascript:back()" class="button">취소</a>
 							</center>
 						</form>
 						<center>
@@ -182,6 +223,13 @@
 			form.attr("action", goUrlUpdt).submit();
 		}
 	});
+	
+	back = function() {
+		alert("hello");
+		form.attr("action","/codegroup/codeGroupList").submit();
+		
+	}
+	
 	
 	/* validationInst=function() {
 		if(validationUpdt() == false) return false;

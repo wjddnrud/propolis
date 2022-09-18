@@ -49,11 +49,12 @@ public class MemberServiceImpl implements MemberService{
 		 * if(vo.getShDate() == null) vo.setShDate(0);
 		 */
 		
-		
-		
-		
 		return dao.search(vo);
 	}
+
+	
+
+	
 	
 	
 	
