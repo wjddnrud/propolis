@@ -58,6 +58,18 @@ public class MemberServiceImpl implements MemberService{
 		
 		return selectOne;
 	}
+
+	@Override
+	public int update(Member dto) throws Exception {
+		
+		int update = dao.update(dto);
+		
+		return update;
+	}
+	
+	
+	
+	
 	
 	
 

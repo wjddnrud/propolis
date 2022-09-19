@@ -31,6 +31,12 @@ public class MemberDao {
 		
 	}
 	
+	public int update(Member dto) {
+		
+		int update = sqlSession.update(namespace + ".update", dto);
+		
+		return update;
+	}
 	
 	
 }

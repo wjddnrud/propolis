@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -53,6 +54,15 @@ public class MemberController {
 		model.addAttribute("one", selectOne);
 		
 		return "infra/member/xdmin/memberForm";
+	}
+	
+	@RequestMapping(value="memberUpdt")
+	public String memberUpdate(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.update(dto);
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/member/memberList";
 	}
 	
 

@@ -155,8 +155,6 @@
 	var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
 	var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */
 	
-	var seq = $("input:hidden[name=seq]");     /* # -> */
-	
 	var form = $("form[name=forma]");
 	
 	$("#btnSave").on("click", function() {

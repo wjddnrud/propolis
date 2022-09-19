@@ -95,7 +95,7 @@
 			,delNY
 		FROM member
 		WHERE 1=1
-			AND shSeq = #{seq}
+			AND seq = #{seq}
 	</select>
 	<update id="update">
 		UPDATE member
