@@ -30,9 +30,9 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	@Override
 	public List<CodeGroup> search(CodeGroupVo vo) throws Exception {
 		
-		if(vo.getShUseNY() == null)
-			vo.setShUseNY(1);
-		
+//		if(vo.getShUseNY() == null)
+//			vo.setShUseNY(1);
+//		
 //		if(vo.getShDelNY() == null)
 //			vo.setShDelNY(0);
 //		
@@ -44,12 +44,12 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 //		
 //		if(vo.getShEndDate() == null || vo.getShEndDate() == "")
 //			vo.setShEndDate("2023-12-31 00:00:00");
-		
-		if(vo.getShValue() == null)
-			vo.setShValue("");
-		
-		if(vo.getShOption() == null)
-			vo.setShOption(0);
+//		
+//		if(vo.getShValue() == null)
+//			vo.setShValue("");
+//		
+//		if(vo.getShOption() == null)
+//			vo.setShOption(0);
 		
 		/*
 		 * System.out.println("------------------------------");

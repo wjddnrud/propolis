@@ -66,63 +66,79 @@
 									</ul>
 								</div>
 								<br>
-								<div>
-								<form  action="http://localhost:8080/member/memberSearch">
-									<form class="d-flex" role="search">
-										<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">삭제여부</option>
-											<option value="0" <c:if test="${vo.shDelNY eq 0 }">selected</c:if>>N</option>
-											<option value="1" <c:if test="${vo.shDelNY eq 1 }">selected</c:if>>Y</option>
-										</select>
-										<select name="shGender" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">성별</option>
-											<option value="0" <c:if test="${vo.shGender eq 0 }">selected</c:if>>남성</option>
-											<option value="1" <c:if test="${vo.shGender eq 1 }">selected</c:if>>여성</option>
-											<option value="2" <c:if test="${vo.shGender eq 2 }">selected</c:if>>기타</option>
-										</select>
-										<select name="shTelecom" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">통신사</option>
-											<option value="0" <c:if test="${vo.shTelecom eq 0 }">selected</c:if>>SKT</option>
-											<option value="1" <c:if test="${vo.shTelecom eq 1 }">selected</c:if>>KT</option>
-											<option value="2" <c:if test="${vo.shTelecom eq 2 }">selected</c:if>>LG</option>
-										</select>
-										<select name="shWayReg" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">가입경로</option>
-											<option value="0" <c:if test="${vo.shWayReg eq 0 }">selected</c:if>>지인추천</option>
-											<option value="1" <c:if test="${vo.shWayReg eq 1 }">selected</c:if>>인터넷</option>
-											<option value="2" <c:if test="${vo.shWayReg eq 2 }">selected</c:if>>유튜브</option>
-											<option value="3" <c:if test="${vo.shWayReg eq 3 }">selected</c:if>>기타</option>
-										</select>
-										<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-											<option value="">날짜구분</option>
-											<option value="0"<c:if test="${vo.shDate eq 0 }">selected</c:if>>등록일</option>
-											<option value="1"<c:if test="${vo.shDate eq 1 }">selected</c:if>>최근접속일</option>
-											<option value="2"<c:if test="${vo.shDate eq 2 }">selected</c:if>>생년월일</option>
-										</select>
-										
-										<p>Date: <input autocomplete="off" value="${vo.shStartDate }" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
-										
-										<p>Date: <input autocomplete="off" value="${vo.shEndDate }" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
-										
-										<select id="shOption" name="shOption" class="form-select form-select-sm">
-											<option value="">검색구분</option>
-											<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
-											<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>ID</option>
-											<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>PASSWORD</option>
-											<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이름</option>
-											<option value="7" <c:if test="${vo.shOption eq 5 }">selected</c:if>>직업</option>
-											<option value="8" <c:if test="${vo.shOption eq 6 }">selected</c:if>>우편번호</option>
-											<option value="9" <c:if test="${vo.shOption eq 7 }">selected</c:if>>주소</option>
-											<option value="10" <c:if test="${vo.shOption eq 8 }">selected</c:if>>상세주소</option>
-											<option value="12" <c:if test="${vo.shOption eq 9 }">selected</c:if>>휴대전화 번호</option>
-										</select>
-										<input value="${vo.shValue }" id="${vo.shValue }" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
-										
-										<button class="btn btn-outline-success me-1" type="submit"><i
-												class="fa-solid fa-magnifying-glass"></i></button>
-										<button class="btn btn-outline-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-									</form>
-								</div>
+								<form  action="http://localhost:8080/member/memberSearch" name="">
+									<div class="row gtr-uniform">
+										<div class="col-2">
+											<select name="shWayReg" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">가입경로</option>
+												<option value="0" <c:if test="${vo.shWayReg eq 0 }">selected</c:if>>지인추천</option>
+												<option value="1" <c:if test="${vo.shWayReg eq 1 }">selected</c:if>>인터넷</option>
+												<option value="2" <c:if test="${vo.shWayReg eq 2 }">selected</c:if>>유튜브</option>
+												<option value="3" <c:if test="${vo.shWayReg eq 3 }">selected</c:if>>기타</option>
+											</select>
+										</div>
+										<div class="col-2">
+											<select name="shGender" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">성별</option>
+												<option value="0" <c:if test="${vo.shGender eq 0 }">selected</c:if>>남성</option>
+												<option value="1" <c:if test="${vo.shGender eq 1 }">selected</c:if>>여성</option>
+												<option value="2" <c:if test="${vo.shGender eq 2 }">selected</c:if>>기타</option>
+											</select>
+										</div>
+										<div class="col-2">
+											<select name="shTelecom" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">통신사</option>
+												<option value="0" <c:if test="${vo.shTelecom eq 0 }">selected</c:if>>SKT</option>
+												<option value="1" <c:if test="${vo.shTelecom eq 1 }">selected</c:if>>KT</option>
+												<option value="2" <c:if test="${vo.shTelecom eq 2 }">selected</c:if>>LG</option>
+											</select>
+										</div>
+										<div class="col-2">
+											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">날짜구분</option>
+												<option value="0"<c:if test="${vo.shDate eq 0 }">selected</c:if>>등록일</option>
+												<option value="1"<c:if test="${vo.shDate eq 1 }">selected</c:if>>최근접속일</option>
+												<option value="2"<c:if test="${vo.shDate eq 2 }">selected</c:if>>생년월일</option>
+											</select>
+										</div>
+										<div class="col-2">
+											<input autocomplete="off" value="${vo.shStartDate }" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1">
+										</div>
+										<div class="col-2">
+											<input autocomplete="off" value="${vo.shEndDate }" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2">
+										</div>
+										<div class="col-2">
+											<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">삭제여부</option>
+												<option value="0" <c:if test="${vo.shDelNY eq 0 }">selected</c:if>>N</option>
+												<option value="1" <c:if test="${vo.shDelNY eq 1 }">selected</c:if>>Y</option>
+											</select>
+										</div>
+										<div class="col-2">
+											<select id="shOption" name="shOption" class="form-select text-center">
+												<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색구분</option>
+												<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
+												<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>ID</option>
+												<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>PASSWORD</option>
+												<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이름</option>
+												<option value="7" <c:if test="${vo.shOption eq 5 }">selected</c:if>>직업</option>
+												<option value="8" <c:if test="${vo.shOption eq 6 }">selected</c:if>>우편번호</option>
+												<option value="9" <c:if test="${vo.shOption eq 7 }">selected</c:if>>주소</option>
+												<option value="10" <c:if test="${vo.shOption eq 8 }">selected</c:if>>상세주소</option>
+												<option value="12" <c:if test="${vo.shOption eq 9 }">selected</c:if>>휴대전화 번호</option>
+											</select>
+										</div>
+										<div class="col-2">
+											<input value="${vo.shValue }" id="${vo.shValue }" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
+										</div>
+										<div class="col-2">
+											<button class="btn btn-success me-1" type="submit"><i
+													class="fa-solid fa-magnifying-glass"></i></button>
+											<button class="btn btn-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+										</div>
+									</div>
+									<hr>
+								</form>
 								<div class="table-wrapper">
 									<table class="alt">
 										<thead>
@@ -159,7 +175,7 @@
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
-												<td><c:out value="${list.seq }"/></td>
+												<td><a href="javascript:edit(${list.seq })"><c:out value="${list.seq }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
 												<td><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
@@ -193,15 +209,6 @@
 												</td>
 												<td><c:out value="${list.createDate }"/></td>
 												<td><c:out value="${list.lastLoginDate }"/></td>
-												
-												
-												
-												
-								
-						
-												
-												
-												
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -289,6 +296,10 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script>
+			function regist() {
+				alert("등록")
+				location.href = "/member/memberForm";
+			}
 			$( function() {
 			  	$( "#datepicker1, #datepicker2" ).datepicker({
 			  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
@@ -298,6 +309,11 @@
 				    yearRange: "1900:2023"
 			  	});
 			} );
+			
+			/* edit = function(seq) {
+				editSeq.attr("value", seq);
+				form.attr("action","/member/memberForm").submit();
+			} */
 			</script>
 
 

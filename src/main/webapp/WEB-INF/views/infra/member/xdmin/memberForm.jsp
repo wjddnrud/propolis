@@ -42,18 +42,33 @@
 			<!-- Main -->
 			<article id="main">
 				<header>
-					<h2>코드그룹 등록</h2>
+					<h2>회원 등록</h2>
 				</header>
 				<section class="wrapper style5">
 					<div class="inner">
 						<form name="forma">
 							<center>
-								<input name="seq" style="width:300px; margin-bottom: 10px; color: black;" type="hidden" value="<c:out value="${item.seq}"/>">
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="<c:out value="${item.ccg_name}"/>" placeholder="코드그룹명">
-								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${item.useNY }"/>" placeholder="사용여부 0=N or 1=Y">
+								<input name="seq" style="width:300px; margin-bottom: 10px; color: black;" type="" value="<c:out value="${one.seq}"/>">
+								<input name="name" style="width:300px; margin-bottom: 10px;" type="text" id="name" value="<c:out value="${one.name}"/>" placeholder="회원 이름">
+								<input name="id" placeholder="아이디" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.id}"/>">
+								<input name="password" placeholder="패스워드" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.password}"/>">
+								<input name="dob" placeholder="생년월일" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.dob}"/>">
+								<input name="gender" placeholder="성별" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.gender}"/>">
+								<input name="job" placeholder="직업" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.job}"/>">
+								<input name="zipcode" placeholder="우편번호" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.zipcode}"/>"> 
+								<input name="address" placeholder="주소" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.address}"/>">
+								<input name="address_detail" placeholder="상세주소" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.address_detail}"/>">
+								<input name="telecom" placeholder="통신사" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.telecom}"/>">
+								<input name="phoneNumber" placeholder="전화번호" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.phoneNumber}"/>">
+								<input name="way_to_regist" placeholder="가입경로" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.way_to_regist}"/>">
+								<input name="createDate" placeholder="등록일" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.createDate}"/>">
+								<input name="lastLoginDate" placeholder="최근접속일" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.lastLoginDate}"/>">
+								<input name="delNY" placeholder="삭제여부" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.delNY}"/>">
+								
+								
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
-								<a href="/codegroup/codeGroupList" class="button">취소</a>
+								<a href="/member/memberList" class="button">취소</a>
 							</center>
 						</form>
 						<center>
@@ -143,24 +158,23 @@
 	var seq = $("input:hidden[name=seq]");     /* # -> */
 	
 	var form = $("form[name=forma]");
-	var formVo = $("form[name=formVo]");
 	
 	$("#btnSave").on("click", function() {
 		
-		if(document.getElementById('ccg_name').value == "") {
-			alert("그룹코드 이름을 작성해주세요.");
+		if(document.getElementById('name').value == "") {
+			alert("회원 이름을 작성해주세요.");
 			
-			document.getElementById("ccg_name").value="";
-			document.getElementById("ccg_name").focus();
+			document.getElementById("name").value="";
+			document.getElementById("name").focus();
 			
 			return false;
 		}
 		
-		if(document.getElementById('useNY').value == "") {
-			alert("사용여부를 확인해주세요.");
+		if(document.getElementById('id').value == "") {
+			alert("아이디를 확인해주세요.");
 			
-			document.getElementById("useNY").value="";
-			document.getElementById("useNY").focus();
+			document.getElementById("id").value="";
+			document.getElementById("id").focus();
 			
 			return false;
 		}

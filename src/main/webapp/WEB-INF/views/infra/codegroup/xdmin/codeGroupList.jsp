@@ -63,7 +63,6 @@
 									</ul>
 								</div>
 								<br>
-								<div>
 								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
 									
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
@@ -73,45 +72,56 @@
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" name="seq">
-									
-									
-									<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-										<option value="">사용여부</option>
-										<option value="0" <c:if test="${vo.shUseNY eq 0}">selected</c:if>>N</option>
-										<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>Y</option>
-										
-										<%-- <c:choose>
-											<c:when test="${list.useNY eq 0}">N</c:when>
-											<c:when test="${list.useNY eq 1}">Y</c:when>
-										</c:choose> --%>
-										
-									</select>
-									<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-										<option value="">삭제여부</option>
-										<option value="0" <c:if test="${vo.shDelNY eq 0}">selected</c:if>>N</option>
-										<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>Y</option>
-									</select>
-									<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-										<option value="">날짜 구분</option>
-										<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
-										<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
-									</select>
-									
-									<p>Date: <input value="${vo.shStartDate}" autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1"></p>
-										
-									<p>Date: <input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2"></p>
-									
-									<select id="shOption" name="shOption" class="form-select form-select-sm">
-										<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
-										<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
-										<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
-									</select>
-									<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
-									<button class="btn btn-outline-success me-1" type="submit">
-									<i class="fa-solid fa-magnifying-glass"></i></button>
-									<button class="btn btn-outline-warning" type="reset">
-									<i class="fa-solid fa-arrow-rotate-left"></i></button>
-								</div>
+									<div class="row gtr-uniform">
+										<div class="col-3">
+											<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">사용여부</option>
+												<option value="0" <c:if test="${vo.shUseNY eq 0}">selected</c:if>>N</option>
+												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>Y</option>
+												
+												<%-- <c:choose>
+													<c:when test="${list.useNY eq 0}">N</c:when>
+													<c:when test="${list.useNY eq 1}">Y</c:when>
+												</c:choose> --%>
+												
+											</select>
+										</div>
+										<div class="col-3">
+											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">날짜 구분</option>
+												<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
+												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
+											</select>
+										</div>
+										<div class="col-3">
+											<input value="${vo.shStartDate}" autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1">
+										</div>
+										<div class="col-3">
+											<input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2">
+										</div>
+										<div class="col-3">
+											<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+												<option value="">삭제여부</option>
+												<option value="0" <c:if test="${vo.shDelNY eq 0}">selected</c:if>>N</option>
+												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>Y</option>
+											</select>
+										</div>
+										<div class="col-3">
+											<select id="shOption" name="shOption" class="form-select text-center">
+												<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
+												<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
+												<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
+											</select>
+										</div>
+										<div class="col-3">
+											<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
+										</div>
+										<div class="col-3">
+											<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+											<button class="btn btn-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+										</div>	
+									</div>
+									<hr>
 								<div class="table-wrapper">
 									<table class="alt">
 										<thead>

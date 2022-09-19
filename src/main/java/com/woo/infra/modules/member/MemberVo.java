@@ -11,6 +11,7 @@ public class MemberVo {
 	private Integer shGender;
 	private Integer shDelNY;
 	private Integer shDate;
+	private Integer shSeq;
 	
 	
 	//---------------
@@ -67,6 +68,12 @@ public class MemberVo {
 	}
 	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
+	}
+	public Integer getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(Integer shSeq) {
+		this.shSeq = shSeq;
 	}
 	
 	

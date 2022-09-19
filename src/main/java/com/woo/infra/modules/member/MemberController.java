@@ -24,10 +24,10 @@ public class MemberController {
 		model.addAttribute("list", list);
 		
 		
-		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
-		vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());
-		vo.setShStartDate(vo.getShStartDate() == null || vo.getShStartDate() == "" ? null : vo.getShStartDate());
-		vo.setShEndDate(vo.getShEndDate() == null || vo.getShEndDate() == "" ? null : vo.getShEndDate());
+//		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
+//		vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());
+//		vo.setShStartDate(vo.getShStartDate() == null || vo.getShStartDate() == "" ? null : vo.getShStartDate());
+//		vo.setShEndDate(vo.getShEndDate() == null || vo.getShEndDate() == "" ? null : vo.getShEndDate());
 		
 		return "infra/member/xdmin/memberList";
 	}
@@ -45,6 +45,17 @@ public class MemberController {
 		  
 		return "infra/member/xdmin/memberList"; 
 	}
+	
+	@RequestMapping(value = "memberForm")
+	public String memberForm(Model model, MemberVo vo) throws Exception {
+		
+		Member selectOne = service.selectOne(vo);
+		model.addAttribute("one", selectOne);
+		
+		return "infra/member/xdmin/memberForm";
+	}
+	
+
 	
 	  
 	

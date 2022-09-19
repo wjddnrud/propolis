@@ -8,5 +8,7 @@ public interface MemberService {
 	
 	public List<Member> search(MemberVo vo) throws Exception;
 	
+	public Member selectOne(MemberVo vo) throws Exception;
+	
 	
 }

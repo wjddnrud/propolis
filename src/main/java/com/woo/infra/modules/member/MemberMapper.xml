@@ -74,5 +74,51 @@
 			<when test="shOption == 9">AND phoneNumber LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>
 	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			seq
+			,id
+			,password
+			,name
+			,dob
+			,gender
+			,job
+			,zipcode
+			,address
+			,address_detail
+			,telecom
+			,phoneNumber
+			,way_to_regist
+			,createDate
+			,lastLoginDate
+			,delNY
+		FROM member
+		WHERE 1=1
+			AND shSeq = #{seq}
+	</select>
+	<update id="update">
+		UPDATE member
+		SET
+			id = #{id}
+			,password = #{password}
+			,name = #{name}
+			,dob = #{dob}
+			,gender = #{gender}
+			,job = #{job}
+			,zipcode = #{zipcode}
+			,address = #{address}
+			,address_detail = #{address_detail}
+			,telecom = #{telecom}
+			,phoneNumber = #{phoneNumber}
+			,way_to_regist = #{way_to_regist}
+			,createDate = #{createDate}
+			,lastLoginDate = #{lastLoginDate}
+			,delNY = #{delNY}
+		WHERE 1=1
+			seq = #{seq}
+			
+	</update>
+	
 
 </mapper>	
