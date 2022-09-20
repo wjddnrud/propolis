@@ -26,4 +26,8 @@ public class CodeDao {
 		return result;
 	}
 	
+	public List<Code> search(CodeVo vo) { return sqlSession.selectList(namespace + ".search", vo);}
+	
+//	for cache
+	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList"); }
 }

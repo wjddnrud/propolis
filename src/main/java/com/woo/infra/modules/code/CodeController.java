@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.protobuf.Service;
 
 @Controller
 @RequestMapping(value = "/code/")
@@ -26,6 +26,17 @@ public class CodeController {
 		return "infra/code/xdmin/codeList";
 	}
 	
+	@RequestMapping(value = "codeSearch")
+	public String codeSearch(Model model, CodeVo uza) throws Exception {
+		
+		List<Code> search = service.search(uza);
+		model.addAttribute("search", search);
+		
+		return "infra/code/xdmin/codeList";
+		
+	}
+	
+	
 	@RequestMapping(value = "codeForm")
 	public String codeForm() throws Exception {
 		return "infra/code/xdmin/codeForm";
@@ -38,5 +49,6 @@ public class CodeController {
 		
 		return "redirect:/code/codeList";
 	}
+	
 	
 }

@@ -1,14 +1,22 @@
 package com.woo.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 
 	private String seq;
 	private String cc_name;
 	private String useNY;
+	private String delNY;
 	private String cc_key;
 	private String ccg_seq;
 	private String createDate;
 	private String modiDate;
+	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+	
 	
 	public String getSeq() {
 		return seq;
@@ -52,6 +60,13 @@ public class Code {
 	public void setModiDate(String modiDate) {
 		this.modiDate = modiDate;
 	}
+	public String getDelNY() {
+		return delNY;
+	}
+	public void setDelNY(String delNY) {
+		this.delNY = delNY;
+	}
+	
 	
 	
 	

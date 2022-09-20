@@ -11,6 +11,9 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+	<!-- datepicker jquery script import -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
 	<title>Admin_CodeGroupList</title>
 </head>
 	<body class="is-preload">
@@ -88,7 +91,7 @@
 										</div>
 										<div class="col-3">
 											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">날짜 구분</option>
+												<option value="">날짜 검색</option>
 												<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
 												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
 											</select>
@@ -231,7 +234,7 @@
 
 			</div>
 
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="/resources/images/assets/js/jquery.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
@@ -240,58 +243,58 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script type="text/javascript">
-			function regist() {
-					location.href = "/codegroup/codeGroupForm";
-				}
-				
-			$(function() {
-			       //input을 datepicker로 선언
-			       $("#datepicker1, #datepicker2").datepicker({
-			           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
-			           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
-			           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
-			           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-			           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-			           ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-			       });                    
-			   });
-			   
-			  /*  $( function() {
+				$( function() {
 				  	$( "#datepicker1, #datepicker2" ).datepicker({
 				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
 					    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
 					    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
 					    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
-					    yearRange: "1900:2023"
+					    yearRange: 'c-50:c+20', // 현재 연도를 기준으로 +N 년 -N 년 표시
+					    dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // [요일] 한글화
+					    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // [월] 한글화
+				  		closeText: '닫기',
+				  		showButtonPanel: true, // 달력 하단에 버튼 표시
+				  		currentText: '오늘 날짜', // 오늘 날짜 클릭 시 클릭 시 오늘 날짜로 이동
+				    	showAnim: "slide", // 달력에 애니메이션 적용
+				    	minDate: '-50y', // 현재 날짜로부터 N 년까지 표시
+				    	nextText: '다음 달', // next 아이콘 툴팁
+				    	prevText: '이전 달' // prev 아이콘 툴팁
 				  	});
-				} ); */
-			
-			
-			var form = $("form[name=formList]");
-			
-			var goUrlList = "/codegroup/codeGroupList";    /* # -> */
-			var goUrlInst = "/codegroup/codeGroupInst";    /* # -> */
-			var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
-			var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
-			var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */	
-			
-			goList = function(thisPage) {
-				alert("=======================");
-				$("input:hidden[name=thisPage]").val(thisPage);
-				form.attr("action", goUrlList).submit();
-			}
-			// 버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
-			
-			var form = $("#formList");
-			// var form = $("form[name=formList]");
-			var editSeq = $("input:hidden[name=seq]");
-			/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
-			
-			editForm = function(seq) {
-				editSeq.attr("value", seq);
-				form.attr("action", "/codegroup/codeGroupForm").submit();
-			}
+				} );
+					
+				function regist() {
+						location.href = "/codegroup/codeGroupForm";
+					}
+					
+				
+				   
+				
+				
+				var form = $("form[name=formList]"); // name으로 된거 사용
+				// var form = $("#formList");  // id로 된거 사용
+				var editSeq = $("input:hidden[name=seq]");
+				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+				
+				var goUrlList = "/codegroup/codeGroupList";    /* # -> */
+				var goUrlInst = "/codegroup/codeGroupInst";    /* # -> */
+				var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
+				var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
+				var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */	
+				
+				goList = function(thisPage) {
+					alert("=======================");
+					$("input:hidden[name=thisPage]").val(thisPage);
+					form.attr("action", goUrlList).submit();
+				}
+				// 버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
+				
+				editForm = function(seq) {
+					editSeq.attr("value", seq);
+					form.attr("action", "/codegroup/codeGroupForm").submit();
+				}
 			</script>
 
 

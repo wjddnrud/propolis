@@ -8,6 +8,10 @@ public interface CodeService {
 	
 	public int insert(Code dto) throws Exception;
 	
-
+	public List<Code> search(CodeVo bori) throws Exception;
+	
+	public void selectListCachedCodeArrayList() throws Exception;
+	
+	
 	
 }

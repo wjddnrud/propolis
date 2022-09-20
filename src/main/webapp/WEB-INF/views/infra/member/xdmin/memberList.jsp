@@ -4,13 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<jsp:useBean id="CodeServiceImpl" class="com.woo.infra.modules.code.CodeServiceImpl"/>
 <html>
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+	<!-- datepicker jquery script import -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<title>Admin_memberList</title>
@@ -66,6 +67,11 @@
 									</ul>
 								</div>
 								<br>
+								
+								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
+								<c:set var="listCodeWayReg" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+								<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
+								
 								<form  action="http://localhost:8080/member/memberSearch" name="">
 									<div class="row gtr-uniform">
 										<div class="col-2">
@@ -95,7 +101,7 @@
 										</div>
 										<div class="col-2">
 											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">날짜구분</option>
+												<option value="">날짜 검색</option>
 												<option value="0"<c:if test="${vo.shDate eq 0 }">selected</c:if>>등록일</option>
 												<option value="1"<c:if test="${vo.shDate eq 1 }">selected</c:if>>최근접속일</option>
 												<option value="2"<c:if test="${vo.shDate eq 2 }">selected</c:if>>생년월일</option>
@@ -132,8 +138,7 @@
 											<input value="${vo.shValue }" id="${vo.shValue }" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
 										</div>
 										<div class="col-2">
-											<button class="btn btn-success me-1" type="submit"><i
-													class="fa-solid fa-magnifying-glass"></i></button>
+											<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 											<button class="btn btn-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 										</div>
 									</div>
@@ -180,32 +185,48 @@
 												<td><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
 												<td><c:out value="${list.dob }"/></td>
-												<td>
+												<%-- <td>
 													<c:choose>
 														<c:when test="${list.gender eq 0}">남성</c:when>
 														<c:when test="${list.gender eq 1}">여성</c:when>
 														<c:when test="${list.gender eq 2}">기타</c:when>
 													</c:choose>
+												</td> --%>
+												<td>
+													<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+														<c:if test="${list.gender eq listGender.cc_key}"><c:out value="${listGender.cc_name }"/></c:if>
+													</c:forEach>
 												</td>
 												<td><c:out value="${list.job }"/></td>
 												<td><c:out value="${list.zipcode }"/></td>
 												<td><c:out value="${list.address }"/></td>
 												<td><c:out value="${list.address_detail }"/></td>
-												<td>
+												<%-- <td>
 													<c:choose>
 														<c:when test="${list.telecom eq 0 }">SKT</c:when>
 														<c:when test="${list.telecom eq 1 }">KT</c:when>
 														<c:when test="${list.telecom eq 2 }">LGT</c:when>
 													</c:choose>
+												</td> --%>
+												<td>
+													<c:forEach items="${listCodeTelecom}" var="listTelecom" varStatus="statusTelecom">
+														<c:if test="${list.telecom eq listTelecom.cc_key}"><c:out value="${listTelecom.cc_name }"/></c:if>
+													</c:forEach>
 												</td>
 												<td><c:out value="${list.phoneNumber }"/></td>
-												<td>
+												
+												<%-- <td>
 													<c:choose>
 														<c:when test="${list.way_to_regist eq 0 }">지인추천</c:when>
 														<c:when test="${list.way_to_regist eq 1 }">인터넷</c:when>
 														<c:when test="${list.way_to_regist eq 2 }">유튜브</c:when>
 														<c:when test="${list.way_to_regist eq 3 }">기타</c:when>
 													</c:choose>
+												</td> --%>
+												<td>
+													<c:forEach items="${listCodeWayReg}" var="listWayReg" varStatus="statusWayReg">
+														<c:if test="${list.way_to_regist eq listWayReg.cc_key}"><c:out value="${listWayReg.cc_name }"/></c:if>
+													</c:forEach>
 												</td>
 												<td><c:out value="${list.createDate }"/></td>
 												<td><c:out value="${list.lastLoginDate }"/></td>
@@ -284,7 +305,7 @@
 
 			</div>
 
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="/resources/images/assets/js/jquery.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
@@ -296,24 +317,31 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script>
-			function regist() {
-				alert("등록")
-				location.href = "/member/memberForm";
-			}
-			$( function() {
-			  	$( "#datepicker1, #datepicker2" ).datepicker({
-			  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
-				    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
-				    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
-				    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
-				    yearRange: "1900:2023"
-			  	});
-			} );
-			
-			/* edit = function(seq) {
-				editSeq.attr("value", seq);
-				form.attr("action","/member/memberForm").submit();
-			} */
+				$( function() {
+				  	$( "#datepicker1, #datepicker2" ).datepicker({
+				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+					    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+					    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+					    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+					    yearRange: 'c-50:c+20', // 현재 연도를 기준으로 +N 년 -N 년 표시
+					    dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // [요일] 한글화
+					    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // [월] 한글화
+				  		closeText: '닫기',
+				  		showButtonPanel: true, // 달력 하단에 버튼 표시
+				  		currentText: '오늘 날짜', // 오늘 날짜 클릭 시 클릭 시 오늘 날짜로 이동
+				    	showAnim: "slide", // 달력에 애니메이션 적용
+				    	minDate: '-50y', // 현재 날짜로부터 N 년까지 표시
+				    	nextText: '다음 달', // next 아이콘 툴팁
+				    	prevText: '이전 달' // prev 아이콘 툴팁
+				  	});
+				} );
+				
+				function regist() {
+					alert("등록")
+					location.href = "/member/memberForm";
+				}
+				
+				
 			</script>
 
 
