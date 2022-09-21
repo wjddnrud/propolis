@@ -38,29 +38,29 @@
 		WHERE 1=1
 		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 		<choose>
-			<when test="shGender == 0">AND gender LIKE 0</when>
 			<when test="shGender == 1">AND gender LIKE 1</when>
 			<when test="shGender == 2">AND gender LIKE 2</when>
+			<when test="shGender == 3">AND gender LIKE 3</when>
 		</choose>
 		<choose>
-			<when test="shTelecom == 0">AND telecom LIKE 0</when>
 			<when test="shTelecom == 1">AND telecom LIKE 1</when>
 			<when test="shTelecom == 2">AND telecom LIKE 2</when>
+			<when test="shTelecom == 3">AND telecom LIKE 3</when>
 		</choose>
 		<choose>
-			<when test="shWayReg == 0">AND way_to_regist LIKE 0</when>
 			<when test="shWayReg == 1">AND way_to_regist LIKE 1</when>
 			<when test="shWayReg == 2">AND way_to_regist LIKE 2</when>
 			<when test="shWayReg == 3">AND way_to_regist LIKE 3</when>
+			<when test="shWayReg == 4">AND way_to_regist LIKE 4</when>
 		</choose>
 		<choose>
-			<when test="shDate == 0"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
-			<when test="shDate == 1"> AND lastLoginDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
-			<when test="shDate == 2"> AND dob BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 1"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 2"> AND lastLoginDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 3"> AND dob BETWEEN #{shStartDate} AND #{shEndDate}</when>
 		</choose>
 		<choose>
-			<when test="shDelNY == 0"> AND delNY LIKE 0</when>
-			<when test="shDelNY == 1"> AND delNY LIKE 1</when>
+			<when test="shDelNY == 1"> AND delNY LIKE 0</when>
+			<when test="shDelNY == 2"> AND delNY LIKE 1</when>
 		</choose>
 		<choose>
 			<when test="shOption == 1">AND seq LIKE CONCAT ('%',#{shValue},'%')</when>
@@ -95,7 +95,7 @@
 			,delNY
 		FROM member
 		WHERE 1=1
-			AND seq = #{seq}
+			AND seq = #{shSeq}
 	</select>
 	<update id="update">
 		UPDATE member
@@ -116,7 +116,7 @@
 			,lastLoginDate = #{lastLoginDate}
 			,delNY = #{delNY}
 		WHERE 1=1
-			seq = #{seq}
+			seq = #{shSeq}
 			
 	</update>
 	

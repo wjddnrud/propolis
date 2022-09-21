@@ -79,8 +79,8 @@
 										<div class="col-3">
 											<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 												<option value="">사용여부</option>
-												<option value="0" <c:if test="${vo.shUseNY eq 0}">selected</c:if>>N</option>
-												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>Y</option>
+												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>N</option>
+												<option value="2" <c:if test="${vo.shUseNY eq 2}">selected</c:if>>Y</option>
 												
 												<%-- <c:choose>
 													<c:when test="${list.useNY eq 0}">N</c:when>
@@ -92,8 +92,8 @@
 										<div class="col-3">
 											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 												<option value="">날짜 검색</option>
-												<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
-												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
+												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>등록일</option>
+												<option value="2" <c:if test="${vo.shDate eq 2}">selected</c:if>>수정일</option>
 											</select>
 										</div>
 										<div class="col-3">
@@ -105,14 +105,14 @@
 										<div class="col-3">
 											<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 												<option value="">삭제여부</option>
-												<option value="0" <c:if test="${vo.shDelNY eq 0}">selected</c:if>>N</option>
-												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>Y</option>
+												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>N</option>
+												<option value="2" <c:if test="${vo.shDelNY eq 2}">selected</c:if>>Y</option>
 											</select>
 										</div>
 										<div class="col-3">
 											<select id="shOption" name="shOption" class="form-select text-center">
 												<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
-												<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드그룹 이름</option>
+												<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
 												<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
 											</select>
 										</div>
@@ -121,7 +121,7 @@
 										</div>
 										<div class="col-3">
 											<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-											<button class="btn btn-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+											<button class="btn btn-warning" type="reset" onclick="location.href='/codegroup/codeGroupList'"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 										</div>	
 									</div>
 									<hr>
@@ -150,7 +150,7 @@
 													</tr>
 												</c:when>
 											</c:choose>
-											<c:forEach items="${list}" var="list" varStatus="status">
+											<c:forEach items="${list}" var="list" varStatus="statusList">
 											<tr style="color: black;">
 												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
 												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
@@ -160,15 +160,15 @@
 												<td><c:out value="${list.ccg_name }"/></td>
 												<td><c:out value="${list.xCodeCount }"/></td>
 												<td>
-												<c:choose>
-													<c:when test="${list.useNY eq 0}">N</c:when>
-													<c:when test="${list.useNY eq 1}">Y</c:when>
-												</c:choose>
+													<c:choose>
+														<c:when test="${list.useNY eq 1}">N</c:when>
+														<c:when test="${list.useNY eq 2}">Y</c:when>
+													</c:choose>
 												</td>
 												<td>
 													<c:choose>
-														<c:when test="${list.delNY eq 0}">N</c:when>
-														<c:when test="${list.delNY eq 1}">Y</c:when>
+														<c:when test="${list.delNY eq 1}">N</c:when>
+														<c:when test="${list.delNY eq 2}">Y</c:when>
 													</c:choose>
 												</td>
 												<td><c:out value="${list.createDate }"/></td>

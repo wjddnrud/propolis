@@ -34,9 +34,9 @@ public class CodeGroupDao {
 	public List<CodeGroup> search(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".search", vo); }
 	
 	public int insert(CodeGroup dto) {
-		int result = sqlSession.insert(namespace + ".insert", dto);
-		System.out.println("dao result : " + result);
-		return result;
+		int insert = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao insert : " + insert);
+		return insert;
 	}
 	
 	public CodeGroup selectOne(CodeGroupVo vo) {
@@ -45,13 +45,13 @@ public class CodeGroupDao {
 		return result;
 	}
 	
-	public int update(CodeGroup dto) {return sqlSession.update(namespace + ".update", dto);}
-	public int uelete(CodeGroup dto) {return sqlSession.update(namespace + ".uelete", dto);}
-	public int delete(CodeGroupVo vo) {return sqlSession.delete(namespace + ".delete", vo);}
+	public int update(CodeGroup dto) { return sqlSession.update(namespace + ".update", dto); }
+	public int uelete(CodeGroup dto) { return sqlSession.update(namespace + ".uelete", dto); }
+	public int delete(CodeGroupVo vo) { return sqlSession.delete(namespace + ".delete", vo); }
 	
-	public List<CodeGroup> selectListWithoutPaging() {return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");}
+	public List<CodeGroup> selectListWithoutPaging() { return sqlSession.selectList(namespace + ".selectListWithoutPaging", ""); }
 	
-	public int selectOneCount(BaseVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	public int selectOneCount(BaseVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
 	
 	

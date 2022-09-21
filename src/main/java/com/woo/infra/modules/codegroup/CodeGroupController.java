@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping(value = "/codegroup/")
+@RequestMapping(value = "/codegroup/") //주소에 따라 작동하는 컨트롤러가 다르므로 넘겨주는 model명은 같이해줘도 상관없음!!!
 public class CodeGroupController {
 
 	@Autowired
@@ -51,22 +51,17 @@ public class CodeGroupController {
 		
 		setParamsPaging(vo);
 		
-		System.out.println("===========");
-		System.out.println("vo.getShStartDate : " + vo.getShStartDate());
-		
-
-		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
 	@RequestMapping(value = "codeGroupSearch")
-	public String codeGroupSearch( @ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
+	public String codeGroupSearch(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 		
 //		System.out.println("vo.getShValue(): " + vo.getShValue());
 //		System.out.println("vo.getShOption(): " + vo.getShOption());
-		
-		List<CodeGroup> list = service.search(vo);
-		model.addAttribute("list", list);
+		 
+		List<CodeGroup> search = service.search(vo);
+		model.addAttribute("list", search);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}

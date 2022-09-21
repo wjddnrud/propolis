@@ -67,13 +67,13 @@
 									</ul>
 								</div>
 								<br>
-								<form action="localhost:8080/code/codeSearch">
+								<form action="http://localhost:8080/code/codeSearch">
 									<div class="row gtr-uniform">
 										<div class="col-3">
-											<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<select name="shUseNY" class="form-select form-control me-1 text-center">
 												<option value="">사용여부</option>
-												<option value="0" <c:if test="${vo.shUseNY eq 0}">selected</c:if>>N</option>
-												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>Y</option>
+												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>N</option>
+												<option value="2" <c:if test="${vo.shUseNY eq 2}">selected</c:if>>Y</option>
 												
 												<%-- <c:choose>
 													<c:when test="${list.useNY eq 0}">N</c:when>
@@ -83,10 +83,10 @@
 											</select>
 										</div>
 										<div class="col-3">
-											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<select name="shDate" class="form-select form-control me-1 text-center">
 												<option value="">날짜 검색</option>
-												<option value="0" <c:if test="${vo.shDate eq 0}">selected</c:if>>등록일</option>
-												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>수정일</option>
+												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>등록일</option>
+												<option value="2" <c:if test="${vo.shDate eq 2}">selected</c:if>>수정일</option>
 											</select>
 										</div>
 										<div class="col-3">
@@ -96,16 +96,16 @@
 											<input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2">
 										</div>
 										<div class="col-3">
-											<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
+											<select name="shDelNY" class="form-select form-control me-1 text-center">
 												<option value="">삭제여부</option>
-												<option value="0" <c:if test="${vo.shDelNY eq 0}">selected</c:if>>N</option>
-												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>Y</option>
+												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>N</option>
+												<option value="2" <c:if test="${vo.shDelNY eq 2}">selected</c:if>>Y</option>
 											</select>
 										</div>
 										<div class="col-3">
 											<select id="shOption" name="shOption" class="form-select text-center">
 												<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
-												<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>코드 이름</option>
+												<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드 이름</option>
 												<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
 											</select>
 										</div>
@@ -129,26 +129,38 @@
 													<th>#</th>
 													<th>코드 이름(한글)</th>
 													<th>사용여부</th>
+													<th>삭제여부</th>
 													<th>코드 key</th>
 													<th>코드그룹_seq</th>
 													<th>등록일</th>
 													<th>수정일</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody style="color: black;">
 												<c:choose>
-													<c:when test="${fn:length(list) eq 0}">
+													<c:when test="${fn:length(search) eq 0}">
 														<tr>
-															<td class="text-center" colspan="8">There is no data!</td>
+															<td class="text-center" colspan="9">There is no data!</td>
 														</tr>
 													</c:when>
 												</c:choose>
-												<c:forEach items="${list}" var="list" varStatus="status">
+												<c:forEach items="${search}" var="list" varStatus="statusList">
 												<tr style="color: black;">
 													<td><input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox"></label></td>
 													<td><c:out value="${list.seq }"/></td>
 													<td><c:out value="${list.cc_name }"/></td>
-													<td><c:out value="${list.useNY }"/></td>
+													<td>
+														<c:choose>
+															<c:when test="${list.useNY eq 1}">N</c:when>
+															<c:when test="${list.useNY eq 2}">Y</c:when>
+														</c:choose>
+													</td>
+													<td>
+														<c:choose>
+															<c:when test="${list.delNY eq 1}">N</c:when>
+															<c:when test="${list.delNY eq 2}">Y</c:when>
+														</c:choose>
+													</td>
 													<td><c:out value="${list.cc_key }"/></td>
 													<td><c:out value="${list.ccg_seq }"/></td>
 													<td><c:out value="${list.createDate }"/></td>

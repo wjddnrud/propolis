@@ -16,19 +16,23 @@ public class CodeServiceImpl implements CodeService {
 	
 	@Override
 	public List<Code> selectList() throws Exception {
+		
 		return dao.selectList();
-	}
-
-	@Override
-	public int insert(Code dto) throws Exception {
-
-		int result = dao.insert(dto);
-		return result;
+		
 	}
 
 	@Override
 	public List<Code> search(CodeVo bori) throws Exception {
+		
 		return dao.search(bori);
+		
+	}
+
+	@Override
+	public int insert(Code dto) throws Exception {
+		
+		int result = dao.insert(dto);
+		return result;
 	}
 	
 	@PostConstruct

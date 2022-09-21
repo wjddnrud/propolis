@@ -21,6 +21,39 @@
 		FROM cc
 	</select>
 	
+	<select id="search" resultMap="resultMapObj">
+		SELECT
+			seq
+			,cc_name
+			,useNY
+			,delNY
+			,cc_key
+			,ccg_seq
+			,createDate
+			,modiDate
+		FROM cc
+		WHERE 1=1
+			<choose>
+				<when test="shUseNY == null"></when>
+				<when test="shUseNY == 1">AND useNY LIKE 1</when>
+				<when test="shUseNY == 2">AND useNY LIKE 2</when>
+			</choose>
+			<choose>
+				<when test="shDelNY == null"></when>
+				<when test="shDelNY == 1">AND delNY LIKE 1</when>
+				<when test="shDelNY == 2">AND delNY LIKE 2</when>
+			</choose>
+			<choose>
+				<when test="shDate == null"></when>
+				<when test="shDate == 1">AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>  
+				<when test="shDate == 2">AND modiDate BETWEEN #{shStartDate AND #{shEndDate}</when>
+			</choose>
+			<choose>
+				<when test="shOption == null"></when>
+				<when test="shOption == 1">AND cc_name LIKE CONCAT('%',#{shValue),'%')</when>
+			</choose>
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO cc (
 			cc_name
@@ -36,38 +69,7 @@
 		)
 	</insert>
 	
-	<select id="search" resultMap="resultMapObj">
-		SELECT
-			seq
-			,cc_name
-			,useNY
-			,delNY
-			,cc_key
-			,ccg_seq
-			,createDate
-			,modiDate
-		FROM cc
-		WHERE 1=1
-			<choose>
-				<when test="shUseNY == null"></when>
-				<when test="shUseNY == 0">AND useNY LIKE 0</when>
-				<when test="shUseNY == 1">AND useNY LIKE 1</when>
-			</choose>
-			<choose>
-				<when test="shDelNY == null"></when>
-				<when test="shDelNY == 0">AND delNY LIKE 0</when>
-				<when test="shDelNY == 1">AND delNY LIKE 1</when>
-			</choose>
-			<choose>
-				<when test="shDate == null"></when>
-				<when test="shDate == 0">AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>  
-				<when test="shDate == 1">AND modiDate BETWEEN #{shStartDate AND #{shEndDate}</when>
-			</choose>
-			<choose>
-				<when test="shOption == null"></when>
-				<when test="shOption == 0">AND cc_name LIKE CONCAT('%',#{shValue),'%')</when>
-			</choose>
-	</select>
+	
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
 		SELECT  
 			seq
@@ -77,7 +79,7 @@
 		FROM
 			cc
 		WHERE 1=1
-		    AND useNY = 1
+		    AND useNY = 2
     </select>
 	
 

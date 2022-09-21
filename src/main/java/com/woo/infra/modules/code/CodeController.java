@@ -27,7 +27,7 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeSearch")
-	public String codeSearch(Model model, CodeVo uza) throws Exception {
+	public String codeSearch(Model model, @ModelAttribute("vo") CodeVo uza) throws Exception {
 		
 		List<Code> search = service.search(uza);
 		model.addAttribute("search", search);
