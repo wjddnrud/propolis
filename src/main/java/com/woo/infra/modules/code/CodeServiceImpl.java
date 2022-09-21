@@ -27,14 +27,34 @@ public class CodeServiceImpl implements CodeService {
 		return dao.search(bori);
 		
 	}
+	
+	
+	
+	@Override
+	public Code selectOne(CodeVo vo) throws Exception {
+
+		Code selectOne = dao.selectOne(vo);
+		
+		System.out.println("Code service selectOne : " + selectOne);
+		
+		return selectOne;
+	}
 
 	@Override
 	public int insert(Code dto) throws Exception {
 		
-		int result = dao.insert(dto);
-		return result;
+		if(dto.getDelNY() == null)
+			dto.setDelNY(1);
+		
+		int insert = dao.insert(dto);
+		
+		System.out.println("Code service insert : " + insert);
+		
+		
+		return insert;
+		
 	}
-	
+
 	@PostConstruct
 	public void selectListCachedCodeArrayList() throws Exception {
 		List<Code> codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();

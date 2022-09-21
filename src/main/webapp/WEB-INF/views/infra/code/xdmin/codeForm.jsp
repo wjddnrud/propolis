@@ -59,10 +59,13 @@
 								<input type="hidden" name="shOption" value="${vo.shOption }" style="width:300px; margin-bottom: 10px; color: black;">
 								<input type="hidden" name="shValue" value="${vo.shValue }" style="width:300px; margin-bottom: 10px; color: black;">
 								
-								<input type="hidden" value="${one.seq }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.cc_name}" placeholder="코드명">
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}" placeholder="코드그룹명">
-								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 0=N or 1=Y">
+								<input name="seq" id="seq" type="hidden" style="width:300px; margin-bottom: 10px; color: black;" value="${one.seq }" placeholder="seq" >
+								<input name="ccg_name" type="text" id="ccg_name" value="${one.cc_name}" placeholder="코드명" style="width:300px; margin-bottom: 10px;">
+								<input name="useNY" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
+								<input name="delNY" id="delNY" value="${one.delNY }" placeholder="삭제여부 1=N or 2=Y">
+								<input name="cc_key" id="cc_key" value="${one.cc_key }" placeholder="코드 key">
+								<input name="ccg_seq" id="ccg_seq" value="${one.ccg_seq }" placeholder="그룹코드_seq">
+								
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
 								<a href="javascript:back()" class="button">취소</a>
@@ -99,17 +102,69 @@
 		<script src="/resources/images/assets/js/util.js"></script>
 		<script src="/resources/images/assets/js/main.js"></script>
 		<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+		
+		var goUrlList = "/code/codeList";    /* # -> */
+		var goUrlInst = "/code/codeInst";    /* # -> */
+		var goUrlUpdt = "/code/codeUpdt";    /* # -> */
+		var goUrlUele = "/code/codeUele";    /* # -> */
+		var goUrlDele = "/code/codeDele";    /* # -> */
+		
+		var form = ${"form[name=forma]}"};
+		
+		$("#btnSave").on("click", function() {
+			
+			if(document.getElementById('cc_name').value == "") {
+				alert("코드 이름을 입력해주세요.");
+				
+				document.getElementById("cc_name").value="";
+				document.getElementById("cc_name").focus();
+				
+				return false;
+			}
+			
+			if($('useNY').value == "") {
+				alert("사용여부를 확인해주세요.");
+				
+				$("useNY").value="";
+				$("useNY").focus();
+				
+				return false;
+			}
+			
+			if(document.getElementById('cc_key').value == "") {
+				alert("코드key를 입력해주세요.");
+				
+				document.getElementById("cc_key").value="";
+				document.getElementById("cc_key").focus();
+				
+				return false;
+			}
+			
+			if(seq.val() == "0" || seq.val() == ""){
+				//insert
+				/* if(validationInst() == false) return false; */
+				form.attr("action", goUrlInst).submit();
+				/* form action을 goUrlInst로 바꾸고 "/codeGroup/codeGroupInst"로 submit 하겠다. */
+				/* 바꿀수 있는 조건이 seq값이 들어왔느냐 안들어왔느냐로 구별한다. */ /* --> 판별하는 프로세스인 var seq = hidden */
+			} else {
+				//update
+				/* keyName.val(atob(keyName.val())); */
+				/* if(validationUpdt() == false) return false; */
+				form.attr("action", goUrlUpdt).submit();
+			}
+		});
+		
+		
+	
+	
+		</script>
+		
+		
+		
+		
 	</body>
 </html>
 
 
-
-
-
-<br>
-
-<script type="text/javascript">
-	
-	
-	
-</script>

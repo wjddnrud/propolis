@@ -1,5 +1,6 @@
 package com.woo.infra.modules.code;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class CodeController {
 	public String codeSearch(Model model, @ModelAttribute("vo") CodeVo uza) throws Exception {
 		
 		List<Code> search = service.search(uza);
-		model.addAttribute("search", search);
+		model.addAttribute("list", search);
 		
 		return "infra/code/xdmin/codeList";
 		
@@ -38,14 +39,21 @@ public class CodeController {
 	
 	
 	@RequestMapping(value = "codeForm")
-	public String codeForm() throws Exception {
+	public String codeForm(Model model, CodeVo vo) throws Exception {
+		
+		Code selectOne = service.selectOne(vo);
+		model.addAttribute("one", selectOne);
+		
 		return "infra/code/xdmin/codeForm";
+		
 	}
 	
 	@RequestMapping(value = "codeInst")
-	public String codeInsert(Code dto) throws Exception {
+	public String codeInsert(Model model, Code dto) throws Exception {
 		
-		int result = service.insert(dto);
+		int insert = service.insert(dto);
+		model.addAttribute("insert", insert);
+		
 		
 		return "redirect:/code/codeList";
 	}

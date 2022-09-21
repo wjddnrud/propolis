@@ -138,13 +138,13 @@
 											</thead>
 											<tbody style="color: black;">
 												<c:choose>
-													<c:when test="${fn:length(search) eq 0}">
+													<c:when test="${fn:length(list) eq 0}">
 														<tr>
 															<td class="text-center" colspan="9">There is no data!</td>
 														</tr>
 													</c:when>
 												</c:choose>
-												<c:forEach items="${search}" var="list" varStatus="statusList">
+												<c:forEach items="${list}" var="list" varStatus="statusList">
 												<tr style="color: black;">
 													<td><input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox"></label></td>
 													<td><c:out value="${list.seq }"/></td>

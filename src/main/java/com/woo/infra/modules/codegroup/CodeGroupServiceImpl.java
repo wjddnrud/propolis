@@ -63,7 +63,7 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		
 //		delNY가 null값일때 N으로 default값 정해주기
 		if(dto.getDelNY() == null)
-			dto.setDelNY(0);
+			dto.setDelNY(1);
 		
 		int result = dao.insert(dto);
 		

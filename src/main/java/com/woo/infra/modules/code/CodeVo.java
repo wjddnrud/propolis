@@ -6,7 +6,7 @@ public class CodeVo {
 	private Integer shOption;
 	private String shValue;
 	private String shUseNY;
-	private String shDelNY;
+	private Integer shDelNY;
 	private String shDate;
 	private String shStartDate;
 	private String shEndDate;
@@ -37,10 +37,10 @@ public class CodeVo {
 	public void setShUseNY(String shUseNY) {
 		this.shUseNY = shUseNY;
 	}
-	public String getShDelNY() {
+	public Integer getShDelNY() {
 		return shDelNY;
 	}
-	public void setShDelNY(String shDelNY) {
+	public void setShDelNY(Integer shDelNY) {
 		this.shDelNY = shDelNY;
 	}
 	public String getShDate() {

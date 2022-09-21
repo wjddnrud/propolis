@@ -54,6 +54,20 @@
 			</choose>
 	</select>
 	
+	<select id="selectOne" resultMap="resultMapObj" >
+	SELECT
+		cc_name
+		,useNY
+		,delNY
+		,cc_key
+		,ccg_seq
+		,createDate
+		,modiDate
+	FROM cc
+	WHERE 1=1
+		AND seq = #{seq}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO cc (
 			cc_name
@@ -67,6 +81,10 @@
 			,#{cc_key}
 			,#{ccg_seq}
 		)
+		;
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()   <!-- 새로 생성된 데이터가 몇번째인지 확인할수 있는 문구 출력 -->
+		</selectKey>
 	</insert>
 	
 	

@@ -159,7 +159,7 @@
 	$("#btnSave").on("click", function() {
 		
 		if(document.getElementById('ccg_name').value == "") {
-			alert("그룹코드 이름을 작성해주세요.");
+			alert("코드그룹 이름을 작성해주세요.");
 			
 			document.getElementById("ccg_name").value="";
 			document.getElementById("ccg_name").focus();
@@ -190,10 +190,6 @@
 		}
 	});
 	
-	back = function() {
-		form.attr("action","/codegroup/codeGroupList").submit();
-		
-	}
 	
 	
 	/* validationInst=function() {

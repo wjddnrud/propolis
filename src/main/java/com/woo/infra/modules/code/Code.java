@@ -8,7 +8,7 @@ public class Code {
 	private String seq;
 	private String cc_name;
 	private String useNY;
-	private String delNY;
+	private Integer delNY;
 	private String cc_key;
 	private String ccg_seq;
 	private String createDate;
@@ -60,12 +60,13 @@ public class Code {
 	public void setModiDate(String modiDate) {
 		this.modiDate = modiDate;
 	}
-	public String getDelNY() {
+	public Integer getDelNY() {
 		return delNY;
 	}
-	public void setDelNY(String delNY) {
+	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
+	
 	
 	
 	

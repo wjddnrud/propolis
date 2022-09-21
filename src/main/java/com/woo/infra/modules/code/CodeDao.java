@@ -17,17 +17,24 @@ public class CodeDao {
 	
 	private static String namespace = "com.woo.infra.modules.code.CodeMapper";
 	
-	public List<Code> selectList(){ 
-		return sqlSession.selectList(namespace + ".selectList",""); 
-	}
+	public List<Code> selectList(){ return sqlSession.selectList(namespace + ".selectList",""); }
 	
 	public List<Code> search(CodeVo vo) { return sqlSession.selectList(namespace + ".search", vo); }
 	
+	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ",selectOne", vo); }
+	
 	public int insert(Code dto) {
-		int result = sqlSession.insert(namespace + ".insert", dto);
-		return result;
+		
+//		이 부분 왜 public 다음에 int로 리턴 받아야 하는지 질문하기
+		
+		int CodeInsert = sqlSession.insert(namespace + ".insert", dto);
+		
+		return CodeInsert;
+		
 	}
+	
 	
 //	for cache
 	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList"); }
+	
 }
