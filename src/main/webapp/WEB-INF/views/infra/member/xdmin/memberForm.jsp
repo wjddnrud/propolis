@@ -68,8 +68,8 @@
 									<input name="address_detail" id="address_detail" value="${one.address_detail}" type="text" placeholder="상세주소" style=" margin-bottom: 10px;">
 									<input name="reference"id="reference" type="text" placeholder="주소 참고항목" style=" margin-bottom: 10px;">
 									
-									<input id="test1" type="text" style=" margin-bottom: 10px;">
-									<input id="test2" type="text" style=" margin-bottom: 10px;">
+									<input id="test1" type="text" placeholder="위도" style=" margin-bottom: 10px;">
+									<input id="test2" type="text" placeholder="경도" style=" margin-bottom: 10px;">
 									<hr>
 									
 									<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
@@ -269,11 +269,11 @@
 		} */
 		
 		
-		var goUrlList = "/codegroup/codeGroupList";    /* # -> */
-		var goUrlInst = "/codegroup/codeGroupInst";    /* # -> */
-		var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
-		var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
-		var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */
+		var goUrlList = "/member/memberList";    /* # -> */
+		var goUrlInst = "/member/memberInst";    /* # -> */
+		var goUrlUpdt = "/member/memberUpdt";    /* # -> */
+		var goUrlUele = "/member/memberUele";    /* # -> */
+		var goUrlDele = "/member/memberDele";    /* # -> */
 		
 		var form = $("form[name=forma]");
 		

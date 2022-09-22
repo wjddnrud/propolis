@@ -86,7 +86,7 @@ public class CodeGroupController {
 		CodeGroup result = service.selectOne(vo);
 		model.addAttribute("one", result);
 		
-		List<CodeGroup> list = service.search(vo);
+		List<CodeGroup> list = service.search(vo); 
 		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/codeGroupForm";
@@ -103,7 +103,7 @@ public class CodeGroupController {
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/codegroup/codeGroupForm";
+		return "redirect:/codegroup/codeGroupList";
 	}
 	
 	@RequestMapping(value = "codeGroupView")

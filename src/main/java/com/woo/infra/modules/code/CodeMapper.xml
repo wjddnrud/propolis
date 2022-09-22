@@ -72,12 +72,14 @@
 		INSERT INTO cc (
 			cc_name
 			,useNY
+			,delNY
 			,cc_key
 			,ccg_seq
 		)
 		VALUES (
 			#{cc_name}
 			,#{useNY}
+			,#{delNY}
 			,#{cc_key}
 			,#{ccg_seq}
 		)

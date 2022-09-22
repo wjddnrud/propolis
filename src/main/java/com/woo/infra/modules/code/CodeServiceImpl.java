@@ -48,8 +48,7 @@ public class CodeServiceImpl implements CodeService {
 		
 		int insert = dao.insert(dto);
 		
-		System.out.println("Code service insert : " + insert);
-		
+		System.out.println("dao insert : " + insert);
 		
 		return insert;
 		

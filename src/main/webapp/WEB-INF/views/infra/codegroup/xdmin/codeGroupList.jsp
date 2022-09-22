@@ -265,6 +265,7 @@
 				  	});
 				} );
 					
+				
 				function regist() {
 						location.href = "/codegroup/codeGroupForm";
 					}
@@ -275,6 +276,7 @@
 				
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				// var form = $("#formList");  // id로 된거 사용
+				
 				var editSeq = $("input:hidden[name=seq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
 				

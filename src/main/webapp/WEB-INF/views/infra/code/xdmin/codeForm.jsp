@@ -51,24 +51,26 @@
 					<div class="inner">
 						<form name="forma">
 							<center>
-								<input type="hidden" name="shUseNY" value="${vo.shUseNY }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input type="hidden" name="shDelNY" value="${vo.shDelNY }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input type="hidden" name="shDate" value="${vo.shDate }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input type="hidden" name="shStartDate" value="${vo.shStartDate }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input type="hidden" name="shEndDate" value="${vo.shEndDate }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input type="hidden" name="shOption" value="${vo.shOption }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input type="hidden" name="shValue" value="${vo.shValue }" style="width:300px; margin-bottom: 10px; color: black;">
-								
-								<input name="seq" id="seq" type="hidden" style="width:300px; margin-bottom: 10px; color: black;" value="${one.seq }" placeholder="seq" >
-								<input name="ccg_name" type="text" id="ccg_name" value="${one.cc_name}" placeholder="코드명" style="width:300px; margin-bottom: 10px;">
-								<input name="useNY" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
-								<input name="delNY" id="delNY" value="${one.delNY }" placeholder="삭제여부 1=N or 2=Y">
-								<input name="cc_key" id="cc_key" value="${one.cc_key }" placeholder="코드 key">
-								<input name="ccg_seq" id="ccg_seq" value="${one.ccg_seq }" placeholder="그룹코드_seq">
-								
-								<!-- <button id="btnSave" type="button">등록</button> -->
-								<a  id="btnSave" class="button primary">등록</a>
-								<a href="/code/codeList" class="button">취소</a>
+								<div style="width:300px; color: black;">
+									<input type="hidden" name="shUseNY" value="${vo.shUseNY }" style="margin-bottom: 10px;">
+									<input type="hidden" name="shDelNY" value="${vo.shDelNY }" style="margin-bottom: 10px;">
+									<input type="hidden" name="shDate" value="${vo.shDate }" style="margin-bottom: 10px;">
+									<input type="hidden" name="shStartDate" value="${vo.shStartDate }" style="margin-bottom: 10px;">
+									<input type="hidden" name="shEndDate" value="${vo.shEndDate }" style="margin-bottom: 10px;">
+									<input type="hidden" name="shOption" value="${vo.shOption }" style="margin-bottom: 10px;">
+									<input type="hidden" name="shValue" value="${vo.shValue }" style="margin-bottom: 10px;">
+									
+									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" value="${one.seq }" placeholder="seq" >
+									<input name="cc_name" type="text" id="cc_name" value="${one.cc_name}" placeholder="코드명" style="width:300px; margin-bottom: 10px;">
+									<input name="useNY" type="text" id="useNY" value="${one.useNY }" placeholder="사용여부 1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
+									<input name="delNY" type="hidden" id="delNY" value="${one.delNY }" placeholder="삭제여부 1=N or 2=Y">
+									<input name="cc_key" id="cc_key" type="text"value="${one.cc_key }" placeholder="코드 key" style="margin-bottom: 10px;">
+									<input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" placeholder="그룹코드_seq" style="margin-bottom: 10px;">
+									
+									<!-- <button id="btnSave" type="button">등록</button> -->
+									<a  id="btnSave" class="button primary">등록</a>
+									<a href="/code/codeList" class="button">취소</a>
+								</div>
 							</center>
 						</form>
 						<center>
@@ -111,7 +113,8 @@
 		var goUrlUele = "/code/codeUele";    /* # -> */
 		var goUrlDele = "/code/codeDele";    /* # -> */
 		
-		var form = ${"form[name=forma]}"};
+		var form = $("form[name=forma]");
+		var seq = $("input:hidden[name=seq]");     /* # -> */
 		
 		$("#btnSave").on("click", function() {
 			
@@ -124,11 +127,11 @@
 				return false;
 			}
 			
-			if($('useNY').value == "") {
+			if($('#useNY').val() == "") {
 				alert("사용여부를 확인해주세요.");
 				
-				$("useNY").value="";
-				$("useNY").focus();
+				$("#useNY").val()="";
+				$("#useNY").focus();
 				
 				return false;
 			}
@@ -138,6 +141,15 @@
 				
 				document.getElementById("cc_key").value="";
 				document.getElementById("cc_key").focus();
+				
+				return false;
+			}
+			
+			if($('#ccg_seq').val() == "") {
+				alert("코드그룹 seq를 입력해주세요.");
+				
+				$("#ccg_seq").val()="";
+				$("#ccg_seq").focus();
 				
 				return false;
 			}
@@ -160,8 +172,6 @@
 	
 	
 		</script>
-		
-		
 		
 		
 	</body>

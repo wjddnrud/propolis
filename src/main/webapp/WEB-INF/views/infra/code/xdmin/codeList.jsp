@@ -67,7 +67,7 @@
 									</ul>
 								</div>
 								<br>
-								<form action="http://localhost:8080/code/codeSearch">
+								<form action="http://localhost:8080/code/codeSearch" name="formList" id="formList" method="post">
 									<div class="row gtr-uniform">
 										<div class="col-3">
 											<select name="shUseNY" class="form-select form-control me-1 text-center">
@@ -220,6 +220,7 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script>
+				/* datepicker */
 				$( function() {
 				  	$( "#datepicker1, #datepicker2" ).datepicker({
 				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
@@ -239,6 +240,7 @@
 				  	});
 				} );
 			
+				/* 체크박스 전체선택 */
 				function selectAll(selectAll)  {
 					const checkboxes 
 						= document.getElementsByName("checkbox");
@@ -248,9 +250,20 @@
 					})
 				}
 				
+				/* 신규등록버튼 */
 				function regist() {
 					location.href = "/code/codeForm";
 				}
+				
+				/* page 이동 */
+				var goUrlList = "/code/codeList";    /* # -> */
+				var goUrlInst = "/code/codeInst";    /* # -> */
+				var goUrlUpdt = "/code/codeUpdt";    /* # -> */
+				var goUrlUele = "/code/codeUele";    /* # -> */
+				var goUrlDele = "/code/codeDele";    /* # -> */
+				
+				var form = $("form[name=formList]"); // name으로 된거 사용
+				
 				
 				
 			</script>
