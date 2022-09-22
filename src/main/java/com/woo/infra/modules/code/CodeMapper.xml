@@ -50,7 +50,7 @@
 			</choose>
 			<choose>
 				<when test="shOption == null"></when>
-				<when test="shOption == 1">AND cc_name LIKE CONCAT('%',#{shValue),'%')</when>
+				<when test="shOption == 1">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
 			</choose>
 	</select>
 	

@@ -1819,7 +1819,7 @@ input, select, textarea {
 	}
 
 	label {
-		color: #fff;
+		/* color: #fff; */
 		display: block;
 		font-size: 0.9em;
 		font-weight: 600;
@@ -1907,7 +1907,8 @@ input, select, textarea {
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #fff;
+			/* color: #fff; */
+			color: black;
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;

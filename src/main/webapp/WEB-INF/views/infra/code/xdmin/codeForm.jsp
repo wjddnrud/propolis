@@ -68,7 +68,7 @@
 								
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
-								<a href="javascript:back()" class="button">취소</a>
+								<a href="/code/codeList" class="button">취소</a>
 							</center>
 						</form>
 						<center>

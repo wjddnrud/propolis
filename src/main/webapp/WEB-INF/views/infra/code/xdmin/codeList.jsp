@@ -114,7 +114,7 @@
 										</div>
 										<div class="col-3">
 											<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-											<button class="btn btn-warning" type="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+											<button class="btn btn-warning" type="reset" onclick="location.href='/code/codeList'"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 										</div>	
 									</div>
 									<hr>
@@ -246,6 +246,10 @@
 					checkboxes.forEach((checkbox) => {
 					checkbox.checked = selectAll.checked;
 					})
+				}
+				
+				function regist() {
+					location.href = "/code/codeForm";
 				}
 				
 				

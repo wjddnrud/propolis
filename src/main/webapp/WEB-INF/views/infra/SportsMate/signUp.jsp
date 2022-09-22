@@ -60,24 +60,22 @@
 						<form method="post" action="#">
 							<div class="row gtr-uniform">
 								<div class="col-6 col-4-medium">
-									<label for="demo-id">ID</label>
-									<input type="text" name="demo-id" id="demo-id" value="" placeholder="영문,숫자 5~10자" />
+									<label for="id">ID</label>
+									<input type="text" name="id" id="id" value="" placeholder="영문,숫자 5~10자" />
 									<input type="button" class="primary" value="중복확인" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-password">PASSWORD</label>
-									<input type="password" name="demo-password" id="demo-password" value=""
-										placeholder="숫자,영문,특수문자 조합 최소 8자" />
-									<input type="password" name="demo-passwordRe" id="demo-passwordRe" value=""
-										placeholder="비밀번호 재입력" style="margin-top: 10px;" />
+									<label for="password">PASSWORD</label>
+									<input type="password" name="password" id="password" value="" placeholder="숫자,영문,특수문자 조합 최소 8자" />
+									<input type="password" name="passwordRe" id="passwordRe" value="" placeholder="비밀번호 재입력" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-name">이름</label>
-									<input type="text" name="demo-name" id="demo-name" value="" placeholder="" />
+									<label for="name">이름</label>
+									<input type="text" name="name" id="name" value="" placeholder="" />
 								</div>
 								<div class="col-6">
-									<label for="demo-name">성별</label>
-									<select name="demo-gender" id="demo-gender">
+									<label for="name">성별</label>
+									<select name="gender" id="gender">
 										<option value="">- 선택 -</option>
 										<option value="1">남성</option>
 										<option value="2">여성</option>
@@ -85,47 +83,42 @@
 									</select>
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-job">직업</label>
-									<input type="text" name="demo-job" id="demo-job" value="" placeholder="" />
+									<label for="job">직업</label>
+									<input type="text" name="job" id="job" value="" placeholder="" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-birth">생년월일</label>
-									<input type="text" name="demo-birth" id="demo-birth" value=""
-										placeholder="예)19951027(년도월일)" />
+									<label for="birth">생년월일</label>
+									<input type="text" name="birth" id="birth" value="" placeholder="ex)19951027(년도월일)" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-phone">휴대전화</label>
-									<input type="text" name="demo-phone" id="demo-phone" value=""
-										placeholder="'-'없이 번호만 입력해주세요." />
+									<label for="phone">휴대전화</label>
+									<input type="text" name="phone" id="phone" value="" placeholder="'-'없이 번호만 입력해주세요." />
 									<input type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-name">휴대전화 인증</label>
-									<input type="text" name="demo-name" id="demo-name" value=""
-										placeholder="인증번호를 입력해주세요." />
+									<label for="name">휴대전화 인증</label>
+									<input type="text" name="name" id="name" value="" placeholder="인증번호를 입력해주세요." />
 									<input type="button" class="primary" value="확인" style="margin-top: 10px;" />
 								</div>
 								
 								<div class="col-8 col-12-xsmall">
-									<label for="demo-address">주소</label>
-									<input type="text" name="demo-address" id="demo-address" value="" placeholder="" />
-									<input type="text" name="demo-address" id="demo-address" value="" placeholder=""
-										style="margin-top: 10px;" />
+									<label for="address">주소</label>
+									<input type="text" name="address" id="address" value="" placeholder="주소" />
+									<input type="text" name="address" id="address" value="" placeholder="상세주소" style="margin-top: 10px;" />
 								</div>
 								<div class="col-4 col-12-xsmall">
-									<label for="demo-address">Zip Code</label>
-									<input type="text" name="demo-address" id="demo-address" value="" placeholder="" />
+									<label for="address">Zip Code</label>
+									<input type="text" name="address" id="address" value="" placeholder="우편번호" />
 									<input type="button" class="primary" value="주소 검색" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="demo-email">Email</label>
-									<input type="text" name="demo-email" id="demo-email" value=""
-										placeholder="Email@example.com" />
+									<label for="email">Email</label>
+									<input type="text" name="email" id="email" value="" placeholder="Email@example.com" />
 									<span>계정 분실 시 본인인증 정보로 활용됩니다.</span>
 								</div>
 								<div class="col-6">
-									<label for="demo-name">가입경로</label>
-									<select name="demo-route" id="demo-route">
+									<label for="name">가입경로</label>
+									<select name="route" id="route">
 										<option value="">- 선택 -</option>
 										<option value="1">지인추천</option>
 										<option value="1">인터넷 광고</option>
@@ -134,24 +127,24 @@
 									</select>
 								</div>
 								<div class="col-12 col-12-small" style="padding-top: 80px;">
-									<input type="checkbox" id="demo-allAgree" name="demo-allAgree" onclick="selectAll(this)">
-									<label for="demo-allAgree">약관 전체 동의하기</label>
+									<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
+									<label for="allAgree">약관 전체 동의하기</label>
 								</div>
 								<div class="col-12 col-12-small">
-									<input type="checkbox" id="demo-agree1" name="demo-agree">
-									<label for="demo-agree1">[필수] 개인정보 수집 및 이용 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
+									<input type="checkbox" id="agree1" name="agree">
+									<label for="agree1">[필수] 개인정보 수집 및 이용 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
 								</div>
 								<div class="col-12 col-12-small">
-									<input type="checkbox" id="demo-agree2" name="demo-agree">
-									<label for="demo-agree2">[필수] SPORTS MATE 이용 약관 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
+									<input type="checkbox" id="agree2" name="agree">
+									<label for="agree2">[필수] SPORTS MATE 이용 약관 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
 								</div>
 								<div class="col-12 col-12-small">
-									<input type="checkbox" id="demo-agree3" name="demo-agree">
-									<label for="demo-agree3">[필수] 만 14세 미만 가입 제한</label>
+									<input type="checkbox" id="agree3" name="agree">
+									<label for="agree3">[필수] 만 14세 미만 가입 제한</label>
 								</div>
 								<div class="col-12 col-12-small">
-									<input type="checkbox" id="demo-agree4" name="demo-agree">
-									<label for="demo-agree4">[선택] 마케팅 활용 및 광고성 정보 수신 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
+									<input type="checkbox" id="agree4" name="agree">
+									<label for="agree4">[선택] 마케팅 활용 및 광고성 정보 수신 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
 								</div>
 								<div class="col-12">
 									<ul class="actions fit" style="padding-top: 60px;">
@@ -196,7 +189,7 @@
 	<script>
 		function selectAll(selectAll)  {
 			const checkboxes 
-				= document.getElementsByName("demo-agree");
+				= document.getElementsByName("agree");
 			
 			checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;

@@ -64,7 +64,7 @@
 								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 0=N or 1=Y">
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
-								<a href="javascript:back()" class="button">취소</a>
+								<a href="/codegroup/codeGroupList" class="button">취소</a>
 							</center>
 						</form>
 						<center>

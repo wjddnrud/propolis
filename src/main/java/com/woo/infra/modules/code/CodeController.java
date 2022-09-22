@@ -41,8 +41,8 @@ public class CodeController {
 	@RequestMapping(value = "codeForm")
 	public String codeForm(Model model, CodeVo vo) throws Exception {
 		
-		Code selectOne = service.selectOne(vo);
-		model.addAttribute("one", selectOne);
+//		Code selectOne = service.selectOne(vo);
+//		model.addAttribute("one", selectOne);
 		
 		return "infra/code/xdmin/codeForm";
 		

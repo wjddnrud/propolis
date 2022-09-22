@@ -149,8 +149,8 @@
 										<thead>
 											<tr>
 												<th>
-													<input type="checkbox" id="demo-human" name="demo-human">
-													<label for="demo-human">선택</label>
+													<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
+													<label for="allAgree">선택</label>
 												</th>
 												<th>#</th>
 												<th>ID</th>
@@ -179,7 +179,7 @@
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
+												<td><input type="checkbox" id="agree${list.seq }" name="agree"><label></label></td>
 												<td><a href="javascript:edit(${list.seq })"><c:out value="${list.seq }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
 												<td><c:out value="${list.password }"/></td>
@@ -317,6 +317,15 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script>
+				function selectAll() {
+					const checkboxes 
+					= document.getElementsByName("agree");
+				
+					checkboxes.forEach((checkbox) => {
+					checkbox.checked = selectAll.checked;
+					})
+				}
+				
 				$( function() {
 				  	$( "#datepicker1, #datepicker2" ).datepicker({
 				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
@@ -337,7 +346,6 @@
 				} );
 				
 				function regist() {
-					alert("등록")
 					location.href = "/member/memberForm";
 				}
 				

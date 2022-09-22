@@ -108,6 +108,15 @@
 												</tr>
 											</tbody>
 										</table>
+										
+										<p style="margin-top:-12px">
+										    <em class="link">
+										        <a href="/web/documentation/#MapTypeId" target="_blank">지도 타입을 보시려면 여기를 클릭하세요!</a>
+										    </em>
+										</p>
+										<div id="map" style="width:100%;height:350px;"></div>
+										<p>개발자도구를 통해 직접 확인해 보세요.</p>
+										
 
 										
 
@@ -165,6 +174,35 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries"></script>
+			<script>
+			
+			
+				
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };
+				
+				var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+				
+				// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+				var mapTypeControl = new kakao.maps.MapTypeControl();
+				
+				// 지도 타입 컨트롤을 지도에 표시합니다
+				map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+				
+				var geocoder = new kakao.maps.services.Geocoder();
 
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				    }
+				};
+
+				geocoder.addressSearch('해남군 송지면', callback);
+				
+			</script>
 	</body>
 </html>

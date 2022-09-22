@@ -48,34 +48,35 @@
 					<div class="inner">
 						<form name="forma">
 							<center>
-								<input name="seq" style="width:300px; margin-bottom: 10px; color: black;" type="" value="<c:out value="${one.seq}"/>">
-								<input name="name" style="width:300px; margin-bottom: 10px;" type="text" id="name" value="<c:out value="${one.name}"/>" placeholder="회원 이름">
-								<input name="id" placeholder="아이디" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.id}"/>">
-								<input name="password" placeholder="패스워드" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.password}"/>">
-								<input name="dob" placeholder="생년월일" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.dob}"/>">
-								<input name="gender" placeholder="성별" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.gender}"/>">
-								<input name="job" placeholder="직업" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.job}"/>">
-								<input name="zipcode" placeholder="우편번호" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.zipcode}"/>"> 
-								<input name="address" placeholder="주소" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.address}"/>">
-								<input name="address_detail" placeholder="상세주소" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.address_detail}"/>">
-								<input name="telecom" placeholder="통신사" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.telecom}"/>">
-								<input name="phoneNumber" placeholder="전화번호" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.phoneNumber}"/>">
-								<input name="way_to_regist" placeholder="가입경로" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.way_to_regist}"/>">
-								<input name="delNY" placeholder="삭제여부" style="width:300px; margin-bottom: 10px; color: black;" type="text" value="<c:out value="${one.delNY}"/>">
-								<hr>
-								
-								<input type="text" id="sample2_postcode" placeholder="우편번호">
-								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-								<input type="text" id="sample2_address" placeholder="주소"><br>
-								<input type="text" id="sample2_detailAddress" placeholder="상세주소">
-								<input type="text" id="sample2_extraAddress" placeholder="참고항목">
-								
-								<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-								<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+								<div style="width:300px; color: black;">
+									<input name="seq"  type="hidden" value="${one.seq}" style=" margin-bottom: 10px;">
+									<input name="name" type="text" id="name" value="${one.name}" placeholder="회원 이름" style=" margin-bottom: 10px;">
+									<input name="id" placeholder="아이디" type="text" value="${one.id}" style=" margin-bottom: 10px;">
+									<input name="password" placeholder="패스워드" type="text" value="${one.password}" style=" margin-bottom: 10px;">
+									<input name="dob" placeholder="생년월일" type="text" value="${one.dob}" style=" margin-bottom: 10px;">
+									<input name="gender" placeholder="성별" type="text" value="${one.gender}" style=" margin-bottom: 10px;">
+									<input name="job" placeholder="직업" type="text" value="${one.job}" style=" margin-bottom: 10px;">
+									<input name="telecom" placeholder="통신사" type="text" value="${one.telecom}" style=" margin-bottom: 10px;">
+									<input name="phoneNumber" placeholder="전화번호" type="text" value="${one.phoneNumber}" style=" margin-bottom: 10px;">
+									<input name="way_to_regist" placeholder="가입경로" type="text" value="${one.way_to_regist}" style=" margin-bottom: 10px;">
+									<input name="delNY" placeholder="삭제여부" type="text" value="${one.delNY}" style=" margin-bottom: 10px;">
+									
+									<hr>
+									<input type="button" onclick="searchAddress()" value="우편번호 찾기" style=" margin-bottom: 10px;">
+									<input name="zipcode" id="zipcode"  value="${one.zipcode}" type="text" placeholder="우편번호" style=" margin-bottom: 10px;">
+									<input name="address" id="address" value="${one.address}" type="text" placeholder="주소" style=" margin-bottom: 10px;">
+									<input name="address_detail" id="address_detail" value="${one.address_detail}" type="text" placeholder="상세주소" style=" margin-bottom: 10px;">
+									<input name="reference"id="reference" type="text" placeholder="주소 참고항목" style=" margin-bottom: 10px;">
+									
+									<input id="test1" type="text" style=" margin-bottom: 10px;">
+									<input id="test2" type="text" style=" margin-bottom: 10px;">
+									<hr>
+									
+									<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+									<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+									<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+									</div>
 								</div>
-
-	
 
 								
 								<!-- <button id="btnSave" type="button">등록</button> -->
@@ -115,6 +116,7 @@
 		<script src="/resources/images/assets/js/main.js"></script>
 		<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries=services"></script>
 		<script>
 		    // 우편번호 찾기 화면을 넣을 element
 		    var element_layer = document.getElementById('layer');
@@ -123,8 +125,9 @@
 		        // iframe을 넣은 element를 안보이게 한다.
 		        element_layer.style.display = 'none';
 		    }
-		
-		    function sample2_execDaumPostcode() {
+			
+		    
+		    function searchAddress() {
 		        new daum.Postcode({
 		            oncomplete: function(data) {
 		                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -157,17 +160,37 @@
 		                        extraAddr = ' (' + extraAddr + ')';
 		                    }
 		                    // 조합된 참고항목을 해당 필드에 넣는다.
-		                    document.getElementById("sample2_extraAddress").value = extraAddr;
+		                    document.getElementById("reference").value = extraAddr;
 		                
-		                } else {
-		                    document.getElementById("sample2_extraAddress").value = '';
-		                }
-		
-		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-		                document.getElementById('sample2_postcode').value = data.zonecode;
-		                document.getElementById("sample2_address").value = addr;
-		                // 커서를 상세주소 필드로 이동한다.
-		                document.getElementById("sample2_detailAddress").focus();
+			                } else {
+			                    document.getElementById("reference").value = '';
+			                }
+			
+			                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+			                document.getElementById('zipcode').value = data.zonecode;
+			                document.getElementById("address").value = addr;
+			                
+			                
+			                
+			                // 커서를 상세주소 필드로 이동한다.
+			                document.getElementById("address_detail").focus();
+			                
+			                var geocoder = new kakao.maps.services.Geocoder();
+			    			
+			                
+			                geocoder.addressSearch(data.roadAddress, function(result, status) {
+				      		    if (status === kakao.maps.services.Status.OK) {
+				      		    	console.log(result[0]); 
+				      		     	/* $("test1").attr("value",result[0].x);
+				      		  	 	$("test2").attr("value",result[0].y);  */
+				      		  	 	
+					      		  	document.getElementById('test1').value = result[0].x;
+					                document.getElementById('test2').value = result[0].y; 
+				      		    }
+				    		   
+				      		});
+			                
+			    			
 		
 		                // iframe을 넣은 element를 안보이게 한다.
 		                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -201,6 +224,10 @@
 		        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
 		        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 		    }
+		    
+		    
+	
+		    
 		</script>
 		
 		
