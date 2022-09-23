@@ -1,6 +1,7 @@
 package com.woo.infra.modules.member;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,6 +66,14 @@ public class MemberServiceImpl implements MemberService{
 		int update = dao.update(dto);
 		
 		return update;
+	}
+
+	@Override
+	public int checkId(Member dto) throws Exception {
+		
+		int checkId = dao.checkId(dto);
+		
+		return checkId;
 	}
 	
 	

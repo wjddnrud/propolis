@@ -1,6 +1,7 @@
 package com.woo.infra.modules.member;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -38,5 +39,10 @@ public class MemberDao {
 		return update;
 	}
 	
+	public int checkId(Member dto) throws Exception {
+		
+		return sqlSession.selectOne(namespace + ".checkId", dto);
+		
+	}
 	
 }

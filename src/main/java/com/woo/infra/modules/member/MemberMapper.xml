@@ -97,6 +97,11 @@
 		WHERE 1=1
 			AND seq = #{shSeq}
 	</select>
+	
+	<select id="insert">
+	
+	</select>
+	
 	<update id="update">
 		UPDATE member
 		SET
@@ -117,8 +122,17 @@
 			,delNY = #{delNY}
 		WHERE 1=1
 			seq = #{shSeq}
-			
 	</update>
+	
+	<select id ="checkId" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM member
+		WHERE 1=1
+			AND id = #{id}
+	</select>
+	
+	
 	
 
 </mapper>	

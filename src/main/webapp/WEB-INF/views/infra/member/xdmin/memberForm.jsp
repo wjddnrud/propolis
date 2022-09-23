@@ -51,7 +51,13 @@
 								<div style="width:300px; color: black;">
 									<input name="seq"  type="hidden" value="${one.seq}" style=" margin-bottom: 10px;">
 									<input name="name" type="text" id="name" value="${one.name}" placeholder="회원 이름" style=" margin-bottom: 10px;">
-									<input name="id" placeholder="아이디" type="text" value="${one.id}" style=" margin-bottom: 10px;">
+									
+									
+									<input name="id" id="id" placeholder="아이디" type="text" value="${one.id}" style=" margin-bottom: 10px;">
+									
+									
+									
+									
 									<input name="password" placeholder="패스워드" type="text" value="${one.password}" style=" margin-bottom: 10px;">
 									<input name="dob" placeholder="생년월일" type="text" value="${one.dob}" style=" margin-bottom: 10px;">
 									<input name="gender" placeholder="성별" type="text" value="${one.gender}" style=" margin-bottom: 10px;">
@@ -315,6 +321,32 @@
 			if(validationUpdt() == false) return false;
 		};
 	
+		
+		/* === checkId === */
+		/* keyup : 한자씩 검사 */
+		$("#id").on("focusout", function(){ 
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/checkId"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,dataType : 'json'
+				,success: function(response) {
+					if(response.rt == "success") {
+						alert("사용가능한 ID 입니다.");
+						
+					} else {
+						alert("이미 존재하는 ID 입니다.");
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
 	    
 	</script>
 	</body>
