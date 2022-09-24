@@ -124,7 +124,7 @@
 												<tr>
 													<th>
 														<input type="checkbox" id="demo-human" name="demo-human" onclick="selectAll(this)">
-														<label for="demo-human">선택</label>
+														<label for="demo-human" style="color: white;">선택</label>
 													</th>
 													<th>#</th>
 													<th>코드 이름(한글)</th>

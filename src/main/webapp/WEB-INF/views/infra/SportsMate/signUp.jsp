@@ -62,19 +62,21 @@
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
 									<input type="text" name="id" id="id" value="" placeholder="영문,숫자 5~10자" />
-									<input type="button" class="primary" value="중복확인" style="margin-top: 10px;" />
+									<span id="id_check"></span>
+									<!-- <input type="button" class="primary" value="중복확인" style="margin-top: 10px;" /> -->
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="password">PASSWORD</label>
 									<input type="password" name="password" id="password" value="" placeholder="숫자,영문,특수문자 조합 최소 8자" />
 									<input type="password" name="passwordRe" id="passwordRe" value="" placeholder="비밀번호 재입력" style="margin-top: 10px;" />
+									<span id="pwCheck"></span>
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="name">이름</label>
 									<input type="text" name="name" id="name" value="" placeholder="" />
 								</div>
 								<div class="col-6">
-									<label for="name">성별</label>
+									<label for="gender">성별</label>
 									<select name="gender" id="gender">
 										<option value="">- 선택 -</option>
 										<option value="1">남성</option>
@@ -87,8 +89,8 @@
 									<input type="text" name="job" id="job" value="" placeholder="" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label for="birth">생년월일</label>
-									<input type="text" name="birth" id="birth" value="" placeholder="ex)19951027(년도월일)" />
+									<label for="dob">생년월일</label>
+									<input type="text" name="dob" id="dob" value="" placeholder="ex)19951027(년도월일)" />
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="phone">휴대전화</label>
@@ -150,7 +152,7 @@
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
-										<li><a class="button primary" href="/signIn" onclick ="signUp();">sign-up</a></li>
+										<li><a id="signUp" class="button primary" href="/signIn" onclick="signUp()">sign-up</a></li>
 										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
 									</ul>
 								</div>
@@ -194,11 +196,114 @@
 			checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;
 			})
-		}
+		};
 		
-		function signUp() {
+		
+		$("#passwordRe").on("focusout", function(){
+			if($('#password').val() == $('#passwordRe').val()) {
+				$("#pwCheck").text("패스워드가 일치합니다. OuO");
+				$("#pwCheck").css("color", "lightgreen");	
+			} else {
+				$("#pwCheck").text("패스워드가 일치하지 않습니다. XnX");
+				$("#pwCheck").css("color", "red");
+			}
+		});
+		
+		
+		
+		/* $("#passwordRe").on("focusout", function(){
+			$("#pwCheck").text("패스워드가 일치합니다. OuO");
+			$("#pwCheck").css("color", "lightgreen");
+		} else {
+			$("#pwCheck").text("패스워드가 일치하지 않습니다. XnX");
+			$("#pwCheck").css("color", "red");
+			$('#password').val(""); 
+			$('#passwordRe').val(""); 
+			$('#password').focus(); 
+			return false;
+		}); */
+		
+		/* === checkId === */
+		/* keyup : 한자씩 검사 */
+		$("#id").on("focusout", function(){ 
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/checkId"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,dataType : 'json'
+				,success: function(response) {
+					if(response.rt == "success") {
+						$("#id_check").text("사용가능한 아이디입니다. OuO");
+						$("#id_check").css("color", "lightgreen");
+					} else {
+						$("#id_check").text("이미 사용중인 아이디입니다. XnX");
+						$("#id_check").css("color", "red");
+					}
+				}
+			});
+		});
+		
+		$('#signUp').on("click", function() {
 			alert("SportsMate 회원가입을 축하합니다!");
-		}
+			
+			var valName = $('#name').val();
+			var valId = $('#id').val();
+			var valPassword = $('#password').val();
+			var valPasswordRe = $('#passwordRe').val();
+			var valEmail = $('#email').val();
+			var idCheck = $('#id_check').attr('id_check');
+			var valGender = $('#gender').val();
+			var valJob = $('#job').val();
+			var valDob = $('#dob').val();
+			var valPhoneNumber = $('#phoneNumber').val();
+			var valAddress = $('#address_detail').val();
+			var valWayRed = $('#wayReg').val();
+			
+			
+			if(valId == null || valId == undefined || valId == ""){ 
+				alert('아이디를 입력해주세요.'); 
+				$('#id').focus();  
+				return false;
+				}
+			if(idCheck == "" || idCheck == "N"){
+				alert('아이디 중복확인를 해주세요');
+				$('#idCheck').focus(); 
+				return false;
+				}
+			if(valPassword == null || valPassword == undefined || valPassword == ""){ 
+				alert('패스워드을 입력해주세요.'); 
+				$('#password').focus(); 
+				return false;
+				} 
+			if(valPasswordRe == null || valPasswordRe == undefined || valPasswordRe == ""){ 
+				alert('패스워드 확인을 입력해주세요.'); 
+				$('#passwordRe').focus(); 
+				return false;
+				} 
+			if(valPassword != valPasswordRe){ 
+				alert('패스워드와 패스워드 확인이 같지 않습니다.');
+				$('#passwordRe').val(""); 
+				$('#passwordRe').focus(); 
+				return false;
+				}
+			if(valName == null || valName == undefined || valName == ""){ 
+				alert('성명을 입력해주세요.'); 
+				$('#name').focus(); 
+				return false;
+				} 
+			if(valEmail == null || valEmail == undefined || valEmail == ""){ 
+				alert('이메일을 입력해주세요.'); 
+				$('#email').focus(); 
+				return false;
+				}
+			/* if(!$('.gender').prop('checked')){ alert('성별을 체크해주세요.'); $('.gender')[0].focus(); return false;} */
+			/* $('#login').submit(); */
+			
+		});
 	</script>
 </body>
 

@@ -321,33 +321,6 @@
 			if(validationUpdt() == false) return false;
 		};
 	
-		
-		/* === checkId === */
-		/* keyup : 한자씩 검사 */
-		$("#id").on("focusout", function(){ 
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/member/checkId"
-				/* ,data : $("#formLogin").serialize() */
-				,data : { "id" : $("#id").val() }
-				,dataType : 'json'
-				,success: function(response) {
-					if(response.rt == "success") {
-						alert("사용가능한 ID 입니다.");
-						
-					} else {
-						alert("이미 존재하는 ID 입니다.");
-					}
-				}
-				,error : function(jqXHR, textStatus, errorThrown){
-					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-				}
-			});
-		});
-	    
 	</script>
 	</body>
 </html>

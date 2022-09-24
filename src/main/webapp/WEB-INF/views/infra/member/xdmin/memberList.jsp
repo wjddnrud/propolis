@@ -150,7 +150,7 @@
 											<tr>
 												<th>
 													<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
-													<label for="allAgree">선택</label>
+													<label for="allAgree" style="color: white;">선택</label>
 												</th>
 												<th>#</th>
 												<th>ID</th>
