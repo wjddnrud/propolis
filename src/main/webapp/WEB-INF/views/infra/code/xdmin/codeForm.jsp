@@ -43,8 +43,8 @@
 			<article id="main">
 				<header>
 					<c:choose>
-						<c:when test="${seq eq 0}"><h2>코드 등록</h2></c:when>
-						<%-- <c:when test="${vo.seq ne 0}"><h2>코드그룹 수정</h2></c:when> --%>
+						<c:when test="${seq eq null}"><h2>코드 등록</h2></c:when>
+						<c:when test="${vo.seq ne null}"><h2>코드그룹 수정</h2></c:when>
 					</c:choose>
 				</header>
 				<section class="wrapper style5">
@@ -63,7 +63,7 @@
 									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" value="${one.seq }" placeholder="seq" >
 									<input name="cc_name" type="text" id="cc_name" value="${one.cc_name}" placeholder="코드명" style="width:300px; margin-bottom: 10px;">
 									<input name="useNY" type="text" id="useNY" value="${one.useNY }" placeholder="사용여부 1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
-									<input name="delNY" type="hidden" id="delNY" value="${one.delNY }" placeholder="삭제여부 1=N or 2=Y">
+									<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 10px; color: black;" placeholder="삭제여부 [default=N]">
 									<input name="cc_key" id="cc_key" type="text"value="${one.cc_key }" placeholder="코드 key" style="margin-bottom: 10px;">
 									<input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" placeholder="그룹코드_seq" style="margin-bottom: 10px;">
 									
@@ -106,71 +106,66 @@
 		<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 		
 		<script type="text/javascript">
-		
-		var goUrlList = "/code/codeList";    /* # -> */
-		var goUrlInst = "/code/codeInst";    /* # -> */
-		var goUrlUpdt = "/code/codeUpdt";    /* # -> */
-		var goUrlUele = "/code/codeUele";    /* # -> */
-		var goUrlDele = "/code/codeDele";    /* # -> */
-		
-		var form = $("form[name=forma]");
-		var seq = $("input:hidden[name=seq]");     /* # -> */
-		
-		$("#btnSave").on("click", function() {
+			var goUrlList = "/code/codeList";    /* # -> */
+			var goUrlInst = "/code/codeInst";    /* # -> */
+			var goUrlUpdt = "/code/codeUpdt";    /* # -> */
+			var goUrlUele = "/code/codeUele";    /* # -> */
+			var goUrlDele = "/code/codeDele";    /* # -> */
 			
-			if(document.getElementById('cc_name').value == "") {
-				alert("코드 이름을 입력해주세요.");
-				
-				document.getElementById("cc_name").value="";
-				document.getElementById("cc_name").focus();
-				
-				return false;
-			}
+			var form = $("form[name=forma]");
+			var seq = $("input:hidden[name=seq]");     /* # -> */
 			
-			if($('#useNY').val() == "") {
-				alert("사용여부를 확인해주세요.");
+			$("#btnSave").on("click", function() {
 				
-				$("#useNY").val()="";
-				$("#useNY").focus();
+				if(document.getElementById('cc_name').value == "") {
+					alert("코드 이름을 입력해주세요.");
+					
+					document.getElementById("cc_name").value="";
+					document.getElementById("cc_name").focus();
+					
+					return false;
+				}
 				
-				return false;
-			}
-			
-			if(document.getElementById('cc_key').value == "") {
-				alert("코드key를 입력해주세요.");
+				if($('#useNY').val() == "") {
+					alert("사용여부를 확인해주세요.");
+					
+					$("#useNY").val()="";
+					$("#useNY").focus();
+					
+					return false;
+				}
 				
-				document.getElementById("cc_key").value="";
-				document.getElementById("cc_key").focus();
+				if(document.getElementById('cc_key').value == "") {
+					alert("코드key를 입력해주세요.");
+					
+					document.getElementById("cc_key").value="";
+					document.getElementById("cc_key").focus();
+					
+					return false;
+				}
 				
-				return false;
-			}
-			
-			if($('#ccg_seq').val() == "") {
-				alert("코드그룹 seq를 입력해주세요.");
+				if($('#ccg_seq').val() == "") {
+					alert("코드그룹 seq를 입력해주세요.");
+					
+					$("#ccg_seq").val()="";
+					$("#ccg_seq").focus();
+					
+					return false;
+				}
 				
-				$("#ccg_seq").val()="";
-				$("#ccg_seq").focus();
-				
-				return false;
-			}
-			
-			if(seq.val() == "0" || seq.val() == ""){
-				//insert
-				/* if(validationInst() == false) return false; */
-				form.attr("action", goUrlInst).submit();
-				/* form action을 goUrlInst로 바꾸고 "/codeGroup/codeGroupInst"로 submit 하겠다. */
-				/* 바꿀수 있는 조건이 seq값이 들어왔느냐 안들어왔느냐로 구별한다. */ /* --> 판별하는 프로세스인 var seq = hidden */
-			} else {
-				//update
-				/* keyName.val(atob(keyName.val())); */
-				/* if(validationUpdt() == false) return false; */
-				form.attr("action", goUrlUpdt).submit();
-			}
-		});
-		
-		
-	
-	
+				if(seq.val() == "0" || seq.val() == ""){
+					//insert
+					/* if(validationInst() == false) return false; */
+					form.attr("action", goUrlInst).submit();
+					/* form action을 goUrlInst로 바꾸고 "/codeGroup/codeGroupInst"로 submit 하겠다. */
+					/* 바꿀수 있는 조건이 seq값이 들어왔느냐 안들어왔느냐로 구별한다. */ /* --> 판별하는 프로세스인 var seq = hidden */
+				} else {
+					//update
+					/* keyName.val(atob(keyName.val())); */
+					/* if(validationUpdt() == false) return false; */
+					form.attr("action", goUrlUpdt).submit();
+				}
+			});
 		</script>
 		
 		

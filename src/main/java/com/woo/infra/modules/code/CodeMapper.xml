@@ -55,17 +55,17 @@
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj" >
-	SELECT
-		cc_name
-		,useNY
-		,delNY
-		,cc_key
-		,ccg_seq
-		,createDate
-		,modiDate
-	FROM cc
-	WHERE 1=1
-		AND seq = #{seq}
+		SELECT
+			a.cc_name
+			,a.useNY
+			,delNY
+			,a.cc_key
+			,a.ccg_seq
+			,a.createDate
+			,a.modiDate
+		FROM cc
+		WHERE 1=1
+			AND seq = #{seq}
 	</select>
 	
 	<insert id="insert">

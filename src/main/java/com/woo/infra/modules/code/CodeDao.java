@@ -21,7 +21,7 @@ public class CodeDao {
 	
 	public List<Code> search(CodeVo vo) { return sqlSession.selectList(namespace + ".search", vo); }
 	
-	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ",selectOne", vo); }
+	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo); }
 	
 	public int insert(Code dto) {
 		

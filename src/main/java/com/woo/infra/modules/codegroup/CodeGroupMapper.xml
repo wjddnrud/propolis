@@ -99,7 +99,12 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			*
+			a.seq
+			,a.ccg_name
+			,a.useNY
+	    	,a.delNY
+	    	,a.createDate
+	    	,a.modiDate
 		FROM ccg
 		WHERE 1=1
 			AND seq = #{seq} 

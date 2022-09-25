@@ -43,8 +43,8 @@
 			<article id="main">
 				<header>
 					<c:choose>
-						<c:when test="${seq eq 0}"><h2>코드그룹 등록</h2></c:when>
-						<%-- <c:when test="${vo.seq ne 0}"><h2>코드그룹 수정</h2></c:when> --%>
+						<c:when test="${seq eq null}"><h2>코드그룹 등록</h2></c:when>
+						<c:when test="${vo.seq ne null}"><h2>코드그룹 수정</h2></c:when>
 					</c:choose>
 				</header>
 				<section class="wrapper style5">
@@ -61,7 +61,8 @@
 								
 								<input type="hidden" name="seq" value="${one.seq }" style="width:300px; margin-bottom: 10px; color: black;">
 								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}" placeholder="코드그룹명">
-								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 1=N or 2=Y">
+								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 [1=N or 2=Y]">
+								<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 10px; color: black;" placeholder="삭제여부 [default=N]">
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
 								<a href="/codegroup/codeGroupList" class="button">취소</a>
@@ -108,53 +109,14 @@
 <br>
 
 <script type="text/javascript">
-	/* function test() {
-		
-		if(document.getElementById('ccg_name').value == "") {
-			alert("그룹코드 이름을 작성해주세요.");
-			
-			document.getElementById("ccg_name").value="";
-			document.getElementById("ccg_name").focus();
-			
-			return false;
-		}
-		
-		if(document.getElementById('useNY').value == "") {
-			alert("사용여부를 확인해주세요.");
-			
-			document.getElementById("useNY").value="";
-			document.getElementById("useNY").focus();
-			
-			return false;
-		}
-		
-		alert("코드그룹이 정상적으로 등록되었습니다.");
-		
-		alert("코드그룹 이름 : " + document.getElementById('ccg_name').value);
-		
-		alert("사용여부 : " + document.getElementById('useNY').value);
-		
-		
-		
-		
-		alert(document.getElementById('telecom').options[document.getElementById('telecom').selectedIndex].value);
-		
-		alert(document.querySelector("input[name='gender']:checked").value);
-		
-		return false;
-	} */
-	
-	
 	var goUrlList = "/codegroup/codeGroupList";    /* # -> */
 	var goUrlInst = "/codegroup/codeGroupInst";    /* # -> */
 	var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
 	var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
 	var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */
 	
-	var seq = $("input:hidden[name=seq]");     /* # -> */
-	
 	var form = $("form[name=forma]");
-	var formVo = $("form[name=formVo]");
+	var seq = $("input:hidden[name=seq]");     /* # -> */
 	
 	$("#btnSave").on("click", function() {
 		
@@ -189,13 +151,4 @@
 			form.attr("action", goUrlUpdt).submit();
 		}
 	});
-	
-	
-	
-	/* validationInst=function() {
-		if(validationUpdt() == false) return false;
-	} */
-	
-	
-	
 </script>

@@ -68,6 +68,11 @@
 								</div>
 								<br>
 								<form action="http://localhost:8080/code/codeSearch" name="formList" id="formList" method="post">
+								
+								
+									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
+									<input type="hidden" name="seq">
+								
 									<div class="row gtr-uniform">
 										<div class="col-3">
 											<select name="shUseNY" class="form-select form-control me-1 text-center">
@@ -147,7 +152,9 @@
 												<c:forEach items="${list}" var="list" varStatus="statusList">
 												<tr style="color: black;">
 													<td><input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox"></label></td>
-													<td><c:out value="${list.seq }"/></td>
+													<%-- <td><c:out value="${list.seq }"/></td> --%>
+													<td><a href="javascript:editForm(${list.seq })"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->
+													<c:out value="${list.seq}"/></a></td>
 													<td><c:out value="${list.cc_name }"/></td>
 													<td>
 														<c:choose>
@@ -263,6 +270,13 @@
 				var goUrlDele = "/code/codeDele";    /* # -> */
 				
 				var form = $("form[name=formList]"); // name으로 된거 사용
+				var editSeq = $("input:hidden[name=seq]");
+				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+				
+				editForm = function(seq) {
+					editSeq.attr("value", seq);
+					form.attr("action", "/code/codeForm").submit();
+				}
 				
 				
 				

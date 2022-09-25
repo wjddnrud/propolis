@@ -287,7 +287,6 @@
 				var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */	
 				
 				goList = function(thisPage) {
-					alert("=======================");
 					$("input:hidden[name=thisPage]").val(thisPage);
 					form.attr("action", goUrlList).submit();
 				}
