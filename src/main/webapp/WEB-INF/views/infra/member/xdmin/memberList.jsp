@@ -29,10 +29,11 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="/codegroup/main">Home</a></li>
-										<li><a href="/codegroup/findMate">Find Mate</a></li>
-										<li><a href="/codegroup/board">Community</a></li>
-										<li><a href="/codegroup/signIn">LOG-OUT</a></li>
+										<li><a href="#">Administor</a></li>
+										<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
+										<li><a href="/code/codeList">CodeList</a></li>
+										<li><a href="/member/memberList">MemberList</a></li>
+										<li><a href="/signIn">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>
@@ -72,7 +73,11 @@
 								<c:set var="listCodeWayReg" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 								<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 								
-								<form  action="http://localhost:8080/member/memberSearch" name="">
+								<form  action="http://localhost:8080/member/memberSearch" name="formList" id="formList">
+								
+									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
+									<input type="hidden" name="shSeq">
+									
 									<div class="row gtr-uniform">
 										<div class="col-2">
 											<select name="shWayReg" class="form-select form-control me-1 text-center" aria-label="Default selet example">
@@ -180,7 +185,8 @@
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
 												<td><input type="checkbox" id="agree${list.seq }" name="agree"><label></label></td>
-												<td><a href="javascript:edit(${list.seq })"><c:out value="${list.seq }"/></a></td>
+												<td><a href="javascript:editForm(${list.seq })">
+												<c:out value="${list.seq }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
 												<td><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
@@ -258,7 +264,7 @@
 									
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
-									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button>
+									<!-- <button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button> -->
 									<button class="btn btn-success me-1" style="float: right;" href="#"><i class="fa-solid fa-file-excel"></i></button>
 									
 								</div>
@@ -347,6 +353,15 @@
 				
 				function regist() {
 					location.href = "/member/memberForm";
+				}
+				
+				var form = $("form[name=formList]"); // name으로 된거 사용
+				var editSeq = $("input:hidden[name=shSeq]");
+				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+				
+				editForm = function(seq) {
+					editSeq.attr("value", seq);
+					form.attr("action", "/member/memberForm").submit();
 				}
 				
 				

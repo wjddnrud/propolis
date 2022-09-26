@@ -76,12 +76,6 @@ public class CodeGroupController {
 //			 CodeGroup item = service.selectOne(vo);
 //			 model.addAttribute("item", item);
 //		 }
-		 
-		
-		
-		System.out.println("================");
-		System.out.println("vo.getShDelNY : " + vo.getShDelNY());
-		System.out.println("vo.getShDate : " + vo.getShDate());
 		
 		CodeGroup result = service.selectOne(vo);
 		model.addAttribute("one", result);
@@ -98,7 +92,7 @@ public class CodeGroupController {
 		int result = service.insert(dto);
 		System.out.println("controller inst : " + result);
 		
-		vo.setSeq(dto.getSeq());
+//		vo.setSeq(dto.getSeq());
 		
 		
 		redirectAttributes.addFlashAttribute("vo", vo);

@@ -43,8 +43,8 @@
 			<article id="main">
 				<header>
 					<c:choose>
-						<c:when test="${seq eq null}"><h2>코드 등록</h2></c:when>
-						<c:when test="${vo.seq ne null}"><h2>코드그룹 수정</h2></c:when>
+						<c:when test="${one.seq eq null}"><h2>코드 등록</h2></c:when>
+						<c:when test="${one.seq ne null}"><h2>코드 수정</h2></c:when> 
 					</c:choose>
 				</header>
 				<section class="wrapper style5">
@@ -61,11 +61,16 @@
 									<input type="hidden" name="shValue" value="${vo.shValue }" style="margin-bottom: 10px;">
 									
 									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" value="${one.seq }" placeholder="seq" >
-									<input name="cc_name" type="text" id="cc_name" value="${one.cc_name}" placeholder="코드명" style="width:300px; margin-bottom: 10px;">
-									<input name="useNY" type="text" id="useNY" value="${one.useNY }" placeholder="사용여부 1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
+									<span>코드명</span>
+									<input name="cc_name" type="text" id="cc_name" value="${one.cc_name}" style="width:300px; margin-bottom: 10px;">
+									<span>사용여부</span>
+									<input name="useNY" type="text" id="useNY" value="${one.useNY }" placeholder="1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
+									<span>삭제여부</span>
 									<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 10px; color: black;" placeholder="삭제여부 [default=N]">
-									<input name="cc_key" id="cc_key" type="text"value="${one.cc_key }" placeholder="코드 key" style="margin-bottom: 10px;">
-									<input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" placeholder="그룹코드_seq" style="margin-bottom: 10px;">
+									<span>코드_key</span>
+									<input name="cc_key" id="cc_key" type="text"value="${one.cc_key }" style="margin-bottom: 10px;">
+									<span>코드그룹_seq</span>
+									<input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" style="margin-bottom: 50px;">
 									
 									<!-- <button id="btnSave" type="button">등록</button> -->
 									<a  id="btnSave" class="button primary">등록</a>
@@ -113,7 +118,6 @@
 			var goUrlDele = "/code/codeDele";    /* # -> */
 			
 			var form = $("form[name=forma]");
-			var seq = $("input:hidden[name=seq]");     /* # -> */
 			
 			$("#btnSave").on("click", function() {
 				

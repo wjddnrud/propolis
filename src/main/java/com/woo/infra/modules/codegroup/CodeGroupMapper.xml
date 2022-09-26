@@ -99,15 +99,15 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.seq
-			,a.ccg_name
-			,a.useNY
-	    	,a.delNY
-	    	,a.createDate
-	    	,a.modiDate
+			seq
+			,ccg_name
+			,useNY
+	    	,delNY
+	    	,createDate
+	    	,modiDate
 		FROM ccg
 		WHERE 1=1
-			AND seq = #{seq} 
+			AND seq = #{shSeq} 
 	</select>
 	
 	<update id="update">

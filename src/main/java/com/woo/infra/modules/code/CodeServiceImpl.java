@@ -28,18 +28,6 @@ public class CodeServiceImpl implements CodeService {
 		
 	}
 	
-	
-	
-	@Override
-	public Code selectOne(CodeVo vo) throws Exception {
-
-		Code selectOne = dao.selectOne(vo);
-		
-		System.out.println("Code service selectOne : " + selectOne);
-		
-		return selectOne;
-	}
-
 	@Override
 	public int insert(Code dto) throws Exception {
 		
@@ -52,6 +40,26 @@ public class CodeServiceImpl implements CodeService {
 		
 		return insert;
 		
+	}
+	
+	@Override
+	public Code selectOne(CodeVo vo) throws Exception {
+		
+		Code selectOne = dao.selectOne(vo);
+		
+		System.out.println("Code service selectOne : " + selectOne);
+		
+		return selectOne;
+	}
+	
+	@Override
+	public int update(Code dto) throws Exception {
+		
+		int update = dao.update(dto);
+		
+		System.out.println("dao.upate : " + update);
+		
+		return update;
 	}
 
 	@PostConstruct

@@ -54,26 +54,12 @@
 			</choose>
 	</select>
 	
-	<select id="selectOne" resultMap="resultMapObj" >
-		SELECT
-			a.cc_name
-			,a.useNY
-			,delNY
-			,a.cc_key
-			,a.ccg_seq
-			,a.createDate
-			,a.modiDate
-		FROM cc
-		WHERE 1=1
-			AND seq = #{seq}
-	</select>
-	
 	<insert id="insert">
 		INSERT INTO cc (
 			cc_name
 			,useNY
 			,delNY
-			,cc_key
+			,cc_key 
 			,ccg_seq
 		)
 		VALUES (
@@ -89,7 +75,35 @@
 		</selectKey>
 	</insert>
 	
+	<select id="selectOne" resultMap="resultMapObj" >
+		SELECT
+			seq
+			,cc_name
+			,useNY
+			,delNY
+			,cc_key
+			,ccg_seq
+			,createDate
+			,modiDate
+		FROM cc
+		WHERE 1=1
+			AND seq = #{shSeq} 
+	</select>
 	
+	<update id="update">
+		UPDATE cc
+		SET
+			cc_name = #{cc_name}
+			,useNY = #{useNY}
+			,delNY = #{delNY}
+			,cc_key = #{cc_key}
+			,ccg_seq = #{ccg_seq}
+		WHERE
+			seq = #{seq}	
+	</update>
+	
+	
+	<!-- 사용중인 코드 개수 조회 -->
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
 		SELECT  
 			seq

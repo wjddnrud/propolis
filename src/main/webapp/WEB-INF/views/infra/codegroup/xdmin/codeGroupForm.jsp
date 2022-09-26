@@ -43,8 +43,8 @@
 			<article id="main">
 				<header>
 					<c:choose>
-						<c:when test="${seq eq null}"><h2>코드그룹 등록</h2></c:when>
-						<c:when test="${vo.seq ne null}"><h2>코드그룹 수정</h2></c:when>
+						<c:when test="${one.seq eq null}"><h2>코드그룹 등록</h2></c:when>
+						<c:when test="${one.seq ne null}"><h2>코드그룹 수정</h2></c:when>
 					</c:choose>
 				</header>
 				<section class="wrapper style5">
@@ -60,9 +60,12 @@
 								<input type="hidden" name="shValue" value="${vo.shValue }" style="width:300px; margin-bottom: 10px; color: black;">
 								
 								<input type="hidden" name="seq" value="${one.seq }" style="width:300px; margin-bottom: 10px; color: black;">
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}" placeholder="코드그룹명">
-								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="사용여부 [1=N or 2=Y]">
-								<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 10px; color: black;" placeholder="삭제여부 [default=N]">
+								<span>코드그룹명</span>
+								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}">
+								<span>사용여부</span>
+								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="1=N or 2=Y">
+								<span>삭제여부</span>
+								<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 50px; color: black;" placeholder="default=N">
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
 								<a href="/codegroup/codeGroupList" class="button">취소</a>

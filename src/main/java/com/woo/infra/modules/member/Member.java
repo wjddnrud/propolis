@@ -14,6 +14,7 @@ public class Member {
 	private String address_detail;
 	private String telecom;
 	private String phoneNumber;
+	private String email;
 	private String way_to_regist;
 	private String createDate;
 	private String lastLoginDate;
@@ -115,6 +116,12 @@ public class Member {
 	}
 	public void setDelNY(String delNY) {
 		this.delNY = delNY;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

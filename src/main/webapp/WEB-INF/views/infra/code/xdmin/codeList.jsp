@@ -28,7 +28,7 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-									<li><a href="#">Administor</a></li>
+										<li><a href="#">Administor</a></li>
 										<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
 										<li><a href="/code/codeList">CodeList</a></li>
 										<li><a href="/member/memberList">MemberList</a></li>
@@ -71,7 +71,7 @@
 								
 								
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
-									<input type="hidden" name="seq">
+									<input type="hidden" name="shSeq">
 								
 									<div class="row gtr-uniform">
 										<div class="col-3">
@@ -270,7 +270,7 @@
 				var goUrlDele = "/code/codeDele";    /* # -> */
 				
 				var form = $("form[name=formList]"); // name으로 된거 사용
-				var editSeq = $("input:hidden[name=seq]");
+				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
 				
 				editForm = function(seq) {

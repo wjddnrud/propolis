@@ -38,7 +38,7 @@
 										<li><a href="/main">Home</a></li>
 										<li><a href="/findMate">Find Mate</a></li>
 										<li><a href="/community">Community</a></li>
-										<li><a href="/signIn">LOG-OUT</a></li>
+										<li><a href="/">LOG-OUT</a></li>
 									</ul>
 								</div>
 							</li>

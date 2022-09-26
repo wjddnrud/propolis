@@ -39,10 +39,23 @@ public class MemberDao {
 		return update;
 	}
 	
+
+	public int insert(Member dto) {
+		
+		int insert = sqlSession.insert(namespace + ".insert", dto);
+		
+		return insert;
+	}
+	
 	public int checkId(Member dto) throws Exception {
 		
 		return sqlSession.selectOne(namespace + ".checkId", dto);
 		
+	}
+	
+	public int signIn(Member dto) throws Exception {
+		
+		return sqlSession.selectOne(namespace + ".signIn", dto);
 	}
 	
 }

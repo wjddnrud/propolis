@@ -74,7 +74,7 @@
 									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
-									<input type="hidden" name="seq">
+									<input type="hidden" name="shSeq">
 									<div class="row gtr-uniform">
 										<div class="col-3">
 											<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
@@ -277,7 +277,7 @@
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				// var form = $("#formList");  // id로 된거 사용
 				
-				var editSeq = $("input:hidden[name=seq]");
+				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
 				
 				var goUrlList = "/codegroup/codeGroupList";    /* # -> */

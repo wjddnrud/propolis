@@ -49,7 +49,7 @@
 
 				<!-- Banner 메인화면 처음 모션부분 -->
 				<!-- <section id="banner"> -->
-				<form action="/main" id="loginForm">
+				<form name="signIn">
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
@@ -63,22 +63,22 @@
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input id="login_id" type="text" placeholder="ID" style="width: 300px;">
+													<input name="id" id="id" type="text" placeholder="ID" style="width: 300px;">
 												</center>
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input id="login_password" type="password" placeholder="PASSWORD" style="width: 300px;">
+													<input name="password" id="password" type="password" placeholder="PASSWORD" style="width: 300px;">
 												</center>
 											</div>
 											<div class="col-6 col-12">
-												<input type="checkbox" id="demo-human" name="demo-human">
-												<label for="demo-human">Remember</label>
+												<input type="checkbox" id="checkbox" name="checkbox">
+												<label for="checkbox">Remember</label>
 											</div>
 											<div class="col-12">
 												<ul class="actions stacked">
-													<li><input type="button" value="Sign-in" class="button primary small" onclick="login();"></li>
-													<li><input type="button" class="button small" value="Sign-up" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
+													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick=""></li>
+													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
 											</div>
 										</div>
@@ -107,7 +107,7 @@
 
 
 
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="/resources/images/assets/js/jquery.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
@@ -115,29 +115,55 @@
 			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <!-- alert창 꾸미기 -->
 			<script type="text/javascript">
-				function login() {
+			
+				var goUrlMain = "/main";
+				var form = $("form[name=signIn]");
+			
+				/* === singInCheck === */
+				$("#signIn").on("click", function(){ 
 					
-					if(document.getElementById('login_id').value == '' || document.getElementById('login_id').value == null) {
+					if(document.getElementById('id').value == '' || document.getElementById('id').value == null) {
 						alert("아이디를 입력해주세요.");
 						
-						document.getElementById("login_id").value="";
-						document.getElementById("login_id").focus();
+						document.getElementById("id").value="";
+						document.getElementById("id").focus();
 						
 						return false;
 					}
 					
-					if(document.getElementById('login_password').value == '' || document.getElementById('login_password').value == null) {
+					if(document.getElementById('password').value == '' || document.getElementById('password').value == null) {
 						alert("비밀번호를 입력해주세요.");
 						
-						document.getElementById("login_password").value="";
-						document.getElementById("login_password").focus();
+						document.getElementById("password").value="";
+						document.getElementById("password").focus();
 						
 						return false;
 					}
 					
-					$('#loginForm').submit();
-				}
+					$.ajax({
+						async: true 
+						,cache: false
+						,type: "post"
+						,dataType:"json"
+						,url: "/signIn"
+						/* ,data : $("#formLogin").serialize() */
+						,data : { "id" : $("#id").val(), "password" : $("#password").val() }
+						,success: function(response) {
+							if(response.rt == "success") {
+								swal("로그인 성공!", response.name + "님 로그인되었습니다.", "success");
+								form.attr("action", goUrlMain).submit();
+							} else {
+								swal("로그인 실패!", "계정이 존재하지 않습니다. 다시 확인해 주세요.", "error");
+								return false;
+							}
+						}
+					});
+				});	
+				
+			
+				
 				
 			</script>
 	</body>

@@ -59,6 +59,16 @@ public class MemberController {
 		return "infra/member/xdmin/memberForm";
 	}
 	
+	/*
+	 * @RequestMapping(value = "signUp") public String memberInsert(MemberVo vo,
+	 * Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	 * 
+	 * int insert = service.insert(dto);
+	 * 
+	 * redirectAttributes.addFlashAttribute("vo", vo);
+	 * 
+	 * return "redirect:/signIn"; }
+	 */
 	
 	
 	@RequestMapping(value="memberUpdt")
@@ -67,6 +77,7 @@ public class MemberController {
 		service.update(dto);
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
+		
 		return "redirect:/member/memberList";
 	}
 	

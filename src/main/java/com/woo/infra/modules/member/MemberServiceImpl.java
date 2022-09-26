@@ -67,6 +67,15 @@ public class MemberServiceImpl implements MemberService{
 		
 		return update;
 	}
+	
+	@Override
+	public int insert(Member dto) throws Exception {
+		
+		int insert = dao.insert(dto);
+		
+		System.out.println("dao.insert : " + insert);
+		return insert;
+	}
 
 	@Override
 	public int checkId(Member dto) throws Exception {
@@ -75,6 +84,17 @@ public class MemberServiceImpl implements MemberService{
 		
 		return checkId;
 	}
+
+	@Override
+	public int signIn(Member dto) throws Exception {
+		
+		return dao.signIn(dto);
+		
+	}
+	
+	
+	
+	
 	
 	
 	

@@ -21,8 +21,6 @@ public class CodeDao {
 	
 	public List<Code> search(CodeVo vo) { return sqlSession.selectList(namespace + ".search", vo); }
 	
-	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo); }
-	
 	public int insert(Code dto) {
 		
 //		이 부분 왜 public 다음에 int로 리턴 받아야 하는지 질문하기
@@ -33,6 +31,9 @@ public class CodeDao {
 		
 	}
 	
+	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo); }
+	
+	public int update(Code dto) { return sqlSession.update(namespace + ".update", dto);}
 	
 //	for cache
 	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList"); }
