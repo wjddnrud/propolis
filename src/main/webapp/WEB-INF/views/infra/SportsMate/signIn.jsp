@@ -152,12 +152,18 @@
 						,data : { "id" : $("#id").val(), "password" : $("#password").val() }
 						,success: function(response) {
 							if(response.rt == "success") {
-								swal("로그인 성공!", response.name + "님 로그인되었습니다.", "success");
-								form.attr("action", goUrlMain).submit();
+								swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
+								.then(function() {
+									location.href="${pageContext.request.contextPath}/main.do";
+								});
+								/* form.attr("action", goUrlMain).submit(); */
 							} else {
 								swal("로그인 실패!", "계정이 존재하지 않습니다. 다시 확인해 주세요.", "error");
 								return false;
 							}
+						}
+						,error : function(){
+							alert("error");
 						}
 					});
 				});	

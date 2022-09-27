@@ -3,6 +3,8 @@ package com.woo.infra.modules;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,25 +91,44 @@ public class CommonController {
 	
 	@ResponseBody
 	@RequestMapping(value = "signIn")
-	public Map<String, Object> signInCheck(Member dto) throws Exception {
+	public Map<String, Object> signInCheck(Member dto, HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		int result = service.signIn(dto);
 		
-		System.out.println("signIn result: " + result);
+		Member signIn = service.signIn(dto);
 		
-		if (result > 0) {
+		
+		System.out.println("signIn result: " + signIn);
+		
+		if (signIn != null) {
 			returnMap.put("rt", "success");
+			
+//			System.out.println("returnMap name : " + signIn.getName());  
+			
+			httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute  세션유지 시간
+			httpSession.setAttribute("sessSeq", signIn.getSeq());
+			httpSession.setAttribute("sessId", signIn.getId());
+			httpSession.setAttribute("sessPassword", signIn.getPassword());
+			httpSession.setAttribute("sessName", signIn.getName());
+			
+			returnMap.put("name", signIn.getName());
 		} else {
 			returnMap.put("rt", "fail");
 		}
 		
-//		resultMap.put("name", dto.getId());
-		
-		/* 회원 정보 가져올수 있는 selectOne으로 dto가져오고 값이 들어있으면 success null이면 fail */
-		return returnMap;
+		return returnMap; 
 	}
+	
+//	@ResponseBody   
+//	@RequestMapping(value = "logoutProc")
+//	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+//		Map<String, Object> returnMap = new HashMap<String, Object>();
+//		UtilCookie.deleteCookie();
+//		httpSession.invalidate();
+//		returnMap.put("rt", "success");
+//		return returnMap;
+//	}
 
 	@RequestMapping(value = "signUp")
 	public String signUp() throws Exception {
@@ -124,10 +145,11 @@ public class CommonController {
 		
 		System.out.println("service.insert : " + insert);
 		
-		/* return "infra/SportsMate/signUp"; */
-		 return "redirect:/signIn"; 
-		/* return "redirect:/member/memberList"; */
+		 return "redirect:/"; 
 	}
+	
+	
+	
 	
 	
 }

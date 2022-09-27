@@ -2,7 +2,7 @@ package com.woo.infra.modules.codegroup;
 
 import java.util.List;
 
-import com.woo.infra.modules.paging.BaseVo;
+import com.woo.infra.modules.util.BaseVo;
 
 
 public interface CodeGroupService {

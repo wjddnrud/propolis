@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.woo.infra.modules.paging.BaseVo;
+import com.woo.infra.modules.util.BaseVo;
 
 
 

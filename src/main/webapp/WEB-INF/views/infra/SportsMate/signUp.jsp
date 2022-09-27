@@ -327,7 +327,7 @@
 				$("#pwCheck").text("패스워드가 일치합니다. OuO");
 				$("#pwCheck").css("color", "lightgreen");	
 			} else {
-				$("#pwCheck").text("패스워드가 일치하지 않습니다. XnX");
+				$("#pwCheck").text("패스워드가 일치하지 않습니다. X_X");
 				$("#pwCheck").css("color", "red");
 			}
 		});
@@ -363,7 +363,7 @@
 						$("#id_check").text("사용가능한 아이디입니다. OuO");
 						$("#id_check").css("color", "lightgreen");
 					} else {
-						$("#id_check").text("이미 사용중인 아이디입니다. XnX");
+						$("#id_check").text("이미 사용중인 아이디입니다. X_X");
 						$("#id_check").css("color", "red");
 					}
 				}

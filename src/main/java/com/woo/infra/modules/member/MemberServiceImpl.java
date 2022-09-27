@@ -1,10 +1,11 @@
 package com.woo.infra.modules.member;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.woo.infra.modules.util.UtilSecurity;
 
 
 @Service
@@ -69,11 +70,23 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
+	public int delete(MemberVo vo) throws Exception {
+		
+		int delete = dao.delete(vo);
+		
+		return delete;
+	}
+
+	@Override
 	public int insert(Member dto) throws Exception {
+		
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		
 		int insert = dao.insert(dto);
 		
 		System.out.println("dao.insert : " + insert);
+		
+		
 		return insert;
 	}
 
@@ -86,11 +99,14 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int signIn(Member dto) throws Exception {
+	public Member signIn(Member dto) throws Exception {
 		
-		return dao.signIn(dto);
+		Member signIn = dao.signIn(dto);
 		
+		return signIn;
 	}
+
+
 	
 	
 	

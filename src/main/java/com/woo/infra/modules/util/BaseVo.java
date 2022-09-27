@@ -1,4 +1,4 @@
-package com.woo.infra.modules.paging;
+package com.woo.infra.modules.util;
 
 public class BaseVo {
 	

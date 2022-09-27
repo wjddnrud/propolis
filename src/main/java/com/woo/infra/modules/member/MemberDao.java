@@ -39,6 +39,13 @@ public class MemberDao {
 		return update;
 	}
 	
+	public int delete(MemberVo vo) {
+		
+		int delete = sqlSession.delete(namespace + ".delete", vo);
+		
+		return delete;
+	}
+	
 
 	public int insert(Member dto) {
 		
@@ -53,9 +60,9 @@ public class MemberDao {
 		
 	}
 	
-	public int signIn(Member dto) throws Exception {
+	public Member signIn(Member dto) throws Exception {
 		
-		return sqlSession.selectOne(namespace + ".signIn", dto);
+		return sqlSession.selectOne(namespace + ".signIn2", dto);
 	}
 	
 }

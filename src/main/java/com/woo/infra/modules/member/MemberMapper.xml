@@ -157,6 +157,16 @@
 			seq = #{shSeq}
 	</update>
 	
+	<delete id="delete">
+		DELETE
+		FROM member
+		WHERE 1=1
+			AND seq = #{seq}
+	</delete>
+	
+	
+	
+	
 	<select id ="checkId" resultType="Integer">
 		SELECT
 			COUNT(*)
@@ -165,9 +175,21 @@
 			AND id = #{id}
 	</select>
 	
-	<select id="signIn" resultType="Integer">
+	<!-- <select id="signIn" resultType="Integer">
 		SELECT
 			COUNT(*)
+		FROM member
+		WHERE 1=1
+			AND id = #{id}
+			AND password = #{password}
+	</select> -->
+	
+	<select id="signIn2" resultMap="resultMapObj">
+		SELECT
+			seq
+			,id
+			,password
+			,name
 		FROM member
 		WHERE 1=1
 			AND id = #{id}

@@ -81,6 +81,17 @@ public class MemberController {
 		return "redirect:/member/memberList";
 	}
 	
+	@RequestMapping(value = "memberDele")
+	public String memberDelete(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.delete(vo);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberList";
+		
+	}
+	
 
 	@ResponseBody
 	@RequestMapping(value = "checkId")

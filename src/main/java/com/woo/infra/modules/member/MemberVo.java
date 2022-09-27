@@ -1,5 +1,8 @@
 package com.woo.infra.modules.member;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MemberVo {
 
 	private Integer shOption;

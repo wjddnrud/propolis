@@ -35,6 +35,7 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
+										<li><a href="#"><c:out value="${sessName }" /> 님의 마이페이지</a></li>
 										<li><a href="/main">Home</a></li>
 										<li><a href="/findMate">Find Mate</a></li>
 										<li><a href="/community">Community</a></li>
@@ -51,7 +52,13 @@
 						<div class="inner">
 							<h2>Sports Mate</h2>
 							<p>방문해주셔서 감사합니다!<br /><br />
-							함께 운동할 친구를 찾아보세요.<br /></p>
+							함께 운동할 친구를 찾아보세요.<br />
+							
+							sessSeq: <c:out value="${sessSeq }"/><br>
+							sessName: <c:out value="${sessName }"/><br>
+							sessId: <c:out value="${sessId }"/><br>
+							sessPassword: <c:out value="${sessPassword }"/><br>
+							</p>
 							<!-- crafted by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 							<ul class="actions special">
 								<li><a href="/findMate" class="button primary">Find Mate</a></li>

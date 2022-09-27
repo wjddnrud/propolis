@@ -69,6 +69,8 @@
 								</div>
 								<br>
 								
+								
+								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 								<c:set var="listCodeWayReg" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 								<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
@@ -155,7 +157,7 @@
 											<tr>
 												<th>
 													<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
-													<label for="allAgree" style="color: white;">선택</label>
+													<label for="allAgree"></label>
 												</th>
 												<th>#</th>
 												<th>ID</th>
@@ -184,9 +186,16 @@
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td><input type="checkbox" id="agree${list.seq }" name="agree"><label></label></td>
+												<td>
+												
+												
+												<input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
+												
+												
+												<label for="checkbox${status.count }"></label>
+												</td>
 												<td><a href="javascript:editForm(${list.seq })">
-												<c:out value="${list.seq }"/></a></td>
+												<c:out value="${status.count }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
 												<td><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
@@ -262,8 +271,8 @@
 										</ul>
 									</nav>
 									
-									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
-									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
+									<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
+									<button type="button" class="btn btn-danger" onclick="goTrash()"><i class="fa-solid fa-trash-can"></i></button> 
 									<!-- <button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button> -->
 									<button class="btn btn-success me-1" style="float: right;" href="#"><i class="fa-solid fa-file-excel"></i></button>
 									
@@ -325,12 +334,21 @@
 			<script>
 				function selectAll() {
 					const checkboxes 
-					= document.getElementsByName("agree");
+					= document.getElementsByName("checkbox");
 				
 					checkboxes.forEach((checkbox) => {
 					checkbox.checked = selectAll.checked;
 					})
 				}
+				
+				function goTrash() {
+					$("input:checkbox[name=checkbox]:checked").each(function() {
+						var checkVal = $(this).val(); //체크된 값의 value 값 가져오기
+						console.log(checkVal);
+					})
+				}
+				
+				
 				
 				$( function() {
 				  	$( "#datepicker1, #datepicker2" ).datepicker({
@@ -358,6 +376,7 @@
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+				
 				
 				editForm = function(seq) {
 					editSeq.attr("value", seq);
