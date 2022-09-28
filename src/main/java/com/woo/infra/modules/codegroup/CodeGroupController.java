@@ -46,7 +46,9 @@ public class CodeGroupController {
 		
 //		System.out.println("vo.getStartRnumForMysql() : " + vo.getStartRnumForMysql());
 		
+//		List<String> list = new ArrayList<String>();
 		List<CodeGroup> list = service.selectList(vo);
+		
 		model.addAttribute("list", list);
 		
 		setParamsPaging(vo);
@@ -102,7 +104,6 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupView")
 	public String codeGroupView() throws Exception {
-		
 		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}

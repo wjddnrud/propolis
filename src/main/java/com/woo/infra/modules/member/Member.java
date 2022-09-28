@@ -19,6 +19,7 @@ public class Member {
 	private String createDate;
 	private String lastLoginDate;
 	private String delNY;
+	private String adminNY;
 	
 	
 	public String getSeq() {
@@ -122,6 +123,12 @@ public class Member {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getAdminNY() {
+		return adminNY;
+	}
+	public void setAdminNY(String adminNY) {
+		this.adminNY = adminNY;
 	}
 	
 	

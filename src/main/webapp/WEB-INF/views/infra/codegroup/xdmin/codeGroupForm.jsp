@@ -27,11 +27,17 @@
 							<a href="#menu" class="menuToggle"><span>Menu</span></a>
 							<div id="menu">
 								<ul>
-								<li><a href="#">Administor</a></li>
-									<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
-									<li><a href="/code/codeList">CodeList</a></li>
-									<li><a href="/member/memberList">MemberList</a></li>
-									<li><a href="/signIn">LOG-OUT</a></li>
+									<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
+					                	<li><a href="/signUp">SIGN UP</a></li>
+										<li><a href="/signIn">SIGN IN</a></li>
+						        	</c:if>
+									<c:if test="${sessAdminNY eq 2}">
+										<li><a href="#">Administor</a></li>
+										<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
+										<li><a href="/code/codeList">CodeList</a></li>
+										<li><a href="/member/memberList">MemberList</a></li>
+										<li><a href="/logout">LOG-OUT</a></li>
+									</c:if>
 								</ul>
 							</div>
 						</li>
@@ -119,7 +125,7 @@
 	var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */
 	
 	var form = $("form[name=forma]");
-	var seq = $("input:hidden[name=seq]");     /* # -> */
+	var seq = $("input:hidden[name=seq]");
 	
 	$("#btnSave").on("click", function() {
 		

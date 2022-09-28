@@ -190,6 +190,7 @@
 			,id
 			,password
 			,name
+			,adminNY
 		FROM member
 		WHERE 1=1
 			AND id = #{id}

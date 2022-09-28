@@ -35,11 +35,17 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="#"><c:out value="${sessName }" /> 님의 마이페이지</a></li>
-										<li><a href="/main">Home</a></li>
-										<li><a href="/findMate">Find Mate</a></li>
-										<li><a href="/community">Community</a></li>
-										<li><a href="/">LOG-OUT</a></li>
+										<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
+						                	<li><a href="/signUp">SIGN UP</a></li>
+											<li><a href="/">SIGN IN</a></li>
+							        	</c:if>
+							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
+							                <li><a href="/main">Home</a></li>
+											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/community">Community</a></li>
+											<li><a href="/myPage">MyPage</a></li>
+											<li><a href="/logout">LOG-OUT</a></li>
+										</c:if>
 									</ul>
 								</div>
 							</li>
@@ -48,10 +54,11 @@
 				</header>
 
 				<!-- Banner 메인화면 처음 모션부분 -->
+				<form name="mainForm">
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
-							<p>방문해주셔서 감사합니다!<br /><br />
+							<p><c:out value="${sessName }" /> 회원님 방문해주셔서 감사합니다!<br /><br />
 							함께 운동할 친구를 찾아보세요.<br />
 							
 							sessSeq: <c:out value="${sessSeq }"/><br>
@@ -109,6 +116,7 @@
 							</div>
 						</section>
 					</section>
+				</form>
 
 				<!-- Footer -->
 				<footer id="footer">
@@ -136,6 +144,9 @@
 			<script src="/resources/images/assets/js/main.js"></script>
 		<!-- 폰트어썸 -->
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+			
+			</script>
 
 	</body>
 </html>

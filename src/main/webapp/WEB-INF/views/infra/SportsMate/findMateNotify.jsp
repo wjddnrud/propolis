@@ -36,10 +36,17 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="/main">Home</a></li>
-										<li><a href="/findMate">Find Mate</a></li>
-										<li><a href="/community">Community</a></li>
-										<li><a href="/signIn">LOG-OUT</a></li>
+										<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
+						                	<li><a href="/signUp">SIGN UP</a></li>
+											<li><a href="/">SIGN IN</a></li>
+							        	</c:if>
+							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
+							                <li><a href="/main">Home</a></li>
+											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/community">Community</a></li>
+											<li><a href="/myPage">MyPage</a></li>
+											<li><a href="/logout">LOG-OUT</a></li>
+										</c:if>
 									</ul>
 								</div>
 							</li>

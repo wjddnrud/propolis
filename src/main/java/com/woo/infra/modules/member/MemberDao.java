@@ -51,6 +51,8 @@ public class MemberDao {
 		
 		int insert = sqlSession.insert(namespace + ".insert", dto);
 		
+		System.out.println("member.insert : " + insert);
+		
 		return insert;
 	}
 	

@@ -35,6 +35,11 @@ public class CommonController {
 		return "infra/SportsMate/main";
 	}
 	
+	@RequestMapping(value = "myPage") 
+	public String myPage() throws Exception {
+		return "infra/SportsMate/myPage/myPage";
+	}
+	
 	@RequestMapping(value = "community")
 	public String community() throws Exception {
 
@@ -91,15 +96,18 @@ public class CommonController {
 	
 	@ResponseBody
 	@RequestMapping(value = "signIn")
-	public Map<String, Object> signInCheck(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> signInChecks(Member dto, HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		
 		Member signIn = service.signIn(dto);
+//		System.out.println("signIn result: " + signIn);
+		
+		String adminNY = signIn.getAdminNY();
+		System.out.println("adminNY : " + signIn.getAdminNY());
 		
 		
-		System.out.println("signIn result: " + signIn);
 		
 		if (signIn != null) {
 			returnMap.put("rt", "success");
@@ -111,28 +119,30 @@ public class CommonController {
 			httpSession.setAttribute("sessId", signIn.getId());
 			httpSession.setAttribute("sessPassword", signIn.getPassword());
 			httpSession.setAttribute("sessName", signIn.getName());
+			httpSession.setAttribute("sessAdminNY", signIn.getAdminNY());
 			
+			returnMap.put("adminNY", signIn.getAdminNY());
 			returnMap.put("name", signIn.getName());
+			
 		} else {
 			returnMap.put("rt", "fail");
+					
 		}
-		
+
 		return returnMap; 
 	}
 	
-//	@ResponseBody   
-//	@RequestMapping(value = "logoutProc")
-//	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
-//		Map<String, Object> returnMap = new HashMap<String, Object>();
-//		UtilCookie.deleteCookie();
-//		httpSession.invalidate();
-//		returnMap.put("rt", "success");
-//		return returnMap;
-//	}
+	@RequestMapping(value = "logout")
+	public String logout(HttpSession httpSession) throws Exception {
+		
+		httpSession.invalidate();
+		
+		return "infra/SportsMate/signIn";
+	}
 
 	@RequestMapping(value = "signUp")
 	public String signUp() throws Exception {
-
+		
 		return "infra/SportsMate/signUp";
 	}
 	

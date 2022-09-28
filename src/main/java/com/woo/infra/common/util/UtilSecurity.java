@@ -1,4 +1,4 @@
-package com.woo.infra.modules.util;
+package com.woo.infra.common.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

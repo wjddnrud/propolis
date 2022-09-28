@@ -14,7 +14,7 @@
 	<!-- datepicker jquery script import -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
-	<title>Admin_CodeGroupList</title>
+	<title>MyPage</title>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -33,12 +33,11 @@
 						                	<li><a href="/signUp">SIGN UP</a></li>
 											<li><a href="/signIn">SIGN IN</a></li>
 							        	</c:if>
-										<c:if test="${sessAdminNY eq 2}">
-											<%-- <li><a href="#">관리자 <c:out value="${sessName}"/> 님으로 접속중</a></li> --%>
-											<li>[관리자 <c:out value="${sessName}"/> 님으로 접속중]</li>
-											<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
-											<li><a href="/code/codeList">CodeList</a></li>
-											<li><a href="/member/memberList">MemberList</a></li>
+							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
+							                <li><a href="/main">Home</a></li>
+											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/community">Community</a></li>
+											<li><a href="/myPage">MyPage</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
 									</ul>
@@ -51,7 +50,7 @@
 				<!-- Main -->
 				<article id="main">
 					<header>
-						<h2>코드그룹 관리</h2>
+						<h2>회원 정보</h2>
 					</header>
 					<section class="wrapper style5">
 						<div class="inner">
@@ -62,13 +61,13 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="/codegroup/codeGroupList">코드그룹관리</a>
+											<a class="nav-link active" aria-current="page" href="/codegroup/codeGroupList">게시글 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="/code/codeList">코드관리</a>
+											<a class="nav-link" href="/code/codeList">모임 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="/member/memberList">회원관리</a>
+											<a class="nav-link" href="/member/memberList">기타 둥둥</a>
 										</li>
 									</ul>
 								</div>
@@ -190,7 +189,7 @@
 									</table>
 									
 									<!-- pagination s -->
-									<%@include file="pagination.jsp"%>
+									<%@include file="../../codegroup/xdmin/pagination.jsp"%>
 									<!-- pagination e -->
 									
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>

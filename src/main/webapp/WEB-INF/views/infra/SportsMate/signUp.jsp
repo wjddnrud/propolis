@@ -39,8 +39,17 @@
 						<a href="#menu" class="menuToggle"><span>Menu</span></a>
 						<div id="menu">
 							<ul>
-								<li><a href="/signUp">SIGN UP</a></li>
-								<li><a href="/signIn">SIGN IN</a></li>
+								<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
+				                	<li><a href="/signUp">SIGN UP</a></li>
+									<li><a href="/">SIGN IN</a></li>
+					        	</c:if>
+					            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
+					                <li><a href="/main">Home</a></li>
+									<li><a href="/findMate">Find Mate</a></li>
+									<li><a href="/community">Community</a></li>
+									<li><a href="/myPage">MyPage</a></li>
+									<li><a href="/logout">LOG-OUT</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</li>
@@ -60,6 +69,7 @@
 						<!-- <h2>회원가입</h2> -->
 						<form name="signUpForm">
 							<input type="hidden" name="shSeq">
+							<input type="hidden" name="delNY">
 							<div class="row gtr-uniform">
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
@@ -165,7 +175,7 @@
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
 										<li><a id="signUp" class="button primary" onclick="signUp()">sign-up</a></li>
-										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
+										<li><input type="button" value="cancle" onclick="location.href='/'" /></li>
 									</ul>
 								</div>
 							</div>

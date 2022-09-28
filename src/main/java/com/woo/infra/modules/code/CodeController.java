@@ -21,7 +21,7 @@ public class CodeController {
 
 	@RequestMapping(value = "codeList")
 	public String codeList(Model model) throws Exception {
-
+		
 		List<Code> list = service.selectList();
 		model.addAttribute("list", list);
 		

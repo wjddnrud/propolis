@@ -38,8 +38,15 @@
 								<a href="#menu" class="menuToggle"><span>Menu</span></a>
 								<div id="menu">
 									<ul>
-										<li><a href="/signUp">SIGN UP</a></li>
-										<li><a href="/signIn">SIGN IN</a></li>
+					                	<li><a href="/signUp">SIGN UP</a></li>
+										<li><a href="/">SIGN IN</a></li>
+							            <%-- <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
+							                <li><a href="/main">Home</a></li>
+											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/community">Community</a></li>
+											<li><a href="/myPage">MyPage</a></li>
+											<li><a href="/logout">LOG-OUT</a></li>
+										</c:if> --%>
 									</ul>
 								</div>
 							</li>
@@ -80,6 +87,12 @@
 													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick=""></li>
 													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
+											</div>
+											<div style="text-align: center;">
+											sessSeq: <c:out value="${sessSeq }"/><br>
+											sessName: <c:out value="${sessName }"/><br>
+											sessId: <c:out value="${sessId }"/><br>
+											sessPassword: <c:out value="${sessPassword }"/><br>
 											</div>
 										</div>
 									</section>
@@ -154,9 +167,12 @@
 							if(response.rt == "success") {
 								swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
 								.then(function() {
-									location.href="${pageContext.request.contextPath}/main.do";
+									if(response.adminNY == 1) {
+										location.href="/main";
+									} else {
+										location.href="/codegroup/codeGroupList"
+									}
 								});
-								/* form.attr("action", goUrlMain).submit(); */
 							} else {
 								swal("로그인 실패!", "계정이 존재하지 않습니다. 다시 확인해 주세요.", "error");
 								return false;
@@ -164,9 +180,9 @@
 						}
 						,error : function(){
 							alert("error");
-						}
+						} 
 					});
-				});	
+				});
 				
 			
 				

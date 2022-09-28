@@ -1,6 +1,6 @@
 package com.woo.infra.modules.codegroup;
 
-import com.woo.infra.modules.util.BaseVo;
+import com.woo.infra.common.util.BaseVo;
 
 public class CodeGroupVo extends BaseVo{
 
