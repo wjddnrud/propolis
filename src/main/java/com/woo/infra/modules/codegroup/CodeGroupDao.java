@@ -40,9 +40,9 @@ public class CodeGroupDao {
 	}
 	
 	public CodeGroup selectOne(CodeGroupVo vo) {
-		CodeGroup result = sqlSession.selectOne(namespace + ".selectOne", vo);
-		System.out.println("dao result : " + result);
-		return result;
+		CodeGroup selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao selectOne : " + selectOne);
+		return selectOne;
 	}
 	
 	public int update(CodeGroup dto) { return sqlSession.update(namespace + ".update", dto); }

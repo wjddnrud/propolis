@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class CodeServiceImpl implements CodeService {
 
@@ -47,11 +48,16 @@ public class CodeServiceImpl implements CodeService {
 		
 		Code selectOne = dao.selectOne(vo);
 		
-		System.out.println("Code service selectOne : " + selectOne);
+		System.out.println("service selectOne : " + selectOne);
 		
 		return selectOne;
 	}
 	
+//	@Override
+//	public int selectOneCount(BaseVo vo) throws Exception {
+//		return dao.selectOneCount(vo);
+//	}
+
 	@Override
 	public int update(Code dto) throws Exception {
 		

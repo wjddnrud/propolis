@@ -115,6 +115,41 @@
 		WHERE 1=1
 		    AND useNY = 2
     </select>
+
+	<!-- ===paging=== -->
+   <!--  <sql id ="selectCommon">
+		FROM cc a
+		WHERE 1=1
+			<if test="shDelNY != null and !shDelNY.equals('')">AND DelNY = #{shDelNY}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.seq
+				,a.cc_name
+				,a.useNY
+		    	,a.delNY
+		    	,a.cc_key
+		    	,a.ccg_seq
+		    	,a.createDate
+		    	,a.modiDate
+		<include refid="selectCommon" />
+			ORDER BY a.seq ASC  seq 순서대로 나열
+		<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select> -->
+   <!-- ===paging=== -->
 	
 
 </mapper>	

@@ -4083,6 +4083,7 @@ input, select, textarea {
 	.wrapper.style6 {
 		background-color: rgba(255, 255, 255, 0.832);
 		color: #4E4852;
+		padding: 3em 0 3em 0;
 	}
 
 		.wrapper.style6 strong, .wrapper.style6 b {
@@ -4239,77 +4240,6 @@ input, select, textarea {
 
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/* Sing-In input 부분 */
-	/* .inputBox {
-		position : relative;
-		width: 250px;
-		margin-bottom: 30px;
-	}
-	.inputBox input {
-		width: 100%;
-		padding: 10px;
-		border: 1px solid rgb(255, 255, 255);
-		background: transparent;
-		border-radius: 5px;
-		outline: none;
-		color: #fff;
-		font-size: 1em;
-		transition: 0.5s;
-	}
-	.inputBox span{
-		position: absolute;
-		top: 0;
-		left: 0;
-		padding: 10px;
-		pointer-events: none;
-		font-size: 1em;
-		color: rgba(255,255,255,0.25);
-		text-transform : uppercase;
-	}
-	.inputBox input:valid ~ span,
-	.inputBox input:focus ~ span {
-		color: #00dfc4;
-		transform: translateX(10px) translateY(-30px);
-		font-size: 0.8em;
-		padding: 0 10px;
-		background: #6b33ed;
-		background: transparent;
-		border-left: 2px solid#fff;
-		border-right: 2px solid#fff;
-		border-radius: 0px;
-		letter-spacing: 0.3em;
-		transition: 0.3s;
-	} */
-
-	/* 두껍게 하는법 */
-	/* .inputBox:nth-child(2) input:valid ~ span,
-	.inputBox:nth-child(2) input:focus ~ span {
-		background: #00dfc4;
-		color: #1d2b3a;
-		border-radius: 2px;
-	} */
-	/* .inputBox input:valid ~ span,
-	.inputBox input:focus ~ span {
-		border: 1px solid #00dfc4;
-	} */
-	
-
-
-
-
 	/* card */
 
 	.container {
@@ -4452,63 +4382,3 @@ input, select, textarea {
 	}
 
 
-	/* tab */
-/* 
-	.tab-container {
-		width: 600px;
-		height: 400px;
-		box-shadow: 3px 5px 10px rgba(0, 0, 0, .8);
-		border-radius: 5px;
-		overflow: hidden;
-	}
-
-	.options {
-		display: flex;
-		width: 100%;
-		height: 15%;
-		list-style: none;
-	}
-
-	.option {
-		flex-grow: 1;
-		text-align: center;
-		line-height: 60px;
-		border: solid 1px rgba(4, 51, 78, .6);
-		color: #fff;
-		cursor: pointer;
-	}
-
-	.option-active {
-		background: var(--bg-active);
-		border-bottom: 1px solid rgba(7, 63, 95, .4);
-	}
-
-	.contents {
-		width: 100%;
-		height: 85%;
-	}
-
-	.content {
-		width: 100%;
-		height: 100%;
-		color: #fff;
-		display: none;
-	}
-
-	.content-active {
-		background: var(--bg-active);
-		display: block;
-	}
-
-	.content h3 {
-		align-items: center;
-		padding-bottom: 10px;
-		border-bottom: solid 1px rgba(255, 255, 255, .3);
-		letter-spacing: 2px;
-		margin: 10px;
-	}
-
-	.content p {
-		margin: 15px;
-		letter-spacing: 1px;
-	} */

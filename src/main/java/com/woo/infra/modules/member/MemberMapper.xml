@@ -184,7 +184,7 @@
 			AND password = #{password}
 	</select> -->
 	
-	<select id="signIn2" resultMap="resultMapObj">
+	<select id="signInCheck" resultMap="resultMapObj">
 		SELECT
 			seq
 			,id
@@ -196,8 +196,6 @@
 			AND id = #{id}
 			AND password = #{password}
 	</select>
-	
-	
 	
 
 </mapper>	

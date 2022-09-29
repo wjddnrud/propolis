@@ -19,5 +19,5 @@ public interface MemberService {
 	
 	public int checkId(Member dto) throws Exception;
 	
-	public Member signIn(Member dto) throws Exception;
+	public Member signInCheck(Member dto) throws Exception;
 }

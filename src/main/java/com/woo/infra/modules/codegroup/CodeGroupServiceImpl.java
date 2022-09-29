@@ -65,21 +65,21 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		if(dto.getDelNY() == null)
 			dto.setDelNY(1);
 		
-		int result = dao.insert(dto);
+		int insert = dao.insert(dto);
 		
-		System.out.println("service result : " + result);
+		System.out.println("service result : " + insert);
 	
 		
-		return result;
+		return insert;
 	}
 
 
 	@Override
 	public CodeGroup selectOne(CodeGroupVo vo) throws Exception {
 		
-		CodeGroup result = dao.selectOne(vo);
-		System.out.println("service result : " + result);
-		return result;
+		CodeGroup selectOne = dao.selectOne(vo);
+		System.out.println("service selectOne : " + selectOne);
+		return selectOne;
 	}
 
 

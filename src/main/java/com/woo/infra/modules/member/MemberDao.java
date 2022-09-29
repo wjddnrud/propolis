@@ -62,9 +62,13 @@ public class MemberDao {
 		
 	}
 	
-	public Member signIn(Member dto) throws Exception {
+	public Member signInCheck(Member dto) throws Exception {
 		
-		return sqlSession.selectOne(namespace + ".signIn2", dto);
+		Member signInCheck = sqlSession.selectOne(namespace + ".signInCheck", dto);
+		
+		System.out.println("dao signInCheck : " + signInCheck);
+		
+		return signInCheck;
 	}
 	
 }

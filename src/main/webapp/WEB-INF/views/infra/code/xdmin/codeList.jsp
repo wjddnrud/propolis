@@ -186,24 +186,22 @@
 												마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
 											</tfoot>
 										</table>
+										
+										<!-- pagination s -->
+										<%-- <%@include file="../../pagination.jsp"%> --%>
+										<!-- pagination e -->
+										
+										<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
+										<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
+										<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
+										<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
+										
 									</div>	
 								</form>
 							</section>
-									
-									
-							<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
-							<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
-							<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
-							<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
-									
-								</div>
-							</section>
-
-
-
-							</div>
-						</section>
-					</article>
+						</div>
+					</section>
+				</article>
 
 				<!-- Footer -->
 				<footer id="footer">
@@ -218,7 +216,6 @@
 						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</footer>
-
 			</div>
 
 			<!-- Scripts -->

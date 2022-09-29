@@ -88,41 +88,43 @@ public class CommonController {
 		return "infra/SportsMate/findMateView";
 	}
 	
-	@RequestMapping(value = "") // signIn
+	@RequestMapping(value = "signIn") // signIn
 	public String signIn() throws Exception {
 		
 		return "infra/SportsMate/signIn";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "signIn")
-	public Map<String, Object> signInChecks(Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "signInCheck")
+	public Map<String, Object> signInCheck(Member dto, HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		
-		Member signIn = service.signIn(dto);
-//		System.out.println("signIn result: " + signIn);
-		
-		String adminNY = signIn.getAdminNY();
-		System.out.println("adminNY : " + signIn.getAdminNY());
+		Member signInCheck = service.signInCheck(dto);
+		System.out.println("signIn result: " + signInCheck);
 		
 		
 		
-		if (signIn != null) {
+		if (signInCheck != null) {
 			returnMap.put("rt", "success");
 			
-//			System.out.println("returnMap name : " + signIn.getName());  
+//			System.out.println("returnMap name : " + signInCheck.getName());  
+			
+//			계정 정보를 가져왔을때 실행시킬 구문들
 			
 			httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute  세션유지 시간
-			httpSession.setAttribute("sessSeq", signIn.getSeq());
-			httpSession.setAttribute("sessId", signIn.getId());
-			httpSession.setAttribute("sessPassword", signIn.getPassword());
-			httpSession.setAttribute("sessName", signIn.getName());
-			httpSession.setAttribute("sessAdminNY", signIn.getAdminNY());
+			httpSession.setAttribute("sessSeq", signInCheck.getSeq());
+			httpSession.setAttribute("sessId", signInCheck.getId());
+			httpSession.setAttribute("sessPassword", signInCheck.getPassword());
+			httpSession.setAttribute("sessName", signInCheck.getName());
+			httpSession.setAttribute("sessAdminNY", signInCheck.getAdminNY());
 			
-			returnMap.put("adminNY", signIn.getAdminNY());
-			returnMap.put("name", signIn.getName());
+			String adminNY = signInCheck.getAdminNY();
+			System.out.println("adminNY : " + signInCheck.getAdminNY());
+			
+			returnMap.put("adminNY", signInCheck.getAdminNY());
+			returnMap.put("name", signInCheck.getName());
 			
 		} else {
 			returnMap.put("rt", "fail");
@@ -155,7 +157,7 @@ public class CommonController {
 		
 		System.out.println("service.insert : " + insert);
 		
-		 return "redirect:/"; 
+		 return "redirect:/signIn"; 
 	}
 	
 	

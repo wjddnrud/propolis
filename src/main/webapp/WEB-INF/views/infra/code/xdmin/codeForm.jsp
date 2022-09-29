@@ -67,16 +67,42 @@
 									<input type="hidden" name="shValue" value="${vo.shValue }" style="margin-bottom: 10px;">
 									
 									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" value="${one.seq }" placeholder="seq" >
-									<span>코드명</span>
-									<input name="cc_name" type="text" id="cc_name" value="${one.cc_name}" style="width:300px; margin-bottom: 10px;">
-									<span>사용여부</span>
-									<input name="useNY" type="text" id="useNY" value="${one.useNY }" placeholder="1=N or 2=Y" style="width:300px; margin-bottom: 10px;">
-									<span>삭제여부</span>
-									<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 10px; color: black;" placeholder="삭제여부 [default=N]">
+									<span>코드그룹명</span>
+									<%-- <input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" style="margin-bottom: 50px;"> --%>
+									<select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
+										<option value="0">선택</option>
+										<option value="1" <c:if test="${one.ccg_seq  eq 1}">selected</c:if>>성별</option>
+										<option value="2" <c:if test="${one.ccg_seq  eq 2}">selected</c:if>>가입경로</option>
+										<option value="3" <c:if test="${one.ccg_seq  eq 3}">selected</c:if>>카테고리</option>
+										<option value="4" <c:if test="${one.ccg_seq  eq 4}">selected</c:if>>그룹관리자</option>
+										<option value="5" <c:if test="${one.ccg_seq  eq 5}">selected</c:if>>메세지 확인</option>
+										<option value="6" <c:if test="${one.ccg_seq  eq 6}">selected</c:if>>운동종목</option>
+										<option value="7" <c:if test="${one.ccg_seq  eq 7}">selected</c:if>>통신사</option>
+										<option value="8" <c:if test="${one.ccg_seq  eq 8}">selected</c:if>>삭제여부</option>
+									</select>
 									<span>코드_key</span>
-									<input name="cc_key" id="cc_key" type="text"value="${one.cc_key }" style="margin-bottom: 10px;">
-									<span>코드그룹_seq</span>
-									<input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" style="margin-bottom: 50px;">
+									<input name="cc_key" id="cc_key" type="text" value="${one.cc_key }" style="width: 150px; margin-bottom: 10px; text-align: center;" autocomplete="off">
+									<span>코드명</span>
+									<input name="cc_name" type="text" id="cc_name" value="${one.cc_name}" style="width:200px; margin-bottom: 10px; text-align: center;" autocomplete="off">
+									<c:choose>
+										<c:when test="${one.seq eq null }">
+											<input type="hidden" name="delNY" style="width:300px; margin-bottom: 10px; color: black;" placeholder="default=N">
+										</c:when>
+										<c:otherwise>
+											<span>삭제여부</span>
+											<select name="delNY" id="delNY" style="width:150px; margin-bottom: 10px; text-align: center;">
+												<option value="0">선택</option>
+												<option value="1" <c:if test="${one.delNY eq 1}">selected</c:if>>N</option>
+												<option value="2" <c:if test="${one.delNY eq 2}">selected</c:if>>Y</option>
+											</select>
+										</c:otherwise>
+									</c:choose>
+									<span>사용여부</span>
+									<select name="useNY" id="useNY" style="width:150px; margin-bottom: 50px; text-align: center;">
+										<option value="0">선택</option>
+										<option value="1" <c:if test="${one.useNY  eq 1}">selected</c:if>>N</option>
+										<option value="2" <c:if test="${one.useNY  eq 2}">selected</c:if>>Y</option>
+									</select>
 									
 									<!-- <button id="btnSave" type="button">등록</button> -->
 									<a  id="btnSave" class="button primary">등록</a>
@@ -136,10 +162,10 @@
 					return false;
 				}
 				
-				if($('#useNY').val() == "") {
-					alert("사용여부를 확인해주세요.");
+				if($('#useNY').val() == 0) {
+					alert("사용여부를 선택해주세요.");
 					
-					$("#useNY").val()="";
+					$("#useNY").val()=0;
 					$("#useNY").focus();
 					
 					return false;
@@ -154,10 +180,10 @@
 					return false;
 				}
 				
-				if($('#ccg_seq').val() == "") {
-					alert("코드그룹 seq를 입력해주세요.");
+				if($('#ccg_seq').val() == 0) {
+					alert("코드그룹 seq를 선택해주세요.");
 					
-					$("#ccg_seq").val()="";
+					$("#ccg_seq").val()=0;
 					$("#ccg_seq").focus();
 					
 					return false;

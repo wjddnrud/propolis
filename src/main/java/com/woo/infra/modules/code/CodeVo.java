@@ -1,6 +1,6 @@
 package com.woo.infra.modules.code;
 
-public class CodeVo {
+public class CodeVo /* extends BaseVo */{
 	
 	private String shSeq;
 	private Integer shOption;

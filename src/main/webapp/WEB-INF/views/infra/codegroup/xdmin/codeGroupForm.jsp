@@ -67,11 +67,27 @@
 								
 								<input type="hidden" name="seq" value="${one.seq }" style="width:300px; margin-bottom: 10px; color: black;">
 								<span>코드그룹명</span>
-								<input name="ccg_name" style="width:300px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}">
+								<input name="ccg_name" style="width:200px; margin-bottom: 10px;" type="text" id="ccg_name" value="${one.ccg_name}" autocomplete="off">
+								<c:choose>
+									<c:when test="${one.seq eq null }">
+										<input type="hidden" name="delNY" style="width:300px; margin-bottom: 10px; color: black;" placeholder="default=N">
+									</c:when>
+									<c:otherwise>
+										<span>삭제여부</span>
+										<select name="delNY" id="delNY" style="width:150px; margin-bottom: 10px; text-align: center;">
+											<option value="0">선택</option>
+											<option value="1" <c:if test="${one.delNY eq 1}">selected</c:if>>N</option>
+											<option value="2" <c:if test="${one.delNY eq 2}">selected</c:if>>Y</option>
+										</select>
+									</c:otherwise>
+								</c:choose>
 								<span>사용여부</span>
-								<input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="1=N or 2=Y">
-								<span>삭제여부</span>
-								<input type="text" name="delNY" value="${one.delNY }" style="width:300px; margin-bottom: 50px; color: black;" placeholder="default=N">
+								<select name="useNY" id="useNY" style="width:150px; margin-bottom: 50px; text-align: center;">
+									<option value="0">선택</option>
+									<option value="1" <c:if test="${one.useNY  eq 1}">selected</c:if>>N</option>
+									<option value="2" <c:if test="${one.useNY  eq 2}">selected</c:if>>Y</option>
+								</select>
+								<%-- <input name="useNY" style="width:300px; margin-bottom: 10px;" type="text" id="useNY" value="<c:out value="${one.useNY }"/>" placeholder="1=N or 2=Y"> --%>
 								<!-- <button id="btnSave" type="button">등록</button> -->
 								<a  id="btnSave" class="button primary">등록</a>
 								<a href="/codegroup/codeGroupList" class="button">취소</a>
@@ -138,10 +154,10 @@
 			return false;
 		}
 		
-		if(document.getElementById('useNY').value == "") {
+		if(document.getElementById('useNY').value == 0) {
 			alert("사용여부를 확인해주세요.");
 			
-			document.getElementById("useNY").value="";
+			document.getElementById("useNY").value=0;
 			document.getElementById("useNY").focus();
 			
 			return false;

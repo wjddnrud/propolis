@@ -31,7 +31,7 @@
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
-			<exclude-mapping path="/" />
+			<exclude-mapping path="/signInCheck" />
 			<exclude-mapping path="/signUp" />
 			<exclude-mapping path="/signUpInst" />
 			<exclude-mapping path="/signIn" />

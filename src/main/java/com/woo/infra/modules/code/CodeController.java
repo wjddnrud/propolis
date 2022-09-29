@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+
+
 @Controller
 @RequestMapping(value = "/code/")
 public class CodeController {
@@ -19,11 +21,22 @@ public class CodeController {
 	CodeServiceImpl service;
 	
 
+//	public void setParamsPaging(CodeVo vo) throws Exception {
+//			
+//	//		페이징
+//			vo.setParamsPaging(service.selectOneCount(vo));
+//			
+//		}
+	
+	
 	@RequestMapping(value = "codeList")
-	public String codeList(Model model) throws Exception {
+	public String codeList(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 		
 		List<Code> list = service.selectList();
 		model.addAttribute("list", list);
+		
+//		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+//		setParamsPaging(vo);
 		
 		return "infra/code/xdmin/codeList";
 	}
@@ -39,10 +52,12 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeInst")
-	public String codeInsert(Model model, Code dto) throws Exception {
+	public String codeInsert(Model model, Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int insert = service.insert(dto);
 		model.addAttribute("insert", insert);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		
 		return "redirect:/code/codeList";

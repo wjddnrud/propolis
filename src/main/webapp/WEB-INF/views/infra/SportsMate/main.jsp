@@ -37,7 +37,7 @@
 									<ul>
 										<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
 						                	<li><a href="/signUp">SIGN UP</a></li>
-											<li><a href="/">SIGN IN</a></li>
+											<li><a href="/signIn">SIGN IN</a></li>
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
@@ -58,14 +58,8 @@
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
-							<p><c:out value="${sessName }" /> 회원님 방문해주셔서 감사합니다!<br /><br />
-							함께 운동할 친구를 찾아보세요.<br />
-							
-							sessSeq: <c:out value="${sessSeq }"/><br>
-							sessName: <c:out value="${sessName }"/><br>
-							sessId: <c:out value="${sessId }"/><br>
-							sessPassword: <c:out value="${sessPassword }"/><br>
-							</p>
+							<p><b>[<c:out value="${sessName }" />]</b> 회원님 방문해주셔서 감사합니다!<br /><br />
+							함께 운동할 친구를 찾아보세요.<br /></p>
 							<!-- crafted by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 							<ul class="actions special">
 								<li><a href="/findMate" class="button primary">Find Mate</a></li>

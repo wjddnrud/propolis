@@ -40,7 +40,7 @@
 									<ul>
 										<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
 						                	<li><a href="/signUp">SIGN UP</a></li>
-											<li><a href="/">SIGN IN</a></li>
+											<li><a href="/signIn">SIGN IN</a></li>
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>

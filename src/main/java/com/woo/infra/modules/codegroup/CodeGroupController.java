@@ -21,7 +21,6 @@ public class CodeGroupController {
 	public void setParamsPaging(CodeGroupVo vo) throws Exception {
 		
 //		검색 초기값 설정
-		vo.setParamsPaging(service.selectOneCount(vo)); 
 //		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
 //		vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
 //		vo.setShStartDate(vo.getShStartDate() == null || vo.getShStartDate() == "" ? null : vo.getShStartDate());
@@ -79,8 +78,9 @@ public class CodeGroupController {
 //			 model.addAttribute("item", item);
 //		 }
 		
-		CodeGroup result = service.selectOne(vo);
-		model.addAttribute("one", result);
+		CodeGroup selectOne = service.selectOne(vo);
+		model.addAttribute("one", selectOne);
+		System.out.println("controller selectOne : " + selectOne);
 		
 		List<CodeGroup> list = service.search(vo); 
 		model.addAttribute("list", list);
@@ -91,8 +91,8 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller inst : " + result);
+		int insert = service.insert(dto);
+		System.out.println("controller inst : " + insert);
 		
 //		vo.setSeq(dto.getSeq());
 		

@@ -99,11 +99,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Member signIn(Member dto) throws Exception {
+	public Member signInCheck(Member dto) throws Exception {
 		
-		Member signIn = dao.signIn(dto);
+		Member signInCheck = dao.signInCheck(dto);
 		
-		return signIn;
+		System.out.println("service signInCheck : " + signInCheck);
+		
+		return signInCheck;
 	}
 
 

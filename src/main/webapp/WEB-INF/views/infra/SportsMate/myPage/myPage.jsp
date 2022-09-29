@@ -55,6 +55,15 @@
 					<section class="wrapper style5">
 						<div class="inner">
 							<section>
+								<div style="font-weight: bold; text-align: center;">
+									프로필 사진<br/>
+									[회원 정보 session]<br/><br/>
+									회원번호: <c:out value="${sessSeq }"/><br>
+									회원 이름: <c:out value="${sessName }"/><br>
+									ID: <c:out value="${sessId }"/><br>
+									PASSWORD: <c:out value="${sessPassword }"/><br>
+									<hr>
+								</div>
 								<div>
 									<ul class="nav nav-tabs">
 										<li class="nav-item">

@@ -39,7 +39,7 @@
 								<div id="menu">
 									<ul>
 					                	<li><a href="/signUp">SIGN UP</a></li>
-										<li><a href="/">SIGN IN</a></li>
+										<li><a href="/signIn">SIGN IN</a></li>
 							            <%-- <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
@@ -66,7 +66,7 @@
 									<section>
 										<div class="row gtr-uniform">
 											<div class="col-12">
-												<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+												<h1 class="mb-1 fw-normal"><b>Please sign in</b></h1>
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
@@ -87,12 +87,6 @@
 													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick=""></li>
 													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
-											</div>
-											<div style="text-align: center;">
-											sessSeq: <c:out value="${sessSeq }"/><br>
-											sessName: <c:out value="${sessName }"/><br>
-											sessId: <c:out value="${sessId }"/><br>
-											sessPassword: <c:out value="${sessPassword }"/><br>
 											</div>
 										</div>
 									</section>
@@ -160,7 +154,7 @@
 						,cache: false
 						,type: "post"
 						,dataType:"json"
-						,url: "/signIn"
+						,url: "/signInCheck"
 						/* ,data : $("#formLogin").serialize() */
 						,data : { "id" : $("#id").val(), "password" : $("#password").val() }
 						,success: function(response) {
@@ -170,7 +164,7 @@
 									if(response.adminNY == 1) {
 										location.href="/main";
 									} else {
-										location.href="/codegroup/codeGroupList"
+										location.href="/codegroup/codeGroupList";
 									}
 								});
 							} else {
