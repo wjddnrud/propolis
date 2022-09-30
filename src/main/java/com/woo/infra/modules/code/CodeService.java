@@ -2,9 +2,13 @@ package com.woo.infra.modules.code;
 
 import java.util.List;
 
+import com.woo.infra.common.util.BaseVo;
+
 public interface CodeService {
 
-	public List<Code> selectList() throws Exception;
+	public List<Code> selectList(CodeVo vo) throws Exception;
+	
+	public List<Code> ccg_name(Code dto) throws Exception;
 	
 	public List<Code> search(CodeVo bori) throws Exception;
 	
@@ -16,7 +20,7 @@ public interface CodeService {
 	
 	public void selectListCachedCodeArrayList() throws Exception;
 	
-//	public int selectOneCount(BaseVo vo) throws Exception;
+	public int selectOneCount(BaseVo vo) throws Exception;
 	
 	
 	

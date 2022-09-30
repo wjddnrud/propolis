@@ -162,9 +162,9 @@
 								swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
 								.then(function() {
 									if(response.adminNY == 1) {
-										location.href="/main";
+										location.href="/main";  //일반 사용자
 									} else {
-										location.href="/codegroup/codeGroupList";
+										location.href="/codegroup/codeGroupList";   //관리자
 									}
 								});
 							} else {

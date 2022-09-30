@@ -34,10 +34,11 @@
 											<li><a href="/signIn">SIGN IN</a></li>
 							        	</c:if>
 										<c:if test="${sessAdminNY eq 2}">
-											<li><a href="#">Administor</a></li>
-											<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
-											<li><a href="/code/codeList">CodeList</a></li>
-											<li><a href="/member/memberList">MemberList</a></li>
+											<%-- <li><a href="#">관리자 <c:out value="${sessName}"/> 님으로 접속중</a></li> --%>
+											<li>[관리자 <c:out value="${sessName}"/> 님으로 접속중]</li>
+											<li><a href="/codegroup/codeGroupList">CodeGroup List</a></li>
+											<li><a href="/code/codeList">Code List</a></li>
+											<li><a href="/member/memberList">Member List</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
 									</ul>

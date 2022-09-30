@@ -149,12 +149,11 @@
 													<label for="demo-human" style="color: white;">선택</label>
 												</th>
 												<th>#</th>
-												<th>코드그룹 이름(한글)</th>
-												<th>코드갯수</th>
-												<th>사용여부</th>
-												<th>삭제여부</th>
-												<th>등록일</th>
-												<th>수정일</th>
+												<th>카테고리</th>
+												<th>작성자</th>
+												<th>제목</th>
+												<th>작성일자</th>
+												<th>조회수</th>
 											</tr>
 										</thead>
 										<tbody style="color: black;">
@@ -173,7 +172,6 @@
 												<c:out value="${list.seq}"/>
 												</a></td>
 												<td><c:out value="${list.ccg_name }"/></td>
-												<td><c:out value="${list.xCodeCount }"/></td>
 												<td>
 													<c:choose>
 														<c:when test="${list.useNY eq 1}">N</c:when>

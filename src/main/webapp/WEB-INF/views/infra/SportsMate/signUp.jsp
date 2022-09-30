@@ -47,7 +47,7 @@
 					                <li><a href="/main">Home</a></li>
 									<li><a href="/findMate">Find Mate</a></li>
 									<li><a href="/community">Community</a></li>
-									<li><a href="/myPage">MyPage</a></li>
+									<li><a href="/myPage">My Page</a></li>
 									<li><a href="/logout">LOG-OUT</a></li>
 								</c:if>
 							</ul>
@@ -85,7 +85,7 @@
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="name">이름</label>
-									<input type="text" name="name" id="name" value="" placeholder="" />
+									<input type="text" name="name" id="name" value="" autocomplete="off" placeholder="" />
 								</div>
 								<div class="col-6">
 									<label for="gender">성별</label>
@@ -98,7 +98,7 @@
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="job">직업</label>
-									<input type="text" name="job" id="job" value="" placeholder="" />
+									<input type="text" name="job" id="job" value="" autocomplete="off" placeholder="" />
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="dob">생년월일</label>     <!-- datepicker로 바꿔주기 -->
@@ -334,10 +334,10 @@
 		
 		$("#passwordRe").on("focusout", function(){
 			if($('#password').val() == $('#passwordRe').val()) {
-				$("#pwCheck").text("패스워드가 일치합니다. OuO");
+				$("#pwCheck").text("패스워드가 일치합니다.");
 				$("#pwCheck").css("color", "lightgreen");	
 			} else {
-				$("#pwCheck").text("패스워드가 일치하지 않습니다. X_X");
+				$("#pwCheck").text("패스워드가 일치하지 않습니다.");
 				$("#pwCheck").css("color", "red");
 			}
 		});
@@ -370,13 +370,16 @@
 				,dataType : 'json'
 				,success: function(response) {
 					if(response.rt == "success") {
-						$("#id_check").text("사용가능한 아이디입니다. OuO");
+						$("#id_check").text("사용가능한 아이디입니다.");
 						$("#id_check").css("color", "lightgreen");
 					} else {
-						$("#id_check").text("이미 사용중인 아이디입니다. X_X");
+						$("#id_check").text("이미 사용중인 아이디입니다.");
 						$("#id_check").css("color", "red");
 					}
 				}
+				/* ,error : function(){
+					alert("error");
+				}  */
 			});
 		});
 		

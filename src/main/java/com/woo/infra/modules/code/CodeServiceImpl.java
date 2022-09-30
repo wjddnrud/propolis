@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.woo.infra.common.util.BaseVo;
+
 
 @Service
 public class CodeServiceImpl implements CodeService {
@@ -16,10 +18,20 @@ public class CodeServiceImpl implements CodeService {
 	CodeDao dao;
 	
 	@Override
-	public List<Code> selectList() throws Exception {
+	public List<Code> selectList(CodeVo vo) throws Exception {
 		
-		return dao.selectList();
+		System.out.println("service vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("service vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
 		
+		return dao.selectList(vo);
+		
+	}
+
+	@Override
+	public List<Code> ccg_name(Code dto) throws Exception {
+		
+		List<Code> ccg_name = dao.ccg_name(dto);
+		return ccg_name;
 	}
 
 	@Override
@@ -53,10 +65,11 @@ public class CodeServiceImpl implements CodeService {
 		return selectOne;
 	}
 	
-//	@Override
-//	public int selectOneCount(BaseVo vo) throws Exception {
-//		return dao.selectOneCount(vo);
-//	}
+	@Override
+	public int selectOneCount(BaseVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
 
 	@Override
 	public int update(Code dto) throws Exception {

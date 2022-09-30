@@ -34,7 +34,6 @@
 		    	,a.delNY
 		    	,a.createDate
 		    	,a.modiDate
-				<!-- , a.ifcgNameEng -->
 		   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
 		<include refid="selectCommon" />
 			ORDER BY a.seq ASC

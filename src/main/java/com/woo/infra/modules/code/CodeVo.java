@@ -1,6 +1,8 @@
 package com.woo.infra.modules.code;
 
-public class CodeVo /* extends BaseVo */{
+import com.woo.infra.common.util.BaseVo;
+
+public class CodeVo extends BaseVo {
 	
 	private String shSeq;
 	private Integer shOption;
@@ -61,7 +63,7 @@ public class CodeVo /* extends BaseVo */{
 	public void setShEndDate(String shEndDate) {
 		this.shEndDate = shEndDate;
 	}
-
+	
 	
 
 }

@@ -21,22 +21,31 @@ public class CodeController {
 	CodeServiceImpl service;
 	
 
-//	public void setParamsPaging(CodeVo vo) throws Exception {
-//			
-//	//		페이징
-//			vo.setParamsPaging(service.selectOneCount(vo));
-//			
-//		}
+	public void setParamsPaging(CodeVo vo) throws Exception {
+			
+	//		페이징
+			vo.setParamsPaging(service.selectOneCount(vo));
+			
+			System.out.println("controller vo.getRowNumToShow : " + vo.getRowNumToShow());
+			System.out.println("controller vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+			
+		}
 	
 	
 	@RequestMapping(value = "codeList")
-	public String codeList(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
+	public String codeList(Model model, @ModelAttribute("vo") CodeVo vo, Code dto) throws Exception {
 		
-		List<Code> list = service.selectList();
-		model.addAttribute("list", list);
+
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
 		
-//		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
-//		setParamsPaging(vo);
+		List<Code> list = service.selectList(vo);
+		
+		model.addAttribute("list", list);		
+		
+		List<Code> ccgList = service.ccg_name(dto);
+		
+		model.addAttribute("ccgList", ccgList);
 		
 		return "infra/code/xdmin/codeList";
 	}

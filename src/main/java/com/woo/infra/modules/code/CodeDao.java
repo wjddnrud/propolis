@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.woo.infra.common.util.BaseVo;
+
 
 @Repository
 public class CodeDao {
@@ -18,7 +20,20 @@ public class CodeDao {
 	
 	private static String namespace = "com.woo.infra.modules.code.CodeMapper";
 	
-	public List<Code> selectList(){ return sqlSession.selectList(namespace + ".selectList",""); }
+	public List<Code> selectList(CodeVo vo){ 
+
+		System.out.println("dao in vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("dao in vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+		
+		List<Code> selectList = sqlSession.selectList(namespace + ".selectList",vo);
+		System.out.println("dao selectList : " + selectList);
+		
+		System.out.println("dao out vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("dao out vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+		
+		
+		return selectList;
+	}
 	
 	public List<Code> search(CodeVo vo) { return sqlSession.selectList(namespace + ".search", vo); }
 	
@@ -32,6 +47,12 @@ public class CodeDao {
 		
 	}
 	
+	public List<Code> ccg_name(Code dto) {
+		List<Code> ccg_name = sqlSession.selectList(namespace + ".ccg_name", dto);
+		
+		return ccg_name;
+	}
+	
 	public Code selectOne(CodeVo vo) { 
 		
 		Code selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
@@ -42,7 +63,7 @@ public class CodeDao {
 				
 	}
 	
-//	public int selectOneCount(BaseVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	public int selectOneCount(BaseVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
 	public int update(Code dto) { return sqlSession.update(namespace + ".update", dto);}
 	

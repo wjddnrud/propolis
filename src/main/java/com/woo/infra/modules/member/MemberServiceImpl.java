@@ -101,6 +101,8 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member signInCheck(Member dto) throws Exception {
 		
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));  // 로그인할 떄도 암호화 시켜서 들어가도록!
+		
 		Member signInCheck = dao.signInCheck(dto);
 		
 		System.out.println("service signInCheck : " + signInCheck);
