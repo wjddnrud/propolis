@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.woo.infra.modules.community.CommunityMapper">
+
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.community.Community"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.writer
+			,a.title
+			,a.contents
+			,a.createDate
+			,a.modiDate
+			,a.viewCount
+			,b.category
+		FROM community a
+		JOIN category aa ON aa.community_seq = a.seq
+	</select>
+
+</mapper>

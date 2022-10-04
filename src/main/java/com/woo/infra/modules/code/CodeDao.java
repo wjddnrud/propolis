@@ -47,11 +47,12 @@ public class CodeDao {
 		
 	}
 	
-	public List<Code> ccg_name(Code dto) {
-		List<Code> ccg_name = sqlSession.selectList(namespace + ".ccg_name", dto);
-		
-		return ccg_name;
-	}
+	/*
+	 * public List<Code> ccg_name(Code dto) { List<Code> ccg_name =
+	 * sqlSession.selectList(namespace + ".ccg_name", dto);
+	 * 
+	 * return ccg_name; }
+	 */
 	
 	public Code selectOne(CodeVo vo) { 
 		

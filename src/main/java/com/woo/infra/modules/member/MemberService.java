@@ -1,11 +1,12 @@
 package com.woo.infra.modules.member;
 
 import java.util.List;
-import java.util.Map;
+
+import com.woo.infra.common.util.BaseVo;
 
 public interface MemberService {
 
-	public List<Member> selectList() throws Exception; 
+	public List<Member> selectList(MemberVo vo) throws Exception; 
 	
 	public List<Member> search(MemberVo vo) throws Exception;
 	
@@ -20,4 +21,6 @@ public interface MemberService {
 	public int checkId(Member dto) throws Exception;
 	
 	public Member signInCheck(Member dto) throws Exception;
+	
+	public int selectOneCount(BaseVo vo) throws Exception;
 }

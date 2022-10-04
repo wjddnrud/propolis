@@ -1,4 +1,4 @@
-package com.woo.infra.modules.post;
+package com.woo.infra.modules.community;
 
 import java.util.List;
 
@@ -6,20 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PostServiceImpl implements PostService  {
+public class CommunityServiceImpl implements CommunityService{
+	
 
 	@Autowired
-	PostDao dao;
-
+	CommunityDao dao;
+	
 	@Override
-	public List<Post> selectList() throws Exception {
-		
+	public List<Community> selectList() throws Exception {
 		return dao.selectList();
 	}
-	
-	
-	
-	
-	
-
 }

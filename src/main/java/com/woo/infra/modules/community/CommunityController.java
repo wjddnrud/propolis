@@ -1,4 +1,4 @@
-package com.woo.infra.modules.post;
+package com.woo.infra.modules.community;
 
 import java.util.List;
 
@@ -7,25 +7,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
-@RequestMapping(value = "/post/")
+@RequestMapping(value = "/community/")
 
-public class PostController {
+public class CommunityController {
 
-	
 	@Autowired
-	PostServiceImpl service;
+	CommunityServiceImpl service;
 	
-	
-	@RequestMapping(value = "postList")
-	public String postList(Model model, Post dto) throws Exception {
+
+	@RequestMapping(value = "communityList")
+	public String CommunityList(Model model) throws Exception {
+
+		List<Community> list = service.selectList();
 		
-		List<Post> list = service.selectList();
 		model.addAttribute("list", list);
 		
 		return "infra/SportsMate/community";
 	}
-	
-
 }

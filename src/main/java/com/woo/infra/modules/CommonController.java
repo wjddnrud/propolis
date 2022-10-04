@@ -25,6 +25,7 @@ public class CommonController {
 	
 	
 	
+	
 
 	//----------------------------- 페이지 이동
 	
@@ -42,7 +43,7 @@ public class CommonController {
 	
 	@RequestMapping(value = "community")
 	public String community() throws Exception {
-
+		
 		return "infra/SportsMate/community";
 	}
 	

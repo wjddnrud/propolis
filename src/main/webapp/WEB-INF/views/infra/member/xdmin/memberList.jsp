@@ -35,7 +35,7 @@
 							        	</c:if>
 										<c:if test="${sessAdminNY eq 2}">
 											<%-- <li><a href="#">관리자 <c:out value="${sessName}"/> 님으로 접속중</a></li> --%>
-											<li>[관리자 <c:out value="${sessName}"/> 님으로 접속중]</li>
+											<li>[<c:out value="${sessName}"/> 님으로 접속중]</li>
 											<li><a href="/codegroup/codeGroupList">CodeGroup List</a></li>
 											<li><a href="/code/codeList">Code List</a></li>
 											<li><a href="/member/memberList">Member List</a></li>
@@ -86,6 +86,10 @@
 								
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
 									<input type="hidden" name="shSeq">
+									
+									<!-- paging hidden -->
+									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									
 									<div class="row gtr-uniform">
 										<div class="col-2">
@@ -193,16 +197,11 @@
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											<tr style="color: black;">
-												<td>
-												
-												
-												<input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
-												
-												
+												<td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
 												<label for="checkbox${status.count }"></label>
 												</td>
 												<td><a href="javascript:editForm(${list.seq })">
-												<c:out value="${status.count }"/></a></td>
+												<c:out value="${list.seq }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
 												<td><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
@@ -260,23 +259,11 @@
 											마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
 										</tfoot>
 									</table>
-									<nav aria-label="Page navigation example">
-										<ul class="pagination justify-content-center">
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Previous">
-													<span aria-hidden="true">&laquo;</span>
-												</a>
-											</li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
-										</ul>
-									</nav>
+									
+									<!-- pagination s -->
+										<%@include file="pagination.jsp"%>
+									<!-- pagination e -->
+									
 									
 									<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick="goTrash()"><i class="fa-solid fa-trash-can"></i></button> 
@@ -380,6 +367,12 @@
 					location.href = "/member/memberForm";
 				}
 				
+				var goUrlList = "/member/memberList";    /* # -> */
+				var goUrlInst = "/member/memberInst";    /* # -> */
+				var goUrlUpdt = "/member/memberUpdt";    /* # -> */
+				var goUrlUele = "/member/memberUele";    /* # -> */
+				var goUrlDele = "/member/memberDele";    /* # -> */
+				
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
@@ -388,6 +381,11 @@
 				editForm = function(seq) {
 					editSeq.attr("value", seq);
 					form.attr("action", "/member/memberForm").submit();
+				}
+				
+				goList = function(thisPage) {
+					$("input:hidden[name=thisPage]").val(thisPage);
+					form.attr("action", goUrlList).submit();
 				}
 				
 				

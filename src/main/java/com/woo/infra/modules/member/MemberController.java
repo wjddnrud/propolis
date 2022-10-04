@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {
@@ -20,13 +21,26 @@ public class MemberController {
 	MemberServiceImpl service;
 	
 
+	
+	
+	public void setParamsPaging(MemberVo vo) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		System.out.println("controller vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("controller vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+		
+	}
+	
+	
 	@RequestMapping(value = "memberList")
-	public String memberList(Model model, @ModelAttribute("vo")MemberVo vo) throws Exception {
+	public String memberList(Model model, @ModelAttribute("vo")MemberVo vo, Member dto) throws Exception {
 
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
 		
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
+		 
 		
 //		vo.setShDate(vo.getShDate() == null ? 0 : vo.getShDate());
 //		vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());

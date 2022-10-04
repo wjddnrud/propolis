@@ -77,7 +77,19 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr onclick="location.href='/communityView'" style="cursor: pointer;">
+										<c:forEach items="${list}" var="list" varStatus="statusList">
+											<tr>
+												<td><c:out value="${list.category }"></c:out></td>
+												<td><c:out value="${list.writer }"></c:out></td>
+												<td><c:out value="${list.title }"></c:out></td>
+												<td><c:out value="${list.contents}"></c:out></td>
+												<td><c:out value="${list.createDate }"></c:out></td>
+												<td><c:out value="${list.modiDate }"></c:out></td>
+												<td><c:out value="${list.viewCount }"></c:out></td>
+											</tr>
+										</c:forEach>
+										
+											<!-- <tr onclick="location.href='/communityView'" style="cursor: pointer;">
 												<td>FOOD</td>
 												<td>dnwk101</td>
 												<td>먹는것 식단 질문 드려요</td>
@@ -146,7 +158,7 @@
 												<td>다이어트에 매일 하루견과 한봉지 먹어도 괜찮은가요?</td>
 												<td>2022-08-01 22:04:50</td>
 												<td>40</td>
-											</tr>
+											</tr> -->
 										</tbody>
 										<tfoot>
 											<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.woo.infra.common.util.BaseVo;
 import com.woo.infra.common.util.UtilSecurity;
 
 
@@ -15,8 +16,12 @@ public class MemberServiceImpl implements MemberService{
 	MemberDao dao;
 	
 	@Override
-	public List<Member> selectList() throws Exception {
-		return dao.selectList();
+	public List<Member> selectList(MemberVo vo) throws Exception {
+		
+		System.out.println("service vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("service vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+		
+		return dao.selectList(vo);
 	}
 
 	@Override
@@ -88,6 +93,12 @@ public class MemberServiceImpl implements MemberService{
 		
 		
 		return insert;
+	}
+
+	@Override
+	public int selectOneCount(BaseVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo) ;
 	}
 
 	@Override

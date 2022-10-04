@@ -1,13 +1,14 @@
 package com.woo.infra.modules.member;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.woo.infra.common.util.BaseVo;
 
 @Repository
 public class MemberDao {
@@ -18,7 +19,19 @@ public class MemberDao {
 	
 	private static String namespace = "com.woo.infra.modules.member.MemberMapper";
 	
-	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList",""); }
+	public List<Member> selectList(MemberVo vo){ 
+		
+		System.out.println("dao in vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("dao in vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+
+		List<Member> selectList = sqlSession.selectList(namespace + ".selectList", vo);
+		
+		System.out.println("dao in vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("dao in vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+		
+		return selectList;
+		
+		}
 	
 	public List<Member> search(MemberVo vo){ return sqlSession.selectList(namespace + ".search", vo); }
 	
@@ -30,6 +43,11 @@ public class MemberDao {
 		
 		return selectOne;
 		
+	}
+	
+	public int selectOneCount(BaseVo vo) {
+		 
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
 	public int update(Member dto) {

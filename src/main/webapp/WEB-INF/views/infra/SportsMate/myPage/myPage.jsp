@@ -58,10 +58,8 @@
 								<div style="font-weight: bold; text-align: center;">
 									프로필 사진<br/>
 									[회원 정보 session]<br/><br/>
-									회원번호: <c:out value="${sessSeq }"/><br>
 									회원 이름: <c:out value="${sessName }"/><br>
 									ID: <c:out value="${sessId }"/><br>
-									PASSWORD: <c:out value="${sessPassword }"/><br>
 									<hr>
 								</div>
 								<div>
@@ -70,13 +68,13 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="/codegroup/codeGroupList">게시글 관리</a>
+											<a class="nav-link active" aria-current="page" href="myPage">게시글 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="/code/codeList">모임 관리</a>
+											<a class="nav-link" href="#">모임 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="/member/memberList">기타 둥둥</a>
+											<a class="nav-link" href="#">기타 둥둥</a>
 										</li>
 									</ul>
 								</div>

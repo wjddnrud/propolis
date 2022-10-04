@@ -8,13 +8,13 @@
 
     <resultMap id="resultMapObj" type="com.woo.infra.modules.code.Code"></resultMap>
 	
-	<select id="ccg_name" resultMap="resultMapObj">
+	<!-- <select id="ccg_name" resultMap="resultMapObj">
 		SELECT
 			seq
 			,ccg_name
 		FROM ccg
 		WHERE 1=1
-	</select>
+	</select> -->
 	
 	<select id="search" resultMap="resultMapObj">
 		SELECT
@@ -116,8 +116,18 @@
 	<!-- ===paging=== -->
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
-		<include refid="Base.selectCommon" />
+		<include refid="selectCommon" />
 	</select>
+	
+	 <sql id ="selectCommon">
+		FROM cc
+		WHERE 1=1
+			<if test="shDelNY != null and !shDelNY.equals('')">AND DelNY = #{shDelNY}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />

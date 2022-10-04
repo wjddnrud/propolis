@@ -43,9 +43,9 @@ public class CodeController {
 		
 		model.addAttribute("list", list);		
 		
-		List<Code> ccgList = service.ccg_name(dto);
+//		List<Code> ccgList = service.ccg_name(dto);
 		
-		model.addAttribute("ccgList", ccgList);
+//		model.addAttribute("ccgList", ccgList);
 		
 		return "infra/code/xdmin/codeList";
 	}

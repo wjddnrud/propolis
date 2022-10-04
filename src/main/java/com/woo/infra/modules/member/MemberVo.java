@@ -1,9 +1,8 @@
 package com.woo.infra.modules.member;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.woo.infra.common.util.BaseVo;
 
-public class MemberVo {
+public class MemberVo extends BaseVo{
 
 	private Integer shOption;
 	private String shValue;

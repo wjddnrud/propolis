@@ -24,15 +24,6 @@
 		LIMIT 99999999999
 	</sql>
 	
-	 <sql id ="selectCommon">
-		FROM cc
-		WHERE 1=1
-			<if test="shDelNY != null and !shDelNY.equals('')">AND DelNY = #{shDelNY}</if>
-			<choose>
-				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
-			</choose>
-	</sql>
     
-
+ 
 </mapper>
