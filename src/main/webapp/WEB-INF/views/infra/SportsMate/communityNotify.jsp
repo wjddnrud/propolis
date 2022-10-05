@@ -42,7 +42,7 @@
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -91,9 +91,9 @@
 											<div class="col-12">
 												<ul class="actions" style="justify-content: center;">
 													<li><input type="reset" value="Reset"></li>
-													<li><a href="/community" class="button primary">Sign-up(이동)</a></li>
+													<li><a href="/community/communityList" class="button primary">Sign-up(이동)</a></li>
 													<li><button type="submit" class="button primary">Sign-up(제출)</button></li>
-													<li><a href="/community" class="button">Cancle</a></li>
+													<li><a href="/community/communityList" class="button">Cancle</a></li>
 												</ul>
 											</div>
 										</div>

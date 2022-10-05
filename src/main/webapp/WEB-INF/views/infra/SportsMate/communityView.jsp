@@ -43,7 +43,7 @@
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -98,7 +98,7 @@
 										</table>
 										<center style="margin-left: 12%;">
 											<a href="#" class="button primary">💪추천</a>
-											<a href="/community" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
+											<a href="/community/communityList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 											<a href="/communityNotify" class="button" style="background-color: rgb(255, 0, 0); color: white; float: right;">🚨신고</a>
 										</center>
 									</div>

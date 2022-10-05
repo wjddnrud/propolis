@@ -43,7 +43,7 @@
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -65,33 +65,35 @@
 
 
 								<section>
-									<form method="post" action="#">
+									<form name="communityForm">
 										<div class="row gtr-uniform">
 											<div class="col-4 col-12-xsmall">
-												<select>
+												<select id="category" name="category">
 													<option value="">카테고리</option>
 													<option value="1">Diet</option>
-													<option value="1">Weight</option>
-													<option value="1">Food</option>
+													<option value="2">Weight</option>
+													<option value="3">Food</option>
 												</select>
 											</div>
+											<!-- hidden input -->
+											<input type="hidden" id="writer" name="writer" value="${sessSeq}">
 											<div class="col-8 col-12-xsmall">
-												<input type="text" value="" placeholder="제목을 입력해주세요.">
+												<input id="title" name="title" type="text" placeholder="제목을 입력해주세요.">
 											</div>
 											<div class="col-12 col-12-xsmall filebox">
-												<input class="upload-name" value="" placeholder="첨부파일">
+												<input class="upload-name" placeholder="첨부파일">
 												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
 												<input type="file" id="file">
 											</div>
 											<div class="col-12">
-												<textarea placeholder="여기에 내용을 입력해주세요." rows="15"></textarea>
+												<textarea id="contents" name="contents" placeholder="여기에 내용을 입력해주세요." rows="15"></textarea>
 											</div>
 											<div class="col-12">
 												<ul class="actions" style="justify-content: center;">
 													<li><input type="reset" value="Reset"></li>
-													<li><a href="/community" class="button primary">Sign-up</a></li>
+													<li><a id="btnSave" class="button primary">Sign-up</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
-													<li><a href="/community" class="button">Cancle</a></li>
+													<li><a href="/community/communityList" class="button">Cancle</a></li>
 												</ul>
 											</div>
 										</div>
@@ -143,11 +145,54 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 
-			<script>
+			<script type="text/javascript">
+				var goUrlList = "/community/communityList";    /* # -> */
+				var goUrlInst = "/community/communityInst";    /* # -> */
+				var goUrlUpdt = "/community/communityUpdt";    /* # -> */
+				var goUrlUele = "/community/communityUele";    /* # -> */
+				var goUrlDele = "/community/communityDele";    /* # -> */
+				
+				var form = $("form[name=communityForm]");
+			
+			
 				$("#file").on('change',function(){
 					var fileName = $("#file").val();
 					$(".upload-name").val(fileName);
 				});
+				
+				/* 등록 버튼 */
+				$("#btnSave").on("click", function() {
+					
+					if(document.getElementById('category').value == "") {
+						alert("카테고리를 선택해주세요.");
+						
+						document.getElementById("category").value="";
+						document.getElementById("category").focus();
+						
+						return false;
+					}
+					
+					if($('#title').val() == 0) {
+						alert("글 제목을 입력해주세요.");
+						
+						$("#title").val()=0;
+						$("#title").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('contents').value == "") {
+						alert("글 내용을 입력해주세요.");
+						
+						document.getElementById("contents").value="";
+						document.getElementById("contents").focus();
+						
+						return false;
+					}
+					form.attr("action", goUrlInst).submit();
+				});
+				
+					
 			</script>
 			
 

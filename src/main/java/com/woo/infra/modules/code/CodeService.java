@@ -8,7 +8,7 @@ public interface CodeService {
 
 	public List<Code> selectList(CodeVo vo) throws Exception;
 	
-//	public List<Code> ccg_name(Code dto) throws Exception;
+	public List<Code> ccg_name(Code dto) throws Exception;
 	
 	public List<Code> search(CodeVo bori) throws Exception;
 	

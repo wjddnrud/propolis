@@ -16,4 +16,19 @@ public class CommunityServiceImpl implements CommunityService{
 	public List<Community> selectList() throws Exception {
 		return dao.selectList();
 	}
+
+	@Override
+	public int insert(Community dto) throws Exception {
+
+		/*
+		 * if(dto.getWriter() == null) dto.getWriter("writer");
+		 */
+		
+		int insert = dao.insert(dto);
+		System.out.println("service insert : " + insert);
+		
+		return insert;
+	}
+	
+	
 }

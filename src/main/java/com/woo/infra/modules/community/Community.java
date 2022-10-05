@@ -9,6 +9,7 @@ public class Community {
 	private String createDate;
 	private String modiDate;
 	private String viewCount;
+	private String category;
 	
 	
 	public String getSeq() {
@@ -52,6 +53,12 @@ public class Community {
 	}
 	public void setViewCount(String viewCount) {
 		this.viewCount = viewCount;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	

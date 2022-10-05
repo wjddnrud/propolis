@@ -23,6 +23,19 @@ public class CommunityController {
 		
 		model.addAttribute("list", list);
 		
-		return "infra/SportsMate/community";
+		return "infra/SportsMate/community"; 
+	}
+	
+	@RequestMapping(value = "communityInst")
+	public String communityInsert(Model model, Community dto) throws Exception {
+		
+		int insert = service.insert(dto);
+		/* model.addAttribute("insert", insert); */
+
+		
+		
+		return "redirect:/community/communityList";
 	}
 }
+
+

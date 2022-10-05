@@ -69,7 +69,7 @@
 									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" value="${one.seq }" placeholder="seq" >
 									<span>코드그룹명</span>
 									<%-- <input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" style="margin-bottom: 50px;"> --%>
-									<select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
+									<%-- <select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
 										<option value="0">선택</option>
 										<option value="1" <c:if test="${one.ccg_seq  eq 1}">selected</c:if>>성별</option>
 										<option value="2" <c:if test="${one.ccg_seq  eq 2}">selected</c:if>>가입경로</option>
@@ -79,12 +79,12 @@
 										<option value="6" <c:if test="${one.ccg_seq  eq 6}">selected</c:if>>운동종목</option>
 										<option value="7" <c:if test="${one.ccg_seq  eq 7}">selected</c:if>>통신사</option>
 										<option value="8" <c:if test="${one.ccg_seq  eq 8}">selected</c:if>>삭제여부</option>
-									</select>
-									<%-- <select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
-										<c:forEach items="${list}" var="list" varStatus="statusList">
-											<option <c:if test="${list.seq eq ccgList.ccg_seq }">selected</c:if>><c:out value="${ccgList.ccg_name }"></c:out></option>
-										</c:forEach>
 									</select> --%>
+									<select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
+										<c:forEach items="${add }" var="add" varStatus="statusAdd">
+											<option value="${add.seq }" <c:if test="${list.ccg_seq eq add.seq}">selected</c:if>><c:out value="${add.ccg_name}"/></option>
+										</c:forEach>
+									</select>
 									<span>코드_key</span>
 									<input name="cc_key" id="cc_key" type="text" value="${one.cc_key }" style="width: 150px; margin-bottom: 10px; text-align: center;" autocomplete="off">
 									<span>코드명</span>

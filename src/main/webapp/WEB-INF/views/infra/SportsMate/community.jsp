@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.woo.infra.modules.code.CodeServiceImpl"/>
 
 
 <!DOCTYPE HTML>
@@ -43,7 +44,7 @@
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -65,130 +66,68 @@
 
 							
 							<section>
-								<div class="table-wrapper">
-									<table class="alt">
-										<thead>
-											<tr>
-												<th>카테고리</th>
-												<th>작성자</th>
-												<th>제목</th>
-												<th>작성일자</th>
-												<th>조회수</th>
-											</tr>
-										</thead>
-										<tbody>
-										<c:forEach items="${list}" var="list" varStatus="statusList">
-											<tr>
-												<td><c:out value="${list.category }"></c:out></td>
-												<td><c:out value="${list.writer }"></c:out></td>
-												<td><c:out value="${list.title }"></c:out></td>
-												<td><c:out value="${list.contents}"></c:out></td>
-												<td><c:out value="${list.createDate }"></c:out></td>
-												<td><c:out value="${list.modiDate }"></c:out></td>
-												<td><c:out value="${list.viewCount }"></c:out></td>
-											</tr>
-										</c:forEach>
-										
-											<!-- <tr onclick="location.href='/communityView'" style="cursor: pointer;">
-												<td>FOOD</td>
-												<td>dnwk101</td>
-												<td>먹는것 식단 질문 드려요</td>
-												<td>2022-07-29 08:13:45</td>
-												<td>15</td>
-											</tr>
-											<tr>
-												<td>DIET</td>
-												<td>heez2727</td>
-												<td>40대 여성 웨이트 및 유산소</td>
-												<td>2022-05-14 12:31:22</td>
-												<td>31</td>
-											</tr>	
-											<tr>
-												<td>WEIGHT</td>
-												<td>bums1004</td>
-												<td>운동루틴 및 체지방 줄이는 방법 질문</td>
-												<td>2022-06-03 17:20:45</td>
-												<td>24</td>
-											</tr>
-											<tr>
-												<td>FOOD</td>
-												<td>dnwk101</td>
-												<td>[#빼고파] 이왕하는거 맛있게 먹고 확실하게 빼자🔥 김신영의 다이어트 식단 모음집</td>
-												<td>2022-05-08 21:02:04</td>
-												<td>187</td>
-											</tr>
-											<tr>
-												<td>FOOD</td>
-												<td>minsoo1122</td>
-												<td>김강민의 근육 커지는 식단</td>
-												<td>2022-03-31 16:25:42</td>
-												<td>209</td>
-											</tr>
-											<tr>
-												<td>WEIGHT</td>
-												<td>zzdd1996</td>
-												<td>숄더프레스 외회전 내회전 질문</td>
-												<td>2022-08-10 02:21:22</td>
-												<td>3</td>
-											</tr>
-											<tr>
-												<td>DIET</td>
-												<td>gbh1234</td>
-												<td>(사진첨부) 정준하, 조세호, 조영구처럼 얼굴이 촛농처럼 떨어질거같은거요</td>
-												<td>2022-08-09 23:36:16</td>
-												<td>16</td>
-											</tr>
-											<tr>
-												<td>FOOD</td>
-												<td>minsoo1122</td>
-												<td>고등부 보디빌딩</td>
-												<td>2022-08-09 23:36:16</td>
-												<td>5</td>
-											</tr>
-											<tr>
-												<td>FOOD</td>
-												<td>shj7272</td>
-												<td>운동 전 아메리카노에 대해서</td>
-												<td>2022-08-06 08:34:46</td>
-												<td>27</td>
-											</tr>
-											<tr>
-												<td>DIET</td>
-												<td>shj7272</td>
-												<td>다이어트에 매일 하루견과 한봉지 먹어도 괜찮은가요?</td>
-												<td>2022-08-01 22:04:50</td>
-												<td>40</td>
-											</tr> -->
-										</tbody>
-										<tfoot>
-											<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제
-											마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
-										</tfoot>
-									</table>
-									<nav aria-label="Page navigation example">
-										<ul class="pagination justify-content-center">
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Previous">
-													<span aria-hidden="true">&laquo;</span>
-												</a>
-											</li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
-										</ul>
-									</nav>
-									<br>
-									<center>
-										<a href="/communityForm" class="button primary">작성</a>
-										<a href="/main" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
-										<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
-									</center>
-								</div>
+								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
+								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
+								
+								<form>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>카테고리</th>
+													<th>작성자</th>
+													<th>제목</th>
+													<th>작성일자</th>
+													<th>조회수</th>
+												</tr>
+											</thead>
+											<tbody>
+											<c:forEach items="${list}" var="list" varStatus="statusList">
+												<tr>
+													<td>
+														<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
+															<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
+														</c:forEach>
+													</td>
+													<%-- <td><c:out value="${list.category }"></c:out></td> --%>
+													<td><c:out value="${list.writer }"></c:out></td>
+													<td><c:out value="${list.title }"></c:out></td>
+													<td><c:out value="${list.createDate }"></c:out></td>
+													<td><c:out value="${list.viewCount }"></c:out></td>
+												</tr>
+											</c:forEach>
+											
+											</tbody>
+											<tfoot>
+												<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제
+												마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
+											</tfoot>
+										</table>
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item">
+													<a class="page-link" href="#" aria-label="Previous">
+														<span aria-hidden="true">&laquo;</span>
+													</a>
+												</li>
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item"><a class="page-link" href="#">2</a></li>
+												<li class="page-item"><a class="page-link" href="#">3</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#" aria-label="Next">
+														<span aria-hidden="true">&raquo;</span>
+													</a>
+												</li>
+											</ul>
+										</nav>
+										<br>
+										<center>
+											<a href="/communityForm" class="button primary">작성</a>
+											<a href="/main" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+											<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
+										</center>
+									</div>
+								</form>
 							</section>
 
 

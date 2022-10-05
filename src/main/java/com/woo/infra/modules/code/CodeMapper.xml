@@ -8,13 +8,13 @@
 
     <resultMap id="resultMapObj" type="com.woo.infra.modules.code.Code"></resultMap>
 	
-	<!-- <select id="ccg_name" resultMap="resultMapObj">
+	<select id="ccg_name" resultMap="resultMapObj">
 		SELECT
 			seq
 			,ccg_name
 		FROM ccg
 		WHERE 1=1
-	</select> -->
+	</select>
 	
 	<select id="search" resultMap="resultMapObj">
 		SELECT

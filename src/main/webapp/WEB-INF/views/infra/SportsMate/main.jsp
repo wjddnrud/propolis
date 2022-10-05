@@ -42,7 +42,7 @@
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -75,7 +75,7 @@
 								<h2>게시판을 통해 정보를 공유해 보세요.</h2>
 								<p>다양한 카테고리별로 유익한 정보를 함께 공유하실수 있습니다.<br>
 								</p>
-								<a href="/community" class="button primary">Community</a>
+								<a href="/community/communityList" class="button primary">Community</a>
 							</header>
 						</div>
 					</section>

@@ -26,6 +26,16 @@ public class CommunityDao {
 		return selectList;
 	}
 	
+	public int insert(Community dto) {
+		
+		
+		int insert = sqlSession.insert(namespace + ".insert", dto);
+		
+		System.out.println("dao insert : " + insert);
+		
+		return insert;
+	}
+	
 	
 
 }

@@ -41,11 +41,11 @@ public class CommonController {
 		return "infra/SportsMate/myPage/myPage";
 	}
 	
-	@RequestMapping(value = "community")
-	public String community() throws Exception {
-		
-		return "infra/SportsMate/community";
-	}
+//	@RequestMapping(value = "community")
+//	public String community() throws Exception {
+//		
+//		return "infra/SportsMate/community";
+//	}
 	
 	@RequestMapping(value = "communityForm")
 	public String communityForm() throws Exception {
@@ -121,11 +121,14 @@ public class CommonController {
 			httpSession.setAttribute("sessName", signInCheck.getName());
 			httpSession.setAttribute("sessAdminNY", signInCheck.getAdminNY());
 			
+//			String writer = signInCheck.getId();
+			
 			String adminNY = signInCheck.getAdminNY();
 			System.out.println("adminNY : " + signInCheck.getAdminNY());
 			
 			returnMap.put("adminNY", signInCheck.getAdminNY());
 			returnMap.put("name", signInCheck.getName());
+			
 			
 		} else {
 			returnMap.put("rt", "fail");

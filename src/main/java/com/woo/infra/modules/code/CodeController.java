@@ -69,15 +69,20 @@ public class CodeController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		
+		
 		return "redirect:/code/codeList";
 	}
 	
 	@RequestMapping(value = "codeForm")
-	public String codeForm(Model model, CodeVo vo) throws Exception {
+	public String codeForm(Model model, CodeVo vo, Code dto) throws Exception {
 		
 		Code selectOne = service.selectOne(vo);
 		
 		model.addAttribute("one", selectOne);
+		
+		List<Code> ccg_name = service.ccg_name(dto);
+		model.addAttribute("add", ccg_name);
+		System.out.println("add controller : " + ccg_name);
 		
 //		System.out.println("one.seq : " + selectOne.getSeq());
 		

@@ -13,6 +13,8 @@ public class Code {
 	private String ccg_seq;
 	private String createDate;
 	private String modiDate;
+	private String ccg_name;
+	
 	
 //	for cache
 	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
@@ -65,6 +67,12 @@ public class Code {
 	}
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
+	}
+	public String getCcg_name() {
+		return ccg_name;
+	}
+	public void setCcg_name(String ccg_name) {
+		this.ccg_name = ccg_name;
 	}
 	
 	

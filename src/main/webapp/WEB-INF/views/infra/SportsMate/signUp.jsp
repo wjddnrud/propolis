@@ -46,7 +46,7 @@
 					            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 					                <li><a href="/main">Home</a></li>
 									<li><a href="/findMate">Find Mate</a></li>
-									<li><a href="/community">Community</a></li>
+									<li><a href="/community/communityList">Community</a></li>
 									<li><a href="/myPage">My Page</a></li>
 									<li><a href="/logout">LOG-OUT</a></li>
 								</c:if>
@@ -174,7 +174,7 @@
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
-										<li><a id="signUp" class="button primary" onclick="signUp()">sign-up</a></li>
+										<li><a id="signUp" class="button primary" onclick="signUp()" onkeyup="enterKey()">sign-up</a></li>
 										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
 									</ul>
 								</div>
@@ -188,7 +188,6 @@
 				</div>
 			</section>
 		</article>
-	
 	
 		<!-- Footer -->
 		<footer id="footer">
@@ -493,6 +492,14 @@
 
 			alert("SportsMate 회원가입을 축하합니다!");
 		});
+		
+		enterKey = function() {
+			
+			var keycode = event.keyCode;
+			
+			if(keycode == 13) //Enter
+				submitform(); //여기가 이제 로그인 하는 함수로 연결되면 됩니다.
+		}
 	</script>
 </body>
 

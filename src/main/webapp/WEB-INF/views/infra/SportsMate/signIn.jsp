@@ -70,12 +70,12 @@
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input name="id" id="id" type="text" placeholder="ID" style="width: 300px;">
+													<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;">
 												</center>
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input name="password" id="password" type="password" placeholder="PASSWORD" style="width: 300px;">
+													<input name="password" id="password" type="password" onkeyup="enterKey()" placeholder="PASSWORD" style="width: 300px;">
 												</center>
 											</div>
 											<div class="col-6 col-12">
@@ -84,7 +84,7 @@
 											</div>
 											<div class="col-12">
 												<ul class="actions stacked">
-													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick=""></li>
+													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick="signIn()"></li>
 													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
 											</div>
@@ -177,6 +177,59 @@
 						} 
 					});
 				});
+				
+				enterKey = function() {
+					
+					var keycode = event.keyCode;
+					
+					if(keycode == 13) {
+						if(document.getElementById('id').value == '' || document.getElementById('id').value == null) {
+							alert("아이디를 입력해주세요.");
+							
+							document.getElementById("id").value="";
+							document.getElementById("id").focus();
+							
+							return false;
+						}
+						
+						if(document.getElementById('password').value == '' || document.getElementById('password').value == null) {
+							alert("비밀번호를 입력해주세요.");
+							
+							document.getElementById("password").value="";
+							document.getElementById("password").focus();
+							
+							return false;
+						}
+						
+						$.ajax({
+							async: true 
+							,cache: false
+							,type: "post"
+							,dataType:"json"
+							,url: "/signInCheck"
+							/* ,data : $("#formLogin").serialize() */
+							,data : { "id" : $("#id").val(), "password" : $("#password").val() }
+							,success: function(response) {
+								if(response.rt == "success") {
+									swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
+									.then(function() {
+										if(response.adminNY == 1) {
+											location.href="/main";  //일반 사용자
+										} else {
+											location.href="/codegroup/codeGroupList";   //관리자
+										}
+									});
+								} else {
+									swal("로그인 실패!", "계정이 존재하지 않습니다. 다시 확인해 주세요.", "error");
+									return false;
+								}
+							}
+							,error : function(){
+								alert("error");
+							} 
+						});
+					}
+				}
 				
 			
 				

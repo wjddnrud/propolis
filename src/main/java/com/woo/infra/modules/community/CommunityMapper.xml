@@ -10,16 +10,31 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.seq
-			,a.writer
-			,a.title
-			,a.contents
-			,a.createDate
-			,a.modiDate
-			,a.viewCount
-			,b.category
-		FROM community a
-		JOIN category aa ON aa.community_seq = a.seq
-	</select>
+			cm.seq
+			,cm.category
+			,mm.id as writer
+			,cm.title
+			,cm.contents
+			,cm.createDate
+			,cm.modiDate
+			,cm.viewCount
+		FROM community cm
+		JOIN member mm ON mm.seq = cm.writer 
+	</select> 
+	
+	<insert id="insert">
+		INSERT INTO community(
+			category
+			,writer
+			,title  
+			,contents
+		)
+		VALUES (
+			#{category}
+			,#{writer}
+			,#{title}
+			,#{contents}
+		)
+	</insert>
 
 </mapper>

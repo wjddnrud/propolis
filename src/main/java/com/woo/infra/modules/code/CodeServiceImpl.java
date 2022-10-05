@@ -27,11 +27,14 @@ public class CodeServiceImpl implements CodeService {
 		
 	}
 
-	/*
-	 * @Override public List<Code> ccg_name(Code dto) throws Exception {
-	 * 
-	 * List<Code> ccg_name = dao.ccg_name(dto); return ccg_name; }
-	 */
+	
+	 @Override public List<Code> ccg_name(Code dto) throws Exception {
+	 
+		 List<Code> ccg_name = dao.ccg_name(dto);
+		 
+		 return ccg_name; 
+	 }
+	 
 
 	@Override
 	public List<Code> search(CodeVo bori) throws Exception {
