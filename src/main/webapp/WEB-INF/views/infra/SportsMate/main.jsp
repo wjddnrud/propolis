@@ -41,7 +41,7 @@
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
@@ -62,7 +62,7 @@
 							함께 운동할 친구를 찾아보세요.<br /></p>
 							<!-- crafted by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 							<ul class="actions special">
-								<li><a href="/findMate" class="button primary">Find Mate</a></li>
+								<li><a href="/sportsGroup/sportsGroupList" class="button primary">Find Mate</a></li>
 							</ul>
 						</div>
 						<a href="#one" class="more scrolly">Learn More</a>

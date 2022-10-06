@@ -36,5 +36,58 @@
 			,#{contents}
 		)
 	</insert>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			cm.category
+			,mm.id as writer
+			,cm.title
+			,cm.contents
+			,cm.createDate
+			,cm.viewCount
+		From community cm
+		JOIN member mm ON mm.seq = cm.writer 
+		WHERE 1=1
+			AND cm.seq=#{shSeq}
+	</select>
+	
+	<!-- <update id="update">
+		UPDATE community
+		SET
+			cm.seq
+			,cm.category
+			,mm.id as writer
+			,cm.title
+			,cm.contents
+			,cm.createDate
+			,cm.modiDate
+			,cm.viewCount
+		From community cm
+		JOIN member mm ON mm.seq = cm.writer
+		WHERE 1=1
+			AND seq={seq}
+	</update> -->
+
+	<select id="selectDietCount">
+		SELECT COUNT(*)
+		FROM community
+		WHERE 1=1
+			AND category = 1
+	</select>
+	
+	<select id="selectWeightCount">
+		SELECT COUNT(*)
+		FROM community
+		WHERE 1=1
+			AND category = 2
+	</select>
+	
+	<select id="selectFoodCount">
+		SELECT COUNT(*)
+		FROM community
+		WHERE 1=1
+			AND category = 3
+	</select>
+
 
 </mapper>

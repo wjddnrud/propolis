@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 
 public class CommunityDao {
@@ -35,6 +36,21 @@ public class CommunityDao {
 		
 		return insert;
 	}
+	
+	public Community selectOne(CommunityVo vo) {
+		
+		System.out.println("dao : " + vo.getShSeq());
+		
+		Community selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao selectOne : " + selectOne);
+		
+		return selectOne;
+	}
+
+	
+	public int update(Community dto) { return sqlSession.update(namespace + ".update", dto); }
+	public int uelete(Community dto) { return sqlSession.update(namespace + ".uelete", dto); }
+	public int delete(CommunityVo vo) { return sqlSession.delete(namespace + ".delete", vo); }
 	
 	
 

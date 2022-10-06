@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.woo.infra.modules.code.CodeServiceImpl"/>
 
 
 <!DOCTYPE HTML>
@@ -44,7 +45,7 @@
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
@@ -68,236 +69,38 @@
 
 
 								<section>
-									<div class="container">
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/서핑.jpg"></div>
-												<div class="contentBx">
-													<h3>서핑<br><span>함께 서핑해요@</span></h3>
+									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
+									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
+									
+									<form name="findMateForm">
+										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
+										
+										<c:forEach items="${list}" var="list" varStatus="statusList">
+											<div class="card">
+												<div class="content">
+													<div class="imgBx"><img src="/resources/images/images/서핑.jpg"></div>
+													<div class="contentBx">
+														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
+															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
+														</c:forEach>
+															<span><c:out value="${list.group_name}"/></span></h3>
+													</div>
 												</div>
+												<ul class="sci">
+													<li style="--i:1">
+														<a href="#"><i class="fa-regular fa-envelope"></i></a>
+													</li>
+													<li style="--i:2">
+														<a href="javascript:viewform(${list.seq})"><i class="fa-regular fa-eye"></i></a>
+													</li>
+													<li style="--i:3">
+														<a href="#"><i class="fa-regular fa-map"></i></a>
+													</li>
+												</ul>
 											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
+										</c:forEach>
 										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/바다러닝.jpg"></div>
-												<div class="contentBx">
-													<h3>러닝<br><span>아침 러닝 같이해요!!</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/친구 농구2.jpg"></div>
-												<div class="contentBx">
-													<h3>농구<br><span>3대3 반코트 농구하실분 구해요~</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="/findMateView"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/계단 러닝.jpg"></div>
-												<div class="contentBx">
-													<h3>러닝<br><span>공원 러닝 메이트 구해요~^^</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/바이셉컬.jpg"></div>
-												<div class="contentBx">
-													<h3>웨이트 트레이닝<br><span>헬스 메이트 구합니다!</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/사이클.jpg"></div>
-												<div class="contentBx">
-													<h3>사이클<br><span>#윈드브레이커#</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/요가.jpg"></div>
-												<div class="contentBx">
-													<h3>필라테스<br><span>@필라테스 회원 모집중@</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/러닝머신.jpg"></div>
-												<div class="contentBx">
-													<h3>러닝<br><span>10kg감량 함께해요!!!!!</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/아이 배드민턴.jpg"></div>
-												<div class="contentBx">
-													<h3>배드민턴<br><span>배드민턴 2대2</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/나이키2.jpg"></div>
-												<div class="contentBx">
-													<h3>농구<br><span>@고등학교 농구 대항전@</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/여자 웨이트.jpg"></div>
-												<div class="contentBx">
-													<h3>웨이트 트레이닝<br><span>함께 할 메이트 구해요!!</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-										<div class="card">
-											<div class="content">
-												<div class="imgBx"><img src="/resources/images/images/푸쉬업.jpg"></div>
-												<div class="contentBx">
-													<h3>웨이트 트레이닝<br><span>헬린이 모여라!!</span></h3>
-												</div>
-											</div>
-											<ul class="sci">
-												<li style="--i:1">
-													<a href="#"><i class="fa-regular fa-envelope"></i></a>
-												</li>
-												<li style="--i:2">
-													<a href="#"><i class="fa-regular fa-eye"></i></a>
-												</li>
-												<li style="--i:3">
-													<a href="#"><i class="fa-regular fa-map"></i></a>
-												</li>
-											</ul>
-										</div>
-									</div>
+									</form>
 									<nav aria-label="Page navigation example">
 										<ul class="pagination justify-content-center">
 											<li class="page-item">
@@ -322,12 +125,6 @@
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
 								</section>
-
-
-
-
-
-
 							</div>
 						</section>
 					</article>
@@ -356,7 +153,24 @@
 			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
-
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+			
+			var goUrlList = "/sportsGroup/sportsGroupList";    /* # -> */
+			var goUrlInst = "/sportsGroup/sportsGroupInst";    /* # -> */
+			var goUrlUpdt = "/sportsGroup/sportsGroupUpdt";    /* # -> */
+			var goUrlUele = "/sportsGroup/sportsGroupUele";    /* # -> */
+			var goUrlDele = "/sportsGroup/sportsGroupDele";    /* # -> */	
+			
+			var form = $("form[name=findMateForm]");
+			var viewSeq = $("input:hidden[name=seq]")
+			
+			viewform = function(seq) {
+				viewSeq.attr("value", seq);
+				form.attr("action", "/sportsGroup/sportsGroupView").submit();
+			}
+			
+			
+			</script>
 	</body>
 </html>

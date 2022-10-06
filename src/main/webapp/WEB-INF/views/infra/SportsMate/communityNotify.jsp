@@ -41,7 +41,7 @@
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>

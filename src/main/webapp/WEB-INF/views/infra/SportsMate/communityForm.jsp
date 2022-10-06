@@ -42,7 +42,7 @@
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
@@ -77,6 +77,7 @@
 											</div>
 											<!-- hidden input -->
 											<input type="hidden" id="writer" name="writer" value="${sessSeq}">
+											<input type="hidden" id="seq" name="seq" value="${one.seq}">
 											<div class="col-8 col-12-xsmall">
 												<input id="title" name="title" type="text" placeholder="제목을 입력해주세요.">
 											</div>
@@ -99,23 +100,6 @@
 										</div>
 									</form>
 								</section>
-<!-- 
-								<div class="pagination">
-									<ul class="pagination">
-										<li><a href="#">처음 페이지</a></li>
-										<li><a href="#"><</a></li>
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">></a></li>
-										<li><a href="#">마지막 페이지</a></li>
-									</ul>
-								</div> -->
-
-
-
 							</div>
 						</section>
 					</article>
@@ -191,6 +175,21 @@
 					}
 					form.attr("action", goUrlInst).submit();
 				});
+				
+//				var seq = $("input:hidden[name=seq]");
+				
+//				/* seq값에 따른 등록 or 수정 */
+//				if(seq.val() == "0" || seq.val() == ""){
+//					//insert
+//					/* if(validationInst() == false) return false; */
+//					form.attr("action", goUrlInst).submit();
+//				} else {
+//					//update
+//					/* keyName.val(atob(keyName.val())); */
+//					/* if(validationUpdt() == false) return false; */
+//					form.attr("action", goUrlUpdt).submit();
+//				}
+				
 				
 					
 			</script>

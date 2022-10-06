@@ -42,7 +42,7 @@
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
@@ -74,6 +74,8 @@
 													<th>작성일자</th>
 													<th>조회수</th>
 												</tr>
+												
+												
 												<tr>
 													<td>dnwk301</td>
 													<td>3대3 반코트 농구하실분 구해요~</td>
@@ -130,7 +132,7 @@
 
 										<center style="margin-left: 12%;">
 											<a href="#" class="button primary">💪추천</a>
-											<a href="/findMate" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
+											<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
 											<a href="/findMateNotify" class="button" style="background-color: red; color: white; float: right;">🚨신고</a>
 										</center>
 									</div>

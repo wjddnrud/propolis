@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.woo.infra.modules.sportsGroup.SportsGroupMapper">
+
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.sportsGroup.SportsGroup"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			seq
+			,creator
+			,group_name
+			,sports
+			,location
+			,people_number
+			,startTime
+			,endTime
+			,detail
+			,map
+		FROM sportsGroup
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			seq
+			,creator
+			,group_name
+			,sports
+			,location
+			,people_number
+			,startTime
+			,endTime
+			,detail
+			,map
+		FROM sportsGroup
+		WHERE 1=1
+			AND seq=#{seq}
+	</select>
+
+</mapper>

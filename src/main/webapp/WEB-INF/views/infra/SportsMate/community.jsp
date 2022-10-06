@@ -43,7 +43,7 @@
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPage">My Page</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
@@ -69,39 +69,41 @@
 								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 								
-								<form>
+								<form name="communityForm" id="communityForm">
+									<input type="hidden" name="shSeq">
 									<div class="table-wrapper">
 										<table class="alt">
 											<thead>
 												<tr>
+													<th>No</th>
 													<th>카테고리</th>
-													<th>작성자</th>
 													<th>제목</th>
-													<th>작성일자</th>
+													<th>작성자</th>
 													<th>조회수</th>
+													<th>작성일자</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach items="${list}" var="list" varStatus="statusList">
-												<tr>
-													<td>
-														<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
-															<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
-														</c:forEach>
-													</td>
-													<%-- <td><c:out value="${list.category }"></c:out></td> --%>
-													<td><c:out value="${list.writer }"></c:out></td>
-													<td><c:out value="${list.title }"></c:out></td>
-													<td><c:out value="${list.createDate }"></c:out></td>
-													<td><c:out value="${list.viewCount }"></c:out></td>
-												</tr>
-											</c:forEach>
 											
+											
+												<c:forEach items="${list}" var="list" varStatus="statusList">
+													<tr value ="${list.seq }">
+														<td style="text-align: center;"><a href="javascript:viewForm(${list.seq})"><c:out value="${list.seq }"/></a></td>
+														<td style="text-align: center;">
+															<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
+																<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
+															</c:forEach>
+														</td>
+														<%-- <td><c:out value="${list.category }"></c:out></td> --%>
+														<td><c:out value="${list.title }"></c:out></td>
+														<td style="text-align: center;"><c:out value="${list.writer }"></c:out></td>
+														<td style="text-align: center;"><c:out value="${list.viewCount }"></c:out></td>
+														<td style="text-align: center;"><c:out value="${list.createDate }"></c:out></td>
+													</tr>
+												</c:forEach>
+												
+												
 											</tbody>
-											<tfoot>
-												<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제
-												마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
-											</tfoot>
 										</table>
 										<nav aria-label="Page navigation example">
 											<ul class="pagination justify-content-center">
@@ -161,6 +163,18 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+			
+				var form = $('#communityForm')
+				var viewSeq = $("input:hidden[name=shSeq]")
+				
+				viewForm = function(seq) {
+					viewSeq.attr("value", seq);
+					form.attr("action", "/community/communityView").submit();
+				}
+		
+			
+			</script>
 
 	</body>
 </html>

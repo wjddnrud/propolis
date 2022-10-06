@@ -1,8 +1,7 @@
-package com.woo.infra.modules.community;
+package com.woo.infra.modules.sportsGroup;
 
-public class CommunityVo {
-	
-	
+public class SportsGroupVo {
+
 	//검색 조건
 	
 	private String shValue;
@@ -13,7 +12,6 @@ public class CommunityVo {
 	private Integer shUseNY;
 	private Integer shDelNY;
 	private Integer shDate;
-	
 	
 	
 	public String getShValue() {
@@ -64,7 +62,6 @@ public class CommunityVo {
 	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
 	}
-	
 	
 	
 	

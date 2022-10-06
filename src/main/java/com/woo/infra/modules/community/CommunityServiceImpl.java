@@ -29,6 +29,40 @@ public class CommunityServiceImpl implements CommunityService{
 		
 		return insert;
 	}
+
+	@Override
+	public Community selectOne(CommunityVo vo) throws Exception {
+		
+		System.out.println("service : " + vo.getShSeq());
+		
+		Community selectOne = dao.selectOne(vo);
+		
+		System.out.println("service selectOne : " + selectOne);
+		
+		return selectOne;
+	}
+
+	@Override
+	public int update(Community dto) throws Exception {
+		
+		return dao.update(dto);
+	}
+
+	@Override
+	public int ulete(Community dto) throws Exception {
+		
+		return dao.uelete(dto);
+	}
+
+	@Override
+	public int delete(CommunityVo vo) throws Exception {
+		
+		return dao.delete(vo);
+	}
+	
+	
+	
+	
 	
 	
 }

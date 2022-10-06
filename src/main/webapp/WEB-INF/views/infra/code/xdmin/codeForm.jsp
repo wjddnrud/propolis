@@ -82,7 +82,7 @@
 									</select> --%>
 									<select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
 										<c:forEach items="${add }" var="add" varStatus="statusAdd">
-											<option value="${add.seq }" <c:if test="${list.ccg_seq eq add.seq}">selected</c:if>><c:out value="${add.ccg_name}"/></option>
+											<option value="${add.seq }" <c:if test="${one.ccg_seq eq add.seq}">selected</c:if>><c:out value="${add.ccg_name}"/></option>
 										</c:forEach>
 									</select>
 									<span>코드_key</span>
