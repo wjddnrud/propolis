@@ -26,7 +26,7 @@
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
-
+ 
 				<!-- Header -->
 				<header id="header">
 					<h1><a href="/main">sports mate</a></h1>
