@@ -7,7 +7,7 @@ public class CommunityVo {
 	
 	private String shValue;
 	private String shOption;
-	private String shSeq;
+	private Integer shSeq;
 	private String shStartDate;
 	private String shEndDate;
 	private Integer shUseNY;
@@ -27,12 +27,6 @@ public class CommunityVo {
 	}
 	public void setShOption(String shOption) {
 		this.shOption = shOption;
-	}
-	public String getShSeq() {
-		return shSeq;
-	}
-	public void setShSeq(String shSeq) {
-		this.shSeq = shSeq;
 	}
 	public String getShStartDate() {
 		return shStartDate;
@@ -63,6 +57,12 @@ public class CommunityVo {
 	}
 	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
+	}
+	public Integer getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(Integer shSeq) {
+		this.shSeq = shSeq;
 	}
 	
 	

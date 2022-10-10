@@ -52,6 +52,15 @@ public class CommunityDao {
 	public int uelete(Community dto) { return sqlSession.update(namespace + ".uelete", dto); }
 	public int delete(CommunityVo vo) { return sqlSession.delete(namespace + ".delete", vo); }
 	
+	public int selectLastSeq() throws Exception{ return sqlSession.selectOne(namespace + ".selectLastSeq", "");}
+	
+	public int insertCommunityUpload(Community dto) throws Exception {return sqlSession.insert(namespace + ".insertCommunityUpload", dto);}
+
+	public Community selectCommunityImg(Community dto) {
+
+		return sqlSession.selectOne(namespace + ".selectCommunityImg", dto);
+	}
+	
 	
 
 }

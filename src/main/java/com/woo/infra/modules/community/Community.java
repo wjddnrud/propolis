@@ -1,6 +1,8 @@
 package com.woo.infra.modules.community;
 
-public class Community {
+import com.woo.infra.modules.base.Base;
+
+public class Community extends Base {
 	
 	private String seq;
 	private String writer;

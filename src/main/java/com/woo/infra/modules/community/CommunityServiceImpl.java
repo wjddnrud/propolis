@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.woo.infra.common.util.UtilUpload;
 
 @Service
 public class CommunityServiceImpl implements CommunityService{
@@ -26,6 +29,31 @@ public class CommunityServiceImpl implements CommunityService{
 		
 		int insert = dao.insert(dto);
 		System.out.println("service insert : " + insert);
+		
+		
+        int pSeq = dao.selectLastSeq();
+        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
+
+        int j = 0;
+        for(MultipartFile myFile : dto.getMultipartFile()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                UtilUpload.uploadPost(myFile, pathModule, dto);
+
+                dto.setType(2);
+                dto.setDefaultNY(j == 0 ? 1 : 0);
+                dto.setSort(j+1);
+                dto.setpSeq(pSeq);
+
+                dao.insertCommunityUpload(dto);
+                j++;
+            }
+
+        }
+		
+		
 		
 		return insert;
 	}
@@ -59,6 +87,15 @@ public class CommunityServiceImpl implements CommunityService{
 		
 		return dao.delete(vo);
 	}
+
+	@Override
+	public Community selectCommunityImg(Community dto) throws Exception {
+
+		return dao.selectCommunityImg(dto);
+	}
+
+	
+	
 	
 	
 	

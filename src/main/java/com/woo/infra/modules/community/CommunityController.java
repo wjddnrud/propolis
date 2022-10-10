@@ -29,8 +29,9 @@ public class CommunityController {
 	@RequestMapping(value = "communityInst")
 	public String communityInsert(Model model, Community dto) throws Exception {
 		
-		int insert = service.insert(dto);
-		/* model.addAttribute("insert", insert); */
+		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
+		
+		service.insert(dto);
 
 		return "redirect:/community/communityList";
 	}
@@ -54,6 +55,10 @@ public class CommunityController {
 		model.addAttribute("one", selectOne);
 		System.out.println("controller selectOne : " + selectOne);
 		
+		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+		Community img = service.selectCommunityImg(dto);
+		model.addAttribute("img",img);
+		
 		return "infra/SportsMate/communityView";
 	}
 	
@@ -69,6 +74,17 @@ public class CommunityController {
 //		
 //		return "redirect:/community/communityList";
 //	}
+	
+	
+	
+//	@RequestMapping(value = "imgLoad")
+//	public String imgLoad(Model model, Community dto) throws Exception {
+//		
+//		
+//		
+//		return "/infra/SportsMate/communityView";
+//	}
+	 
 }
 
 

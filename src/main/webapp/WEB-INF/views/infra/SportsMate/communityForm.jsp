@@ -65,7 +65,7 @@
 
 
 								<section>
-									<form name="communityForm">
+									<form name="communityForm" enctype="multipart/form-data" method="post">
 										<div class="row gtr-uniform">
 											<div class="col-4 col-12-xsmall">
 												<select id="category" name="category">
@@ -86,7 +86,7 @@
 											<div class="col-12 col-12-xsmall filebox">
 												<input class="upload-name" placeholder="첨부파일">
 												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
-												<input type="file" id="file">
+												<input type="file" id="file" name="multipartFile">
 											</div>
 											
 											
@@ -97,7 +97,8 @@
 											</div> -->
 											
 											
-											<!-- <div id="ifmmUploadedImage1View" class="col-12 col-12-xsmall filebox">
+											<!-- 범수랑 만든 input  
+												<div id="ifmmUploadedImage1View" class="col-12 col-12-xsmall filebox">
 												<input class="upload-name" placeholder="첨부파일">
 												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
 												//form 내부에 아래 코드 추가 
@@ -166,7 +167,7 @@
 				/* 등록 버튼 */
 				$("#btnSave").on("click", function() {
 					
-					/* if(document.getElementById('category').value == "") {
+					if(document.getElementById('category').value == "") {
 						alert("카테고리를 선택해주세요.");
 						
 						document.getElementById("category").value="";
@@ -192,50 +193,29 @@
 						
 						return false;
 					}
-					form.attr("action", goUrlInst).submit(); */
+					form.attr("action", goUrlInst).submit();
 					
 					
-					/* 파일 첨부 */
-					var obj = document.getElementById("img").files; //배열
-					var obj2 = document.querySelector("#img2").files;
-					var 
 					
-					alert(obj);
-					alert(obj.length);
-					//alert(obj.name);
 					
-					for(var i=0; i < obj.length; i++) {
-						alert(obj[i].name + " : " + obj[i].size);
-						int totalSize += obj[i].size;
-						
-						/* alert(totalSize); */
+					
+					
+					var seq = $("input:hidden[name=seq]");
+					
+					/* seq값에 따른 등록 or 수정 */
+					if(seq.val() == "0" || seq.val() == ""){
+						//insert
+						/* if(validationInst() == false) return false; */
+						form.attr("action", goUrlInst).submit();
+					} else {
+						//update
+						/* keyName.val(atob(keyName.val())); */
+						/* if(validationUpdt() == false) return false; */
+						form.attr("action", goUrlUpdt).submit();
 					}
-					
-					
-					alert(obj2);
-					alert(obj2.length);
-					
-					for(var i=0; i<obj2.length; i++) {
-						alert(obj2[i].name + " : " + obj2[i].size);
-					}
-					
-					alert(obj.length + obj2.length);
 					
 				});
 				
-//				var seq = $("input:hidden[name=seq]");
-				
-//				/* seq값에 따른 등록 or 수정 */
-//				if(seq.val() == "0" || seq.val() == ""){
-//					//insert
-//					/* if(validationInst() == false) return false; */
-//					form.attr("action", goUrlInst).submit();
-//				} else {
-//					//update
-//					/* keyName.val(atob(keyName.val())); */
-//					/* if(validationUpdt() == false) return false; */
-//					form.attr("action", goUrlUpdt).submit();
-//				}
 
 				
 				
@@ -308,14 +288,6 @@
 				        }
 				        return false;
 				    }
-				
-				
-				
-				
-						
-				
-				
-					
 			</script>
 			
 

@@ -95,6 +95,9 @@
 													</tr>
 													<tr style="height: 500px;">
 														<td colspan="5" style="text-align: start; vertical-align: middle; padding-left: 30px;">
+															<div>
+														        <img name="" alt="" src="${img.path}${img.uuidName}" style="width: 500px; height: 500px;">
+														    </div>
 															<c:out value="${one.contents }"/>
 														</td>
 													</tr>

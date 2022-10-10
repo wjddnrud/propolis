@@ -88,6 +88,49 @@
 		WHERE 1=1
 			AND category = 3
 	</select>
+	
+	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
+		SELECT
+			seq
+		FROM community
+		ORDER BY seq DESC
+		LIMIT 1
+	</select>
+	
+	<insert id="insertCommunityUpload">
+		INSERT INTO uploaded (
+			<!-- seq -->
+			type
+			,defaultNY
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,path
+			,pSeq
+		)
+		VALUES (
+			<!-- #{seq} -->
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{path}
+			,#{pSeq}
+		)
+	</insert>
+	
+	<select id="selectCommunityImg" resultMap="resultMapObj">
+		SELECT
+			*
+		FROM uploaded
+		WHERE 1=1
+			AND pSeq = #{pSeq}
+	</select>
 
 
 </mapper>

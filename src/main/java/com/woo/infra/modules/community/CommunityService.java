@@ -15,5 +15,7 @@ public interface CommunityService {
 	public int ulete(Community dto) throws Exception;
 	
 	public int delete(CommunityVo vo) throws Exception;
+
+	public Community selectCommunityImg(Community dto) throws Exception;
 	
 }
