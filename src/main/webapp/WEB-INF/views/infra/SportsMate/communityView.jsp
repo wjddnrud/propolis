@@ -98,6 +98,7 @@
 															<div>
 														        <img name="" alt="" src="${img.path}${img.uuidName}" style="width: 500px; height: 500px;">
 														    </div>
+														    <br/>
 															<c:out value="${one.contents }"/>
 														</td>
 													</tr>
