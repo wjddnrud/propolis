@@ -170,6 +170,12 @@ public class CommonController {
 		 return "redirect:/signIn"; 
 	}
 	
+	@RequestMapping(value = "classify")
+	public String classify() throws Exception {
+		
+		return "infra/SportsMate/classify";
+	}
+	
 	
 	
 	

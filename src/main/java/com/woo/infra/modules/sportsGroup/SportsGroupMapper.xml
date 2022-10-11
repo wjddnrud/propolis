@@ -34,6 +34,7 @@
 			,startTime
 			,endTime
 			,detail
+			,viewCount
 			,map
 		FROM sportsGroup
 		WHERE 1=1

@@ -2151,7 +2151,9 @@ input, select, textarea {
 	ul {
 		list-style: disc;
 		margin: 0 0 2em 0;
-		padding-left: 1em;
+		
+		/* card에서 아이콘 간격 때문에 끔 */
+		/* padding-left: 1em; */
 	}
 
 		ul li {

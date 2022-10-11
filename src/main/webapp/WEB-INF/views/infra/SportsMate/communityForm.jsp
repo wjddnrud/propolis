@@ -82,29 +82,14 @@
 												<input id="title" name="title" type="text" placeholder="제목을 입력해주세요.">
 											</div>
 											
-											
-											<div class="col-12 col-12-xsmall filebox">
+											<div id="ifmmUploadedImage1View" class="col-8 col-12-xsmall filebox">
 												<input class="upload-name" placeholder="첨부파일">
-												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
-												<input type="file" id="file" name="multipartFile">
+												<label for="ifmmUploadedProfileImage" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
+												<input id="ifmmUploadedProfileImage" name="ifmmUploadedProfileImage" type="file" onChange="upload('ifmmUploadedProfileImage', 0, 1, 1, 0, 0, 3);">
 											</div>
-											
-											
-											<!-- 첨부파일 확인
-											<div>
-												<input type="file" name="img" id="img" multiple="multiple">
-												<input type="file" name="img2" id="img2">
-											</div> -->
-											
-											
-											<!-- 범수랑 만든 input  
-												<div id="ifmmUploadedImage1View" class="col-12 col-12-xsmall filebox">
-												<input class="upload-name" placeholder="첨부파일">
-												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
-												//form 내부에 아래 코드 추가 
-												<img id="imgProfile" src="" alt="" style="padding-top: 10px; width:300px; height:300px;">
-												<input id="file" name="ifmmUploadedProfileImage" type="file" multiple="multiple" onChange="upload('ifmmUploadedProfileImage', 0, 1, 1, 0, 0, 3);">
-											</div> -->
+											<div class="col-4">
+												<img id="imgProfile" src="" alt="이미지" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
+											</div>
 											
 											<div class="col-12">
 												<textarea id="contents" name="contents" placeholder="여기에 내용을 입력해주세요." rows="15"></textarea>
@@ -159,8 +144,8 @@
 				var form = $("form[name=communityForm]");
 			
 			
-				$("#file").on('change',function(){
-					var fileName = $("#file").val();
+				$("#ifmmUploadedProfileImage").on('change',function(){
+					var fileName = $("#ifmmUploadedProfileImage").val();
 					$(".upload-name").val(fileName);
 				});
 				
@@ -195,11 +180,6 @@
 					}
 					form.attr("action", goUrlInst).submit();
 					
-					
-					
-					
-					
-					
 					var seq = $("input:hidden[name=seq]");
 					
 					/* seq값에 따른 등록 or 수정 */
@@ -216,18 +196,16 @@
 					
 				});
 				
-
-				
-				
 				</script>
+				
+				
 				<script>
-				//script에 추가
-				upload = function (objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+					upload = function (objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 				        //		objName 과 seq 는 jsp 내에서 유일 하여야 함.
 				        //		memberProfileImage: 1
 				        //		memberImage: 2
 				        //		memberFile : 3
-				
+	
 				        var totalFileSize = 0;
 				        var obj = $("#" + objName + "")[0].files;
 				        var fileCount = obj.length;
@@ -241,45 +219,45 @@
 				                        }
 				             */
 				            for (var i = 0; i < fileCount; i++) {
-				
+	
 				                var divImage = "";
 				                divImage += '<div style="display: inline-block; height: 95px;">';
 				                /*divImage += '	<img src="' + obj[i] + '" class="rounded" width= "85px" height="85px">';*/
-				                divImage += '	<img id="aaa' + i + '" src="/" class="rounded" width= "85px" height="85px">';
+				                divImage += '	<img id="aaa' + i + '" src="" class="rounded" width= "85px" height="85px">';
 				                divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red;">X</span></div>';
 				                divImage += '</div> ';
-				
+	
 				                $("#ifmmUploadedImage1View").append(divImage);
-				
+	
 				                var fileReader = new FileReader();
 				                fileReader.readAsDataURL($("#" + objName + "")[0].files[i]);
 				                //alert($("#" + objName + "")[0].files[i]);
 				                fileReader.onload = function () {
 				                    /* alert(i + " : " + fileReader.result); */
 				                    //alert($("#aaa" + i + ""));
-				
+	
 				                    if (i == 0) {
-				                        $("#aaa" + i).attr("src", fileReader.result);		/* #-> */
+				                        $("#aaa0").attr("src", fileReader.result);		/* #-> */
 				                    } else if (i == 1) {
-				                        $("#aaa" + i).attr("src", fileReader.result);		/* #-> */
+				                        $("#aaa0").attr("src", fileReader.result);		/* #-> */
 				                    } else {
-				
+	
 				                    }
 				                    /* $("#aaa"+i+"").attr("src", fileReader.result);		/* #-> */
 				                    /* $("#aaa1").attr("src", fileReader.result);		/* #-> */
 				                }
 				            }
-				
+	
 				        } else if (uiType == 2) {
 				            $("#ulFile" + seq).children().remove();
-				
+	
 				            for (var i = 0; i < fileCount; i++) {
 				                addUploadLi(seq, i, $("#" + objName + "")[0].files[i].name);
 				            }
 				        } else if (uiType == 3) {
 				            var fileReader = new FileReader();
 				            fileReader.readAsDataURL($("#" + objName + "")[0].files[0]);
-				
+	
 				            fileReader.onload = function () {
 				                $("#imgProfile").attr("src", fileReader.result);		/* #-> */
 				            }
@@ -288,8 +266,8 @@
 				        }
 				        return false;
 				    }
-			</script>
-			
-
+				</script>
+				
+				
 	</body>
 </html>

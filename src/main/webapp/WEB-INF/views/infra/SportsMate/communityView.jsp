@@ -129,10 +129,9 @@
 						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</footer>
-
 			</div>
 
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="/resources/images/assets/js/jquery.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrollex.min.js"></script>
 			<script src="/resources/images/assets/js/jquery.scrolly.min.js"></script>
@@ -141,6 +140,7 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
+			
 			<script type="text/javascript">
 				
 			</script>

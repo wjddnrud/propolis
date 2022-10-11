@@ -1,0 +1,62 @@
+@import url(fontawesome-all.min.css);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
+
+
+	div {
+		display: block;	
+	}
+	.container {
+		 margin-top: 120px;
+		 margin-left: auto;
+		 margin-right: auto;
+		 text-align: center;
+	}
+	.xdmin {
+		width: 480px;
+		height: 700px;
+		background-color:rgba(0, 0, 0, 0.8);
+		border-radius: 15px;
+		margin: 0px 100px 0px 10px;
+	}
+	.user {
+		width: 480px;
+		height: 700px;
+		background-color:rgba(0, 0, 0, 0.8);
+		border-radius: 15px;
+		margin: 0px 10px 0px 100px;
+	}
+	.xdmintitle{
+		font-size: 50px;
+		margin: 50px 0px 50px 0px;
+		color: white;
+	}
+	.usertitle {
+		font-size: 50px;
+		margin: 50px 0px 50px 0px;
+		color: white;
+	}
+	img {
+		max-width: 100%; 
+		height: auto;
+	}
+	.rmf {
+		margin-top: 40px;
+		margin-bottom: 50px;
+		font-size: 25px;
+		color: white;
+	}
+	.btn {
+		background-color: orange;
+		color: white;
+		border: 2px solid transparent;
+		font-weight: bold;
+		padding: 20px 50px;
+		border-radius: 20px;
+		transition: transform .4s;
+	}
+	.btn:hover {
+		background-color: transparent;
+		border: 2px solid #FAB150;
+		cursor: pointer;
+		color: #FAB150;
+	}

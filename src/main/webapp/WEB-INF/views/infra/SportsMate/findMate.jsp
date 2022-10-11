@@ -83,15 +83,15 @@
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
 															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
 														</c:forEach>
-															<span><c:out value="${list.group_name}"/></span></h3>
+														<span><c:out value="${list.group_name}"/></span></h3>
 													</div>
 												</div>
 												<ul class="sci">
 													<li style="--i:1">
-														<a href="#"><i class="fa-regular fa-envelope"></i></a>
+														<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
 													</li>
 													<li style="--i:2">
-														<a href="javascript:viewform(${list.seq})"><i class="fa-regular fa-eye"></i></a>
+														<a href="#"><i class="fa-regular fa-envelope"></i></a>
 													</li>
 													<li style="--i:3">
 														<a href="#"><i class="fa-regular fa-map"></i></a>
