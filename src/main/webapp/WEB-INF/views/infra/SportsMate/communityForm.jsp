@@ -85,8 +85,8 @@
 											
 											<div id="ifmmUploadedImage1View" class="col-8 col-12-xsmall filebox">
 												<input class="upload-name" placeholder="첨부파일">
-												<label for="ifmmUploadedProfileImage" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
-												<input id="ifmmUploadedProfileImage" name="multipartFile" type="file" onChange="upload('ifmmUploadedProfileImage', 0, 1, 1, 0, 0, 3);">
+												<label for="imgFile" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
+												<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);">
 											</div>
 											<div class="col-4">
 												<img id="imgProfile" src="" alt="이미지" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
@@ -145,8 +145,8 @@
 				var form = $("form[name=communityForm]");
 			
 			
-				$("#ifmmUploadedProfileImage").on('change',function(){
-					var fileName = $("#ifmmUploadedProfileImage").val();
+				$("#imgFile").on('change',function(){
+					var fileName = $("#imgFile").val();
 					$(".upload-name").val(fileName);
 				});
 				

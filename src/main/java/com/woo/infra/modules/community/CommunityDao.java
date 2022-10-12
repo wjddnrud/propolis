@@ -32,17 +32,17 @@ public class CommunityDao {
 		
 		int insert = sqlSession.insert(namespace + ".insert", dto);
 		
-		System.out.println("dao insert : " + insert);
+//		System.out.println("dao insert : " + insert);
 		
 		return insert;
 	}
 	
 	public Community selectOne(CommunityVo vo) {
 		
-		System.out.println("dao : " + vo.getShSeq());
+//		System.out.println("dao : " + vo.getShSeq());
 		
 		Community selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
-		System.out.println("dao selectOne : " + selectOne);
+//		System.out.println("dao selectOne : " + selectOne);
 		
 		return selectOne;
 	}

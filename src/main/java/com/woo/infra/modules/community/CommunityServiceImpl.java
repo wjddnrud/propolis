@@ -28,11 +28,11 @@ public class CommunityServiceImpl implements CommunityService{
 		 */
 		
 		int insert = dao.insert(dto);
-		System.out.println("service insert : " + insert);
+//		System.out.println("service insert : " + insert);
 		
 		
         int pSeq = dao.selectLastSeq();
-        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
+//        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
 
         int j = 0;
         for(MultipartFile myFile : dto.getMultipartFile()) {
@@ -59,11 +59,11 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public Community selectOne(CommunityVo vo) throws Exception {
 		
-		System.out.println("service : " + vo.getShSeq());
+//		System.out.println("service : " + vo.getShSeq());
 		
 		Community selectOne = dao.selectOne(vo);
 		
-		System.out.println("service selectOne : " + selectOne);
+//		System.out.println("service selectOne : " + selectOne);
 		
 		return selectOne;
 	}

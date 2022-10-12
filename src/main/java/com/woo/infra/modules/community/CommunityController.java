@@ -29,7 +29,7 @@ public class CommunityController {
 	@RequestMapping(value = "communityInst")
 	public String communityInsert(Model model, Community dto) throws Exception {
 		
-		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
+//		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
 		
 		service.insert(dto);
 
@@ -41,7 +41,7 @@ public class CommunityController {
 		
 		Community selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
-		System.out.println("controller selectOne : " + selectOne);
+//		System.out.println("controller selectOne : " + selectOne);
 		
 		return "infra/SportsMate/communityForm";
 	}
@@ -49,11 +49,11 @@ public class CommunityController {
 	@RequestMapping(value = "communityView")
 	public String communityView(Model model, Community dto, CommunityVo vo) throws Exception {
 		
-		System.out.println("service : " + vo.getShSeq());
+//		System.out.println("service : " + vo.getShSeq());
 		
 		Community selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
-		System.out.println("controller selectOne : " + selectOne);
+//		System.out.println("controller selectOne : " + selectOne);
 		
 		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
 		Community img = service.selectCommunityImg(dto);
