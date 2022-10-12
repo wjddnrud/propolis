@@ -31,4 +31,9 @@ public class SportsGroupDao {
 		return selectOne;
 	}
 	
+	public int insert(SportsGroup dto) {
+		
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
+	
 }

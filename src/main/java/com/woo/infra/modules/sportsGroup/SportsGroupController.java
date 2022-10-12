@@ -37,4 +37,22 @@ public class SportsGroupController {
 		
 		return "infra/SportsMate/findMateView";
 	}
+	
+	@RequestMapping(value = "sportsGroupInst")
+	public String sportsGroupInst(SportsGroup dto) throws Exception {
+		
+		int insert = service.insert(dto);
+		
+		return "redirect:/SportsMate/findMate";
+	}
+	
+	@RequestMapping(value = "sportsGroupForm")
+	public String sportsGroupForm(Model model) throws Exception {
+		
+		List<SportsGroup> list = service.selectList();
+		model.addAttribute("list",list);
+		
+		
+		return "infra/SportsMate/findMateForm";
+	}
 }

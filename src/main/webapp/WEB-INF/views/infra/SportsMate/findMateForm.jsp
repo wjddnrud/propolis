@@ -66,9 +66,15 @@
 								
 
 								<section>
-									<form method="post" action="#">
+									<form method="post">
 										<div class="row gtr-uniform">
 											<div class="col-4 col-12-xsmall">
+											
+											<select name="sports">
+												<c:foreach items="list" var="list" varStatus="statusList">
+													<option value="${list.sports }" <c:if test="${one.sports eq list.sports }"
+												</c:foreach>
+											</select>
 												<select>
 													<option value="">- 운동 종목 -</option>
 													<option value="1">러닝</option>
@@ -117,23 +123,6 @@
 										</div>
 									</form>
 								</section>
-<!-- 
-								<div class="pagination">
-									<ul class="pagination">
-										<li><a href="#">처음 페이지</a></li>
-										<li><a href="#"><</a></li>
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">></a></li>
-										<li><a href="#">마지막 페이지</a></li>
-									</ul>
-								</div> -->
-
-
-
 							</div>
 						</section>
 					</article>

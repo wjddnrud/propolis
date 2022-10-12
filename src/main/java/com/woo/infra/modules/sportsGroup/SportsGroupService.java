@@ -7,5 +7,7 @@ public interface SportsGroupService {
 	public List<SportsGroup> selectList() throws Exception;
 	
 	public SportsGroup selectOne(SportsGroupVo vo) throws Exception;
+	
+	public int insert(SportsGroup dto) throws Exception;
 
 }

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-
+<jsp:useBean id="CodeServiceImpl" class="com.woo.infra.modules.code.CodeServiceImpl"/>
 
 <!DOCTYPE HTML>
 <!--
@@ -76,45 +76,45 @@
 														<th>No</th>
 														<th>작성자</th>
 														<th>그룹명</th>
-														<th>작성일자</th>
+														<th>운동일</th>
 														<th>조회수</th>
 													</tr>
 													<tr style="text-align: center;">
-														<td><c:out value="${one.seq }"/></td>
-														<td><c:out value="${one.creator }"/></td>
-														<td><c:out value="${one.title }"/></td>
-														<td><c:out value="${one.createDate }"/></td>
-														<td><c:out value="${one.viewCount }"/></td>
+														<td style="width: 100px;"><c:out value="${one.seq }"/></td>
+														<td style="width:200px;"><c:out value="${one.creator }"/></td>
+														<td><c:out value="${one.group_name }"/></td>
+														<td style="width:200px;"><c:out value="${one.playDate }"/></td>
+														<td style="width: 100px;"><c:out value="${one.viewCount }"/></td>
 													</tr>
 													<tr>
 														<th>운동종목</th>
-														<td colspan="4" class="fmtd" >
+														<td class="fmtd" style="text-align: center;">
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
-															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
+															<c:if test="${one.sports eq listSports.cc_key }"><c:out value="${listSports.cc_name }"/></c:if>
 														</c:forEach>
+														</td>
+														<td colspan="3" rowspan="5" style="text-align: center; vertical-align: middle; padding-right: 50px; padding-left: 50px;">
+															<c:out value="${one.detail }"/>
 														</td>
 													</tr>
 													<tr>
 														<th>인원</th>
-														<td colspan="4" class="fmtd"><c:out value="${one.people_number }"/>명</td>
+														<td class="fmtd" style="text-align: center;"><c:out value="${one.people_number }"/>명</td>
 													</tr>
 													<tr>
 														<th>시작시간</th>
-														<td colspan="4" class="fmtd"><c:out value="${one.startTime }"/></td>
+														<td class="fmtd" style="text-align: center;"><c:out value="${one.startTime }"/>:00</td>
 													</tr>
 													<tr>
 														<th>종료시간</th>
-														<td colspan="4" class="fmtd"><c:out value="${one.endTime }"/></td>
+														<td class="fmtd" style="text-align: center;"><c:out value="${one.endTime }"/>:00</td>
 													</tr>	
 													<tr>
 														<th>지역</th>
-														<td colspan="4" class="fmtd"><c:out value="${one.location }"/></td>
+														<td class="fmtd" style="text-align: center;"><c:out value="${one.location }"/></td>
 													</tr>
 													<tr style="height: 500px;">
-														<td colspan="3" style="text-align: start; padding-left: 30px; vertical-align: middle;">
-															<c:out value="${one.detail }"/>
-														</td>
-														<td colspan="2">
+														<td colspan="5">
 															<p style="margin-top:-12px">
 															    <em class="link">
 															        <a href="/web/documentation/#MapTypeId" target="_blank">지도 타입을 보시려면 여기를 클릭하세요!</a>
@@ -200,7 +200,7 @@
 											<center style="margin-left: 12%;">
 												<a href="#" class="button primary">💪추천</a>
 												<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
-												<a href="/findMateNotify" class="button" style="background-color: red; color: white; float: right;">🚨신고</a>
+												<a href="/findMateNotify" class="button primary" style="color: white; float: right;">🚨신고</a>
 											</center>
 										</div>
 									</form>

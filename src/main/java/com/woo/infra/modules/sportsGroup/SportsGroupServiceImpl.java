@@ -27,6 +27,14 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		
 		return selectOne;
 	}
+
+	@Override
+	public int insert(SportsGroup dto) throws Exception {
+		int insert = dao.insert(dto);
+		return insert;
+	}
+	
+	
 	
 	
 	

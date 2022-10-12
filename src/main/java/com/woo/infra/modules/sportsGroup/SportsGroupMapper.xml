@@ -20,13 +20,40 @@
 			,endTime
 			,detail
 			,map
+			,viewCount
+			,playDate
 		FROM sportsGroup
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			seq
-			,creator
+			sg.seq
+			,mm.id as creator
+			,sg.group_name
+			,sg.sports
+			,sg.location 
+			,sg.people_number
+			,sg.startTime
+			,sg.endTime
+			,sg.detail
+			,sg.viewCount
+			,sg.map
+			,sg.playDate
+		FROM sportsGroup sg
+		JOIN member mm ON mm.seq = sg.creator
+		WHERE 1=1
+			AND sg.seq=#{shSeq}
+	</select>
+	
+	<select id="sports_seq">
+		SELECT 
+			ccg_seq
+		FROM cc
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sportsGroup (
+			creator
 			,group_name
 			,sports
 			,location
@@ -34,11 +61,21 @@
 			,startTime
 			,endTime
 			,detail
-			,viewCount
 			,map
-		FROM sportsGroup
-		WHERE 1=1
-			AND seq=#{shSeq}
-	</select>
+			,playDate
+		)
+		VALUES (
+			#{creator}
+			,#{group_name}
+			,#{sports}
+			,#{location}
+			,#{people_number}
+			,#{startTime}
+			,#{endTime}
+			,#{detail}
+			,#{map}
+			,#{playDate}
+		)
+	</insert>
 
 </mapper>

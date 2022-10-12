@@ -73,6 +73,10 @@
 									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 									
 									<form name="findMateForm">
+									
+										<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
+										<input type="hidden" name="shSeq">
+										
 										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
 										
 										<c:forEach items="${list}" var="list" varStatus="statusList">
@@ -163,7 +167,7 @@
 			var goUrlDele = "/sportsGroup/sportsGroupDele";    /* # -> */	
 			
 			var form = $("form[name=findMateForm]");
-			var viewSeq = $("input:hidden[name=seq]")
+			var viewSeq = $("input:hidden[name=shSeq]")
 			
 			viewform = function(seq) {
 				viewSeq.attr("value", seq);

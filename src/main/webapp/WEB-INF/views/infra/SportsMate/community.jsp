@@ -70,6 +70,8 @@
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 								
 								<form name="communityForm" id="communityForm">
+								
+									<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 									<input type="hidden" name="shSeq">
 									<div class="table-wrapper">
 										<table class="alt">

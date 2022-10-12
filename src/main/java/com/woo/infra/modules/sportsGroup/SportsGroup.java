@@ -11,6 +11,8 @@ public class SportsGroup {
 	private String endTime;
 	private String detail;
 	private String map;
+	private String playDate;
+	private String viewCount;
 	
 	
 	public String getSeq() {
@@ -72,6 +74,18 @@ public class SportsGroup {
 	}
 	public void setMap(String map) {
 		this.map = map;
+	}
+	public String getPlayDate() {
+		return playDate;
+	}
+	public void setPlayDate(String playDate) {
+		this.playDate = playDate;
+	}
+	public String getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(String viewCount) {
+		this.viewCount = viewCount;
 	}
 	
 	

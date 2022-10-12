@@ -66,7 +66,7 @@
 									<input type="hidden" name="shOption" value="${vo.shOption }" style="margin-bottom: 10px;">
 									<input type="hidden" name="shValue" value="${vo.shValue }" style="margin-bottom: 10px;">
 									
-									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" value="${one.seq }" placeholder="seq" >
+									<input name="seq" id="seq" type="hidden" style="margin-bottom: 10px;" placeholder="seq" >
 									<span>코드그룹명</span>
 									<%-- <input name="ccg_seq" id="ccg_seq" type="text" value="${one.ccg_seq }" style="margin-bottom: 50px;"> --%>
 									<%-- <select name="ccg_seq" id="ccg_seq" style="width:150px; margin-bottom: 10px; text-align: center;">
@@ -193,7 +193,7 @@
 					
 					return false;
 				}
-				
+				var form = $("form[name=forma]");
 				var seq = $("input:hidden[name=seq]");
 				
 				if(seq.val() == "0" || seq.val() == ""){
