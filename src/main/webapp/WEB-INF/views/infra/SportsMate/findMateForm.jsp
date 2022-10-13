@@ -17,6 +17,7 @@
 		<title>FindMateForm</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
@@ -66,7 +67,16 @@
 								
 
 								<section>
-									<form method="post">
+									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
+									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
+								
+									<form name="findMateForm">
+										
+										<!-- 그룹 생성자 (그룹장) -->
+										<input type="hidden" value="${sessId}" name="creator" id="creator">
+										
+										<input type="hidden" name="seq" id="seq">
+										
 										<div class="row gtr-uniform">
 											<div class="col-4"></div>
 											<div class="col-4">
@@ -83,52 +93,47 @@
 											</div>
 											<div class="col-4"></div>
 											<div class="col-4 col-12-xsmall">
-											<%-- <select name="sports">
-												<c:foreach items="list" var="list" varStatus="statusList">
-													<option value="${list.sports }" <c:if test="${one.sports eq list.sports }"
-												</c:foreach>
-											</select> --%>
-												<select>
-													<option value="">- 운동 종목 -</option>
-													<option value="1">러닝</option>
-													<option value="1">웨이트 트레이닝</option>
-													<option value="1">농구</option>
-													<option value="1">축구</option>
-													<option value="1">야구</option>
-													<option value="1">배드민턴</option>
-													<option value="1">요가</option>
-													<option value="1">필라테스</option>
-													<option value="1">서핑</option>
-													<option value="1">직접입력</option>
+												<%-- <select>
+													<c:forEach items="${sports }" var="sports" varStatus="statusSports">
+														<option name="sports" value="${sports.cc_key }"><c:out value="${sports.cc_name }"/></option>
+													</c:forEach>
+												</select> --%>
+												<select name="sports" id="sports">
+													<c:forEach items="${listCodeCategory}" var="listSports" varStatus="statusSports">
+														<option value="${sports.seq}" <c:if test="${list.sports eq listSports.cc_key }">selected<c:out value="${listSports.cc_name }"/></c:if>
+													</c:forEach>												
 												</select>
 											</div>
 											<div class="col-8 col-12-xsmall">
-												<input type="text" value="" placeholder="그룹명을 입력해주세요.">
+												<input type="text" name="group_name" id="group_name" placeholder="그룹명을 입력해주세요." >
 											</div>
 											<div class="col-12 col-12-xsmall filebox">
 												<input class="upload-name" value="" placeholder="운동장소">
 												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);">주소검색</label>
 												<input type="file" id="file">
 											</div>
-											<div class="col-3 col-12-xsmall">
-												<input type="text" placeholder="시작시간 (00:00)" />
+											<div class="col-2 col-12-xsmall">
+												<input name="playDate" id="playDate" type="text" placeholder="모임날짜" id="datepicker">
+											</div>	
+											<div class="col-2 col-12-xsmall">
+												<input type="text" name="startTime" id="startTime" placeholder="시작시간 (00:00)" />
 											</div>
-											<div class="col-3 col-12-xsmall">
-												<input type="text" placeholder="종료시간 (00:00)" />
+											<div class="col-2 col-12-xsmall">
+												<input type="text" name="endTime" id="endTime" placeholder="종료시간 (00:00)" />
 											</div>
-											<div class="col-3 col-12-xsmall">
-												<input type="text" placeholder="지역 (xx시 xx구)" />
+											<div class="col-4 col-12-xsmall">
+												<input type="text" name="location" id="location" placeholder="지역 (xx시 xx구)" />
 											</div>
-											<div class="col-3 col-12-xsmall">
-												<input type="text" placeholder="인원 (명)" />
+											<div class="col-2 col-12-xsmall">
+												<input type="text" name="people_number" id="people_number" placeholder="인원 (명)" />
 											</div>
 											<div class="col-12">
-												<textarea placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
+												<textarea name="detail" id="detail" placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
 											</div>
 											<div class="col-12">
 												<ul class="actions" style="justify-content: center;">
 													<li><input type="reset" value="Reset"></li>
-													<li><a href="/sportsGroup/sportsGroupList" class="button primary">Sign-up</a></li>
+													<li><a id="btnSave" class="button primary">Sign-up</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
 													<li><a href="/sportsGroup/sportsGroupList" class="button">Cancle</a></li>
 												</ul>
@@ -164,12 +169,115 @@
 			<script src="/resources/images/assets/js/breakpoints.min.js"></script>
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
-
-			<script>	
+			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+			
+			<script type="text/javascript">
 				$("#imgFile").on('change',function(){
 					var fileName = $("#imgFile").val();
 					$(".upload-name").val(fileName);
 				});
+				
+			
+				
+				var goUrlList = "/sportsGroup/sportsGroupList";    /* # -> */
+				var goUrlInst = "/sportsGroup/sportsGroupInst";    /* # -> */
+				var goUrlUpdt = "/sportsGroup/sportsGroupUpdt";    /* # -> */
+				var goUrlUele = "/sportsGroup/sportsGroupUele";    /* # -> */
+				var goUrlDele = "/sportsGroup/sportsGroupDele";    /* # -> */	
+				
+				
+				
+				function btnSave() {
+					
+				}
+				
+				
+				$("#btnSave").on("click".function() {
+					
+					if(document.getElementById('group_name').value == "") {
+						alert("그룹명을 작성해주세요.");
+						
+						document.getElementById('group_name').value = "";
+						document.getElementById('group_name').focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('sports').value == 0) {
+						alert("운동종목을 작성해주세요.");
+						
+						document.getElementById('sports').value = 0;
+						document.getElementById('sports').focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('location').value == "") {
+						alert("거주 지역을 작성해주세요.");
+						
+						document.getElementById('location').value = "";
+						document.getElementById('location').focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('people_number').value == "") {
+						alert("참여인원을 작성해주세요.");
+						
+						document.getElementById("people_number").value = "";
+						document.getElementById("people_number").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('startTime').value == "") {
+						alert("운동 시작시간을 작성해주세요.");
+						
+						document.getElementById("startTime").value = "";
+						document.getElementById("startTime").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById("endTime").value == "") {
+						alert("운동 종료시간을 작성해주세요.");
+						
+						document.getElementById("endTime").value = "";
+						document.getElementById("endTime").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('detail').value == "") {
+						alert("세부사항을 작성해주세요.");
+						
+						document.getElementById("detail").value = "";
+						document.getElementById("detail").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('playDate').value == "") {
+						alert("운동 날짜을 작성해주세요.");
+						
+						document.getElementById("playDate").value = "";
+						document.getElementById("playDate").focus();
+						
+						return false;
+					}
+					form.attr("action", goUrlInst).submit();
+					
+					var form = ${"form[name=findMateForm]"};
+					var seq = ${"input:hidden[name=seq]"};
+					
+					if(seq.val() == "0" || seq.val() == ""){
+						form.attr("action", goUrlInst).submit();
+					} else {
+						form.attr("action", goUrlUpdt).submit();
+					}
+				});
+				
 			</script>
 			
 

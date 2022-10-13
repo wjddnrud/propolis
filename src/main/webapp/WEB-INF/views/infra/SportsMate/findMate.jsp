@@ -82,7 +82,7 @@
 										<c:forEach items="${list}" var="list" varStatus="statusList">
 											<div class="card">
 												<div class="content">
-													<div class="imgBx"><img src="${여기를 수정해야함}"></div>
+													<div class="imgBx"><img src=""></div>
 													<div class="contentBx">
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
 															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
@@ -124,7 +124,7 @@
 									</nav>
 									<br>
 									<center>
-										<a href="/findMateForm" class="button primary">등록</a>
+										<a href="" class="button primary">등록</a>
 										<a href="/main" class="button" style="background-color: white; color: black;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
@@ -172,6 +172,10 @@
 			viewform = function(seq) {
 				viewSeq.attr("value", seq);
 				form.attr("action", "/sportsGroup/sportsGroupView").submit();
+			}
+			
+			function regist() {
+				location.href = "/codegroup/codeGroupForm";
 			}
 			
 			

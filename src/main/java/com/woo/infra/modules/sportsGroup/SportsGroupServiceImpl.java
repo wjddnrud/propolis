@@ -33,6 +33,16 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		int insert = dao.insert(dto);
 		return insert;
 	}
+
+	@Override
+	public int sports(SportsGroup dto) throws Exception {
+		
+		int sports = dao.sports(dto);
+		
+		return sports;
+	}
+	
+	
 	
 	
 	

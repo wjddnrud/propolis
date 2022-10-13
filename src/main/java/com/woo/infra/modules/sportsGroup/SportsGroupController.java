@@ -41,16 +41,20 @@ public class SportsGroupController {
 	@RequestMapping(value = "sportsGroupInst")
 	public String sportsGroupInst(SportsGroup dto) throws Exception {
 		
+		System.out.println("controller insert");
 		int insert = service.insert(dto);
 		
 		return "redirect:/SportsMate/findMate";
 	}
 	
 	@RequestMapping(value = "sportsGroupForm")
-	public String sportsGroupForm(Model model) throws Exception {
+	public String sportsGroupForm(Model model, SportsGroup dto) throws Exception {
 		
 		List<SportsGroup> list = service.selectList();
 		model.addAttribute("list",list);
+		
+		int sports = service.sports(dto);
+		model.addAttribute("sports",sports);
 		
 		
 		return "infra/SportsMate/findMateForm";

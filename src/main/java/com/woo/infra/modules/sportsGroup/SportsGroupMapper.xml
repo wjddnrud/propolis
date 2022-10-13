@@ -45,10 +45,13 @@
 			AND sg.seq=#{shSeq}
 	</select>
 	
-	<select id="sports_seq">
-		SELECT 
+	<select id="sports" resultMap="resultMapObj">
+		SELECT
 			ccg_seq
+			,cc_name
+			,cc_key
 		FROM cc
+		WHERE 1=1
 	</select>
 	
 	<insert id="insert">

@@ -9,5 +9,7 @@ public interface SportsGroupService {
 	public SportsGroup selectOne(SportsGroupVo vo) throws Exception;
 	
 	public int insert(SportsGroup dto) throws Exception;
+	
+	public int sports(SportsGroup dto) throws Exception;
 
 }

@@ -36,4 +36,13 @@ public class SportsGroupDao {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
 	
+	public int sports(SportsGroup dto) {
+		
+		int sports = sqlSession.selectOne(namespace + ".sports", dto);
+		
+		System.out.println("dao sports : " + sports);
+		
+		return sports;
+	}
+	
 }
