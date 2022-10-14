@@ -28,7 +28,8 @@ public class CodeServiceImpl implements CodeService {
 	}
 
 	
-	 @Override public List<Code> ccg_name(Code dto) throws Exception {
+	 @Override 
+	 public List<Code> ccg_name(Code dto) throws Exception {
 	 
 		 List<Code> ccg_name = dao.ccg_name(dto);
 		 

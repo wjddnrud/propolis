@@ -27,18 +27,21 @@ public class SportsGroupDao {
 	public SportsGroup selectOne(SportsGroupVo vo) {
 		
 		SportsGroup selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao selectOne : " + selectOne);
 		
 		return selectOne;
 	}
 	
 	public int insert(SportsGroup dto) {
 		
-		return sqlSession.insert(namespace + ".insert", dto);
+		int insert = sqlSession.insert(namespace + ".insert", dto);
+		
+		return insert;
 	}
 	
-	public int sports(SportsGroup dto) {
+	public List<SportsGroup> sports(SportsGroup dto) {
 		
-		int sports = sqlSession.selectOne(namespace + ".sports", dto);
+		List<SportsGroup> sports = sqlSession.selectOne(namespace + ".sports", dto);
 		
 		System.out.println("dao sports : " + sports);
 		

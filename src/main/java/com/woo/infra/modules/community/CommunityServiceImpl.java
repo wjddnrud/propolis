@@ -23,10 +23,6 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public int insert(Community dto) throws Exception {
 
-		/*
-		 * if(dto.getWriter() == null) dto.getWriter("writer");
-		 */
-		
 		int insert = dao.insert(dto);
 //		System.out.println("service insert : " + insert);
 		
@@ -40,7 +36,7 @@ public class CommunityServiceImpl implements CommunityService{
             if(!myFile.isEmpty()) {
                 // postServiceImpl
                 String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-                UtilUpload.uploadPost(myFile, pathModule, dto);
+                UtilUpload.uploadCommunityImg(myFile, pathModule, dto);
 
                 dto.setType(2);
                 dto.setDefaultNY(j == 0 ? 1 : 0);

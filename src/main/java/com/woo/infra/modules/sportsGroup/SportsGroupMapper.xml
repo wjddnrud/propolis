@@ -52,8 +52,9 @@
 			,cc_key
 		FROM cc
 		WHERE 1=1
+			AND ccg_seq = 6
 	</select>
-	
+
 	<insert id="insert">
 		INSERT INTO sportsGroup (
 			creator
@@ -61,11 +62,11 @@
 			,sports
 			,location
 			,people_number
+			,playDate
 			,startTime
 			,endTime
 			,detail
 			,map
-			,playDate
 		)
 		VALUES (
 			#{creator}
@@ -73,12 +74,13 @@
 			,#{sports}
 			,#{location}
 			,#{people_number}
+			,#{playDate}
 			,#{startTime}
 			,#{endTime}
 			,#{detail}
 			,#{map}
-			,#{playDate}
 		)
-	</insert>
+	</insert>	
+	
 
 </mapper>

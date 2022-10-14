@@ -1,6 +1,8 @@
 package com.woo.infra.modules.sportsGroup;
 
-public class SportsGroup {
+import com.woo.infra.modules.base.Base;
+
+public class SportsGroup extends Base{
 	private String seq;
 	private String creator;
 	private String group_name;

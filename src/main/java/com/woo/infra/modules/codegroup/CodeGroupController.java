@@ -43,6 +43,8 @@ public class CodeGroupController {
 		
 		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
 		
+		setParamsPaging(vo);
+		
 //		System.out.println("vo.getStartRnumForMysql() : " + vo.getStartRnumForMysql());
 		
 //		List<String> list = new ArrayList<String>();
@@ -50,7 +52,6 @@ public class CodeGroupController {
 		
 		model.addAttribute("list", list);
 		
-		setParamsPaging(vo);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}

@@ -124,7 +124,7 @@
 									</nav>
 									<br>
 									<center>
-										<a href="" class="button primary">등록</a>
+										<a href="/findMateForm" class="button primary">등록</a>
 										<a href="/main" class="button" style="background-color: white; color: black;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>

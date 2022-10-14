@@ -7,11 +7,6 @@
 
 
 <!DOCTYPE HTML>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>FindMateForm</title>
@@ -22,6 +17,7 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	</head>
 	<body class="is-preload">
 
@@ -73,7 +69,7 @@
 									<form name="findMateForm">
 										
 										<!-- 그룹 생성자 (그룹장) -->
-										<input type="hidden" value="${sessId}" name="creator" id="creator">
+										<input type="hidden" value="${sessSeq}" name="creator" id="creator">
 										
 										<input type="hidden" name="seq" id="seq">
 										
@@ -93,16 +89,22 @@
 											</div>
 											<div class="col-4"></div>
 											<div class="col-4 col-12-xsmall">
-												<%-- <select>
-													<c:forEach items="${sports }" var="sports" varStatus="statusSports">
-														<option name="sports" value="${sports.cc_key }"><c:out value="${sports.cc_name }"/></option>
-													</c:forEach>
-												</select> --%>
-												<select name="sports" id="sports">
-													<c:forEach items="${listCodeCategory}" var="listSports" varStatus="statusSports">
-														<option value="${sports.seq}" <c:if test="${list.sports eq listSports.cc_key }">selected<c:out value="${listSports.cc_name }"/></c:if>
+												<%-- <select name="sports" id="sports">
+													<c:forEach items="${sports}" var="sports" varStatus="statusSports">
+														<option value="${sports.seq}" <c:if test="${one.sports eq sports.cc_key }">selected</c:if>><c:out value="${sports.cc_name }"/></option>
 													</c:forEach>												
+												</select> --%>
+												
+												<select name="sports" id="sports">
+													<option value="0">운동종목</option>
+													<option value="1">축구</option>
+													<option value="2" <c:if test="${one.sports eq 2 }" >selected</c:if>>농구</option>
+													<option value="3" <c:if test="${one.sports eq 3 }" >selected</c:if>>야구</option>
+													<option value="4" <c:if test="${one.sports eq 4 }" >selected</c:if>>족구</option>
 												</select>
+												
+												
+											
 											</div>
 											<div class="col-8 col-12-xsmall">
 												<input type="text" name="group_name" id="group_name" placeholder="그룹명을 입력해주세요." >
@@ -113,7 +115,7 @@
 												<input type="file" id="file">
 											</div>
 											<div class="col-2 col-12-xsmall">
-												<input name="playDate" id="playDate" type="text" placeholder="모임날짜" id="datepicker">
+												<input name="playDate" id="playDate" type="text" placeholder="모임날짜">
 											</div>	
 											<div class="col-2 col-12-xsmall">
 												<input type="text" name="startTime" id="startTime" placeholder="시작시간 (00:00)" />
@@ -173,22 +175,135 @@
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			
 			<script type="text/javascript">
-				$("#imgFile").on('change',function(){
-					var fileName = $("#imgFile").val();
-					$(".upload-name").val(fileName);
-				});
-				
 			
-				
 				var goUrlList = "/sportsGroup/sportsGroupList";    /* # -> */
 				var goUrlInst = "/sportsGroup/sportsGroupInst";    /* # -> */
 				var goUrlUpdt = "/sportsGroup/sportsGroupUpdt";    /* # -> */
 				var goUrlUele = "/sportsGroup/sportsGroupUele";    /* # -> */
 				var goUrlDele = "/sportsGroup/sportsGroupDele";    /* # -> */	
 				
+				var form = $("form[name=findMateForm]");
+				var seq = $("input:hidden[name=seq]");
+				
+				/* 파일 첨부시 input 글씨 변경 */
+				$("#imgFile").on('change',function(){
+					var fileName = $("#imgFile").val();
+					$(".upload-name").val(fileName);
+				});
+				
+				/* datepicker */
+				$( function() {
+				  	$("#playDate").datepicker({
+				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+					    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+					    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+					    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+					    yearRange: 'c-50:c+20', // 현재 연도를 기준으로 +N 년 -N 년 표시
+					    dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // [요일] 한글화
+					    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // [월] 한글화
+				  		closeText: '닫기',
+				  		showButtonPanel: true, // 달력 하단에 버튼 표시
+				  		currentText: '오늘 날짜', // 오늘 날짜 클릭 시 클릭 시 오늘 날짜로 이동
+				    	showAnim: "slide", // 달력에 애니메이션 적용
+				    	minDate: '-50y', // 현재 날짜로부터 N 년까지 표시
+				    	nextText: '다음 달', // next 아이콘 툴팁
+				    	prevText: '이전 달' // prev 아이콘 툴팁
+				  	});
+				} );
+				
+			
+				/* 등록 버튼 */
+				$("#btnSave").on("click", function() {
+					
+					if(document.getElementById('sports').value == "") {
+						alert("운동종목을 선택해주세요.");
+						
+						document.getElementById("sports").value="";
+						document.getElementById("sports").focus();
+
+						return false;
+					}
+					
+					if($('#group_name').val() == "") {
+						alert("그룹 이름을 입력해주세요.");
+						
+						$("#group_name").val()="";
+						$("#group_name").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('location').value == "") {
+						alert("운동 장소를 입력해주세요.");
+						
+						document.getElementById("location").value="";
+						document.getElementById("location").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('playDate').value == "") {
+						alert("운동 날짜를 입력해주세요.");
+						
+						document.getElementById("playDate").value="";
+						document.getElementById("playDate").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('startTime').value == "") {
+						alert("운동 시작시간을 입력해주세요.");
+						
+						document.getElementById("startTime").value="";
+						document.getElementById("startTime").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('endTime').value == "") {
+						alert("운동 종료시간을 입력해주세요.");
+						
+						document.getElementById("endTime").value="";
+						document.getElementById("endTime").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('people_number').value == "") {
+						alert("모집 인원을 입력해주세요.");
+						
+						document.getElementById("people_number").value="";
+						document.getElementById("people_number").focus();
+						
+						return false;
+					}
+					
+					if(document.getElementById('detail').value == "") {
+						alert("그룹에 대한 세부 내용을 입력해주세요.");
+						
+						document.getElementById("detail").value="";
+						document.getElementById("detail").focus();
+						
+						return false;
+					}
+					
+					/* seq값에 따른 등록 or 수정 */
+					if(seq.val() == "0" || seq.val() == ""){
+						//insert
+						/* if(validationInst() == false) return false; */
+						form.attr("action", goUrlInst).submit();
+					} else {
+						//update
+						/* keyName.val(atob(keyName.val())); */
+						/* if(validationUpdt() == false) return false; */
+						form.attr("action", goUrlUpdt).submit();
+					}
+					
+				});
 				
 				
-				function btnSave() {
+				
+				/* function btnSave() {
 					
 				}
 				
@@ -276,7 +391,7 @@
 					} else {
 						form.attr("action", goUrlUpdt).submit();
 					}
-				});
+				}); */
 				
 			</script>
 			

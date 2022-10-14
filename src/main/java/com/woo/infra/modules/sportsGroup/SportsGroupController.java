@@ -39,13 +39,13 @@ public class SportsGroupController {
 	}
 	
 	@RequestMapping(value = "sportsGroupInst")
-	public String sportsGroupInst(SportsGroup dto) throws Exception {
+	public String sportsGroupInst(Model model, SportsGroup dto, SportsGroupVo vo) throws Exception {
 		
-		System.out.println("controller insert");
-		int insert = service.insert(dto);
+		service.insert(dto);
 		
-		return "redirect:/SportsMate/findMate";
+		return "redirect:/sportsGroup/sportsGroupList";
 	}
+	
 	
 	@RequestMapping(value = "sportsGroupForm")
 	public String sportsGroupForm(Model model, SportsGroup dto) throws Exception {
@@ -53,7 +53,7 @@ public class SportsGroupController {
 		List<SportsGroup> list = service.selectList();
 		model.addAttribute("list",list);
 		
-		int sports = service.sports(dto);
+		List<SportsGroup> sports = service.sports(dto);
 		model.addAttribute("sports",sports);
 		
 		

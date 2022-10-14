@@ -10,6 +10,6 @@ public interface SportsGroupService {
 	
 	public int insert(SportsGroup dto) throws Exception;
 	
-	public int sports(SportsGroup dto) throws Exception;
+	public List<SportsGroup> sports(SportsGroup dto) throws Exception;
 
 }
