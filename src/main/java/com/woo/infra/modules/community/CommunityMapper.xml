@@ -98,7 +98,7 @@
 	</select>
 	
 	<insert id="insertCommunityUpload">
-		INSERT INTO uploaded (
+		INSERT INTO uploadedCommunity (
 			<!-- seq -->
 			type
 			,defaultNY
@@ -127,7 +127,7 @@
 	<select id="selectCommunityImg" resultMap="resultMapObj">
 		SELECT
 			*
-		FROM uploaded
+		FROM uploadedCommunity
 		WHERE 1=1
 			AND pSeq = #{pSeq}
 	</select>

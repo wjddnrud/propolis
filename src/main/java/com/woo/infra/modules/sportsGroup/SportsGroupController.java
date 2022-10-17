@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequestMapping(value = "/sportsGroup/")
 
@@ -17,7 +18,7 @@ public class SportsGroupController {
 	SportsGroupServiceImpl service;
 	
 	@RequestMapping(value = "sportsGroupList")
-	public String sportsGroupList(Model model) throws Exception { 
+	public String sportsGroupList(Model model, SportsGroup dto, SportsGroupVo vo) throws Exception { 
 		
 		List<SportsGroup> list = service.selectList();
 		model.addAttribute("list",list);

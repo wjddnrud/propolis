@@ -10,19 +10,31 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			seq
-			,creator
-			,group_name
-			,sports
-			,location
-			,people_number
-			,startTime
-			,endTime
-			,detail
-			,map
-			,viewCount
-			,playDate
-		FROM sportsGroup
+			sg.seq
+			,mm.id as creator
+			,sg.group_name
+			,sg.sports
+			,sg.location 
+			,sg.people_number
+			,sg.startTime
+			,sg.endTime
+			,sg.detail
+			,sg.viewCount
+			,sg.map
+			,sg.playDate
+		    ,upSg.type
+		    ,upSg.defaultNY
+		    ,upSg.sort
+		    ,upSg.originalName
+		    ,upSg.uuidName
+		    ,upSg.ext
+		    ,upSg.size
+		    ,upSg.delNY
+		    ,upSg.pSeq
+		    ,upSg.path
+		FROM sportsGroup sg
+		JOIN member mm ON sg.creator = mm.seq
+		JOIN uploadedSportsGroup upSg ON sg.seq = upSg.pSeq
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -80,7 +92,50 @@
 			,#{detail}
 			,#{map}
 		)
+	</insert>
+	
+	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
+		SELECT
+			seq
+		FROM sportsGroup
+		ORDER BY seq DESC
+		LIMIT 1
+	</select>
+	
+	<insert id="groupImgUpload">
+		INSERT INTO uploadedSportsGroup (
+			<!-- seq -->
+			type
+			,defaultNY
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,path
+			,pSeq
+		)
+		VALUES (
+			<!-- #{seq} -->
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{path}
+			,#{pSeq}
+		)
 	</insert>	
+	
+	<!-- <select id="selectGroupImg" resultMap="resultMapObj">
+		SELECT
+			*
+		FROM uploadedSportsGroup
+		WHERE 1=1
+			AND pSeq = #{shSeq}
+	</select> -->
 	
 
 </mapper>

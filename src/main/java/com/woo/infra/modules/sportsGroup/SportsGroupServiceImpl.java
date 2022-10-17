@@ -18,6 +18,8 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	@Override
 	public List<SportsGroup> selectList() throws Exception {
 		
+		System.out.println("selectList : " + dao.selectList());
+		
 		return dao.selectList();
 	}
 
@@ -26,7 +28,7 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		
 		SportsGroup selectOne = dao.selectOne(vo);
 		
-		System.out.println("selectOne dao : " + selectOne);
+//		System.out.println("selectOne dao : " + selectOne);
 		
 		return selectOne;
 	}
@@ -35,10 +37,10 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	public int insert(SportsGroup dto) throws Exception {
 
 		int insert = dao.insert(dto);
+		System.out.println("multipartfile : " + dto.getMultipartFile());
 		
-		dao.insert(dto);
-
-//        int postSeq = dao.selectLastSeq();
+        int pSeq = dao.selectLastSeq();
+        System.out.println("selectLastSeq : " + pSeq);
 
         int j = 0;
         for(MultipartFile myFile : dto.getMultipartFile()) {
@@ -51,10 +53,10 @@ public class SportsGroupServiceImpl implements SportsGroupService{
                 dto.setType(2);
                 dto.setDefaultNY(j == 0 ? 1 : 0);
                 dto.setSort(j+1);
-//                dto.setpSeq(pSeq);
+                dto.setpSeq(pSeq);
 //                업데이트하려면 pSeq말고 dto 담아서 레츠기릿
 
-//                dao.insertUpload(dto);
+                dao.groupImgUpload(dto);
                 j++;
             }
 
@@ -62,7 +64,7 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		
 		return insert;
 	}
-
+	
 	@Override
 	public List<SportsGroup> sports(SportsGroup dto) throws Exception {
 		

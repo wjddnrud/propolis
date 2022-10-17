@@ -66,7 +66,7 @@
 									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 								
-									<form name="findMateForm">
+									<form name="findMateForm" enctype="multipart/form-data" method="post">
 										
 										<!-- 그룹 생성자 (그룹장) -->
 										<input type="hidden" value="${sessSeq}" name="creator" id="creator">
@@ -75,8 +75,8 @@
 										
 										<div class="row gtr-uniform">
 											<div class="col-4"></div>
-											<div class="col-4">
-												<center>
+											<center>
+												<div class="col-4">
 													<div class="col-4">
 														<img id="imgProfile" src="" alt="프로필 이미지" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
 													</div>
@@ -85,8 +85,8 @@
 														<label for="imgFile" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
 														<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);">
 													</div>
-												</center>
-											</div>
+												</div> 
+											</center>
 											<div class="col-4"></div>
 											<div class="col-4 col-12-xsmall">
 												<%-- <select name="sports" id="sports">
@@ -97,10 +97,15 @@
 												
 												<select name="sports" id="sports">
 													<option value="0">운동종목</option>
-													<option value="1">축구</option>
+													<option value="1" <c:if test="${one.sports eq 2 }" >selected</c:if>>축구</option>
 													<option value="2" <c:if test="${one.sports eq 2 }" >selected</c:if>>농구</option>
 													<option value="3" <c:if test="${one.sports eq 3 }" >selected</c:if>>야구</option>
 													<option value="4" <c:if test="${one.sports eq 4 }" >selected</c:if>>족구</option>
+													<option value="5" <c:if test="${one.sports eq 5 }" >selected</c:if>>배드민턴</option>
+													<option value="6" <c:if test="${one.sports eq 6 }" >selected</c:if>>런닝</option>
+													<option value="7" <c:if test="${one.sports eq 7 }" >selected</c:if>>사이클</option>
+													<option value="8" <c:if test="${one.sports eq 8 }" >selected</c:if>>테니스</option>
+													<option value="9" <c:if test="${one.sports eq 9 }" >selected</c:if>>골프</option>
 												</select>
 												
 												
@@ -109,11 +114,20 @@
 											<div class="col-8 col-12-xsmall">
 												<input type="text" name="group_name" id="group_name" placeholder="그룹명을 입력해주세요." >
 											</div>
-											<div class="col-12 col-12-xsmall filebox">
-												<input class="upload-name" value="" placeholder="운동장소">
-												<label for="file" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);">주소검색</label>
-												<input type="file" id="file">
+											
+											
+											<div class="col-8 col-12-xsmall">
+												<label for="address">주소</label>
+												<input type="text" name="address" id="address" value="" placeholder="주소" />
+												<input type="text" name="address_detail" id="address_detail" value="" placeholder="상세주소" style="margin-top: 10px;" />
 											</div>
+											<div class="col-4 col-12-xsmall">
+												<label for="zipcode">Zip Code</label>
+												<input type="text" name="zipcode" id="zipcode" value="" placeholder="우편번호" />
+												<input type="button" onclick="searchAddress()" class="primary" value="주소 검색" style="margin-top: 10px;" />
+											</div>
+											
+											
 											<div class="col-2 col-12-xsmall">
 												<input name="playDate" id="playDate" type="text" placeholder="모임날짜">
 											</div>	
@@ -300,101 +314,75 @@
 					}
 					
 				});
-				
-				
-				
-				/* function btnSave() {
-					
-				}
-				
-				
-				$("#btnSave").on("click".function() {
-					
-					if(document.getElementById('group_name').value == "") {
-						alert("그룹명을 작성해주세요.");
-						
-						document.getElementById('group_name').value = "";
-						document.getElementById('group_name').focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById('sports').value == 0) {
-						alert("운동종목을 작성해주세요.");
-						
-						document.getElementById('sports').value = 0;
-						document.getElementById('sports').focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById('location').value == "") {
-						alert("거주 지역을 작성해주세요.");
-						
-						document.getElementById('location').value = "";
-						document.getElementById('location').focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById('people_number').value == "") {
-						alert("참여인원을 작성해주세요.");
-						
-						document.getElementById("people_number").value = "";
-						document.getElementById("people_number").focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById('startTime').value == "") {
-						alert("운동 시작시간을 작성해주세요.");
-						
-						document.getElementById("startTime").value = "";
-						document.getElementById("startTime").focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById("endTime").value == "") {
-						alert("운동 종료시간을 작성해주세요.");
-						
-						document.getElementById("endTime").value = "";
-						document.getElementById("endTime").focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById('detail').value == "") {
-						alert("세부사항을 작성해주세요.");
-						
-						document.getElementById("detail").value = "";
-						document.getElementById("detail").focus();
-						
-						return false;
-					}
-					
-					if(document.getElementById('playDate').value == "") {
-						alert("운동 날짜을 작성해주세요.");
-						
-						document.getElementById("playDate").value = "";
-						document.getElementById("playDate").focus();
-						
-						return false;
-					}
-					form.attr("action", goUrlInst).submit();
-					
-					var form = ${"form[name=findMateForm]"};
-					var seq = ${"input:hidden[name=seq]"};
-					
-					if(seq.val() == "0" || seq.val() == ""){
-						form.attr("action", goUrlInst).submit();
-					} else {
-						form.attr("action", goUrlUpdt).submit();
-					}
-				}); */
-				
 			</script>
 			
+			<script>
+				upload = function (objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+			        //		objName 과 seq 는 jsp 내에서 유일 하여야 함.
+			        //		memberProfileImage: 1
+			        //		memberImage: 2
+			        //		memberFile : 3
 
+			        var totalFileSize = 0;
+			        var obj = $("#" + objName + "")[0].files;
+			        var fileCount = obj.length;
+			        
+			        if (uiType == 1) {
+			            /* 			
+			                        $("#ulFile" + seq).children().remove();
+			                    	
+			                        for (var i = 0 ; i < fileCount ; i++) {
+			                            addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
+			                        }
+			             */
+			            for (var i = 0; i < fileCount; i++) {
+
+			                var divImage = "";
+			                divImage += '<div style="display: inline-block; height: 95px;">';
+			                /*divImage += '	<img src="' + obj[i] + '" class="rounded" width= "85px" height="85px">';*/
+			                divImage += '	<img id="aaa' + i + '" src="" class="rounded" width= "85px" height="85px">';
+			                divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red;">X</span></div>';
+			                divImage += '</div> ';
+
+			                $("#ifmmUploadedImage1View").append(divImage);
+
+			                var fileReader = new FileReader();
+			                fileReader.readAsDataURL($("#" + objName + "")[0].files[i]);
+			                //alert($("#" + objName + "")[0].files[i]);
+			                fileReader.onload = function () {
+			                    /* alert(i + " : " + fileReader.result); */
+			                    //alert($("#aaa" + i + ""));
+
+			                    if (i == 0) {
+			                        $("#aaa0").attr("src", fileReader.result);		/* #-> */
+			                    } else if (i == 1) {
+			                        $("#aaa0").attr("src", fileReader.result);		/* #-> */
+			                    } else {
+
+			                    }
+			                    /* $("#aaa"+i+"").attr("src", fileReader.result);		/* #-> */
+			                    /* $("#aaa1").attr("src", fileReader.result);		/* #-> */
+			                }
+			            }
+
+			        } else if (uiType == 2) {
+			            $("#ulFile" + seq).children().remove();
+
+			            for (var i = 0; i < fileCount; i++) {
+			                addUploadLi(seq, i, $("#" + objName + "")[0].files[i].name);
+			            }
+			        } else if (uiType == 3) {
+			            var fileReader = new FileReader();
+			            fileReader.readAsDataURL($("#" + objName + "")[0].files[0]);
+
+			            fileReader.onload = function () {
+			                $("#imgProfile").attr("src", fileReader.result);		/* #-> */
+			            }
+			        } else {
+			            return false;
+			        }
+			        return false;
+			    }
+		</script>
 	</body>
 </html>

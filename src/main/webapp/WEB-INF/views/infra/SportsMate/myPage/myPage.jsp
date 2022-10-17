@@ -56,7 +56,11 @@
 						<div class="inner">
 							<section>
 								<div style="font-weight: bold; text-align: center;">
-									프로필 사진<br/>
+									<img src="../../../../resources/images/images/noprofil.jpg" width=100 height=100 alt="">
+									<div class="round">
+										<input type="file">
+										<i class="fa fa-camera" style="color: #fff;"></i>
+									</div>
 									[회원 정보 session]<br/><br/>
 									회원 이름: <c:out value="${sessName }"/><br>
 									ID: <c:out value="${sessId }"/><br>

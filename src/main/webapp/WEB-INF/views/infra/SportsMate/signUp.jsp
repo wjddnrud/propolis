@@ -24,6 +24,8 @@
 	<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="is-preload">
@@ -71,6 +73,13 @@
 							<input type="hidden" name="shSeq">
 							<input type="hidden" name="delNY">
 							<div class="row gtr-uniform">
+								<div class="col col-12 upload">
+									<img src="../../../../resources/images/images/noprofil.jpg" width=100 height=100 alt="">
+									<div class="round">
+										<input type="file">
+										<i class="fa fa-camera" style="color: #fff;"></i>
+									</div>
+ 								</div>
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
 									<input type="text" name="id" id="id" value="" placeholder="영문,숫자 5~10자" />

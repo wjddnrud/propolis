@@ -1,5 +1,6 @@
 package com.woo.infra.modules.sportsGroup;
 
+
 public class SportsGroupVo {
 
 	//검색 조건

@@ -82,7 +82,7 @@
 										<c:forEach items="${list}" var="list" varStatus="statusList">
 											<div class="card">
 												<div class="content">
-													<div class="imgBx"><img src=""></div>
+													<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
 													<div class="contentBx">
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
 															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
