@@ -24,8 +24,11 @@
 		
 		<style type="text/css">
 			div {
-				border: solid red 1px;
+				/* border: solid red 1px; */
 			}
+			/* p {
+				margin-bottom: 0;
+			} */
 		</style>
 	</head>
 	<body class="is-preload">
@@ -74,123 +77,60 @@
 								
 									<form>
 										<div class="row">
-											<div class="col col-6">
-												<p style="margin-bottom: 0;"><b>운동 위치 : </b> 경기도 부천시 원미구 부천 중앙공원</p>
-												<div id="map" style="width:100%; height: 100%;"></div>
-											</div>
-											<div class="col col-6" style="text-align: center;">
+											<div class="col-6" style="text-align: center;">
+												<span><b><c:out value="${one.group_name }"/></b></span>
 												<div classs="row">
-													<img src="../../../../resources/images/images/러닝머신.jpg" style="width: 100px; height: 100px; border-radius: 30%;">
-													<ul class="sci">
-														<li style="--i:1">
-															<a href="#"><i class="fa-solid fa-user"></i></a>
-														</li>
-														<li style="--i:2">
-															<a href="#"><i class="fa-regular fa-envelope"></i></a>
-														</li>
-														<li style="--i:3">
-															<a href="#"><i class="fa-regular fa-comments"></i></a>
-														</li>
-													</ul>
+													<div class="col-6" style="clear: both;">
+														<img src="../../../../resources/images/images/noprofil.jpg" width=150px height=150px style="border: 2px solid white; border-radius: 50%;"><br>
+														<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
+													</div>
+													<div class="col-6" style="float: right;">
+														<ul class="sci">
+															<li style="--i:1">
+																<a href="#"><i class="fa-solid fa-user"></i></a>
+															</li>
+															<li style="--i:2">
+																<a href="#"><i class="fa-regular fa-envelope"></i></a>
+															</li>
+															<li style="--i:3">
+																<a href="#"><i class="fa-regular fa-comments"></i></a>
+															</li>
+														</ul>
+													</div>
 												</div>
-												<div class="row">
-													<div class="col col-6">
-														<p><b>작성자 ID : </b><c:out value="${one.creator }"/></p><br>
-														<p><b>그룹명 : </b><c:out value="${one.group_name }"/></p><br>
-														<p><b>운동종목 : </b>
+												<div class="row" style="text-align: start;">
+														<p><b>작성자 ID </b> <c:out value="${one.creator }"/></p><br>
+														<p><b>운동종목 </b>
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
 															<c:if test="${one.sports eq listSports.cc_key }"><c:out value="${listSports.cc_name }"/></c:if>
 														</c:forEach></p><br>
-														<p><b>시작시간 : </b> 12:00<c:out value=""></c:out></p><br>
-													</div>
-													<div class="col col-6">
-														<p><b>조회수 : </b><c:out value="${one.viewCount }"/></p><br>
-														<p><b>운동일 : </b><c:out value="${one.playDate }"/></p><br>
-														<p><b>모집인원 : </b> 3<c:out value=""></c:out></p><br>
-														<p><b>종료시간 : </b> 13:00<c:out value=""></c:out></p><br>
-													</div>
+														<p><b>모집인원 </b> <c:out value="${one.people_number }"></c:out></p><br>
+														<p><b>운동일 </b> <c:out value="${one.playDate }"/></p><br>
+														<p><b>시작시간 </b> <c:out value="${one.startTime }"></c:out></p><br>
+														<p><b>종료시간 </b> <c:out value="${one.endTime }"></c:out></p><br>
 												</div>
-												<div class="row" style="height: 400px; border: skyblue solid 5px; border-radius: 30px;">
+												<hr>
+												<div class="row" style="text-align: start;">
+													<p style="font-weight: bold;">그룹 설명</p>
 													<p><c:out value="${one.detail }"/></p>
 												</div>
 											</div>
+											<div class="col col-6">
+												<p style="margin-bottom: 0;"><b>운동 위치 : </b> 경기도 부천시 원미구 부천 중앙공원</p>
+												<div id="map" style="width:100%; height: 70%;"></div>
+											</div>
 										</div>
-										
-								
-									
-									
-									
-									
-									
-									
-										<div class="table-wrapper">
-											<table class="alt" style="pointer-events: none;">
-												<tbody>
-													<tr>
-														<th>No</th>
-														<th>작성자</th>
-														<th>그룹명</th>
-														<th>운동일</th>
-														<th>조회수</th>
-													</tr>
-													<tr style="text-align: center;">
-														<td style="width: 100px;"><c:out value="${one.seq }"/></td>
-														<td style="width:200px;"><c:out value="${one.creator }"/></td>
-														<td><c:out value="${one.group_name }"/></td>
-														<td style="width:200px;"><c:out value="${one.playDate }"/></td>
-														<td style="width: 100px;"><c:out value="${one.viewCount }"/></td>
-													</tr>
-													<tr>
-														<th>운동종목</th>
-														<td class="fmtd" style="text-align: center;">
-														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
-															<c:if test="${one.sports eq listSports.cc_key }"><c:out value="${listSports.cc_name }"/></c:if>
-														</c:forEach>
-														</td>
-														<td colspan="3" rowspan="5" style="text-align: center; vertical-align: middle; padding-right: 50px; padding-left: 50px;">
-															<c:out value="${one.detail }"/>
-														</td>
-													</tr>
-													<tr>
-														<th>인원</th>
-														<td class="fmtd" style="text-align: center;"><c:out value="${one.people_number }"/>명</td>
-													</tr>
-													<tr>
-														<th>시작시간</th>
-														<td class="fmtd" style="text-align: center;"><c:out value="${one.startTime }"/>:00</td>
-													</tr>
-													<tr>
-														<th>종료시간</th>
-														<td class="fmtd" style="text-align: center;"><c:out value="${one.endTime }"/>:00</td>
-													</tr>	
-													<tr>
-														<th>지역</th>
-														<td class="fmtd" style="text-align: center;"><c:out value="${one.location }"/></td>
-													</tr>
-													<tr style="height: 500px;">
-														<td colspan="5">
-															<p style="margin-top:-12px">
-															    <em class="link">
-															        <a href="/web/documentation/#MapTypeId" target="_blank">지도 타입을 보시려면 여기를 클릭하세요!</a>
-															    </em>
-															</p>
-															<div id="map" style="width:100%;height:350px;"></div>
-															<p>개발자도구를 통해 직접 확인해 보세요.</p>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-											<center style="margin-left: 12%;">
-												<a href="#" class="button primary">💪추천</a>
-												<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
-												<a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a>
-											</center>
-										</div>
+										<center style="margin-left: 12%; margin-top: 30px;">
+											<a href="#" class="button primary">🤝JOIN</a>
+											<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
+											<a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a>
+										</center>
 									</form>
 								</section>
 							</div>
 						</section>
 					</article>
+
 
 				<!-- Footer -->
 				<footer id="footer">

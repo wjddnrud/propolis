@@ -1,6 +1,8 @@
 package com.woo.infra.modules.member;
 
-public class Member {
+import com.woo.infra.modules.base.Base;
+
+public class Member extends Base {
 
 	private String seq;
 	private String id;

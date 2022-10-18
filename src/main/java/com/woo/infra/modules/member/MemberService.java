@@ -23,4 +23,8 @@ public interface MemberService {
 	public Member signInCheck(Member dto) throws Exception;
 	
 	public int selectOneCount(BaseVo vo) throws Exception;
+	
+	public Member selectMemberImg(Member dto) throws Exception;
+	
+	
 }

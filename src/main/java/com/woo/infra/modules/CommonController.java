@@ -43,7 +43,12 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value = "myPage") 
-	public String myPage() throws Exception {
+	public String myPage(Model model, Member dto, MemberVo vo) throws Exception {
+		
+//		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+		Member img = service.selectMemberImg(dto);
+		model.addAttribute("img",img);
+		
 		return "infra/SportsMate/myPage/myPage";
 	}
 	

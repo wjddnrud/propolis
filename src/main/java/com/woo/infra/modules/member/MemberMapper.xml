@@ -240,5 +240,69 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
+	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
+		SELECT
+			seq
+		FROM member
+		ORDER BY seq DESC
+		LIMIT 1
+	</select>
+	
+	<insert id="insertMemberUpload">
+		INSERT INTO uploadedMember (
+			<!-- seq -->
+			type
+			,defaultNY
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,path
+			,pSeq
+		)
+		VALUES (
+			<!-- #{seq} -->
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{path}
+			,#{pSeq}
+		)
+	</insert>
+	
+	<select id="selectMemberImg" resultMap="resultMapObj">
+		SELECT
+			mm.seq
+		    ,id
+		    ,password
+		    ,name
+		    ,dob
+		    ,gender
+		    ,job
+		    ,address
+		    ,phoneNumber
+		    ,telecom
+		    ,email
+		    ,way_to_regist
+		    ,address_detail
+		    ,zipcode
+		    ,createDate
+		    ,lastLoginDate
+		    ,mm.delNY
+		    ,adminNY
+		    ,upmm.uuidName
+		    ,upmm.path
+		FROM member mm
+		JOIN uploadedMember upmm
+		WHERE 1=1
+			AND upmm.delNY = 0
+		    AND upmm.pSeq = #{sessSeq}
+	</select>
+	
 
 </mapper>	

@@ -74,6 +74,25 @@ public class MemberDao {
 		return insert;
 	}
 	
+	public int selectLastSeq() throws Exception {
+		
+		return sqlSession.selectOne(namespace + ".selectLastSeq", "");
+	}
+	
+	public int insertMemberUpload(Member dto) throws Exception {
+		int insertMemberUpload = sqlSession.insert(namespace + ".insertMemberUpload", dto);
+		return insertMemberUpload;
+	}
+	
+	public Member selectMemberImg(Member dto) throws Exception {
+		
+		Member selectMemberImg = sqlSession.selectOne(namespace + ".selectMemberImg", dto);
+		
+		return selectMemberImg;
+		
+	}
+	
+	
 	public int checkId(Member dto) throws Exception {
 		
 		return sqlSession.selectOne(namespace + ".checkId", dto);

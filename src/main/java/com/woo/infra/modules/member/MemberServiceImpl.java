@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.woo.infra.common.util.BaseVo;
 import com.woo.infra.common.util.UtilSecurity;
+import com.woo.infra.common.util.UtilUpload;
 
 
 @Service
@@ -85,14 +87,45 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insert(Member dto) throws Exception {
 		
+//		password 암호화
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		
 		int insert = dao.insert(dto);
+//		System.out.println("dao.insert : " + insert);
 		
-		System.out.println("dao.insert : " + insert);
 		
+      int pSeq = dao.selectLastSeq();
+//        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
+
+      int j = 0;
+      for(MultipartFile myFile : dto.getMultipartFile()) {
+
+          if(!myFile.isEmpty()) {
+              // postServiceImpl
+              String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+              UtilUpload.uploadProfileImg(myFile, pathModule, dto);
+
+              dto.setType(2);
+              dto.setDefaultNY(j == 0 ? 1 : 0);
+              dto.setSort(j+1);
+              dto.setpSeq(pSeq);
+
+              dao.insertMemberUpload(dto);
+              j++;
+          }
+
+      }
+	
+	return insert;
 		
-		return insert;
+	}
+	
+	
+
+	@Override
+	public Member selectMemberImg(Member dto) throws Exception {
+
+		return dao.selectMemberImg(dto);
 	}
 
 	@Override

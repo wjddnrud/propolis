@@ -126,7 +126,17 @@
 	
 	<select id="selectCommunityImg" resultMap="resultMapObj">
 		SELECT
-			*
+			seq
+			,type
+			,defaultNY
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNY
+			,pSeq
+			,path
 		FROM uploadedCommunity
 		WHERE 1=1
 			AND pSeq = #{pSeq}

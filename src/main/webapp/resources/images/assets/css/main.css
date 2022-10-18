@@ -4386,36 +4386,6 @@ input, select, textarea {
 	}
 	
 	
-	/* member pofile 사진 첨부*/
-	.upload {
-		width: 200px;
-		position: relative;
-		margin: auto;
-	}
-	
-	.upload img {
-		border-radius: 50%;
-		border: 6px solid #eaeaea;
-	}
-	
-	.upload .round {
-		position : absolute;
-		bottom: 0;
-		right: 0;
-		background: #0084ff;
-		width: 32px;
-		height: 32px;
-		line-height: 33px;
-	}
-	
-	.upload .round input[type='file'] {
-		position: absolute;
-		transform: scale(2);
-		opacity: 0;
-	}
-	
-	input[type=file]::-webkit-file-upload-button {
-		cursor: pointer;
-	}
+
 
 

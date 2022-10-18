@@ -69,17 +69,17 @@
 				<div class="inner">
 					<section>
 						<!-- <h2>회원가입</h2> -->
-						<form name="signUpForm">
+						<form name="signUpForm" enctype="multipart/form-data" method="post">
 							<input type="hidden" name="shSeq">
 							<input type="hidden" name="delNY">
 							<div class="row gtr-uniform">
-								<div class="col col-12 upload">
-									<img src="../../../../resources/images/images/noprofil.jpg" width=100 height=100 alt="">
-									<div class="round">
-										<input type="file">
-										<i class="fa fa-camera" style="color: #fff;"></i>
-									</div>
+							
+								<div id="ifmmUploadedImage1View" class="col col-12" class="filebox">
+									<img id="imgProfile" src="../../../../resources/images/images/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
+									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="margin-left: 30px;">
  								</div>
+ 								
+								 
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
 									<input type="text" name="id" id="id" value="" placeholder="영문,숫자 5~10자" />
@@ -232,6 +232,15 @@
 		
 		var form = $("form[name=signUpForm]");
 	
+		/* 프로필 이미지 */
+		/* id 가 imgFile인것이 내용이 바뀌면 filename 은 imgfile 의 값이 들어가고
+		   id 가 .upload-name 인것의 val값이 filename으로 들어간다*/
+		$("#imgFile").on('change',function(){
+			var fileName = $("#imgFile").val();
+			$(".upload-name").val(fileName);
+		});
+		
+		
 		
 		/* datepicker */
 		$( function() {
@@ -508,6 +517,25 @@
 			
 			if(keycode == 13) //Enter
 				submitform(); //여기가 이제 로그인 하는 함수로 연결되면 됩니다.
+		}
+	</script>
+	
+	<script>
+		upload = function (objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+			
+			var totalFileSize = 0;
+			var obj = $("#" + objName)[0].files;
+			var fileCount = obj.length;
+			
+			if (uiType == 3) {
+				
+				var fileReader = new FileReader();
+				fileReader.readAsDataURL($("#" + objName)[0].files[0]);
+				
+				fileReader.onload = function() {
+					$("#imgProfile").attr("src", fileReader.result);
+				}
+			} return false;
 		}
 	</script>
 </body>
