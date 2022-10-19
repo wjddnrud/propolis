@@ -72,5 +72,13 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		
 		return sports;
 	}
+
+	@Override
+	public List<SportsGroup> MyselectList(SportsGroup sgdto) throws Exception {
+		
+		List<SportsGroup> MyselectList = dao.MyselectList(sgdto);
+		
+		return MyselectList;
+	}
 	
 }

@@ -4,7 +4,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Base {
 	
-	private String seq;
 	private Integer type;
 	private Integer defaultNY;
 	private Integer sort;
@@ -19,12 +18,6 @@ public class Base {
 	private MultipartFile[] multipartFile;
 	
 	
-	public String getSeq() {
-		return seq;
-	}
-	public void setSeq(String seq) {
-		this.seq = seq;
-	}
 	public String getOriginalName() {
 		return originalName;
 	}

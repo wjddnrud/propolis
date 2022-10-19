@@ -22,19 +22,34 @@
 			,sg.viewCount
 			,sg.map
 			,sg.playDate
-		    ,upSg.type
-		    ,upSg.defaultNY
-		    ,upSg.sort
-		    ,upSg.originalName
 		    ,upSg.uuidName
-		    ,upSg.ext
-		    ,upSg.size
-		    ,upSg.delNY
-		    ,upSg.pSeq
 		    ,upSg.path
 		FROM sportsGroup sg
 		JOIN member mm ON sg.creator = mm.seq
 		JOIN uploadedSportsGroup upSg ON sg.seq = upSg.pSeq
+	</select>
+	
+	<select id="MyselectList" resultMap="resultMapObj">
+		SELECT
+			sg.seq
+			,mm.id as creator
+			,sg.group_name
+			,sg.sports
+			,sg.location 
+			,sg.people_number
+			,sg.startTime
+			,sg.endTime
+			,sg.detail
+			,sg.viewCount
+			,sg.map
+			,sg.playDate
+		    ,upSg.uuidName
+		    ,upSg.path
+		FROM sportsGroup sg
+		JOIN member mm ON sg.creator = mm.seq
+		JOIN uploadedSportsGroup upSg ON sg.seq = upSg.pSeq
+		WHERE 1=1
+			AND sg.creator = #{creator}
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

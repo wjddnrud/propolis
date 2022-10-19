@@ -86,6 +86,7 @@ public class MemberDao {
 	
 	public Member selectMemberImg(Member dto) throws Exception {
 		
+		System.out.println("getSeq : " + dto.getSeq());
 		Member selectMemberImg = sqlSession.selectOne(namespace + ".selectMemberImg", dto);
 		
 		return selectMemberImg;

@@ -37,7 +37,7 @@
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/findMate">Find Mate</a></li>
 											<li><a href="/community">Community</a></li>
-											<li><a href="/myPage">MyPage</a></li>
+											<li><a href="/myPageCommunityList">MyPage</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
 									</ul>
@@ -56,7 +56,9 @@
 						<div class="inner">
 							<section>
 								<div style="font-weight: bold; text-align: center;">
-									<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
+									<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
+									<br>
+									<br>
 									[회원 정보 session]<br/><br/>
 									회원 이름: <c:out value="${sessName }"/><br>
 									ID: <c:out value="${sessId }"/><br>
@@ -68,13 +70,13 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" aria-current="page" href="myPage">게시글 관리</a>
+											<a class="nav-link" href="/myPageCommunityList">게시글 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">모임 관리</a>
+											<a class="nav-link" href="/myPageGroupList">그룹 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">기타 둥둥</a>
+											<a class="nav-link active" href="/myPageMessegeList">메세지</a>
 										</li>
 									</ul>
 								</div>

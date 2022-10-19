@@ -18,4 +18,6 @@ public interface CommunityService {
 
 	public Community selectCommunityImg(Community dto) throws Exception;
 	
+	public List<Community> MyselectList(Community dto) throws Exception;
+	
 }

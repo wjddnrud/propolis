@@ -40,9 +40,9 @@ public class SportsGroupDao {
 		return insert;
 	}
 	
-	public int selectLastSeq() throws Exception{ return sqlSession.selectOne(namespace + ".selectLastSeq", "");}
+	public int selectLastSeq() { return sqlSession.selectOne(namespace + ".selectLastSeq", "");}
 	
-	public int groupImgUpload(SportsGroup dto) throws Exception {return sqlSession.insert(namespace + ".groupImgUpload", dto);}
+	public int groupImgUpload(SportsGroup dto) {return sqlSession.insert(namespace + ".groupImgUpload", dto);}
 	
 	public List<SportsGroup> sports(SportsGroup dto) {
 		
@@ -51,6 +51,13 @@ public class SportsGroupDao {
 //		System.out.println("dao sports : " + sports);
 		
 		return sports;
+	}
+	
+	public List<SportsGroup> MyselectList(SportsGroup sgdto) {
+		
+		List<SportsGroup> MyselectList = sqlSession.selectList(namespace + ".MyselectList", "");
+		
+		return MyselectList;
 	}
 	
 }

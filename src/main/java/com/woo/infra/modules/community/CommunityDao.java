@@ -57,8 +57,12 @@ public class CommunityDao {
 	public int insertCommunityUpload(Community dto) throws Exception {return sqlSession.insert(namespace + ".insertCommunityUpload", dto);}
 
 	public Community selectCommunityImg(Community dto) {
-
 		return sqlSession.selectOne(namespace + ".selectCommunityImg", dto);
+	}
+	
+	public List<Community> MyselectList(Community dto) throws Exception {
+		
+		return sqlSession.selectList(namespace + ".MyselectList", dto);
 	}
 	
 	

@@ -4,7 +4,7 @@ import com.woo.infra.modules.base.Base;
 
 public class Member extends Base {
 
-	private String seq;
+	private Integer seq;
 	private String id;
 	private String password;
 	private String name;
@@ -24,10 +24,10 @@ public class Member extends Base {
 	private String adminNY;
 	
 	
-	public String getSeq() {
+	public Integer getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
 	public String getId() {

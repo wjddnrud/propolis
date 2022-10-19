@@ -43,7 +43,7 @@
 							                <li><a href="/main">Home</a></li>
 											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
-											<li><a href="/myPage">My Page</a></li>
+											<li><a href="/myPageCommunityList">MyPage</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
 									</ul>

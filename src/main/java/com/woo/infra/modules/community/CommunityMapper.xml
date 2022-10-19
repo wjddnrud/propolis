@@ -20,7 +20,24 @@
 			,cm.viewCount
 		FROM community cm
 		JOIN member mm ON mm.seq = cm.writer 
-	</select> 
+	</select>
+	
+	<!-- myPageCommunityList -->
+	<select id="MyselectList" resultMap="resultMapObj">
+		SELECT
+			cm.seq
+			,cm.category
+			,mm.id as writer
+			,cm.title
+			,cm.contents
+			,cm.createDate
+			,cm.modiDate
+			,cm.viewCount
+		FROM community cm
+		JOIN member mm ON mm.seq = cm.writer 
+		WHERE 1=1
+			AND cm.writer = #{writer}
+	</select>  
 	
 	<insert id="insert">
 		INSERT INTO community(

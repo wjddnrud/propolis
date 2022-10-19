@@ -298,10 +298,10 @@
 		    ,upmm.uuidName
 		    ,upmm.path
 		FROM member mm
-		JOIN uploadedMember upmm
+		JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
 		WHERE 1=1
 			AND upmm.delNY = 0
-		    AND upmm.pSeq = #{sessSeq}
+		    AND upmm.pSeq = #{seq}
 	</select>
 	
 

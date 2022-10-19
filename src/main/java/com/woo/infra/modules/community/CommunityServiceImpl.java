@@ -88,6 +88,15 @@ public class CommunityServiceImpl implements CommunityService{
 		return dao.selectCommunityImg(dto);
 	}
 
+	@Override
+	public List<Community> MyselectList(Community dto) throws Exception {
+		
+		System.out.println("getSeq : " + dto.getSeq());
+		
+		return dao.MyselectList(dto);
+	}
+
+
 	
 	
 	

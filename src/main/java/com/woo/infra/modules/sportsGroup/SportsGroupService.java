@@ -13,4 +13,6 @@ public interface SportsGroupService {
 	
 	public List<SportsGroup> sports(SportsGroup dto) throws Exception;
 	
+	public List<SportsGroup> MyselectList(SportsGroup sgdto)throws Exception;
+	
 }

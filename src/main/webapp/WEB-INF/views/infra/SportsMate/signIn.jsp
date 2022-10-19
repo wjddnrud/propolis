@@ -40,13 +40,6 @@
 									<ul>
 					                	<li><a href="/signUp">SIGN UP</a></li>
 										<li><a href="/signIn">SIGN IN</a></li>
-							            <%-- <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
-							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
-											<li><a href="/myPage">MyPage</a></li>
-											<li><a href="/logout">LOG-OUT</a></li>
-										</c:if> --%>
 									</ul>
 								</div>
 							</li>

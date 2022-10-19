@@ -1,6 +1,7 @@
 package com.woo.infra.modules;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.woo.infra.modules.community.Community;
+import com.woo.infra.modules.community.CommunityServiceImpl;
 import com.woo.infra.modules.member.Member;
 import com.woo.infra.modules.member.MemberServiceImpl;
 import com.woo.infra.modules.member.MemberVo;
+import com.woo.infra.modules.sportsGroup.SportsGroup;
+import com.woo.infra.modules.sportsGroup.SportsGroupServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
@@ -22,12 +27,15 @@ public class CommonController {
 
 	
 	@Autowired
-	MemberServiceImpl service;
+	MemberServiceImpl mmService;
+	
+	@Autowired
+	CommunityServiceImpl cmService;
+	
+	@Autowired
+	SportsGroupServiceImpl sgService;
 	
 	
-	
-	
-
 	//----------------------------- 페이지 이동
 	
 	
@@ -42,14 +50,62 @@ public class CommonController {
 		return "infra/SportsMate/main";
 	}
 	
-	@RequestMapping(value = "myPage") 
-	public String myPage(Model model, Member dto, MemberVo vo) throws Exception {
+	@RequestMapping(value = "myPageCommunityList") 
+	public String myPageCommunityList(Model model, Member mmdto, MemberVo vo, Community cmdto, HttpSession httpSession) throws Exception {
 		
-//		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-		Member img = service.selectMemberImg(dto);
+
+		int sessSeq = (int) httpSession.getAttribute("sessSeq");
+		System.out.println("getAttribute: " + sessSeq);
+		
+		mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+		System.out.println("getSeq : " + mmdto.getSeq());
+		Member img = mmService.selectMemberImg(mmdto);
 		model.addAttribute("img",img);
 		
-		return "infra/SportsMate/myPage/myPage";
+		cmdto.setWriter("" + sessSeq);
+		System.out.println("getSeq : " + cmdto.getSeq());
+//		dto.setSeq(sessSeq);
+		List<Community> cmlist = cmService.MyselectList(cmdto);
+		model.addAttribute("cmlist", cmlist);
+		
+		return "infra/SportsMate/myPage/myPageCommunityList";
+	}
+	
+	@RequestMapping(value = "myPageGroupList") 
+	public String myPageGroupList(Model model, Member mmdto, MemberVo vo, SportsGroup sgdto, HttpSession httpSession) throws Exception {
+		
+
+		
+		int sessSeq = (int) httpSession.getAttribute("sessSeq");
+		System.out.println("getAttribute: " + sessSeq);
+		
+		mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+		System.out.println("getSeq : " + mmdto.getSeq());
+		Member img = mmService.selectMemberImg(mmdto);
+		model.addAttribute("img",img);
+		
+		sgdto.setCreator("" + sessSeq);
+		System.out.println("getCreator : " + sgdto.getCreator());
+//		dto.setSeq(sessSeq);
+		List<SportsGroup> grlist = sgService.MyselectList(sgdto);
+		model.addAttribute("grlist", grlist);
+		
+		return "infra/SportsMate/myPage/myPageGroupList";
+	}
+	
+	@RequestMapping(value = "myPageMessegeList") 
+	public String myPageMessegeList(Model model, Member dto, MemberVo vo, HttpSession httpSession) throws Exception {
+		
+
+		
+		int sessSeq = (int) httpSession.getAttribute("sessSeq");
+		System.out.println("getAttribute: " + sessSeq);
+		dto.setpSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+		System.out.println("setPseq : " + dto.getpSeq());
+		Member img = mmService.selectMemberImg(dto);
+		model.addAttribute("img",img);
+		
+		return "infra/SportsMate/myPage/myPageMessegeList";
 	}
 	
 //	@RequestMapping(value = "community")
@@ -113,7 +169,7 @@ public class CommonController {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		
-		Member signInCheck = service.signInCheck(dto);
+		Member signInCheck = mmService.signInCheck(dto);
 		System.out.println("signIn result: " + signInCheck);
 		
 		
@@ -166,11 +222,11 @@ public class CommonController {
 	@RequestMapping(value = "signUpInst")
 	public String memberInsert(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int insert = service.insert(dto);
+		int insert = mmService.insert(dto);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		System.out.println("service.insert : " + insert);
+		System.out.println("mmService.insert : " + insert);
 		
 		 return "redirect:/signIn"; 
 	}
@@ -180,8 +236,6 @@ public class CommonController {
 		
 		return "infra/SportsMate/classify";
 	}
-	
-	
 	
 	
 	
