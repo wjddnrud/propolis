@@ -95,7 +95,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		
       int pSeq = dao.selectLastSeq();
-//        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
+        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
 
       int j = 0;
       for(MultipartFile myFile : dto.getMultipartFile()) {

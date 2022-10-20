@@ -22,7 +22,6 @@ import com.woo.infra.modules.sportsGroup.SportsGroup;
 import com.woo.infra.modules.sportsGroup.SportsGroupServiceImpl;
 
 @Controller
-@RequestMapping(value = "/")
 public class CommonController {
 
 	
@@ -231,10 +230,10 @@ public class CommonController {
 		 return "redirect:/signIn"; 
 	}
 	
-	@RequestMapping(value = "classify")
+	@RequestMapping(value = "index")
 	public String classify() throws Exception {
 		
-		return "infra/SportsMate/classify";
+		return "infra/SportsMate/index";
 	}
 	
 	

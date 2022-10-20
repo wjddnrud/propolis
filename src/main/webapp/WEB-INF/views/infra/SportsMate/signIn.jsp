@@ -209,7 +209,7 @@
 										if(response.adminNY == 1) {
 											location.href="/main";  //일반 사용자
 										} else {
-											location.href="/classify";   //관리자
+											location.href="/index";   //관리자
 										}
 									});
 								} else {
