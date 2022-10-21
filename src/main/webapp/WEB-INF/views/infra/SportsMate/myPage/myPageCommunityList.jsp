@@ -64,7 +64,9 @@
 										<b>[회원 정보]</b><br/><br/>
 										<b>이름: </b><c:out value="${sessName }"/><br>
 										<b>ID: </b><c:out value="${sessId }"/><br>
-										<b>게시글 수: </b><c:out value="${sessId }"/><br>
+										<%-- <b>게시글 수: </b><c:out value="${cmlist[0].MyCommunityCount }"/><br> --%>
+										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
+										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
 										<b>참여 그룹 수: </b><c:out value="${sessId }"/><br>
 										<b>안읽은 메세지: </b><c:out value="${sessId }"/><br>
 										

@@ -86,8 +86,8 @@
 							<div class="image"><img src="/resources/images/images/요가.jpg" alt="" /></div><div class="content">
 								<h2>diet<br>
 								loose your weight</h2>
-								<p>NEW 17</p>
-								<p>TOTAL 253</p>
+								<p>NEW <c:out value="${dietCountNew }"/></p>
+								<p>TOTAL <c:out value="${dietCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>
 						</section>
@@ -95,8 +95,8 @@
 							<div class="image"><img src="/resources/images/images/웨이트.jpg" alt="" /></div><div class="content">
 								<h2>weight<br>
 								grow up your muscle</h2>
-								<p>NEW 8</p>
-								<p>TOTAL 164</p>
+								<p>NEW <c:out value="${weightCountNew }"/></p>
+								<p>TOTAL <c:out value="${weightCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>
 						</section>
@@ -104,8 +104,8 @@
 							<div class="image"><img src="/resources/images/images/food1.jpg" alt="" /></div><div class="content">
 								<h2>food<br>
 								healthy menu & recipe</h2>
-								<p>NEW 11</p>
-								<p>TOTAL 79</p>
+								<p>NEW <c:out value="${foodCountNew }"/></p>
+								<p>TOTAL <c:out value="${foodCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>
 						</section>

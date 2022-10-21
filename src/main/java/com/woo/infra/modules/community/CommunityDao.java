@@ -66,11 +66,14 @@ public class CommunityDao {
 	}
 	
 	/* main화면 게시물 수 count */
-	public int selectDietCount() throws Exception {return sqlSession.selectOne(namespace + ".selectDietCount", "");}
-	public int selectWeightCount() throws Exception {return sqlSession.selectOne(namespace + ".selectWeightCount", "");}
-	public int selectFoodCount() throws Exception {return sqlSession.selectOne(namespace + ".selectFoodCount", "");}
+	public int selectCountFromCategory(int i) {
+		return sqlSession.selectOne(namespace + ".selectCountFromCategory" , i) ;
+	}
 	
-	public int selectCommunityCount() { return sqlSession.selectOne(namespace + ".selectCommunityCount", "");}
+	/* main화면 today 신규 등록 게시물 수 count */
+	public int selectCountNewFromCategory(Community dto) {
+		return sqlSession.selectOne(namespace + ".selectCountNewFromCategory", dto);
+	}
 	
 	
 

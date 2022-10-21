@@ -85,36 +85,22 @@
 			AND seq={seq}
 	</update> -->
 
-	<select id="selectCommunityCount" resultType="Integer">
-		SELECT 
+	<select id="selectCountFromCategory" resultType="Integer" parameterType="Integer">
+		SELECT
 			COUNT(*)
 		FROM community
 		WHERE 1=1
-			AND writer = #{}
+			AND category = #{i}
 	</select>
 	
-	<select id="selectDietCount">
-		SELECT 
+	<select id="selectCountNewFromCategory" resultType="Integer">
+		SELECT
 			COUNT(*)
 		FROM community
 		WHERE 1=1
-			AND category = 1
-	</select>
-	
-	<select id="selectWeightCount">
-		SELECT 
-			COUNT(*)
-		FROM community
-		WHERE 1=1
-			AND category = 2
-	</select>
-	
-	<select id="selectFoodCount">
-		SELECT 
-			COUNT(*)
-		FROM community
-		WHERE 1=1
-			AND category = 3
+			AND category = #{category}
+			AND createDate LIKE CONCAT ('%',#{createDate},'%')
+			
 	</select>
 	
 	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->

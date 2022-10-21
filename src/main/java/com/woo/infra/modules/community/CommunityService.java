@@ -19,5 +19,9 @@ public interface CommunityService {
 	public Community selectCommunityImg(Community dto) throws Exception;
 	
 	public List<Community> MyselectList(Community dto) throws Exception;
+
+	public int selectCountFromCategory(int i) throws Exception;
+	
+	public int selectCountNewFromCategory(Community dto) throws Exception;
 	
 }

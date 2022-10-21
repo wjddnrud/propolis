@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.woo.infra.common.util.UtilDateTime;
 import com.woo.infra.modules.community.Community;
 import com.woo.infra.modules.community.CommunityServiceImpl;
 import com.woo.infra.modules.member.Member;
@@ -41,11 +42,40 @@ public class CommonController {
 	@RequestMapping(value = "main")
 	public String main(Model model) throws Exception {
 		
-//		List<Community> list = service.selectList();
-//		
-//		model.addAttribute("list", list);
 		
-
+		int dietCount = cmService.selectCountFromCategory(1);
+		model.addAttribute("dietCount", dietCount);
+		
+		int weightCount = cmService.selectCountFromCategory(2);
+		model.addAttribute("weightCount", weightCount);
+		
+		int foodCount = cmService.selectCountFromCategory(3);
+		model.addAttribute("foodCount", foodCount);
+		
+		
+		String nowString = UtilDateTime.nowString();
+		String today = nowString.substring(0,4) + "-" + nowString.substring(5,7) + "-" + nowString.substring(8,10); 
+		
+		System.out.println("today : " + today);
+		
+		Community community = new Community();
+		community.setCreateDate(today);
+		community.setCategory("1");
+		
+		int dietCountNew = cmService.selectCountNewFromCategory(community);
+		
+		community.setCategory("2");
+		
+		int weightCountNew = cmService.selectCountNewFromCategory(community);
+		
+		community.setCategory("3");
+		
+		int foodCountNew = cmService.selectCountNewFromCategory(community);
+			
+		model.addAttribute("dietCountNew", dietCountNew);
+		model.addAttribute("weightCountNew", weightCountNew);
+		model.addAttribute("foodCountNew", foodCountNew);
+		
 		return "infra/SportsMate/main";
 	}
 	
@@ -65,6 +95,7 @@ public class CommonController {
 		System.out.println("getSeq : " + cmdto.getSeq());
 //		dto.setSeq(sessSeq);
 		List<Community> cmlist = cmService.MyselectList(cmdto);
+		
 		model.addAttribute("cmlist", cmlist);
 		
 		return "infra/SportsMate/myPage/myPageCommunityList";

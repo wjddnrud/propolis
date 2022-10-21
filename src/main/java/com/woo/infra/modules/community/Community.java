@@ -12,6 +12,7 @@ public class Community extends Base {
 	private String modiDate;
 	private String viewCount;
 	private String category;
+	private String MyCommunityCount;
 	
 	
 	public String getSeq() {
@@ -61,6 +62,12 @@ public class Community extends Base {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public String getMyCommunityCount() {
+		return MyCommunityCount;
+	}
+	public void setMyCommunityCount(String myCommunityCount) {
+		MyCommunityCount = myCommunityCount;
 	}
 	
 	

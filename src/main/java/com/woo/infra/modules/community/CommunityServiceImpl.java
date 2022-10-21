@@ -96,6 +96,21 @@ public class CommunityServiceImpl implements CommunityService{
 		return dao.MyselectList(dto);
 	}
 
+	@Override
+	public int selectCountFromCategory(int i) throws Exception {
+		return dao.selectCountFromCategory(i);
+	}
+
+	@Override
+	public int selectCountNewFromCategory(Community dto) throws Exception {
+		
+		return dao.selectCountNewFromCategory(dto);
+	}
+	
+	
+	
+	
+
 
 	
 	
