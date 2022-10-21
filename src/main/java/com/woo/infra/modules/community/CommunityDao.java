@@ -65,6 +65,13 @@ public class CommunityDao {
 		return sqlSession.selectList(namespace + ".MyselectList", dto);
 	}
 	
+	/* main화면 게시물 수 count */
+	public int selectDietCount() throws Exception {return sqlSession.selectOne(namespace + ".selectDietCount", "");}
+	public int selectWeightCount() throws Exception {return sqlSession.selectOne(namespace + ".selectWeightCount", "");}
+	public int selectFoodCount() throws Exception {return sqlSession.selectOne(namespace + ".selectFoodCount", "");}
+	
+	public int selectCommunityCount() { return sqlSession.selectOne(namespace + ".selectCommunityCount", "");}
+	
 	
 
 }

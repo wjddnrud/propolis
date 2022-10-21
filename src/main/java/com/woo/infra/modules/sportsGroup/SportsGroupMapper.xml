@@ -22,11 +22,11 @@
 			,sg.viewCount
 			,sg.map
 			,sg.playDate
-		    ,upSg.uuidName
-		    ,upSg.path
+		    ,upsg.uuidName
+		    ,upsg.path
 		FROM sportsGroup sg
 		JOIN member mm ON sg.creator = mm.seq
-		JOIN uploadedSportsGroup upSg ON sg.seq = upSg.pSeq
+		JOIN uploadedSportsGroup upsg ON sg.seq = upsg.pSeq
 	</select>
 	
 	<select id="MyselectList" resultMap="resultMapObj">
@@ -43,11 +43,11 @@
 			,sg.viewCount
 			,sg.map
 			,sg.playDate
-		    ,upSg.uuidName
-		    ,upSg.path
+		    ,upsg.uuidName
+		    ,upsg.path
 		FROM sportsGroup sg
 		JOIN member mm ON sg.creator = mm.seq
-		JOIN uploadedSportsGroup upSg ON sg.seq = upSg.pSeq
+		JOIN uploadedSportsGroup upsg ON sg.seq = upsg.pSeq
 		WHERE 1=1
 			AND sg.creator = #{creator}
 	</select>

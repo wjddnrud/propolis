@@ -91,33 +91,31 @@ public class MemberServiceImpl implements MemberService{
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		
 		int insert = dao.insert(dto);
-//		System.out.println("dao.insert : " + insert);
+		System.out.println("dao.insert : " + insert);
 		
 		
-      int pSeq = dao.selectLastSeq();
-        System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
+		int pSeq = dao.selectLastSeq();
+		System.out.println("dao.selectLastSeq : " + dao.selectLastSeq());
 
-      int j = 0;
-      for(MultipartFile myFile : dto.getMultipartFile()) {
+		int j = 0;
+		for(MultipartFile myFile : dto.getMultipartFile()) {
 
-          if(!myFile.isEmpty()) {
-              // postServiceImpl
-              String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-              UtilUpload.uploadProfileImg(myFile, pathModule, dto);
+			if(!myFile.isEmpty()) {
+				// postServiceImpl
+				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+				UtilUpload.uploadProfileImg(myFile, pathModule, dto);
 
-              dto.setType(2);
-              dto.setDefaultNY(j == 0 ? 1 : 0);
-              dto.setSort(j+1);
-              dto.setpSeq(pSeq);
+				dto.setType(2);
+				dto.setDefaultNY(j == 0 ? 1 : 0);
+				dto.setSort(j+1);
+				dto.setpSeq(pSeq);
 
-              dao.insertMemberUpload(dto);
-              j++;
-          }
+				dao.insertMemberUpload(dto);
+				j++;
+			}
 
-      }
-	
-	return insert;
-		
+		}
+		return insert;	
 	}
 	
 	

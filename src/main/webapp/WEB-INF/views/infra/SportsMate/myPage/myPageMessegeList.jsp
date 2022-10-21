@@ -22,7 +22,7 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="#">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">

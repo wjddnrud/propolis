@@ -54,8 +54,8 @@ public class SportsGroupDao {
 	}
 	
 	public List<SportsGroup> MyselectList(SportsGroup sgdto) {
-		
-		List<SportsGroup> MyselectList = sqlSession.selectList(namespace + ".MyselectList", "");
+		System.out.println("dao getCreator : " + sgdto.getCreator());
+		List<SportsGroup> MyselectList = sqlSession.selectList(namespace + ".MyselectList", sgdto);
 		
 		return MyselectList;
 	}

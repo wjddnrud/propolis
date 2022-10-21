@@ -129,10 +129,11 @@
 			,#{email}
 			,#{way_to_regist}
 		)
-		;
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
-			SELECT last_insert_id()   <!-- 새로 생성된 데이터가 몇번째인지 확인할수 있는 문구 출력 -->
-		</selectKey>
+		
+		<!-- resultType string이라서 property 충돌로 꺼둠 -->
+		<!-- <selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()   새로 생성된 데이터가 몇번째인지 확인할수 있는 문구 출력
+		</selectKey> -->
 	</insert>
 	
 	<update id="update">

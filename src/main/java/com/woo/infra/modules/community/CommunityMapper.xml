@@ -85,22 +85,33 @@
 			AND seq={seq}
 	</update> -->
 
+	<select id="selectCommunityCount" resultType="Integer">
+		SELECT 
+			COUNT(*)
+		FROM community
+		WHERE 1=1
+			AND writer = #{}
+	</select>
+	
 	<select id="selectDietCount">
-		SELECT COUNT(*)
+		SELECT 
+			COUNT(*)
 		FROM community
 		WHERE 1=1
 			AND category = 1
 	</select>
 	
 	<select id="selectWeightCount">
-		SELECT COUNT(*)
+		SELECT 
+			COUNT(*)
 		FROM community
 		WHERE 1=1
 			AND category = 2
 	</select>
 	
 	<select id="selectFoodCount">
-		SELECT COUNT(*)
+		SELECT 
+			COUNT(*)
 		FROM community
 		WHERE 1=1
 			AND category = 3

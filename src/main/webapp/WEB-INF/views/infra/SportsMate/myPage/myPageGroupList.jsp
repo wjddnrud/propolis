@@ -23,7 +23,7 @@
 
 				<!-- Header -->
 				<header id="header">
-					<h1><a href="#">sports mate</a></h1>
+					<h1><a href="/main">sports mate</a></h1>
 					<nav id="nav">
 						<ul>
 							<li class="special">
@@ -51,20 +51,26 @@
 				<!-- Main -->
 				<article id="main">
 					<header>
-						<h2>회원 정보</h2>
+						<h2>My page</h2>
+						<h4>마이페이지에서 내 정보를 수정하거나 게시했던 글들을 확인할 수 있습니다.</h4>
 					</header>
 					<section class="wrapper style5">
 						<div class="inner">
 							<section>
-								<div style="font-weight: bold; text-align: center;">
-									<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
-									<br>
-									<br>
-									[회원 정보 session]<br/><br/>
-									회원 이름: <c:out value="${sessName }"/><br>
-									ID: <c:out value="${sessId }"/><br>
-									<hr>
+								<div class="row">
+									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
+									</div>
+									<div class="col-6" style="text-align: left; vertical-align: middle;">
+										<b>[회원 정보]</b><br/><br/>
+										<b>이름: </b><c:out value="${sessName }"/><br>
+										<b>ID: </b><c:out value="${sessId }"/><br>
+										<b>게시글 수: </b><c:out value="${sessId }"/><br>
+										<b>참여 그룹 수: </b><c:out value="${sessId }"/><br>
+										<b>안읽은 메세지: </b><c:out value="${sessId }"/><br>
+									</div>
 								</div>
+								<hr>
 								<div>
 									<ul class="nav nav-tabs">
 										<li class="nav-item">
@@ -95,56 +101,8 @@
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" name="shSeq">
-									<div class="row gtr-uniform">
-										<div class="col-3">
-											<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">사용여부</option>
-												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>N</option>
-												<option value="2" <c:if test="${vo.shUseNY eq 2}">selected</c:if>>Y</option>
-												
-												<%-- <c:choose>
-													<c:when test="${list.useNY eq 0}">N</c:when>
-													<c:when test="${list.useNY eq 1}">Y</c:when>
-												</c:choose> --%>
-												
-											</select>
-										</div>
-										<div class="col-3">
-											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">날짜 검색</option>
-												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>등록일</option>
-												<option value="2" <c:if test="${vo.shDate eq 2}">selected</c:if>>수정일</option>
-											</select>
-										</div>
-										<div class="col-3">
-											<input value="${vo.shStartDate}" autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1">
-										</div>
-										<div class="col-3">
-											<input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2">
-										</div>
-										<div class="col-3">
-											<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">삭제여부</option>
-												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>N</option>
-												<option value="2" <c:if test="${vo.shDelNY eq 2}">selected</c:if>>Y</option>
-											</select>
-										</div>
-										<div class="col-3">
-											<select id="shOption" name="shOption" class="form-select text-center">
-												<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
-												<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
-												<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
-											</select>
-										</div>
-										<div class="col-3">
-											<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
-										</div>
-										<div class="col-3">
-											<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-											<button class="btn btn-warning" type="reset" onclick="location.href='/codegroup/codeGroupList'"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-										</div>	
-									</div>
-									<hr>
+									
+								
 								<div class="table-wrapper">
 									<table class="alt">
 										<thead>
@@ -172,10 +130,13 @@
 											
 											<c:forEach items="${grlist}" var="list" varStatus="statusList">
 												<tr value ="${list.seq }">
+													<td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
+														<label for="checkbox${status.count }"></label>
+													</td>
 													<td style="text-align: center;"><a href="javascript:viewForm(${list.seq})"><c:out value="${list.seq }"/></a></td>
 													<td style="text-align: center;">
-														<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
-															<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
+														<c:forEach items="${listCodeSports}" var="listSports" varStatus="statusSports">
+															<c:if test="${list.sports eq listSports.cc_key}"><c:out value="${listSports.cc_name }"/></c:if>
 														</c:forEach>
 													</td>
 													<%-- <td><c:out value="${list.category }"></c:out></td> --%>
