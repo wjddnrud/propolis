@@ -158,7 +158,7 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="statusList">
-											<tr style="color: black;">
+											<tr style="color: black; text-align: center;">
 												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
 												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
 												<td><a href="javascript:editForm(${list.seq })"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->

@@ -55,15 +55,19 @@
 					<section class="wrapper style5">
 						<div class="inner">
 							<section>
-								<div style="font-weight: bold; text-align: center;">
-									<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
-									<br>
-									<br>
-									[회원 정보 session]<br/><br/>
-									회원 이름: <c:out value="${sessName }"/><br>
-									ID: <c:out value="${sessId }"/><br>
-									<hr>
+								<div class="row">
+									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
+									</div>
+									<div class="col-6" style="text-align: left; vertical-align: middle;">
+										<b>[회원 정보]</b><br/><br/>
+										<b>이름: </b><c:out value="${sessName }"/><br>
+										<b>ID: </b><c:out value="${sessId }"/><br>
+										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
+										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
+									</div>
 								</div>
+								<hr>
 								<div>
 									<ul class="nav nav-tabs">
 										<li class="nav-item">
@@ -81,131 +85,42 @@
 									</ul>
 								</div>
 								<br>
-								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
+								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
+									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 									
-									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
-									<!-- <input type="hidden" name="mainKey"> -->
-									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-									<!-- <input type="hidden" name="checkboxSeqArray"> -->
-									<!-- <form class="d-flex" role="search"> -->
-									<input type="hidden" name="shSeq">
-									<div class="row gtr-uniform">
-										<div class="col-3">
-											<select name="shUseNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">사용여부</option>
-												<option value="1" <c:if test="${vo.shUseNY eq 1}">selected</c:if>>N</option>
-												<option value="2" <c:if test="${vo.shUseNY eq 2}">selected</c:if>>Y</option>
-												
-												<%-- <c:choose>
-													<c:when test="${list.useNY eq 0}">N</c:when>
-													<c:when test="${list.useNY eq 1}">Y</c:when>
-												</c:choose> --%>
-												
-											</select>
-										</div>
-										<div class="col-3">
-											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">날짜 검색</option>
-												<option value="1" <c:if test="${vo.shDate eq 1}">selected</c:if>>등록일</option>
-												<option value="2" <c:if test="${vo.shDate eq 2}">selected</c:if>>수정일</option>
-											</select>
-										</div>
-										<div class="col-3">
-											<input value="${vo.shStartDate}" autocomplete="off" class="form-control me-1" name="shStartDate" type="text" placeholder="시작일" id="datepicker1">
-										</div>
-										<div class="col-3">
-											<input value="${vo.shEndDate}" autocomplete="off" class="form-control me-1" name="shEndDate" type="text" placeholder="종료일" id="datepicker2">
-										</div>
-										<div class="col-3">
-											<select name="shDelNY" class="form-select form-control me-1 text-center" aria-label="Default selet example">
-												<option value="">삭제여부</option>
-												<option value="1" <c:if test="${vo.shDelNY eq 1}">selected</c:if>>N</option>
-												<option value="2" <c:if test="${vo.shDelNY eq 2}">selected</c:if>>Y</option>
-											</select>
-										</div>
-										<div class="col-3">
-											<select id="shOption" name="shOption" class="form-select text-center">
-												<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
-												<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
-												<%-- <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>사용여부</option> --%>
-											</select>
-										</div>
-										<div class="col-3">
-											<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
-										</div>
-										<div class="col-3">
-											<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-											<button class="btn btn-warning" type="reset" onclick="location.href='/codegroup/codeGroupList'"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-										</div>	
-									</div>
-									<hr>
-								<div class="table-wrapper">
-									<table class="alt">
-										<thead>
-											<tr>
-												<th>
-													<input type="checkbox">
-													<label for="demo-human" style="color: white;">선택</label>
-												</th>
-												<th>#</th>
-												<th>카테고리</th>
-												<th>작성자</th>
-												<th>제목</th>
-												<th>작성일자</th>
-												<th>조회수</th>
-											</tr>
-										</thead>
-										<tbody style="color: black;">
-											<c:choose>
-												<c:when test="${fn:length(list) eq 0}">
-													<tr>
-														<td class="text-center" colspan="8">There is no data!</td>
-													</tr>
-												</c:when>
-											</c:choose>
-											<c:forEach items="${list}" var="list" varStatus="statusList">
-											<tr style="color: black;">
-												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
-												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
-												<td><a href="javascript:editForm(${list.seq })"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->
-												<c:out value="${list.seq}"/>
-												</a></td>
-												<td><c:out value="${list.ccg_name }"/></td>
-												<td>
-													<c:choose>
-														<c:when test="${list.useNY eq 1}">N</c:when>
-														<c:when test="${list.useNY eq 2}">Y</c:when>
-													</c:choose>
-												</td>
-												<td>
-													<c:choose>
-														<c:when test="${list.delNY eq 1}">N</c:when>
-														<c:when test="${list.delNY eq 2}">Y</c:when>
-													</c:choose>
-												</td>
-												<td><c:out value="${list.createDate }"/></td>
-												<td><c:out value="${list.modiDate }"/></td>
-											</tr>
-											</c:forEach>
-										</tbody>
-										<tfoot>
-											<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제
-											마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
-										</tfoot>
-									</table>
+									<form name="findMateForm">
 									
-									<!-- pagination s -->
-									<%@include file="../../codegroup/xdmin/pagination.jsp"%>
-									<!-- pagination e -->
-									
-									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
-									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
-									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
-									<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
-									
-								</div>
-								</form> 
+										<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
+										<input type="hidden" name="shSeq">
+										
+										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
+										
+										<c:forEach items="${list}" var="list" varStatus="statusList">
+											<div class="card">
+												<div class="content">
+													<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
+													<div class="contentBx">
+														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
+															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
+														</c:forEach>
+														<span><c:out value="${list.group_name}"/></span></h3>
+													</div>
+												</div>
+												<ul class="sci">
+													<li style="--i:1">
+														<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
+													</li>
+													<li style="--i:2">
+														<a href="#"><i class="fa-regular fa-envelope"></i></a>
+													</li>
+													<li style="--i:3">
+														<a href="#"><i class="fa-regular fa-map"></i></a>
+													</li>
+												</ul>
+											</div>
+										</c:forEach>
+										</div>
+									</form>
 							</section>
 							</div>
 						</section>

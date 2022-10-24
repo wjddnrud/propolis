@@ -196,14 +196,14 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
-											<tr style="color: black;">
+											<tr style="color: black; text-align: center;">
 												<td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
 												<label for="checkbox${status.count }"></label>
 												</td>
 												<td><a href="javascript:editForm(${list.seq })">
 												<c:out value="${list.seq }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
-												<td><c:out value="${list.password }"/></td>
+												<td style="width: 300px;"><c:out value="${list.password }"/></td>
 												<td><c:out value="${list.name }"/></td>
 												<td><c:out value="${list.dob }"/></td>
 												<%-- <td>

@@ -1,8 +1,8 @@
 package com.woo.infra.modules.community;
 
-import com.woo.infra.modules.base.Base;
+import com.woo.infra.modules.sportsGroup.SportsGroup;
 
-public class Community extends Base {
+public class Community extends SportsGroup {
 	
 	private String seq;
 	private String writer;

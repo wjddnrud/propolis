@@ -58,16 +58,15 @@
 						<div class="inner">
 							<section>
 								<div class="row">
-									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
+									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel; height: 150px;">
 										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>
 										<b>이름: </b><c:out value="${sessName }"/><br>
 										<b>ID: </b><c:out value="${sessId }"/><br>
-										<b>게시글 수: </b><c:out value="${sessId }"/><br>
-										<b>참여 그룹 수: </b><c:out value="${sessId }"/><br>
-										<b>안읽은 메세지: </b><c:out value="${sessId }"/><br>
+										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
+										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
 									</div>
 								</div>
 								<hr>
@@ -162,7 +161,6 @@
 									
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
-									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
 									<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 									
 								</div>
@@ -220,33 +218,6 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script type="text/javascript">
-				$( function() {
-				  	$( "#datepicker1, #datepicker2" ).datepicker({
-				  		changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
-					    changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
-					    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
-					    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
-					    yearRange: 'c-50:c+20', // 현재 연도를 기준으로 +N 년 -N 년 표시
-					    dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // [요일] 한글화
-					    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // [월] 한글화
-				  		closeText: '닫기',
-				  		showButtonPanel: true, // 달력 하단에 버튼 표시
-				  		currentText: '오늘 날짜', // 오늘 날짜 클릭 시 클릭 시 오늘 날짜로 이동
-				    	showAnim: "slide", // 달력에 애니메이션 적용
-				    	minDate: '-50y', // 현재 날짜로부터 N 년까지 표시
-				    	nextText: '다음 달', // next 아이콘 툴팁
-				    	prevText: '이전 달' // prev 아이콘 툴팁
-				  	});
-				} );
-					
-				
-				function regist() {
-						location.href = "/codegroup/codeGroupForm";
-					}
-					
-				
-				   
-				
 				
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				// var form = $("#formList");  // id로 된거 사용

@@ -4088,6 +4088,7 @@ input, select, textarea {
 		background-color: rgba(255, 255, 255, 0.832);
 		color: #4E4852;
 		padding: 3em 0 3em 0;
+		margin: 0 500px 0 500px;
 	}
 
 		.wrapper.style6 strong, .wrapper.style6 b {
