@@ -72,10 +72,14 @@
 									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 									
+									
 									<form name="findMateForm">
 									
 										<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 										<input type="hidden" name="shSeq">
+										<!-- <input type="hidden" name="mainKey"> -->
+										<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+										<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 										
 										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
 										
@@ -162,7 +166,12 @@
 			}
 			
 			function regist() {
-				location.href = "/codegroup/codeGroupForm";
+				location.href = "/findMateForm";
+			}
+			
+			goList = function(thisPage) {
+				$("input:hidden[name=thisPage]").val(thisPage);
+				form.attr("action", goUrlList).submit();
 			}
 			
 			

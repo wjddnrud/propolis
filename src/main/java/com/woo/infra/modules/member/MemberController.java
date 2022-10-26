@@ -45,10 +45,13 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "memberSearch")
-	public String memberSearch(Model model, MemberVo vo) throws Exception {
+	public String memberSearch(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
 
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+//		System.out.println("vo.getShValue(): " + vo.getShValue());
+//		System.out.println("vo.getShOption(): " + vo.getShOption());
+		
+		vo.setStartRnumForMysql((vo.getThisPage() - 1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
 
 		List<Member> list = service.search(vo);
 		model.addAttribute("list", list);
