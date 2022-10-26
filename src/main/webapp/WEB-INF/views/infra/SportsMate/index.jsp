@@ -35,14 +35,14 @@
 			height: 700px;
 			background-color:rgba(0, 0, 0, 0.8);
 			border-radius: 15px;
-			margin: 0px 100px 0px 10px;
+			margin: 0px 50px 0px 10px;
 		}
 		.user {
 			width: 480px;
 			height: 700px;
 			background-color:rgba(0, 0, 0, 0.8);
 			border-radius: 15px;
-			margin: 0px 10px 0px 100px;
+			margin: 0px 10px 0px 50px;
 		}
 		.xdmintitle{
 			font-size: 50px;
@@ -84,24 +84,6 @@
 	<body style="background-image: url('/resources/images/images/러닝2.jpg'); background-size: cover;">
 		<div class="container">
 			<div class="row">
-				<div class="col xdmin">
-					<div class="row">
-						<div class="col xdmintitle">관리자</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<img alt="" src="/resources/images/images/admin화면.jpg">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col rmf">코드관리/코드그룹관리/회원관리</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<button type="button" class="btn" id="goXdmin" onclick="adminBtn()">들어가기</button>
-						</div>
-					</div>
-				</div>
 				<div class="col user">
 					<div class="row">
 						<div class="col usertitle">사용자</div>
@@ -112,11 +94,30 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col rmf">홈/게시판/정보</div>
+						<div class="col rmf">홈/게시판/메이트 매칭</div>
 					</div>
 					<div class="row">
 						<div class="col">
 							<button type="button" class="btn" id="goHome" onclick="userBtn()">들어가기</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col xdmin">
+					<div class="row">
+						<div class="col xdmintitle">관리자</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<img alt="" src="/resources/images/images/admin화면.jpg">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col rmf">회원관리/코드관리/코드그룹관리</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<button type="button" class="btn" id="goXdmin" onclick="adminBtn()">들어가기</button>
 						</div>
 					</div>
 				</div>
@@ -127,11 +128,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	<script>
 		adminBtn = function() {
-			location.href = "/codegroup/codeGroupList";
+			location.href = "/signIn";
 		} 
 		
 		userBtn = function() {
-			location.href = "/main";
+			location.href = "/signIn";
 		} 
 	</script>
 	</body>

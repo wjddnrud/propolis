@@ -20,6 +20,7 @@
 			,cm.viewCount
 		FROM community cm
 		JOIN member mm ON mm.seq = cm.writer 
+		ORDER BY seq DESC
 	</select>
 	
 	<!-- myPageCommunityList -->

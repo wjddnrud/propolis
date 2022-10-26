@@ -60,9 +60,9 @@
 							<section>
 								<div>
 									<ul class="nav nav-tabs">
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li>
+										</li> -->
 										<li class="nav-item">
 											<a class="nav-link" href="/codegroup/codeGroupList">코드그룹관리</a>
 										</li>
@@ -166,13 +166,13 @@
 									<table class="alt">
 										<thead>
 											<tr>
-												<th>
+												<!-- <th>
 													<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
 													<label for="allAgree"></label>
-												</th>
-												<th>#</th>
+												</th> -->
+												<th>No</th>
 												<th>ID</th>
-												<th>PASSWORD</th>
+												<!-- <th>PASSWORD</th> -->
 												<th>이름</th>
 												<th>생년월일</th>
 												<th>성별</th>
@@ -196,14 +196,13 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
-											<tr style="color: black; text-align: center;">
-												<td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
+											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')">
+												<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
 												<label for="checkbox${status.count }"></label>
-												</td>
-												<td><a href="javascript:editForm(${list.seq })">
-												<c:out value="${list.seq }"/></a></td>
+												</td> --%>
+												<td><c:out value="${list.seq }"/></a></td>
 												<td><c:out value="${list.id }"/></td>
-												<td style="width: 300px;"><c:out value="${list.password }"/></td>
+												<%-- <td style="width: 300px;"><c:out value="${list.password }"/></td> --%>
 												<td><c:out value="${list.name }"/></td>
 												<td><c:out value="${list.dob }"/></td>
 												<%-- <td>

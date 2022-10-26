@@ -30,7 +30,7 @@
 			<div id="page-wrapper">
 
 				<!-- Header 상단 고정 네비바 -->
-				<header id="header" class="alt">
+				<!-- <header id="header" class="alt">
 					<h1><a href="/signIn">Sports Mate</a></h1>
 					<nav id="nav">
 						<ul>
@@ -45,7 +45,7 @@
 							</li>
 						</ul>
 					</nav>
-				</header>
+				</header> -->
 
 				<!-- Banner 메인화면 처음 모션부분 -->
 				<!-- <section id="banner"> -->
@@ -71,10 +71,10 @@
 													<input name="password" id="password" type="password" onkeyup="enterKey()" placeholder="PASSWORD" style="width: 300px;">
 												</center>
 											</div>
-											<div class="col-6 col-12">
+											<!-- <div class="col-6 col-12">
 												<input type="checkbox" id="checkbox" name="checkbox">
 												<label for="checkbox">Remember</label>
-											</div>
+											</div> -->
 											<div class="col-12">
 												<ul class="actions stacked">
 													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick="signIn()"></li>
@@ -209,7 +209,7 @@
 										if(response.adminNY == 1) {
 											location.href="/main";  //일반 사용자
 										} else {
-											location.href="/index";   //관리자
+											location.href="/codegroup/codeGroupList";   //관리자
 										}
 									});
 								} else {

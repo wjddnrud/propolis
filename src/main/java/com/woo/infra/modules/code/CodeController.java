@@ -53,6 +53,9 @@ public class CodeController {
 	@RequestMapping(value = "codeSearch")
 	public String codeSearch(Model model, @ModelAttribute("vo") CodeVo uza) throws Exception {
 		
+		uza.setStartRnumForMysql((uza.getThisPage()-1) * uza.getRowNumToShow());
+		setParamsPaging(uza);
+		
 		List<Code> search = service.search(uza);
 		model.addAttribute("list", search);
 		

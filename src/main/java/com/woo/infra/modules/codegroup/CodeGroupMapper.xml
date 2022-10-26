@@ -36,7 +36,7 @@
 		    	,a.modiDate
 		   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
 		<include refid="selectCommon" />
-			ORDER BY a.seq ASC
+			ORDER BY seq DESC
 		<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>

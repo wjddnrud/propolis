@@ -73,6 +73,8 @@
 								
 									<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 									<input type="hidden" name="shSeq">
+									
+									
 									<div class="table-wrapper">
 										<table class="alt">
 											<thead>
@@ -81,7 +83,7 @@
 													<th>카테고리</th>
 													<th>제목</th>
 													<th>작성자</th>
-													<th>조회수</th>
+													<!-- <th>조회수</th> -->
 													<th>작성일자</th>
 												</tr>
 											</thead>
@@ -89,8 +91,8 @@
 											
 											
 												<c:forEach items="${list}" var="list" varStatus="statusList">
-													<tr value ="${list.seq }">
-														<td style="text-align: center;"><a href="javascript:viewForm(${list.seq})"><c:out value="${list.seq }"/></a></td>
+													<tr onclick="viewForm('${list.seq}')">
+														<td style="text-align: center;"><c:out value="${list.seq }"/></td>
 														<td style="text-align: center;">
 															<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
 																<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
@@ -99,7 +101,7 @@
 														<%-- <td><c:out value="${list.category }"></c:out></td> --%>
 														<td><c:out value="${list.title }"></c:out></td>
 														<td style="text-align: center;"><c:out value="${list.writer }"></c:out></td>
-														<td style="text-align: center;"><c:out value="${list.viewCount }"></c:out></td>
+														<%-- <td style="text-align: center;"><c:out value="${list.viewCount }"></c:out></td> --%>
 														<td style="text-align: center;"><c:out value="${list.createDate }"></c:out></td>
 													</tr>
 												</c:forEach>
@@ -107,7 +109,8 @@
 												
 											</tbody>
 										</table>
-										<nav aria-label="Page navigation example">
+										
+										<!-- <nav aria-label="Page navigation example">
 											<ul class="pagination justify-content-center">
 												<li class="page-item">
 													<a class="page-link" href="#" aria-label="Previous">
@@ -123,7 +126,8 @@
 													</a>
 												</li>
 											</ul>
-										</nav>
+										</nav> -->
+										
 										<br>
 										<center>
 											<a href="/communityForm" class="button primary">작성</a>

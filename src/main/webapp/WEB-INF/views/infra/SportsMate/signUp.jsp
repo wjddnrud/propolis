@@ -56,8 +56,8 @@
 				<h2>sports Mate 회원가입</h2>
 				<p>멤버가 되어 sports mate가 제공하는 다양한 정보와 친구들을 만나보세요.</p>
 			</header>
-			<section class="wrapper style5">
-				<div class="inner">
+			<section class="wrapper style5" >
+				<div class="inner" style="width: 50%;">
 					<section>
 						<!-- <h2>회원가입</h2> -->
 						<form name="signUpForm" enctype="multipart/form-data" method="post">
@@ -65,22 +65,22 @@
 							<input type="hidden" name="delNY">
 							<div class="row gtr-uniform">
 							
-								<div id="ifmmUploadedImage1View" class="col col-12" class="filebox">
-									<img id="imgProfile" src="../../../../resources/images/images/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
-									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="margin-left: 30px;">
+								<div id="ifmmUploadedImage1View" class="col-12 justify-content-center" class="filebox" style="text-align: center;">
+									<img id="imgProfile" src="/resources/images/images/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
+									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="margin-left: 50%;">
  								</div>
  								
 								 
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
-									<input type="text" name="id" id="id" value="" placeholder="영문,숫자 5~10자" />
+									<input type="text" name="id" id="id" placeholder="영문,숫자 5~10자" />
 									<span id="id_check"></span>
 									<!-- <input type="button" class="primary" value="중복확인" style="margin-top: 10px;" /> -->
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="password">PASSWORD</label>
-									<input type="password" name="password" id="password" value="" placeholder="숫자,영문,특수문자 조합 최소 8자" />
-									<input type="password" name="passwordRe" id="passwordRe" value="" placeholder="비밀번호 재입력" style="margin-top: 10px;" />
+									<input type="password" name="password" id="password" placeholder="숫자,영문,특수문자 조합 최소 8자" />
+									<input type="password" name="passwordRe" id="passwordRe" placeholder="비밀번호 재입력" style="margin-top: 10px;" />
 									<span id="pwCheck"></span>
 								</div>
 								<div class="col-6 col-12-xsmall">
@@ -125,15 +125,15 @@
 									<input type="button" class="primary" value="확인" style="margin-top: 10px;" />
 								</div>
 								
-								<div class="col-8 col-12-xsmall">
-									<label for="address">주소</label>
-									<input type="text" name="address" id="address" value="" placeholder="주소" />
-									<input type="text" name="address_detail" id="address_detail" value="" placeholder="상세주소" style="margin-top: 10px;" />
-								</div>
 								<div class="col-4 col-12-xsmall">
 									<label for="zipcode">Zip Code</label>
 									<input type="text" name="zipcode" id="zipcode" value="" placeholder="우편번호" />
 									<input type="button" onclick="searchAddress()" class="primary" value="주소 검색" style="margin-top: 10px;" />
+								</div>
+								<div class="col-8 col-12-xsmall">
+									<label for="address">주소</label>
+									<input type="text" name="address" id="address" value="" placeholder="주소" />
+									<input type="text" name="address_detail" id="address_detail" value="" placeholder="상세주소" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="email">Email</label>
@@ -150,7 +150,7 @@
 										<option value="1">블로그</option>
 									</select>
 								</div>
-								<div class="col-12 col-12-small" style="padding-top: 80px;">
+								<!-- <div class="col-12 col-12-small" style="padding-top: 80px;">
 									<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
 									<label for="allAgree">약관 전체 동의하기</label>
 								</div>
@@ -169,7 +169,7 @@
 								<div class="col-12 col-12-small">
 									<input type="checkbox" id="agree4" name="agree">
 									<label for="agree4">[선택] 마케팅 활용 및 광고성 정보 수신 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
-								</div>
+								</div> -->
 								<div class="col-12">
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="Reset" /></li>
@@ -347,6 +347,9 @@
 			} else {
 				$("#pwCheck").text("패스워드가 일치하지 않습니다.");
 				$("#pwCheck").css("color", "red");
+				$('#passwordRe').val(""); 
+				$('#password').focus(); 
+				return false;
 			}
 		});
 		
@@ -365,17 +368,15 @@
 		}); */
 		
 		/* === checkId === */
-		/* keyup : 한자씩 검사 */
 		$("#id").on("focusout", function(){ 
 			$.ajax({
 				async: true 
 				,cache: false
 				,type: "post"
-				/* ,dataType:"json" */
+				,dataType:"json"
 				,url: "/member/checkId"
 				/* ,data : $("#formLogin").serialize() */
 				,data : { "id" : $("#id").val() }
-				,dataType : 'json'
 				,success: function(response) {
 					if(response.rt == "success") {
 						$("#id_check").text("사용가능한 아이디입니다.");
@@ -385,11 +386,43 @@
 						$("#id_check").css("color", "red");
 					}
 				}
-				/* ,error : function(){
+				,error : function(){
 					alert("error");
-				}  */
+				} 
 			});
 		});
+		
+		/* ==================== */
+		
+		$("#id").on("focusout", function(){
+		
+		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+			return false;
+		} else {
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/checkId"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,success: function(response) {
+					if(response.rt == "success") {
+						$("#id_check").text("사용가능한 아이디입니다.");
+						$("#id_check").css("color", "lightgreen");
+						
+					} else {
+						$("#id_check").text("이미 사용중인 아이디입니다.");
+						$("#id_check").css("color", "red");
+					}
+				}
+				,error : function(){
+					alert("error");
+				}
+			});
+		}
+	});
 		
 		
 		

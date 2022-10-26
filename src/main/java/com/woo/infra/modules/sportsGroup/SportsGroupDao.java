@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.woo.infra.common.util.BaseVo;
+
 
 @Repository
 
@@ -20,9 +22,9 @@ public class SportsGroupDao {
 	
 	private static String namespace = "com.woo.infra.modules.sportsGroup.SportsGroupMapper";
 	
-	public List<SportsGroup> selectList() {
+	public List<SportsGroup> selectList(SportsGroupVo vo) {
 		
-		return sqlSession.selectList(namespace + ".selectList", "");
+		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
 	public SportsGroup selectOne(SportsGroupVo vo) {
@@ -60,4 +62,5 @@ public class SportsGroupDao {
 		return MyselectList;
 	}
 	
+	public int selectOneCount(BaseVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 }

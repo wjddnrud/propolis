@@ -1,7 +1,8 @@
 package com.woo.infra.modules.sportsGroup;
 
+import com.woo.infra.common.util.BaseVo;
 
-public class SportsGroupVo {
+public class SportsGroupVo extends BaseVo {
 
 	//검색 조건
 	

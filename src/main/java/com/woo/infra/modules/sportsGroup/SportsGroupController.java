@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -17,10 +18,19 @@ public class SportsGroupController {
 	@Autowired
 	SportsGroupServiceImpl service;
 	
+	
+	public void setParamsPaging(SportsGroupVo vo) throws Exception {
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "sportsGroupList")
-	public String sportsGroupList(Model model, SportsGroup dto, SportsGroupVo vo) throws Exception { 
+	public String sportsGroupList(Model model, SportsGroup dto, @ModelAttribute("vo") SportsGroupVo vo) throws Exception { 
+	
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
 		
-		List<SportsGroup> list = service.selectList();
+		
+		List<SportsGroup> list = service.selectList(vo);
 		model.addAttribute("list",list);
 		
 		System.out.println("controller list : " + list);
@@ -49,9 +59,9 @@ public class SportsGroupController {
 	
 	
 	@RequestMapping(value = "sportsGroupForm")
-	public String sportsGroupForm(Model model, SportsGroup dto) throws Exception {
+	public String sportsGroupForm(Model model, SportsGroupVo vo, SportsGroup dto) throws Exception {
 		
-		List<SportsGroup> list = service.selectList();
+		List<SportsGroup> list = service.selectList(vo);
 		model.addAttribute("list",list);
 		
 		List<SportsGroup> sports = service.sports(dto);

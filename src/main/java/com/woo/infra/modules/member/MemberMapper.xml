@@ -236,7 +236,7 @@
 				,adminNY
 			FROM member
 		<!-- <include refid="Base.selectCommon" /> -->
-			ORDER BY seq ASC  <!-- seq 순서대로 나열 -->
+			ORDER BY seq DESC  <!-- seq 순서대로 나열 -->
 		<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>

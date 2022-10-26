@@ -96,7 +96,20 @@
 													<tr style="height: 500px;">
 														<td colspan="5" style="text-align: start; vertical-align: middle; padding-left: 30px;">
 															<div>
-														        <img name="" alt="" src="${img.path}${img.uuidName}" style="width: 300px; height: 250px;">
+															
+															
+																<%-- <c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
+												                	<li><a href="/signUp">SIGN UP</a></li>
+																	<li><a href="/signIn">SIGN IN</a></li>
+													        	</c:if>
+													            <c:if test="${ ne null}">   <!-- 로그인후 -->
+													                <img name="" alt="" src="${img.path}${img.uuidName}" style="width: 300px; height: 250px;">
+																</c:if>
+															
+																<c:if test="${img.path eq null}${img.uuidName eq null }">""</c:if> --%>
+													        	
+													        	
+														        <img name="" alt="첨부파일 없음" src="${img.path}${img.uuidName}" style="width: 300px; height: 250px;">
 														    </div>
 														    <br/>
 															<c:out value="${one.contents }"/>
@@ -107,7 +120,7 @@
 											<center style="margin-left: 12%;">
 												<a href="#" class="button primary">💪추천</a>
 												<a href="/community/communityList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
-												<a href="/communityNotify" class="button" style="background-color: rgb(255, 0, 0); color: white; float: right;">🚨신고</a>
+												<a href="/communityNotify" class="button primary" style="float: right;">🚨신고</a>
 											</center>
 										</div>
 									</form>

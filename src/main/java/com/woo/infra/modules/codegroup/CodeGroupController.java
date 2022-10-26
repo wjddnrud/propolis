@@ -58,6 +58,10 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupSearch")
 	public String codeGroupSearch(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
+
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		
+		setParamsPaging(vo);
 		
 //		System.out.println("vo.getShValue(): " + vo.getShValue());
 //		System.out.println("vo.getShOption(): " + vo.getShOption());

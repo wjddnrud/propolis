@@ -35,9 +35,9 @@
 											<li><a href="/signIn">SIGN IN</a></li>
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
-							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+							             	<li><a href="/main">Home</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPageCommunityList">MyPage</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -59,7 +59,7 @@
 							<section>
 								<div class="row">
 									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel; height: 150px;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>
@@ -72,18 +72,18 @@
 								<hr>
 								<div>
 									<ul class="nav nav-tabs">
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li>
+										</li> -->
 										<li class="nav-item">
 											<a class="nav-link" href="/myPageCommunityList">게시글 관리</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link active" href="/myPageGroupList">그룹 관리</a>
 										</li>
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link" href="/myPageMessegeList">메세지</a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 								<br>
@@ -106,10 +106,10 @@
 									<table class="alt">
 										<thead>
 											<tr>
-												<th>
+												<!-- <th>
 													<input type="checkbox">
 													<label for="demo-human" style="color: white;">선택</label>
-												</th>
+												</th> -->
 												<th>No</th>
 												<th>운동종목</th>
 												<th>그룸이름</th>
@@ -128,11 +128,11 @@
 											</c:choose>
 											
 											<c:forEach items="${grlist}" var="list" varStatus="statusList">
-												<tr value ="${list.seq }">
-													<td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
+												<tr onclick="viewForm('${list.seq}')">
+													<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
 														<label for="checkbox${status.count }"></label>
-													</td>
-													<td style="text-align: center;"><a href="javascript:viewForm(${list.seq})"><c:out value="${list.seq }"/></a></td>
+													</td> --%>
+													<td style="text-align: center;"><c:out value="${list.seq }"/></td>
 													<td style="text-align: center;">
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="statusSports">
 															<c:if test="${list.sports eq listSports.cc_key}"><c:out value="${listSports.cc_name }"/></c:if>
@@ -156,7 +156,7 @@
 									</table>
 									
 									<!-- pagination s -->
-									<%@include file="../../codegroup/xdmin/pagination.jsp"%>
+									<%-- <%@include file="../../codegroup/xdmin/pagination.jsp"%> --%>
 									<!-- pagination e -->
 									
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
@@ -241,6 +241,13 @@
 					editSeq.attr("value", seq);
 					form.attr("action", "/codegroup/codeGroupForm").submit();
 				}
+				
+				/* var viewSeq = $("input:hidden[name=shSeq]")
+				
+				viewForm = function(seq) {
+					viewSeq.attr("value", seq);
+					form.attr("action", "/community/communityView").submit();
+				} */
 			</script>
 
 

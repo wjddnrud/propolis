@@ -34,9 +34,9 @@
 											<li><a href="/signIn">SIGN IN</a></li>
 							        	</c:if>
 							            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
-							                <li><a href="/main">Home</a></li>
-											<li><a href="/findMate">Find Mate</a></li>
-											<li><a href="/community">Community</a></li>
+							             	<li><a href="/main">Home</a></li>
+											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
+											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPageCommunityList">MyPage</a></li>
 											<li><a href="/logout">LOG-OUT</a></li>
 										</c:if>
@@ -57,7 +57,7 @@
 							<section>
 								<div class="row">
 									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>
@@ -79,9 +79,9 @@
 										<li class="nav-item">
 											<a class="nav-link" href="/myPageGroupList">그룹 관리</a>
 										</li>
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link active" href="/myPageMessegeList">메세지</a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 								<br>

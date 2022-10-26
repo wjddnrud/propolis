@@ -80,11 +80,11 @@
 											<div class="col-6" style="text-align: center;">
 												<span><b><c:out value="${one.group_name }"/></b></span>
 												<div classs="row">
-													<div class="col-6" style="clear: both;">
+													<div class="col-6" style="clear: both; margin-top: 10px;">
 														<img src="../../../../resources/images/images/noprofil.jpg" width=150px height=150px style="border: 2px solid white; border-radius: 50%;"><br>
 														<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
 													</div>
-													<div class="col-6" style="float: right;">
+													<!-- <div class="col-6" style="float: right;">
 														<ul class="sci">
 															<li style="--i:1">
 																<a href="#"><i class="fa-solid fa-user"></i></a>
@@ -96,7 +96,7 @@
 																<a href="#"><i class="fa-regular fa-comments"></i></a>
 															</li>
 														</ul>
-													</div>
+													</div> -->
 												</div>
 												<div class="row" style="text-align: start;">
 														<p><b>작성자 ID </b> <c:out value="${one.creator }"/></p><br>
@@ -109,14 +109,13 @@
 														<p><b>시작시간 </b> <c:out value="${one.startTime }"></c:out></p><br>
 														<p><b>종료시간 </b> <c:out value="${one.endTime }"></c:out></p><br>
 												</div>
-												<hr>
 												<div class="row" style="text-align: start;">
 													<p style="font-weight: bold;">그룹 설명</p>
 													<p><c:out value="${one.detail }"/></p>
 												</div>
 											</div>
 											<div class="col col-6">
-												<p style="margin-bottom: 0;"><b>운동 위치 : </b> 경기도 부천시 원미구 부천 중앙공원</p>
+												<p style="margin-bottom: 0;"><b>운동 시작 위치 : </b> </p>
 												<div id="map" style="width:100%; height: 70%;"></div>
 											</div>
 										</div>

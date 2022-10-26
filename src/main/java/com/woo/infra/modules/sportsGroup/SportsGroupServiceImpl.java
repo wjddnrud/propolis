@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.woo.infra.common.util.BaseVo;
 import com.woo.infra.common.util.UtilUpload;
 
 @Service
@@ -16,11 +17,11 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	SportsGroupDao dao;
 
 	@Override
-	public List<SportsGroup> selectList() throws Exception {
+	public List<SportsGroup> selectList(SportsGroupVo vo) throws Exception {
 		
-		System.out.println("selectList : " + dao.selectList());
+//		System.out.println("selectList : " + dao.selectList());
 		
-		return dao.selectList();
+		return dao.selectList(vo);
 	}
 
 	@Override
@@ -80,5 +81,14 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		
 		return MyselectList;
 	}
+
+	@Override
+	public int selectOneCount(BaseVo vo) throws Exception {
+
+			
+		return dao.selectOneCount(vo);
+	}
+	
+	
 	
 }

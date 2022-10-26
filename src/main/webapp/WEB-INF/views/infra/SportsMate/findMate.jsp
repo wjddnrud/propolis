@@ -97,35 +97,22 @@
 													<li style="--i:2">
 														<a href="#"><i class="fa-regular fa-envelope"></i></a>
 													</li>
-													<li style="--i:3">
+													<!-- <li style="--i:3">
 														<a href="#"><i class="fa-regular fa-map"></i></a>
-													</li>
+													</li> -->
 												</ul>
 											</div>
 										</c:forEach>
 										</div>
 									</form>
-									<nav aria-label="Page navigation example">
-										<ul class="pagination justify-content-center">
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Previous">
-													<span aria-hidden="true">&laquo;</span>
-												</a>
-											</li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
-										</ul>
-									</nav>
+									
+									<!-- pagination -->
+									<%@include file="pagination.jsp"%>
+									
 									<br>
 									<center>
 										<a href="/findMateForm" class="button primary">등록</a>
-										<a href="/main" class="button" style="background-color: white; color: black;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
+										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
 								</section>

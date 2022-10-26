@@ -84,7 +84,7 @@
 					<section id="two" class="wrapper alt style2">
 						<section class="spotlight">
 							<div class="image"><img src="/resources/images/images/요가.jpg" alt="" /></div><div class="content">
-								<h2>diet<br>
+								<h2>[diet]<br>
 								loose your weight</h2>
 								<p>NEW <c:out value="${dietCountNew }"/></p>
 								<p>TOTAL <c:out value="${dietCount}" /></p>
@@ -93,7 +93,7 @@
 						</section>
 						<section class="spotlight">
 							<div class="image"><img src="/resources/images/images/웨이트.jpg" alt="" /></div><div class="content">
-								<h2>weight<br>
+								<h2>[weight]<br>
 								grow up your muscle</h2>
 								<p>NEW <c:out value="${weightCountNew }"/></p>
 								<p>TOTAL <c:out value="${weightCount}" /></p>
@@ -102,7 +102,7 @@
 						</section>
 						<section class="spotlight">
 							<div class="image"><img src="/resources/images/images/food1.jpg" alt="" /></div><div class="content">
-								<h2>food<br>
+								<h2>[food]<br>
 								healthy menu & recipe</h2>
 								<p>NEW <c:out value="${foodCountNew }"/></p>
 								<p>TOTAL <c:out value="${foodCount}" /></p>

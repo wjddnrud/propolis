@@ -58,9 +58,9 @@
 							<section>
 								<div>
 									<ul class="nav nav-tabs">
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li>
+										</li> -->
 										<li class="nav-item">
 											<a class="nav-link active" aria-current="page" href="/codegroup/codeGroupList">코드그룹관리</a>
 										</li>
@@ -136,11 +136,11 @@
 									<table class="alt">
 										<thead>
 											<tr>
-												<th>
+												<!-- <th>
 													<input type="checkbox">
 													<label for="demo-human" style="color: white;">선택</label>
-												</th>
-												<th>#</th>
+												</th> -->
+												<th>No</th>
 												<th>코드그룹 이름(한글)</th>
 												<th>코드갯수</th>
 												<th>사용여부</th>
@@ -158,11 +158,10 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="statusList">
-											<tr style="color: black; text-align: center;">
-												<td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td>
+											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')">
+												<!-- <td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td> -->
 												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
-												<td><a href="javascript:editForm(${list.seq })"> <!-- seq 데이터 보여주고 a태그로 form에 insert 시키는 버튼 만들기 -->
-												<c:out value="${list.seq}"/>
+												<td><c:out value="${list.seq}"/>
 												</a></td>
 												<td><c:out value="${list.ccg_name }"/></td>
 												<td><c:out value="${list.xCodeCount }"/></td>

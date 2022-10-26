@@ -2550,6 +2550,13 @@ input, select, textarea {
 
 		}
 
+	/* sweet alert 확인버튼 사이즈 조절 */
+	.swal-button {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+
 /* Features */
 
 	.features {

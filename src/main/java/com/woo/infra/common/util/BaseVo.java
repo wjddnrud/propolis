@@ -25,7 +25,11 @@ public class BaseVo {
 //	----------------------
 	public void setParamsPaging(int totalRows) {
 		
-
+		/*
+		 * System.out.println("여기에요"); System.out.println(rowNumToShow);
+		 * System.out.println(startRnumForMysql);
+		 */
+		
 		setTotalRows(totalRows);
 
 		if (getTotalRows() == 0) {
