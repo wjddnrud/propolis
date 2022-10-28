@@ -35,6 +35,7 @@ public class BaseVo {
 		if (getTotalRows() == 0) {
 			setTotalPages(1);
 		} else {
+//			System.out.println("setTotalPage : " + getTotalRows() + "/" + getRowNumToShow());
 			setTotalPages(getTotalRows() / getRowNumToShow());
 		}
 

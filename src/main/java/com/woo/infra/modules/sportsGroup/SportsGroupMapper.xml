@@ -37,7 +37,7 @@
 		    ,upsg.path
 		<include refid="selectCommon"/>
 		JOIN member mm ON sg.creator = mm.seq
-		JOIN uploadedSportsGroup upsg ON sg.seq = upsg.pSeq
+		LEFT JOIN uploadedSportsGroup upsg ON sg.seq = upsg.pSeq
 		ORDER BY seq DESC
 		<include refid="Base.orderByLimitForMysql"/>
 		<include refid="Base.selectListLowerForMysql"/>

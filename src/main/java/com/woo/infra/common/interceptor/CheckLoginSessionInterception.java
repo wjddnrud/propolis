@@ -12,8 +12,8 @@ public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
 			throws Exception {
 		if (request.getSession().getAttribute("sessSeq") != null) {
 			// by pass
-		} else {
-			response.sendRedirect("/");
+		} else {			
+			response.sendRedirect("/signIn");
             return false;
 		}
 		return super.preHandle(request, response, handler);

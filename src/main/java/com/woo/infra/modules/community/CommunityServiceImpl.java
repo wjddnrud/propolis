@@ -16,8 +16,8 @@ public class CommunityServiceImpl implements CommunityService{
 	CommunityDao dao;
 	
 	@Override
-	public List<Community> selectList() throws Exception {
-		return dao.selectList();
+	public List<Community> selectList(CommunityVo vo) throws Exception {
+		return dao.selectList(vo);
 	}
 
 	@Override
@@ -106,6 +106,13 @@ public class CommunityServiceImpl implements CommunityService{
 		
 		return dao.selectCountNewFromCategory(dto);
 	}
+
+	@Override
+	public int selectOneCount(CommunityVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
+	
+	
 	
 	
 	

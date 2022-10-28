@@ -17,8 +17,8 @@
 	                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
 			</c:when>
 			<c:otherwise>             
-	                <%-- <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li> --%>
-	                <li class="page-item"><a class="page-link" href="/codegroup/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
+	                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+	                <%-- <li class="page-item"><a class="page-link" href="/codegroup/codeGroupList?thisPage=${i.index}">${i.index}</a></li> --%>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>                

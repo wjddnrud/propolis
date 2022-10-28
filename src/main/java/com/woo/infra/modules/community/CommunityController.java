@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.woo.infra.modules.codegroup.CodeGroupVo;
 
 @Controller
 @RequestMapping(value = "/community/")
@@ -15,21 +18,31 @@ public class CommunityController {
 	@Autowired
 	CommunityServiceImpl service;
 	
+	public void setParamsPaging(CommunityVo vo) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
 
 	@RequestMapping(value = "communityList")
-	public String CommunityList(Model model) throws Exception {
+	public String CommunityList(Model model, @ModelAttribute("vo") CommunityVo vo) throws Exception {
 
-		List<Community> list = service.selectList();
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		
+		setParamsPaging(vo);
+		
+		
+		List<Community> list = service.selectList(vo);
 		
 		model.addAttribute("list", list);
 		
 		return "infra/SportsMate/community"; 
 	}
 	
+	
 	@RequestMapping(value = "communityInst")
 	public String communityInsert(Model model, Community dto) throws Exception {
 		
-//		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
+		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
 		
 		service.insert(dto);
 

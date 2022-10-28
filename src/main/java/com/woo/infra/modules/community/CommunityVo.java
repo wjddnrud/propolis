@@ -1,6 +1,8 @@
 package com.woo.infra.modules.community;
 
-public class CommunityVo {
+import com.woo.infra.common.util.BaseVo;
+
+public class CommunityVo extends BaseVo{
 	
 	
 	//검색 조건

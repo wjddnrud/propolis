@@ -8,7 +8,17 @@
 
     <resultMap id="resultMapObj" type="com.woo.infra.modules.community.Community"></resultMap>
 	
+	<sql id="selectCommon">
+		FROM community cm
+	</sql>
+	<!-- paging -->
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"/>
+	</select>
+	
 	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql"/>
 		SELECT
 			cm.seq
 			,cm.category
@@ -18,9 +28,11 @@
 			,cm.createDate
 			,cm.modiDate
 			,cm.viewCount
-		FROM community cm
+		<include refid="selectCommon"/>
 		JOIN member mm ON mm.seq = cm.writer 
 		ORDER BY seq DESC
+		<include refid="Base.orderByLimitForMysql"/>
+		<include refid="Base.selectListLowerForMysql"/>
 	</select>
 	
 	<!-- myPageCommunityList -->
@@ -85,7 +97,7 @@
 		WHERE 1=1
 			AND seq={seq}
 	</update> -->
-
+	
 	<select id="selectCountFromCategory" resultType="Integer" parameterType="Integer">
 		SELECT
 			COUNT(*)

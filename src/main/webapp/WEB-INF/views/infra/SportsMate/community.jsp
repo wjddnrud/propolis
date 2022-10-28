@@ -73,6 +73,9 @@
 								
 									<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 									<input type="hidden" name="shSeq">
+									<!-- <input type="hidden" name="mainKey"> -->
+									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									
 									
 									<div class="table-wrapper">
@@ -110,23 +113,8 @@
 											</tbody>
 										</table>
 										
-										<!-- <nav aria-label="Page navigation example">
-											<ul class="pagination justify-content-center">
-												<li class="page-item">
-													<a class="page-link" href="#" aria-label="Previous">
-														<span aria-hidden="true">&laquo;</span>
-													</a>
-												</li>
-												<li class="page-item"><a class="page-link" href="#">1</a></li>
-												<li class="page-item"><a class="page-link" href="#">2</a></li>
-												<li class="page-item"><a class="page-link" href="#">3</a></li>
-												<li class="page-item">
-													<a class="page-link" href="#" aria-label="Next">
-														<span aria-hidden="true">&raquo;</span>
-													</a>
-												</li>
-											</ul>
-										</nav> -->
+										<!-- pagination  -->
+										<%@include file="../../common/pagination.jsp"%>
 										
 										<br>
 										<center>
@@ -171,12 +159,23 @@
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript">
 			
+				var goUrlList = "/community/communityList";    /* # -> */
+				var goUrlInst = "/community/communityInst";    /* # -> */
+				var goUrlUpdt = "/community/communityUpdt";    /* # -> */
+				var goUrlUele = "/community/communityUele";    /* # -> */
+				var goUrlDele = "/community/communityDele";    /* # -> */		
+			
 				var form = $('#communityForm')
 				var viewSeq = $("input:hidden[name=shSeq]")
 				
 				viewForm = function(seq) {
 					viewSeq.attr("value", seq);
 					form.attr("action", "/community/communityView").submit();
+				}
+				
+				goList = function(thisPage) {
+					$("input:hidden[name=thisPage]").val(thisPage);
+					form.attr("action", goUrlList).submit();
 				}
 		
 			

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CommunityService {
 	
-	public List<Community> selectList() throws Exception;
+	public List<Community> selectList(CommunityVo vo) throws Exception;
 	
 	public int insert(Community dto) throws Exception;
 	
@@ -23,5 +23,7 @@ public interface CommunityService {
 	public int selectCountFromCategory(int i) throws Exception;
 	
 	public int selectCountNewFromCategory(Community dto) throws Exception;
+	
+	public int selectOneCount(CommunityVo vo) throws Exception;
 	
 }

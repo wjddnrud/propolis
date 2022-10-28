@@ -111,7 +111,7 @@
 									</form>
 									
 									<!-- pagination -->
-									<%@include file="pagination.jsp"%>
+									<%@include file="../../common/pagination.jsp"%>
 									
 									<br>
 									<center>

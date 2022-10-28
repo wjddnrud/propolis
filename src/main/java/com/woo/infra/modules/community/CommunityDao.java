@@ -20,9 +20,9 @@ public class CommunityDao {
 	
 	private static String namespace = "com.woo.infra.modules.community.CommunityMapper";
 	
-	public List<Community> selectList() {
+	public List<Community> selectList(CommunityVo vo) {
 		
-		List<Community> selectList = sqlSession.selectList(namespace + ".selectList", "");
+		List<Community> selectList = sqlSession.selectList(namespace + ".selectList", vo);
 		
 		return selectList;
 	}
@@ -75,6 +75,9 @@ public class CommunityDao {
 		return sqlSession.selectOne(namespace + ".selectCountNewFromCategory", dto);
 	}
 	
+	public int selectOneCount(CommunityVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
 	
 
 }
