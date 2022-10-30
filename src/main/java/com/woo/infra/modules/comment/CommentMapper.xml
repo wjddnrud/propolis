@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.woo.infra.modules.comment.CommentMapper">
+
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.comment.Comment"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.*
+		FROM comment a
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO comment (
+			writer
+			,contents
+			,post_seq			
+		)
+		VALUES (
+			#{writer}
+			,#{contents}
+			,#{post_seq}
+		)
+	</insert>
+
+	<select id="commentList" resultMap="resultMapObj">
+		SELECT
+			cmt.seq
+			,mm.name as writer
+			,cmt.contents
+			,cmt.create_date
+			,upmm.uuidName
+			,upmm.path
+		FROM comment cmt
+		JOIN member mm ON mm.seq = cmt.writer
+		JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
+		WHERE 1=1
+			AND post_seq = #{post_seq}
+		ORDER BY seq DESC 
+	</select>
+	
+	<select id="selectOneComment" resultMap="resultMapObj">
+		SELECT
+			(mm.name) as writer
+			,upmm.uuidName
+			,upmm.path
+		FROM member mm
+		JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
+		WHERE 1=1
+			AND mm.seq = #{writer}
+	</select>
+</mapper>

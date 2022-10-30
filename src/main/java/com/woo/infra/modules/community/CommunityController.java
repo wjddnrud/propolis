@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.woo.infra.modules.codegroup.CodeGroupVo;
+import com.woo.infra.modules.comment.Comment;
+import com.woo.infra.modules.comment.CommentServiceImpl;
+import com.woo.infra.modules.comment.CommentVo;
 
 @Controller
 @RequestMapping(value = "/community/")
@@ -17,6 +19,9 @@ public class CommunityController {
 
 	@Autowired
 	CommunityServiceImpl service;
+	
+	@Autowired
+	CommentServiceImpl cmService;
 	
 	public void setParamsPaging(CommunityVo vo) throws Exception {
 		
@@ -60,7 +65,7 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "communityView")
-	public String communityView(Model model, Community dto, CommunityVo vo) throws Exception {
+	public String communityView(Model model, Community dto, CommunityVo vo, CommentVo cmvo) throws Exception {
 		
 //		System.out.println("service : " + vo.getShSeq());
 		
@@ -71,6 +76,11 @@ public class CommunityController {
 		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
 		Community img = service.selectCommunityImg(dto);
 		model.addAttribute("img",img);
+		
+		cmvo.setPost_seq(Integer.parseInt(selectOne.getSeq()));
+		List<Comment> comments = cmService.comments(cmvo);
+		model.addAttribute("comments", comments);
+		
 		
 		return "infra/SportsMate/communityView";
 	}

@@ -69,7 +69,8 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			cm.category
+			cm.seq
+			,cm.category
 			,mm.id as writer
 			,cm.title
 			,cm.contents

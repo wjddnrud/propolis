@@ -22,6 +22,23 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
+		
+		<style type="text/css">
+			.profile-user-img{
+			  	/* background: red; */
+			    width: 40px;
+			    height: 40px;
+			    border-radius: 70%;
+			    overflow: hidden;
+			    text-align: center; 
+			  }
+			
+			  .profile-user-img-img{
+			    width: 100%;
+			    height: 100%;
+			    object-fit: cover;
+			  }
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -69,7 +86,11 @@
 									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 									<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 									
-									<form>
+									<form name="formList">
+									
+										<input type="hidden"id="post_seq" name="post_seq" value="${one.seq }">
+										<input type="hidden"id="writer" name="writer" value="${sessSeq}">
+										
 										<div class="table-wrapper">
 											<table class="alt" style="pointer-events: none;">
 												<thead>
@@ -117,11 +138,42 @@
 													</tr>
 												</tbody>
 											</table>
+											
 											<center style="margin-left: 12%;">
 												<a href="#" class="button primary">💪추천</a>
 												<a href="/community/communityList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 												<a href="/communityNotify" class="button primary" style="float: right;">🚨신고</a>
 											</center>
+											
+											
+											<!-- 댓글 comment 부분 -->
+											<div class="row" style="width:100%;">
+												<div class="col-5">
+													<input class="form-control-md mb-2" style="margin-left: 20px;" type="text"id="contents" name="contents" placeholder="댓글을 입력해 주세요">
+												</div>
+												<div class="col">
+													<button type="button" class="button primary" id="comment_input">댓글달기</button>
+												</div>
+											</div>
+											<!-- 댓글을 담는 부분을 div로 한번 감싸세요  -->
+											<div id="comment_area">
+												<!-- prepend -->
+												
+												<c:forEach items="${comments}" var="comments" varStatus="statusComments">
+													<div>
+														<div class="profile-user-img"> 
+															<img src="${comments.path}${comments.uuidName}" class="profile-user-img-img">
+														</div> 
+														<span><b><c:out value="${comments.writer }"/></b></span>
+														<span><c:out value="${comments.create_date }"/></span>
+														<input class="form-control-sm mb-4" type="text" name="comments_contents" value="${comments.contents }" disabled readonly>
+													</div>
+												</c:forEach>
+												
+												<!-- append -->
+											</div>
+											
+											
 										</div>
 									</form>
 								</section>
@@ -155,7 +207,49 @@
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			
 			<script type="text/javascript">
-				
+				var goUrlInst = "/comment/commentInst";    /* # -> */
+				var seq = $("input:hidden[name=post_seq]");
+				var form = $("form[name=formList]");
+			
+				$("#comment_input").on("click", function() {
+
+					//form.attr("action", goUrlInst).submit();
+					
+					$.ajax({
+						url: goUrlInst,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							writer : $("#writer").val(),
+							contents :$("#contents").val(),
+							post_seq :$("#post_seq").val()
+						},
+						success:function(result){
+							//댓글을 입력하면 입력창에 글자 지우기
+							$("#contents").val("");
+							
+							var txt ="";
+							
+							txt += '<div>';
+							txt += '<div class="profile-user-img"> ';
+							txt += '<img src="'+ result.img +'" class="profile-user-img-img">';
+							txt += '</div> ';
+							txt +='<span><b>'+ result.writer +'<b></span>';
+							txt +='<span> 방금전</span>';
+							txt +='<input class="form-control" type="text" name="comments_contents" value="'+ result.contents +'" disabled readonly>';
+							txt += '</div>';
+							
+							$("#comment_area").prepend(txt);
+						},
+						error:function(){
+							alert("ajax.. error..");
+						}
+						
+					});
+					
+					
+				});
+
 			</script>
 	</body>
 </html>
