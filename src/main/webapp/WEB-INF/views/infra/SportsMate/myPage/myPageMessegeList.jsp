@@ -57,7 +57,7 @@
 							<section>
 								<div class="row">
 									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>

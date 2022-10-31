@@ -102,11 +102,10 @@
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
 		SELECT  
 			seq
-			, cc_name
-			, ccg_seq
+			,cc_name
+			,ccg_seq
 			,cc_key
-		FROM
-			cc
+		FROM cc
 		WHERE 1=1
 		    AND useNY = 2
     </select>

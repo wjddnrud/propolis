@@ -373,7 +373,7 @@
 				async: true 
 				,cache: false
 				,type: "post"
-				,dataType:"json"
+				/* ,dataType:"json" */
 				,url: "/member/checkId"
 				/* ,data : $("#formLogin").serialize() */
 				,data : { 
@@ -395,6 +395,7 @@
 		});
 		
 		
+	
 		
 		
 		$('#signUp').on("click", function () {
