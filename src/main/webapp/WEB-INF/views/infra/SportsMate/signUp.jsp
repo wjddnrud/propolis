@@ -376,7 +376,9 @@
 				,dataType:"json"
 				,url: "/member/checkId"
 				/* ,data : $("#formLogin").serialize() */
-				,data : { "id" : $("#id").val() }
+				,data : { 
+					id : $("#id").val() 
+					}
 				,success: function(response) {
 					if(response.rt == "success") {
 						$("#id_check").text("사용가능한 아이디입니다.");
@@ -392,37 +394,6 @@
 			});
 		});
 		
-		/* ==================== */
-		
-		$("#id").on("focusout", function(){
-		
-		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
-			return false;
-		} else {
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/member/checkId"
-				/* ,data : $("#formLogin").serialize() */
-				,data : { "id" : $("#id").val() }
-				,success: function(response) {
-					if(response.rt == "success") {
-						$("#id_check").text("사용가능한 아이디입니다.");
-						$("#id_check").css("color", "lightgreen");
-						
-					} else {
-						$("#id_check").text("이미 사용중인 아이디입니다.");
-						$("#id_check").css("color", "red");
-					}
-				}
-				,error : function(){
-					alert("error");
-				}
-			});
-		}
-	});
 		
 		
 		

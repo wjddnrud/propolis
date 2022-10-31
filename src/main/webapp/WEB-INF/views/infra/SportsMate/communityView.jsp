@@ -139,20 +139,22 @@
 												</tbody>
 											</table>
 											
-											<center style="margin-left: 12%;">
-												<a href="#" class="button primary">💪추천</a>
+											<center style="margin-left: 12%; margin-bottom: 30px;">
+												<a href="#" class="button">💪추천</a>
 												<a href="/community/communityList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
-												<a href="/communityNotify" class="button primary" style="float: right;">🚨신고</a>
+												<a href="/communityNotify" class="button" style="float: right;">🚨신고</a>
 											</center>
+											<hr>
 											
 											
 											<!-- 댓글 comment 부분 -->
+											
 											<div class="row" style="width:100%;">
-												<div class="col-5">
-													<input class="form-control-md mb-2" style="margin-left: 20px;" type="text"id="contents" name="contents" placeholder="댓글을 입력해 주세요">
+												<div class="col-10">
+													<input class="form-control-sm mb-3" style="margin-left: 20px;" type="text"id="contents" name="contents" placeholder="댓글을 입력해 주세요">
 												</div>
-												<div class="col">
-													<button type="button" class="button primary" id="comment_input">댓글달기</button>
+												<div class="col-2">
+													<button type="button" class="button button primary" id="comment_input">댓글달기</button>
 												</div>
 											</div>
 											<!-- 댓글을 담는 부분을 div로 한번 감싸세요  -->
@@ -160,7 +162,7 @@
 												<!-- prepend -->
 												
 												<c:forEach items="${comments}" var="comments" varStatus="statusComments">
-													<div>
+													<div style="width: 50%;">
 														<div class="profile-user-img"> 
 															<img src="${comments.path}${comments.uuidName}" class="profile-user-img-img">
 														</div> 
@@ -225,6 +227,7 @@
 							post_seq :$("#post_seq").val()
 						},
 						success:function(result){
+							
 							//댓글을 입력하면 입력창에 글자 지우기
 							$("#contents").val("");
 							
@@ -234,7 +237,7 @@
 							txt += '<div class="profile-user-img"> ';
 							txt += '<img src="'+ result.img +'" class="profile-user-img-img">';
 							txt += '</div> ';
-							txt +='<span><b>'+ result.writer +'<b></span>';
+							txt +='<span><b>'+ result.writer +'</b></span>';
 							txt +='<span> 방금전</span>';
 							txt +='<input class="form-control" type="text" name="comments_contents" value="'+ result.contents +'" disabled readonly>';
 							txt += '</div>';

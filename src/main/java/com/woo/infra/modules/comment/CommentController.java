@@ -35,7 +35,11 @@ public class CommentController {
 		result.put("img", comments.getPath() + comments.getUuidName());
 		/* 조인해준 이름 가지고 넣어주기 */
 		
-		
+//		if (result == null) {
+//			result.put("img", "/resources/images/images/noprofil.jpg");
+//		} else {
+//			result.put("img", comments.getPath() + comments.getUuidName());
+//		} 
 		return result;
 	}
 	

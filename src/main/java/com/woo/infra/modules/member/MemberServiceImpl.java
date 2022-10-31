@@ -112,8 +112,7 @@ public class MemberServiceImpl implements MemberService{
 
 				dao.insertMemberUpload(dto);
 				j++;
-			}
-
+			} 
 		}
 		return insert;	
 	}

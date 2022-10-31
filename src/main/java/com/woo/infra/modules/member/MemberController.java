@@ -110,7 +110,7 @@ public class MemberController {
 		int result = service.checkId(dto);
 
 		System.out.println("result : " + result);
-
+		
 		if (result > 0) {
 			returnMap.put("rt", "fail");
 		} else {
