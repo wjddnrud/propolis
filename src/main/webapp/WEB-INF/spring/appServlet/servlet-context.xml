@@ -37,6 +37,8 @@
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/"/>
+			<exclude-mapping path="/member/checkId"/>
+			<exclude-mapping path="/member/checkPhone"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/signInCheck" />
 			<exclude-mapping path="/signUp" />

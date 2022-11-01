@@ -121,7 +121,6 @@
 											<select name="shDate" class="form-select form-control me-1 text-center" aria-label="Default selet example">
 												<option value="">날짜 검색</option>
 												<option value="1"<c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
-												<option value="2"<c:if test="${vo.shDate eq 2 }">selected</c:if>>최근접속일</option>
 												<option value="3"<c:if test="${vo.shDate eq 3 }">selected</c:if>>생년월일</option>
 											</select>
 										</div>

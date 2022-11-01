@@ -103,6 +103,11 @@ public class CommonController {
 		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
 		model.addAttribute("grlist", grlist);
 		
+		vo.setShSeq(sessSeq);
+		Member selectOne = mmService.selectOne(vo);
+		model.addAttribute("one", selectOne);
+	
+		
 		return "infra/SportsMate/myPage/myPageCommunityList";
 	}
 	

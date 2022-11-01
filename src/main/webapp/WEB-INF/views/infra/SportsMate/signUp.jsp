@@ -73,8 +73,8 @@
 								 
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
-									<input type="text" name="id" id="id" placeholder="영문,숫자 5~10자" />
-									<span id="id_check"></span>
+									<input type="text" name="id" id="id_input" placeholder="영문,숫자 5~10자" />
+									<span id="idCheck_span"></span>
 									<!-- <input type="button" class="primary" value="중복확인" style="margin-top: 10px;" /> -->
 								</div>
 								<div class="col-6 col-12-xsmall">
@@ -117,12 +117,15 @@
 								<div class="col-5 col-12-xsmall">
 									<label for="phone">휴대전화</label>
 									<input type="text" name="phoneNumber" id="phoneNumber" value="" placeholder="'-'없이 번호만 입력해주세요." />
-									<input type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
+									<input type="hidden" id="phonecheckcode">
+									<input id="checkPhone" type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
 								</div>
 								<div class="col-5 col-12-xsmall">
 									<label for="phCerti">휴대전화 인증</label>
-									<input type="text" name="phCerti" id="phCerti" value="" placeholder="인증번호를 입력해주세요." />
-									<input type="button" class="primary" value="확인" style="margin-top: 10px;" />
+									<input type="text" name="phCerti" id="phCerti" placeholder="인증번호를 입력해주세요." />
+									<span id="phone_check"></span>
+									<input type="button" class="primary" id="authNumb" value="확인" style="margin-top: 10px;" />
+									
 								</div>
 								
 								<div class="col-4 col-12-xsmall">
@@ -355,6 +358,10 @@
 		
 		
 		
+		
+		
+		
+		
 		/* $("#passwordRe").on("focusout", function(){
 			$("#pwCheck").text("패스워드가 일치합니다. OuO");
 			$("#pwCheck").css("color", "lightgreen");
@@ -370,22 +377,22 @@
 		/* === checkId === */
 		$("#id").on("focusout", function(){ 
 			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/member/checkId"
-				/* ,data : $("#formLogin").serialize() */
-				,data : { 
-					id : $("#id").val() 
-					}
+				url: "/member/checkId",
+				type: "post",
+				dataType:"json",
+				data : { id : $("#id").val()}
 				,success: function(response) {
 					if(response.rt == "success") {
+						$("#id").classList.add('is-valid');
+						$("")
+						$("#id")
 						$("#id_check").text("사용가능한 아이디입니다.");
 						$("#id_check").css("color", "lightgreen");
-					} else {
+					} else if(response.rt == "fail") {
+						$("#id").val("");
 						$("#id_check").text("이미 사용중인 아이디입니다.");
 						$("#id_check").css("color", "red");
+						$("#id").focus();
 					}
 				}
 				,error : function(){
@@ -514,6 +521,38 @@
 			if(keycode == 13) //Enter
 				submitform(); //여기가 이제 로그인 하는 함수로 연결되면 됩니다.
 		}
+		
+		$("#checkPhone").on("click", function() {
+			
+			$.ajax({
+				url:"/member/checkPhone"
+				,type:"post"
+				,dataType:"json"
+				,data: {
+					phoneNumber : $("#phoneNumber").val()
+				}
+				,success : function(result) {
+					$("#phonecheckcode").val(result.code);
+				}
+				,error : function(){
+					alert("ajax error...");
+				}
+				
+			});
+		});
+		
+		$("#authNumb").on("click", function(){
+			if($('#phCerti').val() == $('#phonecheckcode').val()) {
+				$("#phone_check").text("인증번호가 일치합니다.");
+				$("#phone_check").css("color", "lightgreen");	
+			} else {
+				$("#phone_check").text("인증번호가 일치하지 않습니다.");
+				$("#phone_check").css("color", "red");
+				$('#phCerti').val(""); 
+				$('#phCerti').focus(); 
+				return false; 
+			}
+		});
 	</script>
 	
 	<script>

@@ -62,8 +62,12 @@
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>
-										<b>이름: </b><c:out value="${sessName }"/><br>
-										<b>ID: </b><c:out value="${sessId }"/><br>
+										<b>이름: </b><c:out value="${one.name }"/><br>
+										<b>ID: </b><c:out value="${one.id }"/><br>
+										<b>성별: </b><c:out value="${one.gender }"/><br>
+										<b>직업: </b><c:out value="${one.job }"/><br>
+										<b>생년월일: </b><c:out value="${one.dob }"/><br> 
+										<b>주소: </b><c:out value="${one.address }"/><br>
 										<%-- <b>게시글 수: </b><c:out value="${cmlist[0].MyCommunityCount }"/><br> --%>
 										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
 										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
