@@ -75,7 +75,7 @@
 									<label for="id">ID</label>
 									<input type="text" name="id" id="id_input" placeholder="영문,숫자 5~10자" />
 									<span id="idCheck_span"></span>
-									<!-- <input type="button" class="primary" value="중복확인" style="margin-top: 10px;" /> -->
+									<input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="password">PASSWORD</label>
@@ -177,7 +177,7 @@
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
-										<li><a id="signUp" class="button primary" onclick="signUp()" onkeyup="enterKey()">sign-up</a></li>
+										<li><a id="signUp" class="button primary">sign-up</a></li>
 										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
 									</ul>
 								</div>
@@ -376,29 +376,43 @@
 		
 		/* === checkId === */
 		$("#id").on("focusout", function(){ 
-			$.ajax({
-				url: "/member/checkId",
-				type: "post",
-				dataType:"json",
-				data : { id : $("#id").val()}
-				,success: function(response) {
-					if(response.rt == "success") {
-						$("#id").classList.add('is-valid');
-						$("")
-						$("#id")
-						$("#id_check").text("사용가능한 아이디입니다.");
-						$("#id_check").css("color", "lightgreen");
-					} else if(response.rt == "fail") {
-						$("#id").val("");
-						$("#id_check").text("이미 사용중인 아이디입니다.");
-						$("#id_check").css("color", "red");
-						$("#id").focus();
+			
+			if(!checkId('id', 2, 0, "영대소문자, 숫자, 특수문자(-_.), 4~10자리만 입력 가능합니다")) {
+				return false;
+			} else {
+				$.ajax({
+					url: "/member/checkId",
+					type: "post",
+					dataType:"json",
+					data : { id : $("#id").val()}
+					,success: function(response) {
+						if(response.rt == "success") {
+							$("#id").classList.add('is-valid');
+							$("#idFeedback").classList.remove('invalid-feedback')
+							$("#idFeedback").classList.add('valid-feedback');
+							$("#idFeedback").innerText = "사용가능한 아이디입니다.";
+							/* $('#idAllowedNy').value = 1; */
+							
+							/* $("#id_check").text("사용가능한 아이디입니다.");
+							$("#id_check").css("color", "lightgreen"); */
+						} else if(response.rt == "fail") {
+							$("#id").classList.add('is-valid');
+							$('#idFeedback').classList.remove('valid-feedback');
+							$("#idFeedback").classList.add('invalid-feedback');
+							$('#idFeedback').innerText = "이미 사용중인 아이디입니다.";
+							/* $("#idAllowedNy").value = 0; */
+							
+							/* $("#id").val("");
+							$("#id_check").text("이미 사용중인 아이디입니다.");
+							$("#id_check").css("color", "red");
+							$("#id").focus(); */
+						}
 					}
-				}
-				,error : function(){
-					alert("error");
-				} 
-			});
+					,error : function(){
+						alert("ajax error....");
+					} 
+				});
+			}
 		});
 		
 		
@@ -407,7 +421,22 @@
 		
 		$('#signUp').on("click", function () {
 			
-			var valName = $('#name').val();
+			alert("dsdf0");
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		if (validationInst() == false) return false;
+		   		alert("dsdf1");
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
+		   		if (validationUpdt() == false) return false;
+		   		alert("dsdf2");
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+			
+			/* var valName = $('#name').val();
 			var valId = $('#id').val();
 			var valPassword = $('#password').val();
 			var valPasswordRe = $('#passwordRe').val();
@@ -505,14 +534,40 @@
 				alert('가입경로를 선택해주세요.'); 
 				$('#way_to_regist').focus(); 
 				return false;
-			}
-			/* if(!$('.gender').prop('checked')){ alert('성별을 체크해주세요.'); $('.gender')[0].focus(); return false;} */
-			/* $('#login').submit(); */
-
-			form.attr("action", goUrlInst).submit();
+			} */
+			
+			/* form.attr("action", goUrlInst).submit(); */
 
 			alert("SportsMate 회원가입을 축하합니다!");
 		});
+		
+		
+		validationInst = function() {
+			if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
+			if(!checkPassword('password', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
+			if(!checkPasswordAndRe('password', 2, "패스워드가 일치하지 않습니다")) return false;
+			if(validationUpdt() == false) return false;
+		}
+		
+		validationUpdt = function() {
+			if(!checkOnlyKoreanEnglishNumber('name', 2, 0, "이름을 입력해 주세요")) return false;
+			/* if(!checkSelectNull('gender', 2, "성별을 선택해 주세요.")) return false; */
+			if(!checkNull('dob', 2, "생일을 선택해 주세요.")) return false;
+			/* if(!checkEmail('ifmeEmailFullArray0', 2, 0, "이메일 주소를 입력해 주세요")) return false; */
+			/* if(!checkSelectNull('ifmpTelecomCdArray0', 2, "통신사를 선택해 주세요")) return false; */
+			/* if(!checkMobile('ifmpNumberArray0', 2, 0, "모바일은 숫자만 입력해 주세요")) return false; */
+			/* if(!checkOnlyNumber('ifmpNumberArray1', 2, 1, 0, 0, 0, "전화는 숫자만 입력해 주세요")) return false; */
+			/* if(!checkOnlyNumber('ifmpNumberArray2', 2, 1, 0, 0, 0, "팩스는 숫자만 입력해 주세요")) return false; */
+			
+			/* if ($("#ifmaZipcodeArray0").val() != "" && $("#ifmaAddress2Array0").val().trim() == "") {
+				$("#ifmaAddress2Array0").addClass('is-invalid');
+				$("#ifmaAddress2Array0Feedback").text("상세주소를 입력해 주세요");
+				return false;
+			} else {
+				$("#ifmaAddress2Array0").removeClass('is-invalid');
+			} */
+		}
+		
 		
 		enterKey = function() {
 			
