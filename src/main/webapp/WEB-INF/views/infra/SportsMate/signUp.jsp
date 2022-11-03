@@ -72,7 +72,7 @@
  								
 								 
 								<div class="col-6 col-4-medium">
-									<label for="id">ID</label>
+									<label for="id_input">ID</label>
 									<input type="text" name="id" id="id_input" placeholder="영문,숫자 5~10자" />
 									<span id="idCheck_span"></span>
 									<input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
@@ -220,12 +220,23 @@
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries=services"></script>
+	<!-- user function -->
+	<script src="/resources/xdmin/js/validationXdmin.js"></script>
 	<script type="text/javascript">
 	
 		var goUrlInst = "/signUpInst";    /* # -> */
 		
 		var form = $("form[name=signUpForm]");
+		var seq = $("input:hidden[name=shSeq]");
 	
+		
+		
+		validationInst = function() {
+			if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
+			if(!checkPassword('password', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
+			if(!checkPasswordAndRe('password', 2, "패스워드가 일치하지 않습니다")) return false;
+		}
+		
 		/* 프로필 이미지 */
 		/* id 가 imgFile인것이 내용이 바뀌면 filename 은 imgfile 의 값이 들어가고
 		   id 가 .upload-name 인것의 val값이 filename으로 들어간다*/
@@ -377,6 +388,8 @@
 		/* === checkId === */
 		$("#id").on("focusout", function(){ 
 			
+			validationTest
+			
 			if(!checkId('id', 2, 0, "영대소문자, 숫자, 특수문자(-_.), 4~10자리만 입력 가능합니다")) {
 				return false;
 			} else {
@@ -421,22 +434,7 @@
 		
 		$('#signUp').on("click", function () {
 			
-			alert("dsdf0");
-			if (seq.val() == "0" || seq.val() == ""){
-		   		// insert
-		   		if (validationInst() == false) return false;
-		   		alert("dsdf1");
-		   		form.attr("action", goUrlInst).submit();
-		   	} else {
-		   		// update
-		   		/* keyName.val(atob(keyName.val())); */
-		   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
-		   		if (validationUpdt() == false) return false;
-		   		alert("dsdf2");
-		   		form.attr("action", goUrlUpdt).submit();
-		   	}
-			
-			/* var valName = $('#name').val();
+			var valName = $('#name').val();
 			var valId = $('#id').val();
 			var valPassword = $('#password').val();
 			var valPasswordRe = $('#passwordRe').val();
@@ -534,48 +532,16 @@
 				alert('가입경로를 선택해주세요.'); 
 				$('#way_to_regist').focus(); 
 				return false;
-			} */
+			}
 			
-			/* form.attr("action", goUrlInst).submit(); */
+			form.attr("action", goUrlInst).submit();
 
 			alert("SportsMate 회원가입을 축하합니다!");
 		});
 		
 		
-		validationInst = function() {
-			if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
-			if(!checkPassword('password', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
-			if(!checkPasswordAndRe('password', 2, "패스워드가 일치하지 않습니다")) return false;
-			if(validationUpdt() == false) return false;
-		}
-		
-		validationUpdt = function() {
-			if(!checkOnlyKoreanEnglishNumber('name', 2, 0, "이름을 입력해 주세요")) return false;
-			/* if(!checkSelectNull('gender', 2, "성별을 선택해 주세요.")) return false; */
-			if(!checkNull('dob', 2, "생일을 선택해 주세요.")) return false;
-			/* if(!checkEmail('ifmeEmailFullArray0', 2, 0, "이메일 주소를 입력해 주세요")) return false; */
-			/* if(!checkSelectNull('ifmpTelecomCdArray0', 2, "통신사를 선택해 주세요")) return false; */
-			/* if(!checkMobile('ifmpNumberArray0', 2, 0, "모바일은 숫자만 입력해 주세요")) return false; */
-			/* if(!checkOnlyNumber('ifmpNumberArray1', 2, 1, 0, 0, 0, "전화는 숫자만 입력해 주세요")) return false; */
-			/* if(!checkOnlyNumber('ifmpNumberArray2', 2, 1, 0, 0, 0, "팩스는 숫자만 입력해 주세요")) return false; */
-			
-			/* if ($("#ifmaZipcodeArray0").val() != "" && $("#ifmaAddress2Array0").val().trim() == "") {
-				$("#ifmaAddress2Array0").addClass('is-invalid');
-				$("#ifmaAddress2Array0Feedback").text("상세주소를 입력해 주세요");
-				return false;
-			} else {
-				$("#ifmaAddress2Array0").removeClass('is-invalid');
-			} */
-		}
 		
 		
-		enterKey = function() {
-			
-			var keycode = event.keyCode;
-			
-			if(keycode == 13) //Enter
-				submitform(); //여기가 이제 로그인 하는 함수로 연결되면 됩니다.
-		}
 		
 		$("#checkPhone").on("click", function() {
 			

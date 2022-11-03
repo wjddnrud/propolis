@@ -266,7 +266,7 @@
 									<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick="goTrash()"><i class="fa-solid fa-trash-can"></i></button> 
 									<!-- <button type="button" class="btn btn-primary" style="float: right;" onclick="regist()"><i class="fa-solid fa-plus"></i></button> -->
-									<button class="btn btn-success me-1" style="float: right;" href="#"><i class="fa-solid fa-file-excel"></i></button>
+									<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 									
 								</div>
 							</section>
@@ -332,6 +332,12 @@
 					checkbox.checked = selectAll.checked;
 					})
 				}
+				
+				var excelUri = "/member/excelDownload";
+				
+				$("#btnExcel").click(function() {
+					form.attr("action", excelUri).submit();
+				});
 				
 				function goTrash() {
 					$("input:checkbox[name=checkbox]:checked").each(function() {

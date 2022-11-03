@@ -10,7 +10,7 @@ public class UtilDateTime {
 		String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		return localDateTimeString;
 	}
-	
+
 //	public static String today() throws Exception {
 //		
 //		String nowString = UtilDateTime.nowString();
@@ -20,6 +20,6 @@ public class UtilDateTime {
 //		
 //		return nowString;
 //	}
-
+	
 	
 }
