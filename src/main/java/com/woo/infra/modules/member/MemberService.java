@@ -18,6 +18,8 @@ public interface MemberService {
 	
 	public int insert(Member dto) throws Exception;
 	
+	public int kakaoInsert(Member dto) throws Exception;
+	
 	public int checkId(Member dto) throws Exception;
 	
 	public Member signInCheck(Member dto) throws Exception;
@@ -25,6 +27,8 @@ public interface MemberService {
 	public int selectOneCount(BaseVo vo) throws Exception;
 	
 	public Member selectMemberImg(Member dto) throws Exception;
+	
+	public Member kakaoSignInCheck(Member dto) throws Exception;
 	
 	
 }

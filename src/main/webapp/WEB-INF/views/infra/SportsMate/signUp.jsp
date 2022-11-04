@@ -222,6 +222,7 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries=services"></script>
 	<!-- user function -->
 	<script src="/resources/xdmin/js/validationXdmin.js"></script>
+	
 	<script type="text/javascript">
 	
 		var goUrlInst = "/signUpInst";    /* # -> */
@@ -541,7 +542,7 @@
 		
 		
 		
-		
+		/* 휴대전화 인증 s */
 		
 		$("#checkPhone").on("click", function() {
 			
@@ -574,6 +575,9 @@
 				return false; 
 			}
 		});
+		
+		/* 휴대전화 인증 e */
+    	
 	</script>
 	
 	<script>
@@ -594,6 +598,7 @@
 			} return false;
 		}
 	</script>
+	
 </body>
 
 </html>

@@ -46,6 +46,11 @@
 			<exclude-mapping path="/signIn" />
 			<exclude-mapping path="/logout" />
 			<exclude-mapping path="/rest/**" />
+			
+			<!-- 카카오 로그인(controller, 카카오톡 서버 controller) -->
+			<exclude-mapping path="/kakaoLoginProc"/>
+			<exclude-mapping path="/v2/user/me"/>
+			
 			<beans:bean id="checkLoginSessionInterception" class="com.woo.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	

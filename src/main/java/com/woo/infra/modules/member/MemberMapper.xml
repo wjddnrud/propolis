@@ -198,6 +198,40 @@
 			AND password = #{password}
 	</select>
 	
+	<select id="kakaoSignInCheck" resultMap="resultMapObj">
+		SELECT
+			seq
+			,id
+			,password
+			,name
+			,adminNY
+			,email
+		FROM member
+		WHERE 1=1
+			AND id = #{id}
+	</select>
+	
+	<insert id="kakaoInsert">
+		INSERT INTO member(
+			id
+			,name
+			,dob
+			,gender
+			,email
+		)
+		VALUES (
+			#{id}
+			,#{name}
+			,#{dob}
+			,#{gender}
+			,#{email}
+		)
+		<!-- insert할때는 seq값이 없으므로 insert하고 마지막 insert된 id의 seq를 select해주는 selectkey 사용해서 넣어주기 -->
+		<selectKey resultType="Integer" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />

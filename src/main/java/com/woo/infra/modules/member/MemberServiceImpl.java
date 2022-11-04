@@ -117,7 +117,11 @@ public class MemberServiceImpl implements MemberService{
 		return insert;	
 	}
 	
-	
+	@Override
+	public int kakaoInsert(Member dto) throws Exception {
+		
+		return dao.kakaoInsert(dto);
+	}
 
 	@Override
 	public Member selectMemberImg(Member dto) throws Exception {
@@ -151,19 +155,15 @@ public class MemberServiceImpl implements MemberService{
 		return signInCheck;
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public Member kakaoSignInCheck(Member dto) throws Exception {
+		
+		return dao.kakaoSignInCheck(dto);
+	}
 	
 	
 
-	
+
 
 	
 	

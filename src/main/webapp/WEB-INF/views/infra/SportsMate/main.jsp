@@ -86,7 +86,13 @@
 							<div class="image"><img src="/resources/images/images/요가.jpg" alt="" /></div><div class="content">
 								<h2>[diet]<br>
 								loose your weight</h2>
-								<p>NEW <c:out value="${dietCountNew }"/></p>
+								<c:choose>
+									<c:when test="${dietCountNew ne 0}">
+										<tr>
+											<p>New <c:out value="${dietCountNew}"/></p>
+										</tr>
+									</c:when>
+								</c:choose>
 								<p>TOTAL <c:out value="${dietCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>

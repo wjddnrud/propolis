@@ -74,6 +74,11 @@ public class MemberDao {
 		return insert;
 	}
 	
+	public int kakaoInsert(Member dto) {
+		
+		return sqlSession.insert(namespace + ".kakaoInsert" , dto);
+	}
+	
 	public int selectLastSeq() throws Exception {
 		
 		return sqlSession.selectOne(namespace + ".selectLastSeq", "");
@@ -107,6 +112,13 @@ public class MemberDao {
 		System.out.println("dao signInCheck : " + signInCheck);
 		
 		return signInCheck;
+	}
+	
+	public Member kakaoSignInCheck(Member dto) throws Exception {
+		
+		Member kakaoSignInCheck = sqlSession.selectOne(namespace + ".kakaoSignInCheck", dto);
+		
+		return kakaoSignInCheck;
 	}
 	
 }

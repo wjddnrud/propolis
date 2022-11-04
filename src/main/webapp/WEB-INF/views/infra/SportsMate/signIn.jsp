@@ -50,6 +50,13 @@
 				<!-- Banner 메인화면 처음 모션부분 -->
 				<!-- <section id="banner"> -->
 				<form name="signIn">
+				
+				<form name="form">
+					<input type="hidden" name="name"/>
+					<input type="hidden" name="email"/>
+					<input type="hidden" name="gender"/>
+					<input type="hidden" name="dob"/>
+				</form>
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
@@ -79,6 +86,12 @@
 												<ul class="actions stacked">
 													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick="signIn()"></li>
 													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
+												</ul>
+											</div>
+											<div class="d-grid gap-2 mt-3">
+												<ul class="actions stacked">
+													<li><a class="button primary small" id="naverBtn">Naver</a></li>
+													<li><a class="button small" id="kakaoBtn">Kakao</a></li>
 												</ul>
 											</div>
 										</div>
@@ -201,7 +214,10 @@
 							,dataType:"json"
 							,url: "/signInCheck"
 							/* ,data : $("#formLogin").serialize() */
-							,data : { "id" : $("#id").val(), "password" : $("#password").val() }
+							,data : { 
+								"id" : $("#id").val(), 
+								"password" : $("#password").val() 
+							}
 							,success: function(response) {
 								if(response.rt == "success") {
 									swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
@@ -223,10 +239,79 @@
 						});
 					}
 				}
+			</script>
+			<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+			<script>
+				/* 카카오 로그인 s */
 				
-			
-				
-				
+				Kakao.init('72452dcf97f9180781a4d13ee6bef707'); // test 용
+		    	console.log(Kakao.isInitialized());
+		/*     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+		    	console.log(Kakao.isInitialized()); */
+		    	
+		    	$("#kakaoBtn").on("click", function() {
+		    		/* Kakao.Auth.authorize({
+		   		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+		   		    }); */
+		    		
+		    		Kakao.Auth.login({
+		   		      success: function (response) {
+		   		        Kakao.API.request({
+		   		          url: '/v2/user/me',
+		   		          success: function (response) {
+		   		        	  
+		   		        	  var accessToken = Kakao.Auth.getAccessToken();
+		   		        	  Kakao.Auth.setAccessToken(accessToken);
+	
+		   		        	  var account = response.kakao_account;
+		   		        	  
+		   		        	  console.log(response)
+		   		        	  console.log("email : " + account.email);
+		   		        	  console.log("nickname : " + account.profile.nickname);
+		   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
+		   		        	  console.log("picture : " + account.gender);
+		   		        	  console.log("picture : " + account.birthday);
+		   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+		  	        	  
+			  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+			  	        	 
+			  	        	  $.ajax({
+								async: true
+								,cache: false
+								,type:"POST"
+								,url: "/kakaoLoginProc"
+								,data: {
+									id : account.email
+									,name : account.profile.nickname
+									,dob : account.birthday
+									,gender : account.gender == 'male'? 1 : 2
+									,email : account.email
+								}
+								,success : function(response) {
+									if (response.rt == "fail") {
+										alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+										return false;
+									} else {
+										location.href = "/main";
+									}
+								},
+								error : function() {
+									alert("ajax error");
+								}
+							});
+		   		          },
+		   		          fail: function (error) {
+		   		            console.log(error)
+		   		          },
+		   		        })
+		   		      },
+		   		      fail: function (error) {
+		   		        console.log(error)
+		   		      },
+		   		    })
+				});
+		    	
+		    	/* 카카오 로그인 e */
 			</script>
 	</body>
 </html>
