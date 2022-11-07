@@ -119,6 +119,7 @@ public class CodeController {
     public void excelDownload(CodeVo vo, HttpServletResponse httpServletResponse) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
+		/* paging 걸어주지 않으면 수많은 리스트를 한번에 불러온다. */
 
 		if (vo.getTotalRows() > 0) {
 			List<Code> list = service.selectList(vo);
@@ -134,9 +135,14 @@ public class CodeController {
 //	        each column width setting	        
 	        sheet.setColumnWidth(0, 2100);
 	        sheet.setColumnWidth(1, 3100);
-
+	        sheet.setColumnWidth(2, 2100);
+	        sheet.setColumnWidth(3, 3100);
+	        sheet.setColumnWidth(4, 2100);
+	        sheet.setColumnWidth(5, 3100);
+	        sheet.setColumnWidth(6, 2100);
+	        
 //	        Header
-	        String[] tableHeader = {"Seq", "코드이름", "코드 key값", "사용여부", "삭제여부", "코드그룹Seq", "등록일자"};
+	        String[] tableHeader = {"Seq", "코드이름", "코드key값", "코드그룹Seq", "사용여부", "삭제여부", "등록일"};
 
 	        row = sheet.createRow(rowNum++);
 	        
@@ -158,7 +164,7 @@ public class CodeController {
 	            cell = row.createCell(0);
 	        	cellStyle.setAlignment(HorizontalAlignment.CENTER);
 	        	cell.setCellStyle(cellStyle);
-	            cell.setCellValue(list.get(i).getSeq());
+	            cell.setCellValue(Integer.parseInt(list.get(i).getSeq()));
 	            
 	            cell = row.createCell(1);
 	        	cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -173,28 +179,27 @@ public class CodeController {
 	            cell = row.createCell(3);
 	        	cellStyle.setAlignment(HorizontalAlignment.CENTER);
 	        	cell.setCellStyle(cellStyle);
-	            if(list.get(i).getUseNY() != null) cell.setCellValue(list.get(i).getUseNY());
+	        	cell.setCellValue(list.get(i).getCcg_seq());
 	            
 	            cell = row.createCell(4);
 	            cellStyle.setAlignment(HorizontalAlignment.CENTER);
 	            cell.setCellStyle(cellStyle);
-	            cell.setCellValue(list.get(i).getDelNY());
+	            cell.setCellValue(list.get(i).getUseNY());
 	            
 	            cell = row.createCell(5);
 	            cellStyle.setAlignment(HorizontalAlignment.CENTER);
 	            cell.setCellStyle(cellStyle);
-	            cell.setCellValue(list.get(i).getCcg_seq());
+	            cell.setCellValue(list.get(i).getDelNY());
 	            
 	            cell = row.createCell(6);
-	        	cellStyle.setAlignment(HorizontalAlignment.CENTER);
-	        	cell.setCellStyle(cellStyle);
-	        	if(list.get(i).getCreateDate() != null) cell.setCellValue((list.get(i).getCreateDate()));
-	            
+	            cellStyle.setAlignment(HorizontalAlignment.CENTER);
+	            cell.setCellStyle(cellStyle);
+	            if(list.get(i).getCreateDate() != null) cell.setCellValue((list.get(i).getCreateDate()));
 	        }
 
 	        httpServletResponse.setContentType("ms-vnd/excel");
 //	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=example.xls");	// for xls
-	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=example.xlsx");
+	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=codeList.xlsx");
 
 	        workbook.write(httpServletResponse.getOutputStream());
 	        workbook.close();

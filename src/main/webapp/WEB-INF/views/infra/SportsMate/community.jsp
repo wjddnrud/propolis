@@ -118,6 +118,7 @@
 										
 										<br>
 										<center>
+											<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 											<a href="/communityForm" class="button primary">작성</a>
 											<a href="/main" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 											<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->

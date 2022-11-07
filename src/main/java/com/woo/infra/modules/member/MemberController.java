@@ -257,7 +257,7 @@ public class MemberController {
 
 	        httpServletResponse.setContentType("ms-vnd/excel");
 //	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=example.xls");	// for xls
-	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=example.xlsx");
+	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=memberList.xlsx");
 
 	        workbook.write(httpServletResponse.getOutputStream());
 	        workbook.close();

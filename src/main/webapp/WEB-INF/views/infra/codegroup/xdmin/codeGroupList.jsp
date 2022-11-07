@@ -195,7 +195,7 @@
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
 									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
-									<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
+									<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 									
 								</div>
 								</form> 
@@ -302,6 +302,14 @@
 					editSeq.attr("value", seq);
 					form.attr("action", "/codegroup/codeGroupForm").submit();
 				}
+				
+				
+				
+				var excelUri = "/codegroup/excelDownload";
+				
+				$("#btnExcel").click(function(){
+					form.attr("action", excelUri).submit();
+				});
 			</script>
 
 
