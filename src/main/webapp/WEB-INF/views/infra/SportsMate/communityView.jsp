@@ -116,7 +116,7 @@
 													</tr>
 													<tr style="height: 500px;">
 														<td colspan="5" style="text-align: start; vertical-align: middle; padding-left: 30px;">
-															<div>
+															<div style="width: 300px; height: 230px; background: lightgray;">
 															
 															
 																<%-- <c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
@@ -130,7 +130,7 @@
 																<c:if test="${img.path eq null}${img.uuidName eq null }">""</c:if> --%>
 													        	
 													        	
-														        <img name="" alt="첨부파일 없음" src="${img.path}${img.uuidName}" style="width: 300px; height: 250px;">
+														        <img name="" alt="첨부파일 없음" src="${img.path}${img.uuidName}" style="max-width: 100%; max-height: 100%;">
 														    </div>
 														    <br/>
 															<c:out value="${one.contents }"/>

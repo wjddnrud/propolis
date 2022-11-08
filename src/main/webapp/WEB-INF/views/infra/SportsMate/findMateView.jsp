@@ -75,8 +75,8 @@
 									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 								
-									<form>
-										<div class="row">
+									<form> 
+										<div class="row" style="width: 70%; margin-left: auto; margin-right: auto;">
 											<div class="col-6" style="text-align: center;">
 												<span><b><c:out value="${one.group_name }"/></b></span>
 												<div classs="row">

@@ -22,6 +22,12 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+		
+		<style type="text/css">
+			.in:hover {
+				cursor: pointer;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -94,7 +100,7 @@
 											
 											
 												<c:forEach items="${list}" var="list" varStatus="statusList">
-													<tr onclick="viewForm('${list.seq}')">
+													<tr onclick="viewForm('${list.seq}')" class="in">
 														<td style="text-align: center;"><c:out value="${list.seq }"/></td>
 														<td style="text-align: center;">
 															<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
