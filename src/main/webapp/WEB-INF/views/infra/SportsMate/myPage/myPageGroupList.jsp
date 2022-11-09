@@ -55,21 +55,26 @@
 						<h4>마이페이지에서 내 정보를 수정하거나 게시했던 글들을 확인할 수 있습니다.</h4>
 					</header>
 					<section class="wrapper style5">
-						<div class="inner">
+						<div class="inner" style="width: 50%;">
 							<section>
 								<div class="row">
-									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel; height: 150px;">
+									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middle; height: 150px;">
 										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>
-										<b>이름: </b><c:out value="${sessName }"/><br>
-										<b>ID: </b><c:out value="${sessId }"/><br>
+										<b>이름: </b><c:out value="${one.name }"/><br>
+										<b>ID: </b><c:out value="${one.id }"/><br>
+										<b>성별: </b><c:out value="${one.gender }"/><br>
+										<b>직업: </b><c:out value="${one.job }"/><br>
+										<b>생년월일: </b><c:out value="${one.dob }"/><br> 
+										<b>주소: </b><c:out value="${one.address }"/><br>
+										<%-- <b>게시글 수: </b><c:out value="${cmlist[0].MyCommunityCount }"/><br> --%>
+										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
 										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
 										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
 									</div>
 								</div>
-								<hr>
 								<div>
 									<ul class="nav nav-tabs">
 										<!-- <li class="nav-item">

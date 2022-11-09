@@ -54,10 +54,10 @@
 						<h2>회원 정보</h2>
 					</header>
 					<section class="wrapper style5">
-						<div class="inner">
+						<div class="inner" style="width: 50%;">
 							<section>
 								<div class="row pb-5">
-									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
+									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middle;">
 										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">

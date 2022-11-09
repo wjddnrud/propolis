@@ -15,6 +15,7 @@ public class SportsGroup extends Base{
 	private String map;
 	private String playDate;
 	private String viewCount;
+	private String createDate;
 	
 	
 	public String getSeq() {
@@ -89,6 +90,13 @@ public class SportsGroup extends Base{
 	public void setViewCount(String viewCount) {
 		this.viewCount = viewCount;
 	}
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	
 	
 	
 	

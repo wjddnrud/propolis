@@ -115,6 +115,7 @@
 									
 									<br>
 									<center>
+										<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 										<a href="/findMateForm" class="button primary">등록</a>
 										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
@@ -174,6 +175,11 @@
 				form.attr("action", goUrlList).submit();
 			}
 			
+			var excelUri = "/sportsGroup/excelDownload";
+			
+			$("#btnExcel").on("click", function(){
+				form.attr("action", excelUri).submit();
+			});
 			
 			</script>
 	</body>

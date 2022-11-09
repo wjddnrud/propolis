@@ -184,6 +184,13 @@
 					$("input:hidden[name=thisPage]").val(thisPage);
 					form.attr("action", goUrlList).submit();
 				}
+				
+				
+				var excelUri = "/community/excelDownload"
+				$("#btnExcel").on("click", function() {
+					
+					form.attr("action", excelUri).submit();
+				});
 		
 			
 			</script>

@@ -30,6 +30,17 @@
 				margin-bottom: 0;
 			} */
 		</style>
+		<style type="text/css">
+			@font-face {
+			    font-family: 'GmarketSansMedium';
+			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+			.container{
+				font-family: 'GmarketSansMedium';
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -64,71 +75,203 @@
 				</header>
 
 				<!-- Main -->
-					<article id="main">
-						<header>
-							<h2>findMate</h2>
-							<p>새로운 그룹에 join 해보세요!</p>
-						</header>
-						<section class="wrapper style5">
-							<div class="inner">
-								<section>
-									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
-									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
-								
-									<form> 
-										<div class="row" style="width: 70%; margin-left: auto; margin-right: auto;">
-											<div class="col-6" style="text-align: center;">
-												<span><b><c:out value="${one.group_name }"/></b></span>
-												<div classs="row">
-													<div class="col-6" style="clear: both; margin-top: 10px;">
-														<img src="../../../../resources/images/images/noprofil.jpg" width=150px height=150px style="border: 2px solid white; border-radius: 50%;"><br>
-														<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
-													</div>
-													<!-- <div class="col-6" style="float: right;">
-														<ul class="sci">
-															<li style="--i:1">
-																<a href="#"><i class="fa-solid fa-user"></i></a>
-															</li>
-															<li style="--i:2">
-																<a href="#"><i class="fa-regular fa-envelope"></i></a>
-															</li>
-															<li style="--i:3">
-																<a href="#"><i class="fa-regular fa-comments"></i></a>
-															</li>
-														</ul>
-													</div> -->
-												</div>
-												<div class="row" style="text-align: start;">
-														<p><b>작성자 ID </b> <c:out value="${one.creator }"/></p><br>
-														<p><b>운동종목 </b>
-														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
-															<c:if test="${one.sports eq listSports.cc_key }"><c:out value="${listSports.cc_name }"/></c:if>
-														</c:forEach></p><br>
-														<p><b>모집인원 </b> <c:out value="${one.people_number }"></c:out></p><br>
-														<p><b>운동일 </b> <c:out value="${one.playDate }"/></p><br>
-														<p><b>시작시간 </b> <c:out value="${one.startTime }"></c:out></p><br>
-														<p><b>종료시간 </b> <c:out value="${one.endTime }"></c:out></p><br>
-												</div>
-												<div class="row" style="text-align: start;">
-													<p style="font-weight: bold;">그룹 설명</p>
-													<p><c:out value="${one.detail }"/></p>
-												</div>
-											</div>
-											<div class="col col-6">
-												<p style="margin-bottom: 0;"><b>운동 시작 위치 : </b> </p>
-												<div id="map" style="width:100%; height: 70%;"></div>
+				<article id="main">
+					<header>
+						<h2>findMate</h2>
+						<p>새로운 그룹에 join 해보세요!</p>
+					</header>
+					<section class="wrapper style5">
+						<div class="inner">
+							<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
+							<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
+							<form> 
+							
+							<!-- <div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="row">
+											<div class="col">
+												<p style="text-align: start; margin-bottom: 0;"><b>운동 시작 위치 : </b> </p>
 											</div>
 										</div>
-										<center style="margin-left: 12%; margin-top: 30px;">
-											<a href="#" class="button primary">🤝JOIN</a>
-											<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
-											<a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a>
-										</center>
-									</form>
-								</section>
-							</div>
-						</section>
-					</article>
+										<div class="row">
+											<div class="col">
+												<div id="map" style="width:100%; height: 100%;"></div> 
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div calss="row">
+											그룹 이름
+										</div>
+										<div class="row">
+											<div class="col">
+												<img src="https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427__480.jpg" style="width: 100px; height: 100px; border-radius: 50%;">
+											</div>
+											<div class="col">
+												<div class="row">
+													<div class="col">
+														ID
+													</div>
+												</div>
+												<div class="row">
+													<div class="col">
+														팔로워
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												작성자 ID
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												운동종목
+											</div>
+											<div class="col">
+												
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												모집인원
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												운동일자
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												시작시간
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												종료시간
+											</div>
+											<div class="col">
+												
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												그룹설명
+											</div>
+											<div class="col">
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+							
+							
+							
+								<center>
+								<div class="container mb-5" style="width: 70%;">
+									<div class="row" style="text-align: center;">
+										<!-- 지도 부분 -->
+										<div class="col-6">
+											<p style="text-align: start; margin-bottom: 0;"><b>운동 시작 위치 : </b> </p>
+											<div id="map" style="width:100%; height: 100%;"></div> 
+										</div>
+										<!-- 프로필 부분 -->
+										<div class="col-6">
+											<div style="width: ;">
+												<div class="row justify-content-center mb-3">
+													<div class="col">
+														<h3 class="mb-2 text-center"><b><c:out value="${one.group_name }"/></b></h3>
+													</div>
+												</div>
+												<div class="row justify-content-center mb-5">
+													<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%;">
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>작성자 ID</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.creator }"/></span>
+													</div>
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>운동종목</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.sports }"/></span>
+													</div>
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>모집인원</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.people_number }"/>명</span>
+													</div>
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>운동일</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.playDate }"/></span>
+													</div>
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>시작시간</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.startTime }"/>시</span>
+													</div>
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>종료시간</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.endTime }"/>시</span>
+													</div>
+												</div>
+												<div class="row justify-content-between mb-2">
+													<div class="col-3 text-start">
+														<span><b>그룹설명</b></span>
+													</div>
+													<div class="col-9 text-start">
+														<span><c:out value="${one.detail }"/></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								</center>
+								<center>
+									<a href="#" class="button primary">🤝JOIN</a>
+									<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
+									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
+								</center>
+							</form>
+						</div>
+					</section>
+				</article>
 
 
 				<!-- Footer -->
