@@ -56,15 +56,18 @@
 					<section class="wrapper style5">
 						<div class="inner" style="width: 50%;">
 							<section>
-								<div class="row pb-5">
-									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middle;">
+								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
+								<div class="row pb-3">
+									<div class="col-6 pt-5" style="font-weight: bold; text-align: right; vertical-align: middle;">
 										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;">
 									</div>
 									<div class="col-6" style="text-align: left; vertical-align: middle;">
 										<b>[회원 정보]</b><br/><br/>
 										<b>이름: </b><c:out value="${one.name }"/><br>
 										<b>ID: </b><c:out value="${one.id }"/><br>
-										<b>성별: </b><c:out value="${one.gender }"/><br>
+										<c:forEach items="${listCodeGender }" var="listGender" varStatus="statusGender">
+											<b>성별: </b><c:if test="${one.gender eq listGender.cc_key }"><c:out value="${listGender.cc_name }"/></c:if><br>
+										</c:forEach>
 										<b>직업: </b><c:out value="${one.job }"/><br>
 										<b>생년월일: </b><c:out value="${one.dob }"/><br> 
 										<b>주소: </b><c:out value="${one.address }"/><br>
@@ -72,6 +75,7 @@
 										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
 										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
 										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
+										<a href="/member/memberForm" class="button mt-3">정보 수정</a>
 									</div>
 								</div>
 								<div>
@@ -94,6 +98,7 @@
 								
 								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
+								
 								
 								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
 									
@@ -230,28 +235,7 @@
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
 				
-				var goUrlList = "/codegroup/codeGroupList";    /* # -> */
-				var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
-				var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
-				var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */	
 				
-				goList = function(thisPage) {
-					$("input:hidden[name=thisPage]").val(thisPage);
-					form.attr("action", goUrlList).submit();
-				}
-				// 버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
-				
-				editForm = function(seq) {
-					editSeq.attr("value", seq);
-					form.attr("action", "/codegroup/codeGroupForm").submit();
-				}
-				
-				var viewSeq = $("input:hidden[name=shSeq]")
-				
-				viewForm = function(seq) {
-					viewSeq.attr("value", seq);
-					form.attr("action", "/community/communityView").submit();
-				}
 			</script>
 
 

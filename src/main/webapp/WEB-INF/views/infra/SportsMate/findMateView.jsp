@@ -84,105 +84,7 @@
 						<div class="inner">
 							<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 							<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
-							<form> 
-							
-							<!-- <div class="container">
-								<div class="row">
-									<div class="col">
-										<div class="row">
-											<div class="col">
-												<p style="text-align: start; margin-bottom: 0;"><b>운동 시작 위치 : </b> </p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<div id="map" style="width:100%; height: 100%;"></div> 
-											</div>
-										</div>
-									</div>
-									<div class="col">
-										<div calss="row">
-											그룹 이름
-										</div>
-										<div class="row">
-											<div class="col">
-												<img src="https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427__480.jpg" style="width: 100px; height: 100px; border-radius: 50%;">
-											</div>
-											<div class="col">
-												<div class="row">
-													<div class="col">
-														ID
-													</div>
-												</div>
-												<div class="row">
-													<div class="col">
-														팔로워
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												작성자 ID
-											</div>
-											<div class="col">
-											
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												운동종목
-											</div>
-											<div class="col">
-												
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												모집인원
-											</div>
-											<div class="col">
-											
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												운동일자
-											</div>
-											<div class="col">
-											
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												시작시간
-											</div>
-											<div class="col">
-											
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												종료시간
-											</div>
-											<div class="col">
-												
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												그룹설명
-											</div>
-											<div class="col">
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
-							
-							
-							
+							<form name="viewForm"> 
 								<center>
 								<div class="container mb-5" style="width: 70%;">
 									<div class="row" style="text-align: center;">
@@ -264,7 +166,7 @@
 								</div>
 								</center>
 								<center>
-									<a href="#" class="button primary">🤝JOIN</a>
+									<a id="join" class="button primary">🤝JOIN</a>
 									<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
@@ -300,8 +202,16 @@
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries"></script>
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <!-- alert창 꾸미기 -->
 			<script>
+				var form = $("form[name=viewForm]");
 			
+				$("#join").on("click", function() {
+					swal("Join 완료!", "마이페이지에서 join 정보를 확인하세요.", "success")
+					.then(function() {
+						form.attr("action", "/myPageGroupList").submit();	
+					});
+				});
 			
 				
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

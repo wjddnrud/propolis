@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -79,24 +80,32 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "memberForm")
-	public String memberForm(Model model, MemberVo vo) throws Exception {
+	public String memberForm(Model model, MemberVo vo, HttpSession httpSession) throws Exception {
 
+		int sessSeq = (int) httpSession.getAttribute("sessSeq");
+//		System.out.println("getAttribute: " + sessSeq);
+		
+		vo.setShSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+		
 		Member selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
 
-		return "infra/member/xdmin/memberForm";
+		return "infra/SportsMate/signUp";
 	}
 
-	/*
-	 * @RequestMapping(value = "signUp") public String memberInsert(MemberVo vo,
-	 * Member dto, RedirectAttributes redirectAttributes) throws Exception {
-	 * 
-	 * int insert = service.insert(dto);
-	 * 
-	 * redirectAttributes.addFlashAttribute("vo", vo);
-	 * 
-	 * return "redirect:/signIn"; }
-	 */
+	
+	@RequestMapping(value = "memberInst") 
+	public String memberInsert(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	  
+		int insert = service.insert(dto);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		System.out.println("mmService.insert : " + insert);
+		
+		 return "redirect:/signIn"; 
+	}
+	 
 
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdate(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
@@ -105,7 +114,7 @@ public class MemberController {
 
 		redirectAttributes.addFlashAttribute("vo", vo);
 
-		return "redirect:/member/memberList";
+		return "infra/SportsMate/myPage/myPageCommunityList";
 	}
 
 	@RequestMapping(value = "memberDele")

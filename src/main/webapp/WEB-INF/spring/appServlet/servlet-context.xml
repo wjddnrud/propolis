@@ -42,14 +42,20 @@
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/signInCheck" />
 			<exclude-mapping path="/signUp" />
-			<exclude-mapping path="/signUpInst" />
+			<exclude-mapping path="/member/memberInst" />
 			<exclude-mapping path="/signIn" />
 			<exclude-mapping path="/logout" />
-			<exclude-mapping path="/rest/**" />
+			<exclude-mapping path="/member/memberUpdt" />
+			
+			
 			
 			<!-- 카카오 로그인(controller, 카카오톡 서버 controller) -->
 			<exclude-mapping path="/kakaoLoginProc"/>
 			<exclude-mapping path="/v2/user/me"/>
+			
+			<!-- 구글 로그인 -->
+			<exclude-mapping path="https://people.googleapis.com/v1/people/me"/>
+			
 			
 			<beans:bean id="checkLoginSessionInterception" class="com.woo.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>

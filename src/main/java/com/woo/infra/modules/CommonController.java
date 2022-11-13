@@ -133,6 +133,10 @@ public class CommonController {
 		List<Community> cmlist = cmService.MyselectList(cmdto);
 		model.addAttribute("cmlist", cmlist);
 		
+		vo.setShSeq(sessSeq);
+		Member selectOne = mmService.selectOne(vo);
+		model.addAttribute("one", selectOne);
+		
 		return "infra/SportsMate/myPage/myPageGroupList";
 	}
 	
@@ -268,7 +272,10 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "signUp")
-	public String signUp() throws Exception {
+	public String signUp(Model model, MemberVo vo) throws Exception {
+		
+		Member selectOne = mmService.selectOne(vo);
+		model.addAttribute("one", selectOne);
 		
 		return "infra/SportsMate/signUp";
 	}
@@ -341,5 +348,39 @@ public class CommonController {
 	     httpSession.setAttribute("sessName", dto.getName());
 	     httpSession.setAttribute("sessEmail", dto.getEmail());
 	 }
+	 
+	 @ResponseBody
+		@RequestMapping(value = "googleLoginProc")
+		public Map<String, Object> googleLoginProc(Member dto, HttpSession httpSession) throws Exception {
+		    Map<String, Object> returnMap = new HashMap<String, Object>();
+		    
+		    String txt = dto.getId();
+		    System.out.println(dto.getId());
+		    
+		    String[] split = txt.split("@");
+		    System.out.println(split[0]);
+		    dto.setId(split[0]);
+		    
+			Member kakaoLogin = mmService.kakaoSignInCheck(dto);
+			
+//			 System.out.println("test : " + dto.getToken());
+			
+			if (kakaoLogin == null) {
+				
+				mmService.kakaoInsert(dto);
+				
+//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+//				session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+	            session(dto, httpSession); 
+				returnMap.put("rt", "success");
+			} else {
+//				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+				
+				// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+				session(kakaoLogin, httpSession);
+				returnMap.put("rt", "success");
+			}
+			return returnMap;
+		}
 	
 }

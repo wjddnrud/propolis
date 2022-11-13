@@ -84,6 +84,7 @@
 			,dob
 			,gender
 			,job
+			,email
 			,zipcode
 			,address
 			,address_detail
@@ -155,7 +156,7 @@
 			,lastLoginDate = #{lastLoginDate}
 			,delNY = #{delNY}
 		WHERE 1=1
-			seq = #{shSeq}
+			seq = #{seq}
 	</update>
 	
 	<delete id="delete">

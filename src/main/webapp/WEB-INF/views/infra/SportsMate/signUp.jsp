@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="is-preload">
@@ -61,8 +62,9 @@
 					<section>
 						<!-- <h2>회원가입</h2> -->
 						<form name="signUpForm" enctype="multipart/form-data" method="post">
-							<input type="hidden" name="shSeq">
+							<input type="hidden" name="seq" value="${sessSeq}">
 							<input type="hidden" name="delNY">
+							
 							<div class="row gtr-uniform">
 							
 								<div id="ifmmUploadedImage1View" class="col-12 justify-content-center" class="filebox" style="text-align: center;">
@@ -73,7 +75,7 @@
 								 
 								<div class="col-6 col-4-medium">
 									<label for="id_input">ID</label>
-									<input type="text" name="id" id="id_input" placeholder="영문,숫자 5~10자" />
+									<input type="text" name="id" id="id_input" value="${one.id }" placeholder="영문,숫자 5~10자" />
 									<span id="idCheck_span"></span>
 									<input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
 								</div>
@@ -85,11 +87,11 @@
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="name">이름</label>
-									<input type="text" name="name" id="name" value="" autocomplete="off" placeholder="" />
+									<input type="text" name="name" id="name" value="${one.name }" autocomplete="off" placeholder="" />
 								</div>
 								<div class="col-6">
 									<label for="gender">성별</label>
-									<select name="gender" id="gender" value="">
+									<select name="gender" id="gender" value="${one.gender}">
 										<option value="">- 선택 -</option>
 										<option value="1">남성</option>
 										<option value="2">여성</option>
@@ -98,16 +100,16 @@
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="job">직업</label>
-									<input type="text" name="job" id="job" value="" autocomplete="off" placeholder="" />
+									<input type="text" name="job" id="job" value="${one.job }" autocomplete="off" placeholder="" />
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="dob">생년월일</label>     <!-- datepicker로 바꿔주기 -->
 									<!-- <input type="text" name="dob" id="dob" value="" placeholder="ex)19951027(년도월일)" /> -->
-									<input value="" autocomplete="off" class="form-control me-1" name="dob" type="text" placeholder="" id="datepicker">
+									<input value="${one.dob }" autocomplete="off" class="form-control me-1" name="dob" type="text" placeholder="" id="datepicker">
 								</div>
 								<div class="col-2">
 									<label for="telecom">통신사</label>
-									<select name="telecom" id="telecom" value="">
+									<select name="telecom" id="telecom" value="${one.telecom }">
 										<option value="">- 선택 -</option>
 										<option value="1">SKT</option>
 										<option value="2">KT</option>
@@ -116,7 +118,7 @@
 								</div>
 								<div class="col-5 col-12-xsmall">
 									<label for="phone">휴대전화</label>
-									<input type="text" name="phoneNumber" id="phoneNumber" value="" placeholder="'-'없이 번호만 입력해주세요." />
+									<input type="text" name="phoneNumber" id="phoneNumber" value="${one.phoneNumber }" placeholder="'-'없이 번호만 입력해주세요." />
 									<input type="hidden" id="phonecheckcode">
 									<input id="checkPhone" type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
 								</div>
@@ -130,22 +132,22 @@
 								
 								<div class="col-4 col-12-xsmall">
 									<label for="zipcode">Zip Code</label>
-									<input type="text" name="zipcode" id="zipcode" value="" placeholder="우편번호" />
+									<input type="text" name="zipcode" id="zipcode" value="${one.zipcode }" placeholder="우편번호" />
 									<input type="button" onclick="searchAddress()" class="primary" value="주소 검색" style="margin-top: 10px;" />
 								</div>
 								<div class="col-8 col-12-xsmall">
 									<label for="address">주소</label>
-									<input type="text" name="address" id="address" value="" placeholder="주소" />
-									<input type="text" name="address_detail" id="address_detail" value="" placeholder="상세주소" style="margin-top: 10px;" />
+									<input type="text" name="address" id="address" value="${one.address }" placeholder="주소" />
+									<input type="text" name="address_detail" id="address_detail" value="${one.address_detail }" placeholder="상세주소" style="margin-top: 10px;" />
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="email">Email</label>
-									<input type="text" name="email" id="email" value="" placeholder="Email@example.com" />
+									<input type="text" name="email" id="email" value="${one.email }" placeholder="Email@example.com" />
 									<span>계정 분실 시 본인인증 정보로 활용됩니다.</span>
 								</div>
 								<div class="col-6">
 									<label for="way_to_regist">가입경로</label>
-									<select name="way_to_regist" id="way_to_regist" value="">
+									<select name="way_to_regist" id="way_to_regist" value="${one.way_to_regist }">
 										<option value="">- 선택 -</option>
 										<option value="1">지인추천</option>
 										<option value="1">인터넷 광고</option>
@@ -178,7 +180,7 @@
 										<li><input type="reset" value="Reset" /></li>
 										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
 										<li><a id="signUp" class="button primary">sign-up</a></li>
-										<li><input type="button" value="cancle" onclick="location.href='/signIn'" /></li>
+										<li><input type="button" value="cancle" id="cancle" /></li>
 									</ul>
 								</div>
 							</div>
@@ -225,7 +227,9 @@
 	
 	<script type="text/javascript">
 	
-		var goUrlInst = "/signUpInst";    /* # -> */
+		var goUrlInst = "/memberInst";    /* # -> */
+		var goUrlUpdt = "/memberUpdt";
+		var goUrlMyPage = "/myPageCommunityList";
 		
 		var form = $("form[name=signUpForm]");
 		var seq = $("input:hidden[name=shSeq]");
@@ -389,8 +393,6 @@
 		/* === checkId === */
 		$("#id").on("focusout", function(){ 
 			
-			validationTest
-			
 			if(!checkId('id', 2, 0, "영대소문자, 숫자, 특수문자(-_.), 4~10자리만 입력 가능합니다")) {
 				return false;
 			} else {
@@ -535,11 +537,38 @@
 				return false;
 			}
 			
-			form.attr("action", goUrlInst).submit();
-
-			alert("SportsMate 회원가입을 축하합니다!");
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		if (validationInst() == false) return false;
+	 			/* setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
+				setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy")); */
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
+		   		/* if (validationUpdt() == false) return false; */
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+			
+			Swal.fire({
+				  title: 'SportsMate의 회원이 되신것을 축하합니다!',
+				  showClass: {
+				    popup: 'animate__animated animate__fadeInDown'
+				  },
+				  hideClass: {
+				    popup: 'animate__animated animate__fadeOutUp'
+				  }
+				})
 		});
 		
+		$("#cancle").on("click", function() {
+			if(seq.val() == "0" || seq.val() == "") {
+				form.attr("action","/signIn").submit();
+			} else {
+				form.attr("action",goUrlMyPage).submit();
+			}
+		});
 		
 		
 		/* 휴대전화 인증 s */
