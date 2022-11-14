@@ -52,31 +52,6 @@ public class CommonController {
 		model.addAttribute("foodCount", foodCount);
 		
 		
-		/*
-		 * String nowString = UtilDateTime.nowString(); String today =
-		 * nowString.substring(0,4) + "-" + nowString.substring(5,7) + "-" +
-		 * nowString.substring(8,10);
-		 * 
-		 * System.out.println("today : " + today);
-		 * 
-		 * Community community = new Community(); community.setCreateDate(today);
-		 * community.setCategory("1");
-		 * 
-		 * int dietCountNew = cmService.selectCountNewFromCategory(community);
-		 * 
-		 * community.setCategory("2");
-		 * 
-		 * int weightCountNew = cmService.selectCountNewFromCategory(community);
-		 * 
-		 * community.setCategory("3");
-		 * 
-		 * int foodCountNew = cmService.selectCountNewFromCategory(community);
-		 * 
-		 * model.addAttribute("dietCountNew", dietCountNew);
-		 * model.addAttribute("weightCountNew", weightCountNew);
-		 * model.addAttribute("foodCountNew", foodCountNew);
-		 */
-		
 		return "infra/SportsMate/main";
 	}
 	
@@ -382,5 +357,5 @@ public class CommonController {
 			}
 			return returnMap;
 		}
-	
+	 
 }

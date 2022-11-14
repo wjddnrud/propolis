@@ -56,7 +56,6 @@
 					<section class="wrapper style5">
 						<div class="inner" style="width: 50%;">
 							<section>
-								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 								<div class="row pb-3">
 									<div class="col-6 pt-5" style="font-weight: bold; text-align: right; vertical-align: middle;">
 										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;">
@@ -97,6 +96,7 @@
 								<br>
 								
 								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
+								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 								
 								

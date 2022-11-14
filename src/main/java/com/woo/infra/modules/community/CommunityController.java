@@ -49,7 +49,7 @@ public class CommunityController {
 		
 		model.addAttribute("list", list);
 		
-		return "infra/SportsMate/community"; 
+		return "infra/SportsMate/communityList"; 
 	}
 	
 	

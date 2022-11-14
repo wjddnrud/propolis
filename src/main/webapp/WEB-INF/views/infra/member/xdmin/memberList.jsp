@@ -15,6 +15,12 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<title>Admin_memberList</title>
+	
+	<style type="text/css">
+			.on:hover {
+				cursor: pointer;
+			}
+	</style>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -195,7 +201,7 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
-											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')">
+											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')" class="on">
 												<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
 												<label for="checkbox${status.count }"></label>
 												</td> --%>

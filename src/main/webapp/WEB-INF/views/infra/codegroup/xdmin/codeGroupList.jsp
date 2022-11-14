@@ -15,6 +15,11 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<title>Admin_CodeGroupList</title>
+	<style type="text/css">
+			.on:hover {
+				cursor: pointer;
+			}
+	</style>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -158,7 +163,7 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="statusList">
-											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')">
+											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')" class="on">
 												<!-- <td><input type="checkbox" id="demo-human" name="demo-human"><label></label></td> -->
 												<%-- <td><c:out value="${list.seq }"/></td> --%> <!-- seq 데이터 보여주기만 -->
 												<td><c:out value="${list.seq}"/>

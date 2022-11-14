@@ -24,7 +24,7 @@
 		<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
 		
 		<style type="text/css">
-			.in:hover {
+			.on:hover {
 				cursor: pointer;
 			}
 		</style>
@@ -100,7 +100,7 @@
 											
 											
 												<c:forEach items="${list}" var="list" varStatus="statusList">
-													<tr onclick="viewForm('${list.seq}')" class="in">
+													<tr onclick="viewForm('${list.seq}')" class="on">
 														<td style="text-align: center;"><c:out value="${list.seq }"/></td>
 														<td style="text-align: center;">
 															<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
