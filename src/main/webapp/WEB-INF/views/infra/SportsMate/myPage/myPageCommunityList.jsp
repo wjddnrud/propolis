@@ -74,7 +74,7 @@
 										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
 										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
 										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
-										<a href="/member/memberForm" class="button mt-3">정보 수정</a>
+										<a href="/member/memberUserForm" class="button mt-3">정보 수정</a>
 									</div>
 								</div>
 								<div>

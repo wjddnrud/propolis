@@ -227,8 +227,8 @@
 	
 	<script type="text/javascript">
 	
-		var goUrlInst = "/memberInst";    /* # -> */
-		var goUrlUpdt = "/memberUpdt";
+		var goUrlInst = "/signUpInst";    /* # -> */
+		var goUrlUpdt = "/memberUserUpdt";
 		var goUrlMyPage = "/myPageCommunityList";
 		
 		var form = $("form[name=signUpForm]");

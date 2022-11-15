@@ -102,7 +102,7 @@
 
 								
 								<!-- <button id="btnSave" type="button">등록</button> -->
-								<a  id="btnSave" class="button primary">등록</a>
+								<a  id="btnSave" class="button primary">수정</a>
 								<a href="/member/memberList" class="button">취소</a>
 							</center>
 						</form>
@@ -243,11 +243,15 @@
 		
 			var goUrlList = "/member/memberList";    /* # -> */
 			var goUrlInst = "/member/memberInst";    /* # -> */
-			var goUrlUpdt = "/member/memberUpdt";    /* # -> */
+			var goUrlUpdt = "/member/memberAdminUpdt";    /* # -> */
 			var goUrlUele = "/member/memberUele";    /* # -> */
 			var goUrlDele = "/member/memberDele";    /* # -> */
 			
 			var form = $("form[name=forma]");
+		
+			$("#btnSave").on("click", function() {
+				form.attr("action", goUrlUpdt).submit();
+			});
 			
 		</script>
 	</body>

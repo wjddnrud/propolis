@@ -41,13 +41,13 @@
 			<exclude-mapping path="/member/checkPhone"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/signInCheck" />
+			<exclude-mapping path="/signUpInst" />
 			<exclude-mapping path="/signUp" />
-			<exclude-mapping path="/member/memberInst" />
 			<exclude-mapping path="/signIn" />
 			<exclude-mapping path="/logout" />
-			<exclude-mapping path="/member/memberUpdt" />
 			
-			
+			<!-- 네이버 로그인 -->
+			<exclude-mapping path="/naverLoginProc" />
 			
 			<!-- 카카오 로그인(controller, 카카오톡 서버 controller) -->
 			<exclude-mapping path="/kakaoLoginProc"/>

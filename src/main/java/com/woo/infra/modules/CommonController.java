@@ -314,48 +314,83 @@ public class CommonController {
 	}
 
 	 public void session(Member dto, HttpSession httpSession) {
-		System.out.println("kakaologin : " + dto.getSeq());
-		System.out.println("kakaologin : " + dto.getId());
-		System.out.println("kakaologin : " + dto.getName());
-		System.out.println("kakaologin : " + dto.getEmail());
+		System.out.println("snslogin : " + dto.getSeq());
+		System.out.println("snslogin : " + dto.getId());
+		System.out.println("snslogin : " + dto.getName());
+		System.out.println("snslogin : " + dto.getEmail());
 	     httpSession.setAttribute("sessSeq", dto.getSeq());    
 	     httpSession.setAttribute("sessId", dto.getId());
 	     httpSession.setAttribute("sessName", dto.getName());
 	     httpSession.setAttribute("sessEmail", dto.getEmail());
 	 }
 	 
-	 @ResponseBody
-		@RequestMapping(value = "googleLoginProc")
-		public Map<String, Object> googleLoginProc(Member dto, HttpSession httpSession) throws Exception {
-		    Map<String, Object> returnMap = new HashMap<String, Object>();
-		    
-		    String txt = dto.getId();
-		    System.out.println(dto.getId());
-		    
-		    String[] split = txt.split("@");
-		    System.out.println(split[0]);
-		    dto.setId(split[0]);
-		    
-			Member kakaoLogin = mmService.kakaoSignInCheck(dto);
-			
+ 	@ResponseBody
+	@RequestMapping(value = "googleLoginProc")
+	public Map<String, Object> googleLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+	    String txt = dto.getId();
+	    System.out.println(dto.getId());
+	    
+	    String[] split = txt.split("@");
+	    System.out.println(split[0]);
+	    dto.setId(split[0]);
+	    
+		Member kakaoLogin = mmService.kakaoSignInCheck(dto);
+		
 //			 System.out.println("test : " + dto.getToken());
+		
+		if (kakaoLogin == null) {
 			
-			if (kakaoLogin == null) {
-				
-				mmService.kakaoInsert(dto);
-				
+			mmService.kakaoInsert(dto);
+			
 //				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 //				session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
-	            session(dto, httpSession); 
-				returnMap.put("rt", "success");
-			} else {
+            session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
 //				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-				
-				// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
-				session(kakaoLogin, httpSession);
-				returnMap.put("rt", "success");
-			}
-			return returnMap;
+			
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(kakaoLogin, httpSession);
+			returnMap.put("rt", "success");
 		}
+		return returnMap;
+	}
+	 
+ 	@ResponseBody
+	@RequestMapping(value = "naverLoginProc")
+	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+	    String txt = dto.getId();
+	    System.out.println(dto.getId());
+	    
+	    String[] split = txt.split("@");
+	    System.out.println(split[0]);
+	    dto.setId(split[0]);
+	    
+		Member naverLogin = mmService.kakaoSignInCheck(dto);
+		
+//		 System.out.println("test : " + dto.getToken());
+		
+		if (naverLogin == null) {
+			
+			mmService.kakaoInsert(dto);
+			
+//			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+//			session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
+//			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(naverLogin, httpSession);
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+	 
 	 
 }

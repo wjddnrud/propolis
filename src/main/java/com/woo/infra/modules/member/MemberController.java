@@ -79,8 +79,17 @@ public class MemberController {
 		return "infra/member/xdmin/memberList";
 	}
 
-	@RequestMapping(value = "memberForm")
-	public String memberForm(Model model, MemberVo vo, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "memberAdminForm")
+	public String memberAdminForm(Model model, MemberVo vo, HttpSession httpSession) throws Exception {
+
+		Member selectOne = service.selectOne(vo);
+		model.addAttribute("one", selectOne);
+
+		return "infra/member/xdmin/memberForm";
+	}
+	
+	@RequestMapping(value = "memberUserForm")
+	public String memberUserForm(Model model, MemberVo vo, HttpSession httpSession) throws Exception {
 
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 //		System.out.println("getAttribute: " + sessSeq);
@@ -94,21 +103,31 @@ public class MemberController {
 	}
 
 	
-	@RequestMapping(value = "memberInst") 
-	public String memberInsert(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
-	  
-		int insert = service.insert(dto);
-		
-		redirectAttributes.addFlashAttribute("vo", vo);
-		
-		System.out.println("mmService.insert : " + insert);
-		
-		 return "redirect:/signIn"; 
-	}
+//	@RequestMapping(value = "memberInst") 
+//	public String memberInsert(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+//	  
+//		int insert = service.insert(dto);
+//		
+//		redirectAttributes.addFlashAttribute("vo", vo);
+//		
+//		System.out.println("mmService.insert : " + insert);
+//		
+//		 return "redirect:/signIn"; 
+//	}
 	 
 
-	@RequestMapping(value = "memberUpdt")
-	public String memberUpdate(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "memberAdminUpdt")
+	public String memberAdminUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.update(dto);
+
+		redirectAttributes.addFlashAttribute("vo", vo);
+
+		return "infra/member/xdmin/memberList";
+	}
+	
+	@RequestMapping(value = "memberUserUpdt")
+	public String memberUserUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.update(dto);
 

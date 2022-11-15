@@ -373,13 +373,9 @@
 				  	});
 				} );
 				
-				function regist() {
-					location.href = "/member/memberForm";
-				}
-				
 				var goUrlList = "/member/memberList";    /* # -> */
 				var goUrlInst = "/member/memberInst";    /* # -> */
-				var goUrlUpdt = "/member/memberUpdt";    /* # -> */
+				var goUrlUpdt = "/member/memberAdminUpdt";    /* # -> */
 				var goUrlUele = "/member/memberUele";    /* # -> */
 				var goUrlDele = "/member/memberDele";    /* # -> */
 				
@@ -390,7 +386,7 @@
 				
 				editForm = function(seq) {
 					editSeq.attr("value", seq);
-					form.attr("action", "/member/memberForm").submit();
+					form.attr("action", "/member/memberAdminForm").submit();
 				}
 				
 				goList = function(thisPage) {

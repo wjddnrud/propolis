@@ -99,6 +99,7 @@
 													  </a>
 													 </li>
 													<li><a class="button small" id="kakaoBtn">Kakao</a></li>
+													<li><a class="button small" id="naverIdLogin">Naver</a></li>
 												</ul>
 											</div>
 										</div>
@@ -321,6 +322,7 @@
 		    	/* 카카오 로그인 e */
 		    	</script>
 		    	
+		    	
 		    	<!-- 구글 api 사용을 위한 스크립트 -->
 				<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 		    	<script>
@@ -365,6 +367,73 @@
 					console.log(t);
 				}
 		    	/* 구글 로그인 e */
+			</script>
+			
+			<!-- 네이버 로그인 -->
+			<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+			<script>
+				/* naver login test s */
+		   		
+		   		/* var naverLogin = new naver.LoginWithNaverId(
+					{
+						clientId: "b8EhDTV3tvvAE_gRRBoJ",
+						callbackUrl: "http://localhost:8080/userLogin",
+						isPopup: false,
+						loginButton: {color: "green", type: 3, height: 70} 
+					}
+				); */
+				var naverLogin = new naver.LoginWithNaverId(
+						{
+							clientId: "FYikeaFZO1wwqpx7Hs5T",
+							callbackUrl: "http://localhost:8080/main",
+							isPopup: true
+						}
+					);
+		
+			    	naverLogin.init();
+			    	
+				$("#naverIdLogin").on("click", function(){ 
+					
+		   			naverLogin.getLoginStatus(function (status) {
+		   				if (!status) {
+		   					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+		
+		   					naverLogin.authorize();
+		   					setLoginStatus();
+		   				}
+		   			});
+				});
+		   		
+		   		function setLoginStatus() {
+		   			
+					$.ajax({
+						async: true
+						,cache: false
+						,type:"POST"
+						,url: "/naverLoginProc"
+						,data: {
+							"name": naverLogin.user.name, 
+							"phoneNumber": naverLogin.user.mobile, 
+							"email": naverLogin.user.email, 
+							"gender": naverLogin.user.gender == 'M' ? 1 : 2, 
+							"dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, 
+							"profileImg": naverLogin.user.profile_image, 
+							"id": naverLogin.user.id
+							}
+						,success : function(response) {
+							if (response.rt == "success") {
+								window.location.href = "/main";
+							} else {
+								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+								return false;
+							}
+						},
+						error : function() {
+							alert("알 수 없는 에러 [ " + error + " ]");
+						}
+					});
+				}
+		    	/* naver login test e */
 			</script>
 	</body>
 </html>
