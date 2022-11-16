@@ -11,7 +11,7 @@ public class Member extends Base {
 	private String dob;
 	private String gender;
 	private String job;
-	private String zipcode;
+	private Integer zipcode;
 	private String address;
 	private String address_detail;
 	private String telecom;
@@ -66,10 +66,10 @@ public class Member extends Base {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	public String getZipcode() {
+	public Integer getZipcode() {
 		return zipcode;
 	}
-	public void setZipcode(String zipcode) {
+	public void setZipcode(Integer zipcode) {
 		this.zipcode = zipcode;
 	}
 	public String getAddress() {

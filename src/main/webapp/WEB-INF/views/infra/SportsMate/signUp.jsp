@@ -68,7 +68,7 @@
 							<div class="row gtr-uniform">
 							
 								<div id="ifmmUploadedImage1View" class="col-12 justify-content-center" class="filebox" style="text-align: center;">
-									<img id="imgProfile" src="/resources/images/images/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
+									<img id="imgProfile" src="/resources/uploaded/member/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
 									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="margin-left: 50%;">
  								</div>
  								
@@ -177,10 +177,9 @@
 								</div> -->
 								<div class="col-12">
 									<ul class="actions fit" style="padding-top: 60px;">
-										<li><input type="reset" value="Reset" /></li>
-										<!-- <li><input type="submit" value="Sign-up" class="primary" /></li> -->
+										<li><input type="reset" value="reset"></li>
 										<li><a id="signUp" class="button primary">sign-up</a></li>
-										<li><input type="button" value="cancle" id="cancle" /></li>
+										<li><input type="button" id="cancle" value="cancle"></li>
 									</ul>
 								</div>
 							</div>
@@ -232,7 +231,7 @@
 		var goUrlMyPage = "/myPageCommunityList";
 		
 		var form = $("form[name=signUpForm]");
-		var seq = $("input:hidden[name=shSeq]");
+		var seq = $("input:hidden[name=seq]");
 	
 		
 		

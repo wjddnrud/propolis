@@ -65,6 +65,8 @@ public class CommonController {
 		mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
 //		System.out.println("getSeq : " + mmdto.getSeq());
 		Member img = mmService.selectMemberImg(mmdto);
+		System.out.println("getPath:" + img.getPath());
+		System.out.println("getUuidName:" + img.getUuidName());
 		model.addAttribute("img",img);
 		
 		cmdto.setWriter("" + sessSeq);

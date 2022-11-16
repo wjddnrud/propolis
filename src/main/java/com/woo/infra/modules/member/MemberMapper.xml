@@ -140,9 +140,7 @@
 	<update id="update">
 		UPDATE member
 		SET
-			id = #{id}
-			,password = #{password}
-			,name = #{name}
+			name = #{name}
 			,dob = #{dob}
 			,gender = #{gender}
 			,job = #{job}
@@ -152,11 +150,9 @@
 			,telecom = #{telecom}
 			,phoneNumber = #{phoneNumber}
 			,way_to_regist = #{way_to_regist}
-			,createDate = #{createDate}
-			,lastLoginDate = #{lastLoginDate}
 			,delNY = #{delNY}
 		WHERE 1=1
-			seq = #{seq}
+			AND seq = #{seq}
 	</update>
 	
 	<delete id="delete">
@@ -334,10 +330,11 @@
 		    ,upmm.uuidName
 		    ,upmm.path
 		FROM member mm
-		JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
-		WHERE 1=1
+		LEFT JOIN uploadedMember upmm
+		ON mm.seq = upmm.pSeq 
 			AND upmm.delNY = 0
-		    AND upmm.pSeq = #{seq}
+		WHERE 1=1
+		    AND mm.seq = #{seq}
 	</select>
 	
 

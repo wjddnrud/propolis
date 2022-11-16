@@ -178,7 +178,7 @@
 									if(response.adminNY == 1) {
 										location.href="/main";  //일반 사용자
 									} else {
-										location.href="/classify";   //관리자
+										location.href="/member/memberList";   //관리자
 									}
 								});
 							} else {
@@ -233,7 +233,7 @@
 										if(response.adminNY == 1) {
 											location.href="/main";  //일반 사용자
 										} else {
-											location.href="/codegroup/codeGroupList";   //관리자
+											location.href="/member/memberList";   //관리자
 										}
 									});
 								} else {

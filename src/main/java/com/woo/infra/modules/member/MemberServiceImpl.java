@@ -112,7 +112,7 @@ public class MemberServiceImpl implements MemberService{
 
 				dao.insertMemberUpload(dto);
 				j++;
-			} 
+			}
 		}
 		return insert;	
 	}
@@ -126,7 +126,15 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectMemberImg(Member dto) throws Exception {
 
-		return dao.selectMemberImg(dto);
+		Member selectMemberImg = dao.selectMemberImg(dto);
+		
+		System.out.println("dao.selectMemberImg : " + selectMemberImg);
+		
+		if(selectMemberImg.getPath() == null || selectMemberImg.getUuidName() == null) {
+			selectMemberImg.setPath("/resources/uploaded/member/");
+			selectMemberImg.setUuidName("noprofil.jpg");
+		}
+		return selectMemberImg;
 	}
 
 	@Override

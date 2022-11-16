@@ -123,7 +123,7 @@ public class MemberController {
 
 		redirectAttributes.addFlashAttribute("vo", vo);
 
-		return "infra/member/xdmin/memberList";
+		return "redirect:/member/memberList";
 	}
 	
 	@RequestMapping(value = "memberUserUpdt")
@@ -143,7 +143,7 @@ public class MemberController {
 
 		redirectAttributes.addFlashAttribute("vo", vo);
 
-		return "redirect:/member/memberList";
+		return "redirect:/member/xdmin/memberList";
 
 	}
 
