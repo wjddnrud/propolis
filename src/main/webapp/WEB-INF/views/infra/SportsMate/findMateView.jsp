@@ -81,7 +81,7 @@
 						<p>새로운 그룹에 join 해보세요!</p>
 					</header>
 					<section class="wrapper style5">
-						<div class="inner">
+						<div class="inner" style="width: 90%;">
 							<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 							<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 							<form name="viewForm"> 
@@ -90,75 +90,80 @@
 									<div class="row" style="text-align: center;">
 										<!-- 지도 부분 -->
 										<div class="col-6">
-											<p style="text-align: start; margin-bottom: 0;"><b>운동 시작 위치 : </b> </p>
-											<div id="map" style="width:100%; height: 100%;"></div> 
+											<div id="map" style="width: 100%; height: 100%;"></div>
 										</div>
 										<!-- 프로필 부분 -->
-										<div class="col-6">
-											<div style="width: ;">
-												<div class="row justify-content-center mb-3">
-													<div class="col">
-														<h3 class="mb-2 text-center"><b><c:out value="${one.group_name }"/></b></h3>
-													</div>
+										<div class="col-6" style="padding-left: 100px;">
+											<div class="row justify-content-center mb-3">
+												<div class="col">
+													<h3 class="mb-2 text-center"><b style="color: #6b33ed;"><c:out value="${one.group_name }"/></b></h3>
 												</div>
-												<div class="row justify-content-center mb-5">
-													<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%;">
+											</div>
+											<div class="row justify-content-center mb-5">
+												<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%; padding: 0;">
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>작성자 ID</b></span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>작성자 ID</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.creator }"/></span>
-													</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.creator }"/></span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>운동종목</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.sports }"/></span>
-													</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>운동종목</b></span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>모집인원</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.people_number }"/>명</span>
-													</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.sports }"/></span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>운동일</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.playDate }"/></span>
-													</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>모집인원</b></span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>시작시간</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.startTime }"/>시</span>
-													</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.people_number }"/>명</span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>종료시간</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.endTime }"/>시</span>
-													</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>운동장소</b></span>
 												</div>
-												<div class="row justify-content-between mb-2">
-													<div class="col-3 text-start">
-														<span><b>그룹설명</b></span>
-													</div>
-													<div class="col-9 text-start">
-														<span><c:out value="${one.detail }"/></span>
-													</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.location }"/></span>
+												</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>운동일</b></span>
+												</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.playDate }"/></span>
+												</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>시작시간</b></span>
+												</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.startTime }"/>시</span>
+												</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>종료시간</b></span>
+												</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.endTime }"/>시</span>
+												</div>
+											</div>
+											<div class="row justify-content-between mb-2">
+												<div class="col-3 text-start">
+													<span><b>그룹설명</b></span>
+												</div>
+												<div class="col-9 text-start">
+													<span><c:out value="${one.detail }"/></span>
 												</div>
 											</div>
 										</div>
@@ -203,6 +208,7 @@
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries"></script>
 			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <!-- alert창 꾸미기 -->
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707"></script>
 			<script>
 				var form = $("form[name=viewForm]");
 			
@@ -213,31 +219,14 @@
 					});
 				});
 			
-				
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-				    mapOption = { 
-				        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-				        level: 3 // 지도의 확대 레벨
-				    };
-				
-				var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-				
-				// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-				var mapTypeControl = new kakao.maps.MapTypeControl();
-				
-				// 지도 타입 컨트롤을 지도에 표시합니다
-				map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-				
-				var geocoder = new kakao.maps.services.Geocoder();
-
-				var callback = function(result, status) {
-				    if (status === kakao.maps.services.Status.OK) {
-				        console.log(result);
-				    }
+				/* 지도부분 */
+				var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+				var options = { //지도를 생성할 때 필요한 기본 옵션
+					center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+					level: 3 //지도의 레벨(확대, 축소 정도)
 				};
 
-				geocoder.addressSearch('해남군 송지면', callback);
-				
+				var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 			</script>
 	</body>
 </html>

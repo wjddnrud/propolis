@@ -57,10 +57,11 @@
 						<div class="inner" style="width: 50%;">
 							<section>
 								<div class="row pb-3">
-									<div class="col-6 pt-5" style="font-weight: bold; text-align: right; vertical-align: middle;">
+									<div class="col-6 pt-3" style="font-weight: bold; text-align: right; vertical-align: middle;">
 										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;">
+										<br/><a href="/member/memberUserForm" class="button mt-3">정보 수정</a>
 									</div>
-									<div class="col-6" style="text-align: left; vertical-align: middle;">
+									<div class="col-6" style="text-align: left;">
 										<b>[회원 정보]</b><br/><br/>
 										<b>이름: </b><c:out value="${one.name }"/><br>
 										<b>ID: </b><c:out value="${one.id }"/><br>
@@ -74,10 +75,9 @@
 										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
 										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
 										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
-										<a href="/member/memberUserForm" class="button mt-3">정보 수정</a>
 									</div>
 								</div>
-								<div>
+								<div class="mt-3">
 									<ul class="nav nav-tabs">
 										<!-- <li class="nav-item">
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>

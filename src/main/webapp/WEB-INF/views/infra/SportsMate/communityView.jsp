@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <jsp:useBean id="CodeServiceImpl" class="com.woo.infra.modules.code.CodeServiceImpl"/>
+<% pageContext.setAttribute("br", "\n"); %>
 
 
 <!DOCTYPE HTML>
@@ -99,7 +100,7 @@
 														<th>작성자</th>
 														<th style="width: 600px;">제목</th>
 														<th>작성일자</th>
-														<th>조회수</th>
+														<th>추천수</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -133,7 +134,7 @@
 														        <img name="" alt="첨부파일 없음" src="${img.path}${img.uuidName}" style="max-width: 100%; max-height: 100%;">
 														    </div>
 														    <br/>
-															<c:out value="${one.contents }"/>
+															<c:out value="${fn:replace(one.contents, br, '<br/>')}"/>
 														</td>
 													</tr>
 												</tbody>
@@ -239,10 +240,12 @@
 							txt += '</div> ';
 							txt +='<span><b>'+ result.writer +'</b></span>';
 							txt +='<span> 방금전</span>';
-							txt +='<input class="form-control" type="text" name="comments_contents" value="'+ result.contents +'" disabled readonly>';
+							txt +='<input style="width: 50%;" class="form-control-sm mb-4" type="text" name="comments_contents" value="'+ result.contents +'" disabled readonly>';
 							txt += '</div>';
 							
 							$("#comment_area").prepend(txt);
+							
+							form
 						},
 						error:function(){
 							alert("ajax.. error..");

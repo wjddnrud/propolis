@@ -324,7 +324,7 @@
 		    	
 		    	
 		    	<!-- 구글 api 사용을 위한 스크립트 -->
-				<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+				<!-- <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 		    	<script>
 		    	/* 구글 로그인 s */
 		    	//처음 실행하는 함수
@@ -365,8 +365,8 @@
 				}
 				function onSignInFailure(t){		
 					console.log(t);
-				}
-		    	/* 구글 로그인 e */
+				} -->
+		    	<!-- /* 구글 로그인 e */ -->
 			</script>
 			
 			<!-- 네이버 로그인 -->
@@ -399,10 +399,21 @@
 		   					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
 		
 		   					naverLogin.authorize();
+		   				} else {
 		   					setLoginStatus();
 		   				}
 		   			});
 				});
+				
+				window.addEventListener('load', function () {
+					if (naverLogin.accessToken != null) { 
+			  			naverLogin.getLoginStatus(function (status) {
+			  				if (status) {
+			  					setLoginStatus();
+			  				}
+		  				});
+					}
+		   		});
 		   		
 		   		function setLoginStatus() {
 		   			

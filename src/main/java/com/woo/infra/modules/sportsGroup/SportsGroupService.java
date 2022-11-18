@@ -3,6 +3,7 @@ package com.woo.infra.modules.sportsGroup;
 import java.util.List;
 
 import com.woo.infra.common.util.BaseVo;
+import com.woo.infra.modules.member.Member;
 
 
 
@@ -19,5 +20,7 @@ public interface SportsGroupService {
 	public List<SportsGroup> MyselectList(SportsGroup sgdto)throws Exception;
 	
 	public int selectOneCount(BaseVo vo) throws Exception;
+
+	public Member selectMemberImg(Member dto) throws Exception;
 	
 }

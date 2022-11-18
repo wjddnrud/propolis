@@ -203,11 +203,8 @@ public class CommonController {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		
 		Member signInCheck = mmService.signInCheck(dto);
 		System.out.println("signIn result: " + signInCheck);
-		
-		
 		
 		if (signInCheck != null) {
 			returnMap.put("rt", "success");

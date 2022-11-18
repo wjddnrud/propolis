@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.woo.infra.common.util.BaseVo;
 import com.woo.infra.common.util.UtilUpload;
+import com.woo.infra.modules.member.Member;
+import com.woo.infra.modules.member.MemberDao;
 
 @Service
 
@@ -15,6 +17,7 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	
 	@Autowired
 	SportsGroupDao dao;
+	MemberDao mmdao;
 
 	@Override
 	public List<SportsGroup> selectList(SportsGroupVo vo) throws Exception {
@@ -28,6 +31,11 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	public SportsGroup selectOne(SportsGroupVo vo) throws Exception {
 		
 		SportsGroup selectOne = dao.selectOne(vo);
+		
+		if(selectOne.getPath() == null || selectOne.getUuidName() == null) {
+			selectOne.setPath("/resources/uploaded/member/");
+			selectOne.setUuidName("noprofil.jpg");
+		}
 		
 //		System.out.println("selectOne dao : " + selectOne);
 		
@@ -87,6 +95,20 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 
 			
 		return dao.selectOneCount(vo);
+	}
+	
+	@Override
+	public Member selectMemberImg(Member dto) throws Exception {
+
+		Member selectMemberImg = mmdao.selectMemberImg(dto);
+		
+		System.out.println("dao.selectMemberImg : " + selectMemberImg);
+		
+		if(selectMemberImg.getPath() == null || selectMemberImg.getUuidName() == null) {
+			selectMemberImg.setPath("/resources/uploaded/member/");
+			selectMemberImg.setUuidName("noprofil.jpg");
+		}
+		return selectMemberImg;
 	}
 	
 	

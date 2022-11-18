@@ -81,8 +81,11 @@
 			,sg.viewCount
 			,sg.map
 			,sg.playDate
+			,upmm.path
+			,upmm.uuidName
 		FROM sportsGroup sg
-		JOIN member mm ON mm.seq = sg.creator
+		LEFT JOIN member mm ON mm.seq = sg.creator
+		LEFT JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
 		WHERE 1=1
 			AND sg.seq=#{shSeq}
 	</select>

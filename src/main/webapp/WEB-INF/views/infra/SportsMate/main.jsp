@@ -44,7 +44,7 @@
 											<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
 											<li><a href="/community/communityList">Community</a></li>
 											<li><a href="/myPageCommunityList">MyPage</a></li>
-											<li><a href="/logout">LOG-OUT</a></li>
+											<li><a href="javascript:logout()">LOG-OUT</a></li>
 										</c:if>
 									</ul>
 								</div>
@@ -145,7 +145,10 @@
 		<!-- 폰트어썸 -->
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript">
-			
+			function logout() {
+				localStorage.clear();
+				location.href="/logout";
+			}
 			</script>
 
 	</body>
