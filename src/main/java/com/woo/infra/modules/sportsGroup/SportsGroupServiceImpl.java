@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.woo.infra.common.util.BaseVo;
 import com.woo.infra.common.util.UtilUpload;
+import com.woo.infra.modules.base.Base;
 import com.woo.infra.modules.member.Member;
 import com.woo.infra.modules.member.MemberDao;
 
@@ -23,6 +24,13 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	public List<SportsGroup> selectList(SportsGroupVo vo) throws Exception {
 		
 //		System.out.println("selectList : " + dao.selectList());
+		
+		List<SportsGroup> selectList = dao.selectList(vo);
+		
+		if(((Base) selectList).getPath() == null || ((Base) selectList).getUuidName() == null) {
+			((Base) selectList).setPath("/resources/uploaded/member/");
+			((Base) selectList).setUuidName("noprofil.jpg");
+		}
 		
 		return dao.selectList(vo);
 	}

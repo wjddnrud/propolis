@@ -143,7 +143,7 @@
 											<center style="margin-left: 12%; margin-bottom: 30px;">
 												<a href="#" class="button">💪추천</a>
 												<a href="/community/communityList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
-												<a href="/communityNotify" class="button" style="float: right;">🚨신고</a>
+												<!-- <a href="/communityNotify" class="button" style="float: right;">🚨신고</a> -->
 											</center>
 											<hr>
 											
