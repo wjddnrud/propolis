@@ -23,15 +23,18 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	@Override
 	public List<SportsGroup> selectList(SportsGroupVo vo) throws Exception {
 		
-//		System.out.println("selectList : " + dao.selectList());
 		
 		List<SportsGroup> selectList = dao.selectList(vo);
 		
-		if(((Base) selectList).getPath() == null || ((Base) selectList).getUuidName() == null) {
-			((Base) selectList).setPath("/resources/uploaded/member/");
-			((Base) selectList).setUuidName("noprofil.jpg");
-		}
+		System.out.println("selectList : " + selectList);
 		
+//		sportgroup List 에 이미지 없이 생성한 방의 기본 이미지 지정 로직
+		
+//		if(selectList.getPath() == null || selectList.getUuidName() == null) {
+//			selectList.setPath("/resources/uploaded/sportsgroup/");
+//			selectList.setUuidName("basicImg.jpg");
+//		}
+		 
 		return dao.selectList(vo);
 	}
 
