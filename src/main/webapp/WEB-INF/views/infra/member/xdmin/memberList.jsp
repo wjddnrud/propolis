@@ -201,61 +201,61 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${list}" var="list" varStatus="status">
-											<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')" class="on">
-												<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
-												<label for="checkbox${status.count }"></label>
-												</td> --%>
-												<td><c:out value="${list.seq }"/></a></td>
-												<td><c:out value="${list.id }"/></td>
-												<%-- <td style="width: 300px;"><c:out value="${list.password }"/></td> --%>
-												<td><c:out value="${list.name }"/></td>
-												<td><c:out value="${list.dob }"/></td>
-												<%-- <td>
-													<c:choose>
-														<c:when test="${list.gender eq 0}">남성</c:when>
-														<c:when test="${list.gender eq 1}">여성</c:when>
-														<c:when test="${list.gender eq 2}">기타</c:when>
-													</c:choose>
-												</td> --%>
-												<td>
-													<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
-														<c:if test="${list.gender eq listGender.cc_key}"><c:out value="${listGender.cc_name }"/></c:if>
-													</c:forEach>
-												</td>
-												<td><c:out value="${list.job }"/></td>
-												<td><c:out value="${list.zipcode }"/></td>
-												<td><c:out value="${list.address }"/></td>
-												<td><c:out value="${list.address_detail }"/></td>
-												<%-- <td>
-													<c:choose>
-														<c:when test="${list.telecom eq 0 }">SKT</c:when>
-														<c:when test="${list.telecom eq 1 }">KT</c:when>
-														<c:when test="${list.telecom eq 2 }">LGT</c:when>
-													</c:choose>
-												</td> --%>
-												<td>
-													<c:forEach items="${listCodeTelecom}" var="listTelecom" varStatus="statusTelecom">
-														<c:if test="${list.telecom eq listTelecom.cc_key}"><c:out value="${listTelecom.cc_name }"/></c:if>
-													</c:forEach>
-												</td>
-												<td><c:out value="${list.phoneNumber }"/></td>
-												
-												<%-- <td>
-													<c:choose>
-														<c:when test="${list.way_to_regist eq 0 }">지인추천</c:when>
-														<c:when test="${list.way_to_regist eq 1 }">인터넷</c:when>
-														<c:when test="${list.way_to_regist eq 2 }">유튜브</c:when>
-														<c:when test="${list.way_to_regist eq 3 }">기타</c:when>
-													</c:choose>
-												</td> --%>
-												<td>
-													<c:forEach items="${listCodeWayReg}" var="listWayReg" varStatus="statusWayReg">
-														<c:if test="${list.way_to_regist eq listWayReg.cc_key}"><c:out value="${listWayReg.cc_name }"/></c:if>
-													</c:forEach>
-												</td>
-												<td><c:out value="${list.createDate }"/></td>
-												<td><c:out value="${list.lastLoginDate }"/></td>
-											</tr>
+												<tr style="color: black; text-align: center;" onclick="editForm('${list.seq}')" class="on">
+													<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
+													<label for="checkbox${status.count }"></label>
+													</td> --%>
+													<td><c:out value="${list.seq }"/></a></td>
+													<td><c:out value="${list.id }"/></td>
+													<%-- <td style="width: 300px;"><c:out value="${list.password }"/></td> --%>
+													<td><c:out value="${list.name }"/></td>
+													<td><c:out value="${list.dob }"/></td>
+													<%-- <td>
+														<c:choose>
+															<c:when test="${list.gender eq 0}">남성</c:when>
+															<c:when test="${list.gender eq 1}">여성</c:when>
+															<c:when test="${list.gender eq 2}">기타</c:when>
+														</c:choose>
+													</td> --%>
+													<td>
+														<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+															<c:if test="${list.gender eq listGender.cc_key}"><c:out value="${listGender.cc_name }"/></c:if>
+														</c:forEach>
+													</td>
+													<td><c:out value="${list.job }"/></td>
+													<td><c:out value="${list.zipcode }"/></td>
+													<td><c:out value="${list.address }"/></td>
+													<td><c:out value="${list.address_detail }"/></td>
+													<%-- <td>
+														<c:choose>
+															<c:when test="${list.telecom eq 0 }">SKT</c:when>
+															<c:when test="${list.telecom eq 1 }">KT</c:when>
+															<c:when test="${list.telecom eq 2 }">LGT</c:when>
+														</c:choose>
+													</td> --%>
+													<td>
+														<c:forEach items="${listCodeTelecom}" var="listTelecom" varStatus="statusTelecom">
+															<c:if test="${list.telecom eq listTelecom.cc_key}"><c:out value="${listTelecom.cc_name }"/></c:if>
+														</c:forEach>
+													</td>
+													<td><c:out value="${list.phoneNumber }"/></td>
+													
+													<%-- <td>
+														<c:choose>
+															<c:when test="${list.way_to_regist eq 0 }">지인추천</c:when>
+															<c:when test="${list.way_to_regist eq 1 }">인터넷</c:when>
+															<c:when test="${list.way_to_regist eq 2 }">유튜브</c:when>
+															<c:when test="${list.way_to_regist eq 3 }">기타</c:when>
+														</c:choose>
+													</td> --%>
+													<td>
+														<c:forEach items="${listCodeWayReg}" var="listWayReg" varStatus="statusWayReg">
+															<c:if test="${list.way_to_regist eq listWayReg.cc_key}"><c:out value="${listWayReg.cc_name }"/></c:if>
+														</c:forEach>
+													</td>
+													<td><c:out value="${list.createDate }"/></td>
+													<td><c:out value="${list.lastLoginDate }"/></td>
+												</tr>
 											</c:forEach>
 										</tbody>
 										<tfoot>
