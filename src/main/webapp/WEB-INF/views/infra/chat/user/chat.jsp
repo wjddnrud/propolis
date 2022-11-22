@@ -248,7 +248,7 @@
 	                    <div class="card mb-sm-3 mb-md-0 contacts_card">
 	                        <div class="card-header">
 	                            <div class="input-group">
-	                                <input type="text" placeholder="add ChatUser Seq..." id="cuMember" name="cuMember" class="form-control search">
+	                                <input type="text" placeholder="대화상대의 Seq를 입력해주세요." id="cuMember" name="cuMember" class="form-control search">
 	                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
 	                            </div>
 	                        </div>
@@ -257,7 +257,7 @@
 	                            
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
 	                            		
-										<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
+										<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})" style="cursor: pointer;">
 		                                    <div class="d-flex bd-highlight">
 		                                        <div class="img_cont">
 		                                            	<!-- 아래 path 와 uuidname 도 본인의 dto field에 맞게 수정 -->
@@ -269,7 +269,7 @@
 		                                        </div>
 		                                        <div class="chat_product_info">
 		                                            <span class="status"><c:out value="${list.id }"/></span>
-					                                 			<p>TEST TEXT FIELD</p>
+					                                 			<p>마지막 대화 내용</p>
 		                                        </div>
 		                                    </div>
 		                                </li>
@@ -292,7 +292,7 @@
 	                            <div class="input-group">
 	                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 	                                <textarea id="chatMessage" class="form-control type_msg"
-	                                    placeholder="Type your message..."></textarea>
+	                                    placeholder="메세지를 입력해주세요."></textarea>
 	                                <span class="input-group-text send_btn" id="sendBtn"><i class="fas fa-location-arrow"></i></span>
 	                            </div>
 	                        </div>
