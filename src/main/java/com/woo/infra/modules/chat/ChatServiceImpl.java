@@ -34,4 +34,20 @@ public class ChatServiceImpl implements ChatService{
 		return resultList;
 	}
 
+	@Override
+	public Chat createChat(int chatUserA, int chatUserB) throws Exception {
+		// TODO Auto-generated method stub
+		Chat dto = new Chat();
+		dao.insertChat(dto);
+		
+		dto.setCuMember(chatUserA);
+		dao.insertChatUser(dto);
+		
+		dto.setCuMember(chatUserB);
+		dao.insertChatUser(dto);
+		
+		return dao.selectOneChat(dto);
+	}
+
+	
 }

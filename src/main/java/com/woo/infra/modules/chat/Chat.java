@@ -9,10 +9,10 @@ public class Chat{
 	
 	//채팅 맴버 정보 추출을 위한 필드
 	//아래 필드도 본인의 DB테이블에 맞게 변경해주세요
-	private Integer mmSeq;       //유저 시퀀스
-	private String mmNickName;   //유저 이름 or 닉네임
-	private String upPath;       //프로필 이미지 경로
-	private String upUuidName;   //프로필 이미지 파일 이름
+	private Integer seq;       //유저 시퀀스
+	private String id;   //유저 이름 or 닉네임
+	private String Path;       //프로필 이미지 경로
+	private String UuidName;   //프로필 이미지 파일 이름
 	
 	
 	public Integer getChatSeq() {
@@ -39,29 +39,30 @@ public class Chat{
 	public void setChatCreateDate(String chatCreateDate) {
 		this.chatCreateDate = chatCreateDate;
 	}
-	public Integer getMmSeq() {
-		return mmSeq;
+	public Integer getSeq() {
+		return seq;
 	}
-	public void setMmSeq(Integer mmSeq) {
-		this.mmSeq = mmSeq;
+	public void setSeq(Integer seq) {
+		this.seq = seq;
 	}
-	public String getMmNickName() {
-		return mmNickName;
+	public String getId() {
+		return id;
 	}
-	public void setMmNickName(String mmNickName) {
-		this.mmNickName = mmNickName;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getUpPath() {
-		return upPath;
+	public String getPath() {
+		return Path;
 	}
-	public void setUpPath(String upPath) {
-		this.upPath = upPath;
+	public void setPath(String path) {
+		Path = path;
 	}
-	public String getUpUuidName() {
-		return upUuidName;
+	public String getUuidName() {
+		return UuidName;
 	}
-	public void setUpUuidName(String upUuidName) {
-		this.upUuidName = upUuidName;
+	public void setUuidName(String uuidName) {
+		UuidName = uuidName;
 	}
+	
 
 }

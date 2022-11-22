@@ -21,4 +21,10 @@ public class ChatDao {
 	
 	public Chat selectChatWithoutLoginUser(Chat chatRoom) {return sqlSession.selectOne(namespace + ".selectChatWithoutLoginUser", chatRoom);}
 
+	public void insertChat(Chat dto) { sqlSession.insert(namespace+".insertChat", dto); }
+
+	public void insertChatUser(Chat dto) { sqlSession.insert(namespace+".insertChatUser", dto); }
+
+	public Chat selectOneChat(Chat dto) { return sqlSession.selectOne(namespace+".selectOneChat", dto);}
+
 }

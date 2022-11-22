@@ -248,23 +248,27 @@
 	                    <div class="card mb-sm-3 mb-md-0 contacts_card">
 	                        <div class="card-header">
 	                            <div class="input-group">
-	                                <input type="text" placeholder="Search..." name="" class="form-control search">
-	                                <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+	                                <input type="text" placeholder="add ChatUser Seq..." id="cuMember" name="cuMember" class="form-control search">
+	                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
 	                            </div>
 	                        </div>
 	                        <div class="card-body contacts_body">
-	                            <ui class="contacts">
+	                            <ui class="contacts" id="chatList">
 	                            
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
 	                            		
-																		<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
+										<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
 		                                    <div class="d-flex bd-highlight">
 		                                        <div class="img_cont">
-		                                            <img src="<c:out value="${list.upPath}${list.upUuidName}"/>"
-		                                                class="rounded-circle user_img">
+		                                            	<!-- 아래 path 와 uuidname 도 본인의 dto field에 맞게 수정 -->
+		                                            <img src="
+														<c:if test = "${list.path ne null}">
+															${list.path}${list.uuidName}
+														</c:if>
+                               							 " class="rounded-circle user_img">
 		                                        </div>
 		                                        <div class="chat_product_info">
-		                                            <span class="status"><c:out value="${list.mmNickName }"/></span>
+		                                            <span class="status"><c:out value="${list.id }"/></span>
 					                                 			<p>TEST TEXT FIELD</p>
 		                                        </div>
 		                                    </div>
@@ -460,6 +464,56 @@
             });
 
         };
+        
+
+		addChat = function(){
+			
+			$.ajax({
+				url: '/chat/insChat'
+				,type: 'POST'
+				,datatype:'json'
+				,data:{
+					cuMember : $("#cuMember").val()
+				}
+				,success:function(result){ 
+					if(result.rt=="success"){
+						 
+						$("#cuMember").val("");
+						var txt="";
+						txt+='<li class="room" id="';
+						txt+=result.newChat.chatSeq;
+						txt+='" onclick="selectChatRoom(';
+						txt+=result.newChat.chatSeq;
+						txt+=')">';
+						txt+='<div class="d-flex bd-highlight">';
+						txt+='<div class="img_cont">';
+						txt+='<!-- 아래 path 와 uuidname 도 본인의 dto field에 맞게 수정 -->';
+						txt+='<img src="';
+						if(result.newChat.path != null)
+						{
+							txt+=result.newChat.path + result.newChat.uuidName;
+						}
+						txt+='" class="rounded-circle user_img">';
+						txt+='</div>';
+						txt+='<div class="chat_product_info">';
+						txt+='<span class="status">';
+						txt+=result.newChat.id;
+						txt+='</span>';
+						txt+='<p>TEST TEXT FIELD</p>';
+						txt+='</div>';
+						txt+='</div>';
+						txt+='</li>';
+						$("#chatList").prepend(txt);   
+					}else{
+						alert("fail..!");
+					}
+				}
+				,error:function(){
+					alert("ajax error..!");
+				}
+			});
+			
+		}
     </script>
 </body>
 </html>
