@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+		<link rel="icon" href="/resources/images/images/favicon.ico">
 	</head>
 	
 	<body class="is-preload">

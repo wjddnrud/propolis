@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="icon" href="/resources/images/images/favicon.ico">
 </head>
 
 <body class="is-preload">
@@ -69,7 +70,7 @@
 							
 								<div id="ifmmUploadedImage1View" class="col-12 justify-content-center" class="filebox" style="text-align: center;">
 									<img id="imgProfile" src="/resources/uploaded/member/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
-									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="margin-left: 50%;">
+									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="width: 90px;">
  								</div>
  								
 								 

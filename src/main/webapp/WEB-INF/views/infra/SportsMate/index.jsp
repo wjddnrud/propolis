@@ -7,18 +7,12 @@
 
 
 <!DOCTYPE HTML>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Sports Mate</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<!-- CSS only -->
-		<!-- CSS only -->
+<head>
+	<title>Sports Mate</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="icon" href="/resources/images/images/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<style type="text/css">
 		div {
@@ -80,7 +74,7 @@
 			color: #FAB150;
 		}
 	</style>
-	</head>
+</head>
 	<body style="background-image: url('/resources/images/images/러닝2.jpg'); background-size: cover;">
 		<div class="container">
 			<div class="row">

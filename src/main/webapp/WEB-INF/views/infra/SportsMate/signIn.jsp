@@ -24,6 +24,7 @@
 		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     	<!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/"> -->
     	<meta name ="google-signin-client_id" content="299328727135-9et7f9e5i0a220d5cc61otb9hk08kem4.apps.googleusercontent.com">
+    	<link rel="icon" href="/resources/images/images/favicon.ico">
     	
     	
 	</head>
@@ -73,12 +74,12 @@
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;">
+													<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="">
 												</center>
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input name="password" id="password" type="password" onkeyup="enterKey()" placeholder="PASSWORD" style="width: 300px;">
+													<input name="password" id="password" type="password" onkeyup="enterKey()" placeholder="PASSWORD" style="width: 300px;" value="">
 												</center>
 											</div>
 											<!-- <div class="col-6 col-12">

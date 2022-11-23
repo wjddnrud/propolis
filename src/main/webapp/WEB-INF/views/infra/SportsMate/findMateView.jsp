@@ -21,6 +21,7 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
+		<link rel="icon" href="/resources/images/images/favicon.ico">
 		
 		<style type="text/css">
 			div {
@@ -173,6 +174,7 @@
 								<center>
 									<a id="join" class="button primary">🤝JOIN</a>
 									<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
+									<a href="#" class="button"><i class="fa-solid fa-arrow-left"></i>message</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
 							</form>

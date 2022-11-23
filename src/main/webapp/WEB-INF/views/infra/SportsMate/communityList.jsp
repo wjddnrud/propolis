@@ -22,6 +22,7 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
+		<link rel="icon" href="/resources/images/images/favicon.ico">
 		
 		<style type="text/css">
 			.on:hover {

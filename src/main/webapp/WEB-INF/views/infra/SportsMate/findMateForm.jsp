@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+		<link rel="icon" href="/resources/images/images/favicon.ico">
 	</head>
 	<body class="is-preload">
 

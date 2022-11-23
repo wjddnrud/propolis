@@ -15,6 +15,7 @@
 	<!-- datepicker jquery script import -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<link rel="icon" href="/resources/images/images/favicon.ico">
 	<title>MyPage</title>
 </head>
 	<body class="is-preload">
