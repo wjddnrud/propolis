@@ -174,7 +174,7 @@
 								<center>
 									<a id="join" class="button primary">🤝JOIN</a>
 									<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
-									<a href="#" class="button"><i class="fa-solid fa-arrow-left"></i>message</a>
+									<a href="/chat/" class="button"><i class="fa-regular fa-envelope"></i>message</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
 							</form>
@@ -229,6 +229,10 @@
 				};
 
 				var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+				
+				creator = function() {
+					
+				}
 			</script>
 	</body>
 </html>

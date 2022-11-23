@@ -53,14 +53,16 @@
 
 				<!-- Banner 메인화면 처음 모션부분 -->
 				<!-- <section id="banner"> -->
-				<form name="signIn">
+				<form name="signInForm">
 				
-				<form name="form">
+					<input type="hidden" name="adminNY" id="adminNY" value="${adminCheck.adminNY }">
+				<!-- <form name="form">
 					<input type="hidden" name="name"/>
 					<input type="hidden" name="email"/>
 					<input type="hidden" name="gender"/>
 					<input type="hidden" name="dob"/>
-				</form>
+				</form> -->
+				
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
@@ -73,13 +75,22 @@
 												<h1 class="mb-1 fw-normal"><b>Please sign in</b></h1>
 											</div>
 											<div class="col-12 col-12-xsmall">
-												<center>
-													<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="">
-												</center>
+												<c:choose>
+													<c:when test="${adminCheck.adminNY eq 1}">
+														<center>
+															<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="user">
+														</center>
+													</c:when>
+													<c:otherwise>
+														<center>
+															<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="admin">
+														</center>
+													</c:otherwise>
+												</c:choose>
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<center>
-													<input name="password" id="password" type="password" onkeyup="enterKey()" placeholder="PASSWORD" style="width: 300px;" value="">
+													<input name="password" id="password" type="password" onkeyup="enterKey()" placeholder="PASSWORD" style="width: 300px;" value="1234">
 												</center>
 											</div>
 											<!-- <div class="col-6 col-12">
@@ -141,7 +152,7 @@
 			<script type="text/javascript">
 			
 				var goUrlMain = "/main";
-				var form = $("form[name=signIn]");
+				var form = $("form[name=signInForm]");
 			
 				/* === singInCheck === */
 				$("#signIn").on("click", function(){ 

@@ -76,59 +76,61 @@
 	</style>
 </head>
 	<body style="background-image: url('/resources/images/images/러닝2.jpg'); background-size: cover;">
-		<div class="container">
-			<div class="row">
-				<div class="col user">
-					<div class="row">
-						<div class="col usertitle">사용자</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<img alt="" src="/resources/images/images/user화면.jpg">
+		<form id="indexForm">
+		
+			<!-- adminNY로 user와 admin 구분하는 값을 받아감 -->
+			<input type="hidden" id="adminNY" name="adminNY">
+			
+			<div class="container">
+				<div class="row">
+					<div class="col user">
+						<div class="row">
+							<div class="col usertitle">사용자</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<img alt="" src="/resources/images/images/user화면.jpg">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col rmf">홈/게시판/메이트 매칭</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<button type="button" class="btn" id="goHome" onclick="goLogin(0)">들어가기</button>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col rmf">홈/게시판/메이트 매칭</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<button type="button" class="btn" id="goHome" onclick="userBtn()">들어가기</button>
+					
+					<div class="col xdmin">
+						<div class="row">
+							<div class="col xdmintitle">관리자</div>
 						</div>
-					</div>
-				</div>
-				
-				<div class="col xdmin">
-					<div class="row">
-						<div class="col xdmintitle">관리자</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<img alt="" src="/resources/images/images/admin화면.jpg">
+						<div class="row">
+							<div class="col">
+								<img alt="" src="/resources/images/images/admin화면.jpg">
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col rmf">회원관리/코드관리/코드그룹관리</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<button type="button" class="btn" id="goXdmin" onclick="adminBtn()">들어가기</button>
+						<div class="row">
+							<div class="col rmf">회원관리/코드관리/코드그룹관리</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<button type="button" class="btn" id="goXdmin" onclick="goLogin(1)">들어가기</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 			
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	<script>
-		adminBtn = function() {
-			location.href = "/signIn";
-		} 
-		
-		userBtn = function() {
-			location.href = "/signIn";
-		} 
-		
+		goLogin = function(adminNY) {
+			$("#adminNY").val(adminNY);
+			$("#indexForm").attr("action", "/signIn").submit();
+		}
 		
 		/* classify = function (seq) { 
 			return function(event) {
