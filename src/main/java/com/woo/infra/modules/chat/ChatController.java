@@ -20,7 +20,14 @@ public class ChatController {
 	ChatServiceImpl service;
 	
 	@RequestMapping(value="")
-	public String chat(HttpSession httpSession, Model model) throws Exception {
+	public String chat(HttpSession httpSession, Model model, Chat dto) throws Exception {
+		
+		int Count = service.selectOneChatCount(dto);
+		System.out.println("count : " + Count);
+		
+		if(Count == 0) {
+			service.createChat((int)httpSession.getAttribute("sessSeq"),dto.getCuMember());
+		}
 		
 		List<Chat> list = service.selectChatListFromOne((int)httpSession.getAttribute("sessSeq"));
 		model.addAttribute("list", list);
@@ -29,8 +36,8 @@ public class ChatController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="insChat")
-	public Map<String,Object> insChat(HttpSession httpSession,Chat dto) throws Exception {
+	@RequestMapping(value="insChatAjax")
+	public Map<String,Object> insChatAjax(HttpSession httpSession,Chat dto) throws Exception {
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		
@@ -45,4 +52,20 @@ public class ChatController {
 		
 		return result;
 	}
+	
+//	@RequestMapping(value="insChat")
+//	public String insChat(HttpSession httpSession,Chat dto, Model model) throws Exception {
+//
+//		int Count = service.selectOneChatCount(dto);
+//		System.out.println("count : " + Count);
+//		
+//		if(Count == 0) {
+//			service.createChat((int)httpSession.getAttribute("sessSeq"),dto.getCuMember());
+//		}
+//		
+//		List<Chat> list = service.selectChatListFromOne((int)httpSession.getAttribute("sessSeq"));
+//		model.addAttribute("list", list);
+//		
+//		return "infra/chat/user/chat";
+//	}
 }

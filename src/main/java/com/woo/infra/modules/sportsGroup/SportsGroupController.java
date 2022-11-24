@@ -51,12 +51,19 @@ public class SportsGroupController {
 	}
 	
 	@RequestMapping(value = "sportsGroupView")
-	public String sportsGroupView(Model model, SportsGroupVo vo) throws Exception {
+	public String sportsGroupView(Model model, SportsGroupVo vo, SportsGroup dto) throws Exception {
 		
 		System.out.println("service : " + vo.getShSeq());
 		
 		SportsGroup selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
+		
+		
+		dto.setSeq(selectOne.getSeq());
+		System.out.println("dto.getSeq : " + dto.getSeq());
+		
+		List<SportsGroup> participantList = service.participantList(dto);
+		model.addAttribute("part", participantList);
 		
 		return "infra/SportsMate/findMateView";
 	}

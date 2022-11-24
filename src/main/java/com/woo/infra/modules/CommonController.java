@@ -42,7 +42,6 @@ public class CommonController {
 	@RequestMapping(value = "main")
 	public String main(Model model) throws Exception {
 		
-		
 		int dietCount = cmService.selectCountFromCategory(1);
 		model.addAttribute("dietCount", dietCount);
 		
@@ -59,90 +58,87 @@ public class CommonController {
 	@RequestMapping(value = "myPageCommunityList") 
 	public String myPageCommunityList(Model model, Member mmdto, MemberVo vo, Community cmdto,  HttpSession httpSession) throws Exception {
 		
-
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");
-//		System.out.println("getAttribute: " + sessSeq);
 		
-		mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-//		System.out.println("getSeq : " + mmdto.getSeq());
+		if(mmdto.getSeq() == null) {			
+			mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */						
+		}
+			
 		Member img = mmService.selectMemberImg(mmdto);
-		System.out.println("getPath:" + img.getPath());
-		System.out.println("getUuidName:" + img.getUuidName());
 		model.addAttribute("img",img);
 		
-		cmdto.setWriter("" + sessSeq);
+		cmdto.setWriter("" + mmdto.getSeq());
 		List<Community> cmlist = cmService.MyselectList(cmdto);
 		model.addAttribute("cmlist", cmlist);
-		
-		cmdto.setCreator("" + sessSeq);
-//		System.out.println("getCreator : " + cmdto.getCreator());
-//		dto.setSeq(sessSeq);
+			
+		cmdto.setCreator("" + mmdto.getSeq());
 		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
-		model.addAttribute("grlist", grlist);
+		model.addAttribute("grlist", grlist); 
 		
-		vo.setShSeq(sessSeq);
+		vo.setShSeq(mmdto.getSeq());
 		Member selectOne = mmService.selectOne(vo);
 		model.addAttribute("one", selectOne);
-	
-		
+			
 		return "infra/SportsMate/myPage/myPageCommunityList";
 	}
 	
-	@RequestMapping(value = "myPageGroupList") 
-	public String myPageGroupList(Model model, Member mmdto, MemberVo vo, Community cmdto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "/myPageGroupList") 
+	public String myPageGroupList(Model model, Member mmdto, Community cmdto, HttpSession httpSession) throws Exception {
 		
 
 		
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 //		System.out.println("getAttribute: " + sessSeq);
 		
-		mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-//		System.out.println("getSeq : " + mmdto.getSeq());
+		if(mmdto.getSeq() == null) {			
+			mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */						
+		}
+		
 		Member img = mmService.selectMemberImg(mmdto);
 		model.addAttribute("img",img);
 		
-		cmdto.setCreator("" + sessSeq);
-//		System.out.println("getCreator : " + cmdto.getCreator());
-//		dto.setSeq(sessSeq);
+		cmdto.setCreator("" + mmdto.getSeq());
 		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
 		model.addAttribute("grlist", grlist);
 		
-		cmdto.setWriter("" + sessSeq);
+		cmdto.setWriter("" + mmdto.getSeq());
 		List<Community> cmlist = cmService.MyselectList(cmdto);
 		model.addAttribute("cmlist", cmlist);
 		
-		vo.setShSeq(sessSeq);
+		MemberVo vo = new  MemberVo(); 
+		vo.setShSeq(mmdto.getSeq());
 		Member selectOne = mmService.selectOne(vo);
 		model.addAttribute("one", selectOne);
-		
 		return "infra/SportsMate/myPage/myPageGroupList";
 	}
 	
-	@RequestMapping(value = "myPageMessegeList") 
-	public String myPageMessegeList(Model model, Member dto, MemberVo vo, Community cmdto, HttpSession httpSession) throws Exception {
-		
-
-		
-		int sessSeq = (int) httpSession.getAttribute("sessSeq");
-//		System.out.println("getAttribute: " + sessSeq);
-		
-		dto.setpSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-//		System.out.println("setPseq : " + dto.getpSeq());
-		Member img = mmService.selectMemberImg(dto);
-		model.addAttribute("img",img);
-		
-		cmdto.setCreator("" + sessSeq);
-//		System.out.println("getCreator : " + cmdto.getCreator());
-//		dto.setSeq(sessSeq);
-		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
-		model.addAttribute("grlist", grlist);
-		
-		cmdto.setWriter("" + sessSeq);
-		List<Community> cmlist = cmService.MyselectList(cmdto);
-		model.addAttribute("cmlist", cmlist);
-		
-		return "infra/SportsMate/myPage/myPageMessegeList";
-	}
+//	@RequestMapping(value = "myPageMessegeList") 
+//	public String myPageMessegeList(Model model, Member dto, MemberVo vo, Community cmdto, HttpSession httpSession) throws Exception {
+//		
+//
+//		
+//		int sessSeq = (int) httpSession.getAttribute("sessSeq");
+////		System.out.println("getAttribute: " + sessSeq);
+//		
+//		if(dto.getSeq() == null) {			
+//			dto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */						
+//		}
+//		
+//		dto.setpSeq(dto.getSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
+//		
+//		Member img = mmService.selectMemberImg(dto);
+//		model.addAttribute("img",img);
+//		
+//		cmdto.setCreator("" + dto.getSeq());
+//		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
+//		model.addAttribute("grlist", grlist);
+//		
+//		cmdto.setWriter("" + dto.getSeq());
+//		List<Community> cmlist = cmService.MyselectList(cmdto);
+//		model.addAttribute("cmlist", cmlist);
+//		
+//		return "infra/SportsMate/myPage/myPageMessegeList";
+//	}
 	
 //	@RequestMapping(value = "community")
 //	public String community() throws Exception {

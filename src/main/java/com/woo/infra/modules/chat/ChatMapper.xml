@@ -60,6 +60,20 @@
 		WHERE 1=1 
 		AND cu.cuMember = #{cuMember} <!-- 신규 채팅방 상대유저 정보를 위한 seq -->
 	</select>
+	
+	<select id="selectOneChatCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM chatUser cu 
+		JOIN member mm 
+		ON cu.cuMember  = mm.Seq
+		LEFT JOIN uploadedMember up    
+		ON mm.Seq = up.pSeq   
+		AND up.DelNy = 0             
+		AND up.DefaultNy = 1        
+		WHERE 1=1 
+		AND cu.cuMember = #{cuMember}
+	</select>
 	 
 	<insert id="insertChat">
 		INSERT INTO chat

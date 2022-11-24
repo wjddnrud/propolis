@@ -121,6 +121,14 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 		}
 		return selectMemberImg;
 	}
+
+	@Override
+	public List<SportsGroup> participantList(SportsGroup dto) throws Exception {
+		
+		return dao.participantList(dto);
+	}
+	
+	
 	
 	
 	

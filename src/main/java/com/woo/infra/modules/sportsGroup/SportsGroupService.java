@@ -23,4 +23,6 @@ public interface SportsGroupService {
 
 	public Member selectMemberImg(Member dto) throws Exception;
 	
+	public List<SportsGroup> participantList(SportsGroup dto) throws Exception;
+	
 }

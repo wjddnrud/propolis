@@ -63,4 +63,6 @@ public class SportsGroupDao {
 	}
 	
 	public int selectOneCount(BaseVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	
+	public List<SportsGroup> participantList(SportsGroup dto) {return sqlSession.selectList(namespace + ".participantList", dto);} 
 }

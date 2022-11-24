@@ -80,18 +80,15 @@
 								</div>
 								<div class="mt-3">
 									<ul class="nav nav-tabs">
-										<!-- <li class="nav-item">
-											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li> -->
 										<li class="nav-item">
-											<a class="nav-link active" href="/myPageCommunityList">게시글 관리</a>
+											<a class="nav-link active" href="javascript:goList('cm')">게시글 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="/myPageGroupList">그룹 관리</a>
+											<a class="nav-link" href="javascript:goList('gr')">그룹 관리</a>
 										</li>
-										<!-- <li class="nav-item">
-											<a class="nav-link" href="/myPageMessegeList">메세지</a>
-										</li> -->
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:goList('dm')">메세지</a>
+										</li>
 									</ul>
 								</div>
 								<br>
@@ -110,6 +107,7 @@
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" name="shSeq">
+									<input type="hidden" id="seq" name="seq" value="">
 									
 									
 								<div class="table-wrapper">
@@ -235,6 +233,37 @@
 				
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+				
+				goList = function(key) {
+					
+					var url = "";
+					switch (key) {
+					case 'pr':
+					{
+						url = "";					
+					break;
+					}
+					case 'cm':
+						{
+						url = "/myPageCommunityList";		 				
+						break;
+						}
+					case 'gr':
+					{
+						url = "/myPageGroupList";				
+					break;
+					}
+					case 'dm':
+					{
+						url = "";					
+					break;
+					}
+					default:
+						break;
+					}
+					
+					form.attr("action", url).submit();
+				}
 				
 				
 			</script>

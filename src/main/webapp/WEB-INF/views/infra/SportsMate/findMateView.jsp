@@ -41,6 +41,10 @@
 			.container{
 				font-family: 'GmarketSansMedium';
 			}
+			
+			#partName:hover {
+				background: black;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -85,7 +89,13 @@
 						<div class="inner" style="width: 90%;">
 							<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 							<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
-							<form name="viewForm"> 
+							<form name="viewForm">
+							 
+								<input type="hidden" id="cuMember" name="cuMember" value="${one.creator }">
+								<input type="hidden" id="seq" name="seq" value="${one.seq }">
+								<input type="hidden" id="shSeq" name="shSeq">
+								<%-- <input type="hidden" id="partSeq" name="partSeq" value="${part.seq }"> --%>
+								
 								<center>
 								<div class="container mb-5" style="width: 70%;">
 									<div class="row" style="text-align: center;">
@@ -102,13 +112,18 @@
 											</div>
 											<div class="row justify-content-center mb-5">
 												<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%; padding: 0;">
+												<div class="col">
+													<c:forEach items="${part}" var="part">
+														<span id="partName" onclick="memberProfile(${part.seq})" style="cursor: pointer; margin-bottom: 10px; hieght: 100px;">참여자 : <c:out value="${part.id}"/></span><br>
+													</c:forEach>
+												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
 												<div class="col-3 text-start">
 													<span><b>작성자 ID</b></span>
 												</div>
 												<div class="col-9 text-start">
-													<span><c:out value="${one.creator }"/></span>
+													<span><c:out value="${one.id }"/></span>
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
@@ -174,7 +189,7 @@
 								<center>
 									<a id="join" class="button primary">🤝JOIN</a>
 									<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
-									<a href="/chat/" class="button"><i class="fa-regular fa-envelope"></i>message</a>
+									<a href="javascript:message()" class="button"><i class="fa-regular fa-envelope"></i>message</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
 							</form>
@@ -230,8 +245,14 @@
 
 				var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 				
-				creator = function() {
-					
+				
+				message = function(){
+					form.attr("action", "/chat/").submit();
+				}
+				
+				memberProfile = function(seq) {
+					$("#seq").val(seq);
+					form.attr("action", "/myPageCommunityList").submit();
 				}
 			</script>
 	</body>

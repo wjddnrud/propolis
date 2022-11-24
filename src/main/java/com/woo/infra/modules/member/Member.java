@@ -23,6 +23,8 @@ public class Member extends Base {
 	private String delNY;
 	private String adminNY;
 	
+//	private String partSeq;
+	
 	
 	public Integer getSeq() {
 		return seq;
@@ -132,6 +134,12 @@ public class Member extends Base {
 	public void setAdminNY(String adminNY) {
 		this.adminNY = adminNY;
 	}
+//	public String getPartSeq() {
+//		return partSeq;
+//	}
+//	public void setPartSeq(String partSeq) {
+//		this.partSeq = partSeq;
+//	}
 	
 	
 	

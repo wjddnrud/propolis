@@ -4,12 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%-- <%@ page session="false" %> --%>
+
 <html>
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
+	<link rel="stylesheet" href="/resources/images/assets/css/chat.css" />
 	<noscript><link rel="stylesheet" href="/resources/assets/css/noscript.css" /></noscript>
 	<!-- datepicker jquery script import -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -53,100 +54,36 @@
 					<header>
 						<h2>회원 정보</h2>
 					</header>
-					<section class="wrapper style5">
-						<div class="inner">
-							<section>
-								<div class="row">
-									<div class="col-6" style="font-weight: bold; text-align: right; vertical-align: middel;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
-									</div>
-									<div class="col-6" style="text-align: left; vertical-align: middle;">
-										<b>[회원 정보]</b><br/><br/>
-										<b>이름: </b><c:out value="${sessName }"/><br>
-										<b>ID: </b><c:out value="${sessId }"/><br>
-										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
-										<b>참여 그룹 수: </b><c:out value="${fn:length(grlist) }"/><br>
-									</div>
-								</div>
-								<hr>
-								<div>
-									<ul class="nav nav-tabs">
-										<li class="nav-item">
-											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/myPageCommunityList">게시글 관리</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/myPageGroupList">그룹 관리</a>
-										</li>
-										<!-- <li class="nav-item">
-											<a class="nav-link active" href="/myPageMessegeList">메세지</a>
-										</li> -->
-									</ul>
-								</div>
-								<br>
-								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
-									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
-									
-									<form name="findMateForm">
-									
-										<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
-										<input type="hidden" name="shSeq">
-										
-										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
-										
-										<c:forEach items="${list}" var="list" varStatus="statusList">
-											<div class="card">
-												<div class="content">
-													<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
-													<div class="contentBx">
-														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
-															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
-														</c:forEach>
-														<span><c:out value="${list.group_name}"/></span></h3>
-													</div>
-												</div>
-												<ul class="sci">
-													<li style="--i:1">
-														<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
-													</li>
-													<li style="--i:2">
-														<a href="#"><i class="fa-regular fa-envelope"></i></a>
-													</li>
-													<li style="--i:3">
-														<a href="#"><i class="fa-regular fa-map"></i></a>
-													</li>
-												</ul>
-											</div>
-										</c:forEach>
-										</div>
-									</form>
-							</section>
-							</div>
-						</section>
-					</article>
 					
-				<!-- Modal -->
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-					aria-labelledby="staticBackdropLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel">삭제 여부 재확인</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								정말로 삭제를 원하십니까?
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" onclick="remove();">Delete</button>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
+					
+					<div class="chat-container" style="width: 50%; background: black;">
+					  <ul class="contacts" id="chatList">
+					    <c:forEach items="${list }" var="list" varStatus="status">
+						    <li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})" style="cursor: pointer;">
+						    <div class="img_cont">
+							    <img src="
+									<c:if test = "${list.path ne null}">
+										${list.path}${list.uuidName}
+									</c:if>
+								" class="rounded-circle user_img">
+						    </div>
+						      <p>I'm hungry!</p>
+						    </li>
+					    </c:forEach>
+					    
+					    <li class="message right">
+					      <img class="logo" src="https://randomuser.me/api/portraits/men/67.jpg" alt="">
+					      <p>Hi hungry, nice to meet you. I'm Dad.</p>
+					    </li>
+					  </ul>
+					  <input type="text" class="text_input" placeholder="Message..."/>
 					</div>
-				</div>
-
+					
+					
+					
+				</article>
+					
+					
 				<!-- Footer -->
 				<footer id="footer">
 					<ul class="icons">

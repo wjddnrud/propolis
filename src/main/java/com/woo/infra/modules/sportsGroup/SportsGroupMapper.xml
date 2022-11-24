@@ -70,7 +70,8 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			sg.seq
-			,mm.id as creator
+			,mm.id
+			,sg.creator
 			,sg.group_name
 			,sg.sports
 			,sg.location 
@@ -169,6 +170,19 @@
 		WHERE 1=1
 			AND pSeq = #{shSeq}
 	</select> -->
+	
+	<select id="participantList" resultMap="resultMapObj">
+		SELECT
+			mm.seq
+			,mm.id
+			,mm.name
+		FROM  participant pc 
+		JOIN member mm 
+        ON pc.member_seq = mm.seq
+        WHERE 1=1
+        AND  pc.sportsGroup_seq = #{seq}
+		AND pc.creator_admin = 0
+	</select>
 	
 	
 	

@@ -175,7 +175,7 @@
             margin-bottom: auto;
             margin-right: 10px;
             border-radius: 25px;
-            background-color: #E75E8D;
+            background-color: #6B33ED;
             color: white;
             padding: 10px;
             position: relative;
@@ -236,6 +236,10 @@
                 margin-bottom: 15px !important;
             }
         }
+        
+        .room:hover {
+        	background: #6B33ED;
+        }
 	</style>
 </head>
 <body> 
@@ -246,7 +250,7 @@
 	        	<div class="row justify-content-center h-100">
 	                <div class="col-md-4 col-xl-3 chat">
 	                    <div class="card mb-sm-3 mb-md-0 contacts_card">
-	                        <div class="card-header">
+	                        <div class="card-header" style="display: none;">
 	                            <div class="input-group">
 	                                <input type="text" placeholder="대화상대의 Seq를 입력해주세요." id="cuMember" name="cuMember" class="form-control search">
 	                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
@@ -469,7 +473,7 @@
 		addChat = function(){
 			
 			$.ajax({
-				url: '/chat/insChat'
+				url: '/chat/insChatAjax'
 				,type: 'POST'
 				,datatype:'json'
 				,data:{

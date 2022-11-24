@@ -105,11 +105,9 @@
 									
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
 									<!-- <input type="hidden" name="mainKey"> -->
-									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
-									<input type="hidden" name="shSeq">
+									<input type="hidden" id="shSeq" name="shSeq">
 									
 								
 								<div class="table-wrapper">

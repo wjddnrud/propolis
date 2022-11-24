@@ -49,5 +49,13 @@ public class ChatServiceImpl implements ChatService{
 		return dao.selectOneChat(dto);
 	}
 
+	@Override
+	public int selectOneChatCount(Chat dto) throws Exception {
+		
+		return dao.selectOneChatCount(dto);
+	}
+	
+	
+
 	
 }
