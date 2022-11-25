@@ -38,6 +38,11 @@ public class CommonController {
 	
 	//----------------------------- 페이지 이동
 	
+	@RequestMapping(value = "/")
+	public String classify() throws Exception {
+		
+		return "infra/SportsMate/index";
+	}
 	
 	@RequestMapping(value = "main")
 	public String main(Model model) throws Exception {
@@ -55,8 +60,8 @@ public class CommonController {
 		return "infra/SportsMate/main";
 	}
 	
-	@RequestMapping(value = "myPageCommunityList") 
-	public String myPageCommunityList(Model model, Member mmdto, MemberVo vo, Community cmdto,  HttpSession httpSession) throws Exception {
+	@RequestMapping(value="myPage")
+	public String myPage(Model model, Member mmdto, MemberVo vo, Community cmdto,  HttpSession httpSession) throws Exception {
 		
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 		
@@ -78,119 +83,54 @@ public class CommonController {
 		vo.setShSeq(mmdto.getSeq());
 		Member selectOne = mmService.selectOne(vo);
 		model.addAttribute("one", selectOne);
-			
+		
 		return "infra/SportsMate/myPage/myPageCommunityList";
 	}
 	
-	@RequestMapping(value = "/myPageGroupList") 
-	public String myPageGroupList(Model model, Member mmdto, Community cmdto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value="myCmList")
+	public String myCmList()throws Exception {
 		
-
-		
-		int sessSeq = (int) httpSession.getAttribute("sessSeq");
-//		System.out.println("getAttribute: " + sessSeq);
-		
-		if(mmdto.getSeq() == null) {			
-			mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */						
-		}
-		
-		Member img = mmService.selectMemberImg(mmdto);
-		model.addAttribute("img",img);
-		
-		cmdto.setCreator("" + mmdto.getSeq());
-		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
-		model.addAttribute("grlist", grlist);
-		
-		cmdto.setWriter("" + mmdto.getSeq());
-		List<Community> cmlist = cmService.MyselectList(cmdto);
-		model.addAttribute("cmlist", cmlist);
-		
-		MemberVo vo = new  MemberVo(); 
-		vo.setShSeq(mmdto.getSeq());
-		Member selectOne = mmService.selectOne(vo);
-		model.addAttribute("one", selectOne);
-		return "infra/SportsMate/myPage/myPageGroupList";
+		return "infra/SportsMate/main";
 	}
 	
-//	@RequestMapping(value = "myPageMessegeList") 
-//	public String myPageMessegeList(Model model, Member dto, MemberVo vo, Community cmdto, HttpSession httpSession) throws Exception {
-//		
-//
+	@RequestMapping(value="mySgList")
+	public String mySgList()throws Exception {
+		
+		return "infra/SportsMate/main";
+	}
+	
+	
+//	@RequestMapping(value = "/myPageGroupList") 
+//	public String myPageGroupList(Model model, Member mmdto, Community cmdto, HttpSession httpSession) throws Exception {
 //		
 //		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 ////		System.out.println("getAttribute: " + sessSeq);
 //		
-//		if(dto.getSeq() == null) {			
-//			dto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */						
+//		if(mmdto.getSeq() == null) {			
+//			mmdto.setSeq(sessSeq); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */						
 //		}
 //		
-//		dto.setpSeq(dto.getSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-//		
-//		Member img = mmService.selectMemberImg(dto);
+//		Member img = mmService.selectMemberImg(mmdto);
 //		model.addAttribute("img",img);
 //		
-//		cmdto.setCreator("" + dto.getSeq());
+//		cmdto.setCreator("" + mmdto.getSeq());
 //		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
 //		model.addAttribute("grlist", grlist);
 //		
-//		cmdto.setWriter("" + dto.getSeq());
+//		cmdto.setWriter("" + mmdto.getSeq());
 //		List<Community> cmlist = cmService.MyselectList(cmdto);
 //		model.addAttribute("cmlist", cmlist);
 //		
-//		return "infra/SportsMate/myPage/myPageMessegeList";
+//		MemberVo vo = new  MemberVo(); 
+//		vo.setShSeq(mmdto.getSeq());
+//		Member selectOne = mmService.selectOne(vo);
+//		model.addAttribute("one", selectOne);
+//		return "infra/SportsMate/myPage/myPageGroupList";
 //	}
-	
-//	@RequestMapping(value = "community")
-//	public String community() throws Exception {
-//		
-//		return "infra/SportsMate/community";
-//	}
-	
-	@RequestMapping(value = "communityForm")
-	public String communityForm() throws Exception {
-
-		return "infra/SportsMate/communityForm";
-	}
-	
-	@RequestMapping(value = "communityNotify")
-	public String communityNotify() throws Exception {
-
-		return "infra/SportsMate/communityNotify";
-	}
-	
-//	@RequestMapping(value = "communityView")
-//	public String communityView() throws Exception {
-//
-//		return "infra/SportsMate/communityView";
-//	}
-	
-	@RequestMapping(value = "findMate")
-	public String findMate() throws Exception {
-
-		return "infra/SportsMate/findMate";
-	}
-	
-	@RequestMapping(value = "findMateForm")
-	public String findMateForm() throws Exception {
-
-		return "infra/SportsMate/findMateForm";
-	}
-	
-	@RequestMapping(value = "findMateNotify")
-	public String findMateNotify() throws Exception {
-
-		return "infra/SportsMate/findMateNotify";
-	}
-
-	@RequestMapping(value = "findMateView")
-	public String findMateView() throws Exception {
-
-		return "infra/SportsMate/findMateView";
-	}
 	
 	@RequestMapping(value = "signIn") // signIn
-	public String signIn(@ModelAttribute("adminCheck")Member dto) throws Exception {
-		
+	public String signIn(@ModelAttribute("loginCheck")Member dto) throws Exception {
+		 
 		return "infra/SportsMate/signIn";
 	}
 	
@@ -239,7 +179,7 @@ public class CommonController {
 		
 		httpSession.invalidate();
 		
-		return "infra/SportsMate/signIn";
+		return "infra/SportsMate/index";
 	}
 
 	@RequestMapping(value = "signUp")
@@ -267,12 +207,6 @@ public class CommonController {
 	public String kakaoInsert() throws Exception {
 		
 		return "";
-	}
-	
-	@RequestMapping(value = "/")
-	public String classify() throws Exception {
-		
-		return "infra/SportsMate/index";
 	}
 	
 	@ResponseBody

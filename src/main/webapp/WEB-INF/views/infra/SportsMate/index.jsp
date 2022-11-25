@@ -76,7 +76,7 @@
 	</style>
 </head>
 	<body style="background-image: url('/resources/images/images/러닝2.jpg'); background-size: cover;">
-		<form id="indexForm">
+		<form id="indexForm" method="post">
 		
 			<!-- adminNY로 user와 admin 구분하는 값을 받아감 -->
 			<input type="hidden" id="adminNY" name="adminNY">
@@ -97,7 +97,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<button type="button" class="btn" id="goHome" onclick="goLogin(0)">들어가기</button>
+								<a class="btn" href="javascript:goLogin(0)">들어가기</a>
 							</div>
 						</div>
 					</div>
@@ -116,7 +116,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<button type="button" class="btn" id="goXdmin" onclick="goLogin(1)">들어가기</button>
+								<a class="btn" href="javascript:goLogin(1)">들어가기</a>
 							</div>
 						</div>
 					</div>
@@ -126,24 +126,13 @@
 			
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	
 	<script>
-		/* goLogin = function(adminNY) {
+		goLogin = function(adminNY) {
 			$("#adminNY").val(adminNY);
-			$("#indexForm").attr("action", "/signIn").submit();
-		} */
-		
-		/* classify = function (seq) { 
-			return function(event) {
-				
-				var divImage = "";
-				divImage += '<div id="imgDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
-				divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
-				divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
-				divImage += '</div> ';
-				
-				filePreview.append(divImage);
-		    };
-		} */
+			$("#indexForm").attr("action", "signIn").submit();
+		} 
 	</script>
 	</body>
 </html>

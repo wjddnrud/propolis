@@ -32,24 +32,38 @@ public class CommunityController {
 	@Autowired
 	CommentServiceImpl cmService;
 	
-	public void setParamsPaging(CommunityVo vo) throws Exception {
-		
-		vo.setParamsPaging(service.selectOneCount(vo));
-	}
+//	public void setParamsPaging(CommunityVo vo) throws Exception {
+//		
+//		vo.setParamsPaging(service.selectOneCount(vo));
+//	}
 
+//	@RequestMapping(value = "communityList")
+//	public String CommunityList(Model model, @ModelAttribute("vo") CommunityVo vo) throws Exception {
+//
+//		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+//		
+//		setParamsPaging(vo);
+//		
+//		
+//		List<Community> list = service.selectList(vo);
+//		
+//		model.addAttribute("list", list);
+//		
+//		return "infra/SportsMate/communityList"; 
+//	}
+	
 	@RequestMapping(value = "communityList")
-	public String CommunityList(Model model, @ModelAttribute("vo") CommunityVo vo) throws Exception {
+	public String communityList(@ModelAttribute("vo") CommunityVo vo, Model model) throws Exception {
 
-		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+		setSearch(vo);
+		vo.setParamsPaging(service.selectOneCount(vo));
+
+		if (vo.getTotalRows() > 0) {
+			List<Community> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		}
 		
-		setParamsPaging(vo);
-		
-		
-		List<Community> list = service.selectList(vo);
-		
-		model.addAttribute("list", list);
-		
-		return "infra/SportsMate/communityList"; 
+		return "infra/nationality/xdmin/nationalityList";
 	}
 	
 	
@@ -197,7 +211,44 @@ public class CommunityController {
 	        workbook.close();
 		}
     }
+	
+	
+	/* community list ajax로 구현 */
+	
+	
+	public void setSearch(CommunityVo vo) throws Exception {
+			
+//		vo.setShUseNy(vo.getShUseNy() == null ? 1 : vo.getShUseNy());
+//		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? null : vo.getShOptionDate());
+//		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
+	}
+	
+	@RequestMapping(value = "communityAjaxList")
+	public String communityAjaxList(@ModelAttribute("vo") CommunityVo vo, Model model) throws Exception {
+		
+		setSearch(vo);
+
+		return "infra/SportsMate/myPageAjaxList";
+	}
+	
+	
+	@RequestMapping(value = "communityAjaxLita")
+	public String communityAjaxLita(@ModelAttribute("vo") CommunityVo vo, Model model) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+
+		if (vo.getTotalRows() > 0) {
+			List<Community> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		}
+
+		return "resources/include/myPageAjaxLita";
+	}
 	 
+	
+	
 }
 
 

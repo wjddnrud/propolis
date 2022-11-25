@@ -27,32 +27,7 @@
 			<div id="page-wrapper">
 
 				<!-- Header -->
-				<header id="header">
-					<h1><a href="index.html">sports mate</a></h1>
-					<nav id="nav">
-						<ul>
-							<li class="special">
-								<a href="#menu" class="menuToggle"><span>Menu</span></a>
-								<div id="menu">
-									<ul>
-										<c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
-						                	<li><a href="/signUp">SIGN UP</a></li>
-											<li><a href="/signIn">SIGN IN</a></li>
-							        	</c:if>
-										<c:if test="${sessAdminNY eq 2}">
-											<%-- <li><a href="#">관리자 <c:out value="${sessName}"/> 님으로 접속중</a></li> --%>
-											<li>[<c:out value="${sessName}"/> 님으로 접속중]</li>
-											<li><a href="/codegroup/codeGroupList">CodeGroup List</a></li>
-											<li><a href="/code/codeList">Code List</a></li>
-											<li><a href="/member/memberList">Member List</a></li>
-											<li><a href="/logout">LOG-OUT</a></li>
-										</c:if>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</nav>
-				</header>
+				<%@include file="/resources/include/adminHeader.jsp" %>
 
 				<!-- Main -->
 				<article id="main">
@@ -303,18 +278,7 @@
 				</div>
 
 				<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+				<%@include file="/resources/include/footer.jsp"%>
 
 			</div>
 

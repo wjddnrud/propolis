@@ -62,9 +62,6 @@
 										<li class="nav-item">
 											<a class="nav-link" href="javascript:goList('gr')">그룹 관리</a>
 										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="javascript:goList('dm')">메세지</a>
-										</li>
 									</ul>
 								</div>
 								<br>
@@ -74,74 +71,19 @@
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 								
 								
-								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
+								<form id="myPageForm" method="post">
 									
-									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
-									<!-- <input type="hidden" name="mainKey"> -->
 									<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 									<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-									<!-- <input type="hidden" name="checkboxSeqArray"> -->
-									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" name="shSeq">
 									<input type="hidden" id="seq" name="seq" value="">
 									
-									
 								<div class="table-wrapper">
 								
-									<table class="alt">
-										<thead>
-											<tr>
-												<!-- <th>
-													<input type="checkbox">
-													<label for="demo-human" style="color: white;">선택</label>
-												</th> -->
-												<th>No</th>
-												<th>카테고리</th>
-												<th>제목</th>
-												<th>작성자</th>
-												<th>조회수</th>
-												<th>작성일자</th>
-											</tr>
-										</thead>
-										<tbody style="color: black;">
-											<c:choose>
-												<c:when test="${fn:length(cmlist) eq 0}">
-													<tr>
-														<td class="text-center" colspan="8">There is no data!</td>
-													</tr>
-												</c:when>
-											</c:choose>
-											
-											
-											<c:forEach items="${cmlist}" var="list" varStatus="statusList">
-													<tr onclick="viewForm('${list.seq}')">
-														<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
-															<label for="checkbox${status.count }"></label>
-														</td> --%>
-														<td style="text-align: center;"><c:out value="${list.seq }"/></td>
-														<td style="text-align: center;">
-															<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
-																<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
-															</c:forEach>
-														</td>
-														<%-- <td><c:out value="${list.category }"></c:out></td> --%>
-														<td><c:out value="${list.title }"></c:out></td>
-														<td style="text-align: center;"><c:out value="${list.writer }"></c:out></td>
-														<td style="text-align: center;"><c:out value="${list.viewCount }"></c:out></td>
-														<td style="text-align: center;"><c:out value="${list.createDate }"></c:out></td>
-													</tr>
-												</c:forEach>
-											
-											
-										</tbody>
-										<tfoot>
-											<!-- 글 삭제 -> 글 삭제 페이지 이동 -> 리스트 체크 후 삭제
-											마이페이지 -> 내 글 삭제 -> 리스트 체크 후 삭제 -->
-										</tfoot>
-									</table>
+									<div class="lita"></div>
 									
 									<!-- pagination s -->
-									<%-- <%@include file="../../codegroup/xdmin/pagination.jsp"%> --%>
+									<%@include file="/resources/include/pagination.jsp"%>
 									<!-- pagination e -->
 									
 									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
@@ -155,26 +97,6 @@
 						</section>
 					</article>
 					
-				<!-- Modal -->
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-					aria-labelledby="staticBackdropLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel">삭제 여부 재확인</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								정말로 삭제를 원하십니까?
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" onclick="remove();">Delete</button>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<!-- Footer -->
 				<%@include file="/resources/include/footer.jsp"%>
 
@@ -199,7 +121,42 @@
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
 				
-				goList = function(key) {
+				goList = function(thisPage) {
+					$("input:hidden[name=thisPage]").val(thisPage);
+					form.attr("action", goUrlList).submit();
+				}
+				
+				
+				var goUrlList = "/community/communityAjaxList";					/* #-> */
+				var goUrlLita = "/community/communityAjaxLita";					/* #-> */
+				
+				var page = 0;
+				
+				function setLita() {
+					$.ajax({
+						async: true 
+						,cache: false
+						,type: "post"
+						/* ,dataType:"json" */
+						,url: goUrlLita
+						,data : $("#myPageForm").serialize()
+						/* ,data : {  } */
+						,success: function(response) {
+							$("#lita").empty();
+							$("#lita").append(response);
+							window.location.hash = '#page' + page;
+							page++;
+						}
+						,error : function(jqXHR, textStatus, errorThrown){
+							alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+						}
+					});
+				}
+				
+				
+			</script>
+			<script>
+				goPage = function(key) {
 					
 					var url = "";
 					switch (key) {
@@ -229,8 +186,6 @@
 					
 					form.attr("action", url).submit();
 				}
-				
-				
 			</script>
 
 

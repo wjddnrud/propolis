@@ -34,34 +34,13 @@
 			<div id="page-wrapper">
 
 				<!-- Header 상단 고정 네비바 -->
-				<!-- <header id="header" class="alt">
-					<h1><a href="/signIn">Sports Mate</a></h1>
-					<nav id="nav">
-						<ul>
-							<li class="special">
-								<a href="#menu" class="menuToggle"><span>Menu</span></a>
-								<div id="menu">
-									<ul>
-					                	<li><a href="/signUp">SIGN UP</a></li>
-										<li><a href="/signIn">SIGN IN</a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</nav>
-				</header> -->
+				<%@include file="/resources/include/header.jsp"%>
 
 				<!-- Banner 메인화면 처음 모션부분 -->
 				<!-- <section id="banner"> -->
 				<form name="signInForm">
 				
-					<input type="hidden" name="adminNY" id="adminNY" value="${adminCheck.adminNY }">
-				<!-- <form name="form">
-					<input type="hidden" name="name"/>
-					<input type="hidden" name="email"/>
-					<input type="hidden" name="gender"/>
-					<input type="hidden" name="dob"/>
-				</form> -->
+					<input type="hidden" id="adminNY" value="${loginCheck.adminNY }">
 				
 					<section id="banner">
 						<div class="inner">
@@ -76,14 +55,14 @@
 											</div>
 											<div class="col-12 col-12-xsmall">
 												<c:choose>
-													<c:when test="${adminCheck.adminNY eq 1}">
+													<c:when test="${loginCheck.adminNY eq 1}">
 														<center>
-															<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="user">
+															<input id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="admin">
 														</center>
 													</c:when>
 													<c:otherwise>
 														<center>
-															<input name="id" id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="admin">
+															<input id="id" type="text" placeholder="ID" onkeyup="enterKey()" style="width: 300px;" value="user">
 														</center>
 													</c:otherwise>
 												</c:choose>
@@ -105,11 +84,7 @@
 											</div>
 											<div class="d-grid gap-2 mt-3">
 												<ul class="actions stacked">
-													<li id="GgCustomLogin">
-													  <a href="javascript:void(0)">
-													   <span>Login with Google</span>
-													  </a>
-													 </li>
+													<li id="GgCustomLogin"><a href="javascript:void(0)" class="button small">Google</a></li>
 													<li><a class="button small" id="kakaoBtn">Kakao</a></li>
 													<li><a class="button small" id="naverIdLogin">Naver</a></li>
 												</ul>
@@ -123,18 +98,8 @@
 				</form>
 
 				<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+				<%@include file="/resources/include/footer.jsp"%>
+				
 			</div>
 
 
