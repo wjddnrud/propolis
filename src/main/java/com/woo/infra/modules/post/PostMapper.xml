@@ -4,12 +4,12 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.woo.infra.modules.community.CommunityMapper">
+<mapper namespace="com.woo.infra.modules.post.PostMapper">
 
-    <resultMap id="resultMapObj" type="com.woo.infra.modules.community.Community"></resultMap>
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.post.PostMapper"></resultMap>
 	
 	<sql id="selectCommon">
-		FROM community cm
+		FROM post po
 	</sql>
 	<!-- paging -->
 	<select id="selectOneCount" resultType="Integer">
@@ -20,16 +20,16 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql"/>
 		SELECT
-			cm.seq
-			,cm.category
+			po.seq
+			,po.category
 			,mm.id as writer
-			,cm.title
-			,cm.contents
-			,cm.createDate
-			,cm.modiDate
-			,cm.viewCount
+			,po.title
+			,po.contents
+			,po.createDate
+			,po.modiDate
+			,po.viewCount
 		<include refid="selectCommon"/>
-		JOIN member mm ON mm.seq = cm.writer 
+		JOIN member mm ON mm.seq = po.writer 
 		ORDER BY seq DESC
 		<include refid="Base.orderByLimitForMysql"/>
 		<include refid="Base.selectListLowerForMysql"/>
@@ -38,22 +38,22 @@
 	<!-- myPageCommunityList -->
 	<select id="MyselectList" resultMap="resultMapObj">
 		SELECT
-			cm.seq
-			,cm.category
+			po.seq
+			,po.category
 			,mm.id as writer
-			,cm.title
-			,cm.contents
-			,cm.createDate
-			,cm.modiDate
-			,cm.viewCount
-		FROM community cm
-		JOIN member mm ON mm.seq = cm.writer 
+			,po.title
+			,po.contents
+			,po.createDate
+			,po.modiDate
+			,po.viewCount
+		FROM post po
+		JOIN member mm ON mm.seq = po.writer 
 		WHERE 1=1
-			AND cm.writer = #{writer}
+			AND po.writer = #{writer}
 	</select>  
 	
 	<insert id="insert">
-		INSERT INTO community(
+		INSERT INTO post(
 			category
 			,writer
 			,title  
@@ -69,17 +69,17 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			cm.seq
-			,cm.category
+			po.seq
+			,po.category
 			,mm.id as writer
-			,cm.title
-			,cm.contents
-			,cm.createDate
-			,cm.viewCount
-		From community cm
-		JOIN member mm ON mm.seq = cm.writer 
+			,po.title
+			,po.contents
+			,po.createDate
+			,po.viewCount
+		From post po
+		JOIN member mm ON mm.seq = po.writer 
 		WHERE 1=1
-			AND cm.seq=#{shSeq}
+			AND po.seq=#{shSeq}
 	</select>
 	
 	<!-- <update id="update">
@@ -102,7 +102,7 @@
 	<select id="selectCountFromCategory" resultType="Integer" parameterType="Integer">
 		SELECT
 			COUNT(*)
-		FROM community
+		FROM post
 		WHERE 1=1
 			AND category = #{i}
 	</select>
@@ -110,7 +110,7 @@
 	<select id="selectCountNewFromCategory" resultType="Integer">
 		SELECT
 			COUNT(*)
-		FROM community
+		FROM post
 		WHERE 1=1
 			AND category = #{category}
 			AND createDate LIKE CONCAT ('%',#{createDate},'%')
@@ -119,13 +119,13 @@
 	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
 		SELECT
 			seq
-		FROM community
+		FROM post
 		ORDER BY seq DESC
 		LIMIT 1
 	</select>
 	
-	<insert id="insertCommunityUpload">
-		INSERT INTO uploadedCommunity (
+	<insert id="insertPostUpload">
+		INSERT INTO uploadedPost (
 			<!-- seq -->
 			type
 			,defaultNY
@@ -151,7 +151,7 @@
 		)
 	</insert>
 	
-	<select id="selectCommunityImg" resultMap="resultMapObj">
+	<select id="selectPostImg" resultMap="resultMapObj">
 		SELECT
 			seq
 			,type
@@ -164,7 +164,7 @@
 			,delNY
 			,pSeq
 			,path
-		FROM uploadedCommunity
+		FROM uploadedPost
 		WHERE 1=1
 			AND pSeq = #{pSeq}
 	</select>

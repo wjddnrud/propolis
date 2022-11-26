@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.woo.infra.modules.community.Community;
+import com.woo.infra.modules.crew.Crew;
 import com.woo.infra.modules.member.Member;
-import com.woo.infra.modules.sportsGroup.SportsGroup;
+import com.woo.infra.modules.post.Post;
 
 
 public class UtilUpload {
@@ -22,7 +22,7 @@ public class UtilUpload {
 		}
 	}
 	
-	public static void uploadCommunityImg (MultipartFile multipartFile, String className, Community dto) throws Exception {
+	public static void uploadPostImg (MultipartFile multipartFile, String className, Post dto) throws Exception {
 		String fileName = multipartFile.getOriginalFilename();
 //		컴퓨터에 저장되어있는 파일 이름 담아주기 보리.png
 		String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
@@ -58,7 +58,7 @@ public class UtilUpload {
 		dto.setSize(size); 
 	}
 	
-	public static void uploadSportsGroupImg (MultipartFile multipartFile, String className, SportsGroup dto) throws Exception {
+	public static void uploadCrewImg (MultipartFile multipartFile, String className, Crew dto) throws Exception {
 		String fileName = multipartFile.getOriginalFilename();
 //		컴퓨터에 저장되어있는 파일 이름 담아주기 보리.png
 		String ext = fileName.substring(fileName.lastIndexOf(".") + 1);

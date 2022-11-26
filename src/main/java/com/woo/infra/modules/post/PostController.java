@@ -1,4 +1,4 @@
-package com.woo.infra.modules.community;
+package com.woo.infra.modules.post;
 
 import java.util.List;
 
@@ -22,44 +22,24 @@ import com.woo.infra.modules.comment.CommentServiceImpl;
 import com.woo.infra.modules.comment.CommentVo;
 
 @Controller
-@RequestMapping(value = "/community/")
+@RequestMapping(value = "/post/")
 
-public class CommunityController {
+public class PostController {
 
 	@Autowired
-	CommunityServiceImpl service;
+	PostServiceImpl service;
 	
 	@Autowired
 	CommentServiceImpl cmService;
 	
-//	public void setParamsPaging(CommunityVo vo) throws Exception {
-//		
-//		vo.setParamsPaging(service.selectOneCount(vo));
-//	}
-
-//	@RequestMapping(value = "communityList")
-//	public String CommunityList(Model model, @ModelAttribute("vo") CommunityVo vo) throws Exception {
-//
-//		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
-//		
-//		setParamsPaging(vo);
-//		
-//		
-//		List<Community> list = service.selectList(vo);
-//		
-//		model.addAttribute("list", list);
-//		
-//		return "infra/SportsMate/communityList"; 
-//	}
-	
-	@RequestMapping(value = "communityList")
-	public String communityList(@ModelAttribute("vo") CommunityVo vo, Model model) throws Exception {
+	@RequestMapping(value = "postList")
+	public String postList(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 
 		setSearch(vo);
 		vo.setParamsPaging(service.selectOneCount(vo));
 
 		if (vo.getTotalRows() > 0) {
-			List<Community> list = service.selectList(vo);
+			List<Post> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		}
 		
@@ -67,8 +47,8 @@ public class CommunityController {
 	}
 	
 	
-	@RequestMapping(value = "communityInst")
-	public String communityInsert(Model model, Community dto) throws Exception {
+	@RequestMapping(value = "postInst")
+	public String postInst(Model model, Post dto) throws Exception {
 		
 		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
 		
@@ -77,27 +57,27 @@ public class CommunityController {
 		return "redirect:/community/communityList";
 	}
 	
-	@RequestMapping(value = "communityForm")
-	public String communityForm(Model model, Community dto, CommunityVo vo) throws Exception {
+	@RequestMapping(value = "postForm")
+	public String postForm(Model model, Post dto, PostVo vo) throws Exception {
 		
-		Community selectOne = service.selectOne(vo);
+		Post selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
 //		System.out.println("controller selectOne : " + selectOne);
 		
 		return "infra/SportsMate/communityForm";
 	}
 	
-	@RequestMapping(value = "communityView")
-	public String communityView(Model model, Community dto, CommunityVo vo, CommentVo cmvo) throws Exception {
+	@RequestMapping(value = "postView")
+	public String postView(Model model, Post dto, PostVo vo, CommentVo cmvo) throws Exception {
 		
 //		System.out.println("service : " + vo.getShSeq());
 		
-		Community selectOne = service.selectOne(vo);
+		Post selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
 //		System.out.println("controller selectOne : " + selectOne);
 		
 		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-		Community img = service.selectCommunityImg(dto);
+		Post img = service.selectPostImg(dto);
 		model.addAttribute("img",img);
 		
 		cmvo.setPost_seq(Integer.parseInt(selectOne.getSeq()));
@@ -132,13 +112,13 @@ public class CommunityController {
 //	}
 	
 	@RequestMapping("excelDownload")
-    public void excelDownload(CommunityVo vo, HttpServletResponse httpServletResponse) throws Exception {
+    public void excelDownload(PostVo vo, HttpServletResponse httpServletResponse) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		/* paging 걸어주지 않으면 수많은 리스트를 한번에 불러온다. */
 
 		if (vo.getTotalRows() > 0) {
-			List<Community> list = service.selectList(vo);
+			List<Post> list = service.selectList(vo);
 			
 //			Workbook workbook = new HSSFWorkbook();	// for xls
 	        Workbook workbook = new XSSFWorkbook();
@@ -216,7 +196,7 @@ public class CommunityController {
 	/* community list ajax로 구현 */
 	
 	
-	public void setSearch(CommunityVo vo) throws Exception {
+	public void setSearch(PostVo vo) throws Exception {
 			
 //		vo.setShUseNy(vo.getShUseNy() == null ? 1 : vo.getShUseNy());
 //		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
@@ -225,8 +205,8 @@ public class CommunityController {
 //		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
 	}
 	
-	@RequestMapping(value = "communityAjaxList")
-	public String communityAjaxList(@ModelAttribute("vo") CommunityVo vo, Model model) throws Exception {
+	@RequestMapping(value = "postAjaxList")
+	public String postAjaxList(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 		
 		setSearch(vo);
 
@@ -234,13 +214,13 @@ public class CommunityController {
 	}
 	
 	
-	@RequestMapping(value = "communityAjaxLita")
-	public String communityAjaxLita(@ModelAttribute("vo") CommunityVo vo, Model model) throws Exception {
+	@RequestMapping(value = "postAjaxLita")
+	public String postAjaxLita(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 
 		if (vo.getTotalRows() > 0) {
-			List<Community> list = service.selectList(vo);
+			List<Post> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		}
 

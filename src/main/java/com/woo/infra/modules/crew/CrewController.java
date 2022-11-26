@@ -1,4 +1,4 @@
-package com.woo.infra.modules.sportsGroup;
+package com.woo.infra.modules.crew;
 
 import java.util.List;
 
@@ -17,32 +17,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.woo.infra.modules.community.Community;
-import com.woo.infra.modules.community.CommunityVo;
+import com.woo.infra.modules.post.Post;
+import com.woo.infra.modules.post.PostVo;
 
 
 @Controller
-@RequestMapping(value = "/sportsGroup/")
+@RequestMapping(value = "/crew/")
 
-public class SportsGroupController {
+public class CrewController {
 
 	
 	@Autowired
-	SportsGroupServiceImpl service;
+	CrewServiceImpl service;
 	
 	
-	public void setParamsPaging(SportsGroupVo vo) throws Exception {
+	public void setParamsPaging(CrewVo vo) throws Exception {
 		vo.setParamsPaging(service.selectOneCount(vo));
 	}
 	
-	@RequestMapping(value = "sportsGroupList")
-	public String sportsGroupList(Model model, SportsGroup dto, @ModelAttribute("vo") SportsGroupVo vo) throws Exception { 
+	@RequestMapping(value = "crewList")
+	public String crewList(Model model, Crew dto, @ModelAttribute("vo") CrewVo vo) throws Exception { 
 	
 		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
 		setParamsPaging(vo);
 		
 		
-		List<SportsGroup> list = service.selectList(vo);
+		List<Crew> list = service.selectList(vo);
 		model.addAttribute("list",list);
 		
 		System.out.println("controller list : " + list);
@@ -50,26 +50,26 @@ public class SportsGroupController {
 		return "infra/SportsMate/findMate";
 	}
 	
-	@RequestMapping(value = "sportsGroupView")
-	public String sportsGroupView(Model model, SportsGroupVo vo, SportsGroup dto) throws Exception {
+	@RequestMapping(value = "crewView")
+	public String crewView(Model model, CrewVo vo, Crew dto) throws Exception {
 		
 		System.out.println("service : " + vo.getShSeq());
 		
-		SportsGroup selectOne = service.selectOne(vo);
+		Crew selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
 		
 		
 		dto.setSeq(selectOne.getSeq());
 		System.out.println("dto.getSeq : " + dto.getSeq());
 		
-		List<SportsGroup> participantList = service.participantList(dto);
+		List<Crew> participantList = service.crMemberList(dto);
 		model.addAttribute("part", participantList);
 		
 		return "infra/SportsMate/findMateView";
 	}
 	
-	@RequestMapping(value = "sportsGroupInst")
-	public String sportsGroupInst(Model model, SportsGroup dto, SportsGroupVo vo) throws Exception {
+	@RequestMapping(value = "crewInst")
+	public String sportsGroupInst(Model model, Crew dto, CrewVo vo) throws Exception {
 		
 		service.insert(dto);
 		
@@ -77,13 +77,13 @@ public class SportsGroupController {
 	}
 	
 	
-	@RequestMapping(value = "sportsGroupForm")
-	public String sportsGroupForm(Model model, SportsGroupVo vo, SportsGroup dto) throws Exception {
+	@RequestMapping(value = "crewForm")
+	public String sportsGroupForm(Model model, CrewVo vo, Crew dto) throws Exception {
 		
-		List<SportsGroup> list = service.selectList(vo);
+		List<Crew> list = service.selectList(vo);
 		model.addAttribute("list",list);
 		
-		List<SportsGroup> sports = service.sports(dto);
+		List<Crew> sports = service.sports(dto);
 		model.addAttribute("sports",sports);
 		
 		
@@ -91,13 +91,13 @@ public class SportsGroupController {
 	}
 	
 	@RequestMapping("excelDownload")
-    public void excelDownload(SportsGroupVo vo, HttpServletResponse httpServletResponse) throws Exception {
+    public void excelDownload(CrewVo vo, HttpServletResponse httpServletResponse) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		/* paging 걸어주지 않으면 수많은 리스트를 한번에 불러온다. */
 
 		if (vo.getTotalRows() > 0) {
-			List<SportsGroup> list = service.selectList(vo);
+			List<Crew> list = service.selectList(vo);
 			
 //			Workbook workbook = new HSSFWorkbook();	// for xls
 	        Workbook workbook = new XSSFWorkbook();
@@ -149,7 +149,7 @@ public class SportsGroupController {
 	            cell = row.createCell(2);
 	        	cellStyle.setAlignment(HorizontalAlignment.CENTER);
 	        	cell.setCellStyle(cellStyle);
-	        	cell.setCellValue(list.get(i).getGroup_name());
+	        	cell.setCellValue(list.get(i).getCrewName());
 	            
 	            cell = row.createCell(3);
 	            cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -159,7 +159,7 @@ public class SportsGroupController {
 	            cell = row.createCell(4);
 	            cellStyle.setAlignment(HorizontalAlignment.CENTER);
 	            cell.setCellStyle(cellStyle);
-	            cell.setCellValue(list.get(i).getPeople_number());
+	            cell.setCellValue(list.get(i).getCrewName());
 	            
 	            cell = row.createCell(5);
 	            cellStyle.setAlignment(HorizontalAlignment.CENTER);

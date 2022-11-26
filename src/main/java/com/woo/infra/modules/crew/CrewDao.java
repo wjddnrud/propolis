@@ -1,4 +1,4 @@
-package com.woo.infra.modules.sportsGroup;
+package com.woo.infra.modules.crew;
 
 import java.util.List;
 
@@ -13,29 +13,29 @@ import com.woo.infra.common.util.BaseVo;
 
 @Repository
 
-public class SportsGroupDao {
+public class CrewDao {
 
 	
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.woo.infra.modules.sportsGroup.SportsGroupMapper";
+	private static String namespace = "com.woo.infra.modules.crew.CrewMapper";
 	
-	public List<SportsGroup> selectList(SportsGroupVo vo) {
+	public List<Crew> selectList(CrewVo vo) {
 		
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
-	public SportsGroup selectOne(SportsGroupVo vo) {
+	public Crew selectOne(CrewVo vo) {
 		
-		SportsGroup selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
+		Crew selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
 //		System.out.println("dao selectOne : " + selectOne);
 		
 		return selectOne;
 	}
 	
-	public int insert(SportsGroup dto) {
+	public int insert(Crew dto) {
 		
 		int insert = sqlSession.insert(namespace + ".insert", dto);
 		
@@ -44,25 +44,25 @@ public class SportsGroupDao {
 	
 	public int selectLastSeq() { return sqlSession.selectOne(namespace + ".selectLastSeq", "");}
 	
-	public int groupImgUpload(SportsGroup dto) {return sqlSession.insert(namespace + ".groupImgUpload", dto);}
+	public int crewImgUpload(Crew dto) {return sqlSession.insert(namespace + ".crewImgUpload", dto);}
 	
-	public List<SportsGroup> sports(SportsGroup dto) {
+	public List<Crew> sports(Crew dto) {
 		
-		List<SportsGroup> sports = sqlSession.selectOne(namespace + ".sports", dto);
+		List<Crew> sports = sqlSession.selectOne(namespace + ".sports", dto);
 		
 //		System.out.println("dao sports : " + sports);
 		
 		return sports;
 	}
 	
-	public List<SportsGroup> MyselectList(SportsGroup sgdto) {
+	public List<Crew> MyselectList(Crew sgdto) {
 		System.out.println("dao getCreator : " + sgdto.getCreator());
-		List<SportsGroup> MyselectList = sqlSession.selectList(namespace + ".MyselectList", sgdto);
+		List<Crew> MyselectList = sqlSession.selectList(namespace + ".MyselectList", sgdto);
 		
 		return MyselectList;
 	}
 	
 	public int selectOneCount(BaseVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
-	public List<SportsGroup> participantList(SportsGroup dto) {return sqlSession.selectList(namespace + ".participantList", dto);} 
+	public List<Crew> crMemberList(Crew dto) {return sqlSession.selectList(namespace + ".crMemberList", dto);} 
 }

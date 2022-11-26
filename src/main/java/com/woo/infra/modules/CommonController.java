@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.woo.infra.modules.community.Community;
-import com.woo.infra.modules.community.CommunityServiceImpl;
+import com.woo.infra.modules.crew.Crew;
+import com.woo.infra.modules.crew.CrewServiceImpl;
 import com.woo.infra.modules.member.Member;
 import com.woo.infra.modules.member.MemberServiceImpl;
 import com.woo.infra.modules.member.MemberVo;
-import com.woo.infra.modules.sportsGroup.SportsGroup;
-import com.woo.infra.modules.sportsGroup.SportsGroupServiceImpl;
+import com.woo.infra.modules.post.Post;
+import com.woo.infra.modules.post.PostServiceImpl;
 
 @Controller
 public class CommonController {
@@ -30,10 +30,10 @@ public class CommonController {
 	MemberServiceImpl mmService;
 	
 	@Autowired
-	CommunityServiceImpl cmService;
+	PostServiceImpl cmService;
 	
 	@Autowired
-	SportsGroupServiceImpl sgService;
+	CrewServiceImpl sgService;
 	
 	
 	//----------------------------- 페이지 이동
@@ -61,7 +61,7 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value="myPage")
-	public String myPage(Model model, Member mmdto, MemberVo vo, Community cmdto,  HttpSession httpSession) throws Exception {
+	public String myPage(Model model, Member mmdto, MemberVo vo, Post cmdto,  HttpSession httpSession) throws Exception {
 		
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 		
@@ -73,11 +73,11 @@ public class CommonController {
 		model.addAttribute("img",img);
 		
 		cmdto.setWriter("" + mmdto.getSeq());
-		List<Community> cmlist = cmService.MyselectList(cmdto);
+		List<Post> cmlist = cmService.MyselectList(cmdto);
 		model.addAttribute("cmlist", cmlist);
 			
 		cmdto.setCreator("" + mmdto.getSeq());
-		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
+		List<Crew> grlist = sgService.MyselectList(cmdto);
 		model.addAttribute("grlist", grlist); 
 		
 		vo.setShSeq(mmdto.getSeq());

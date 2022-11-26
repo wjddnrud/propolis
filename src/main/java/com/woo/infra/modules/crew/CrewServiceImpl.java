@@ -1,4 +1,4 @@
-package com.woo.infra.modules.sportsGroup;
+package com.woo.infra.modules.crew;
 
 import java.util.List;
 
@@ -14,17 +14,17 @@ import com.woo.infra.modules.member.MemberDao;
 
 @Service
 
-public class SportsGroupServiceImpl implements SportsGroupService{
+public class CrewServiceImpl implements CrewService{
 	
 	@Autowired
-	SportsGroupDao dao;
+	CrewDao dao;
 	MemberDao mmdao;
 
 	@Override
-	public List<SportsGroup> selectList(SportsGroupVo vo) throws Exception {
+	public List<Crew> selectList(CrewVo vo) throws Exception {
 		
 		
-		List<SportsGroup> selectList = dao.selectList(vo);
+		List<Crew> selectList = dao.selectList(vo);
 		
 		System.out.println("selectList : " + selectList);
 		
@@ -39,9 +39,9 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	}
 
 	@Override
-	public SportsGroup selectOne(SportsGroupVo vo) throws Exception {
+	public Crew selectOne(CrewVo vo) throws Exception {
 		
-		SportsGroup selectOne = dao.selectOne(vo);
+		Crew selectOne = dao.selectOne(vo);
 		
 		if(selectOne.getPath() == null || selectOne.getUuidName() == null) {
 			selectOne.setPath("/resources/uploaded/member/");
@@ -54,7 +54,7 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	}
 
 	@Override
-	public int insert(SportsGroup dto) throws Exception {
+	public int insert(Crew dto) throws Exception {
 
 		int insert = dao.insert(dto);
 		System.out.println("multipartfile : " + dto.getMultipartFile());
@@ -68,7 +68,7 @@ public class SportsGroupServiceImpl implements SportsGroupService{
             if(!myFile.isEmpty()) {
                 // postServiceImpl
                 String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-                UtilUpload.uploadSportsGroupImg(myFile, pathModule, dto);
+                UtilUpload.uploadCrewImg(myFile, pathModule, dto);
 
                 dto.setType(2);
                 dto.setDefaultNY(j == 0 ? 1 : 0);
@@ -76,7 +76,7 @@ public class SportsGroupServiceImpl implements SportsGroupService{
                 dto.setpSeq(pSeq);
 //                업데이트하려면 pSeq말고 dto 담아서 레츠기릿
 
-                dao.groupImgUpload(dto);
+                dao.crewImgUpload(dto);
                 j++;
             }
 
@@ -86,17 +86,17 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	}
 	
 	@Override
-	public List<SportsGroup> sports(SportsGroup dto) throws Exception {
+	public List<Crew> sports(Crew dto) throws Exception {
 		
-		List<SportsGroup> sports = dao.sports(dto);
+		List<Crew> sports = dao.sports(dto);
 		
 		return sports;
 	}
 
 	@Override
-	public List<SportsGroup> MyselectList(SportsGroup sgdto) throws Exception {
+	public List<Crew> MyselectList(Crew sgdto) throws Exception {
 		
-		List<SportsGroup> MyselectList = dao.MyselectList(sgdto);
+		List<Crew> MyselectList = dao.MyselectList(sgdto);
 		
 		return MyselectList;
 	}
@@ -123,9 +123,9 @@ public class SportsGroupServiceImpl implements SportsGroupService{
 	}
 
 	@Override
-	public List<SportsGroup> participantList(SportsGroup dto) throws Exception {
+	public List<Crew> crMemberList(Crew dto) throws Exception {
 		
-		return dao.participantList(dto);
+		return dao.crMemberList(dto);
 	}
 	
 	

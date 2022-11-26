@@ -1,14 +1,14 @@
-package com.woo.infra.modules.sportsGroup;
+package com.woo.infra.modules.crew;
 
 import com.woo.infra.modules.base.Base;
 
-public class SportsGroup extends Base{
+public class Crew extends Base{
 	private String seq;
 	private String creator;
-	private String group_name;
+	private String crewName;
 	private String sports;
 	private String location;
-	private String people_number;
+	private String crMemberNum;
 	private String startTime;
 	private String endTime;
 	private String detail;
@@ -34,12 +34,6 @@ public class SportsGroup extends Base{
 	public void setCreator(String creator) {
 		this.creator = creator;
 	}
-	public String getGroup_name() {
-		return group_name;
-	}
-	public void setGroup_name(String group_name) {
-		this.group_name = group_name;
-	}
 	public String getSports() {
 		return sports;
 	}
@@ -51,12 +45,6 @@ public class SportsGroup extends Base{
 	}
 	public void setLocation(String location) {
 		this.location = location;
-	}
-	public String getPeople_number() {
-		return people_number;
-	}
-	public void setPeople_number(String people_number) {
-		this.people_number = people_number;
 	}
 	public String getStartTime() {
 		return startTime;
@@ -111,6 +99,18 @@ public class SportsGroup extends Base{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getCrewName() {
+		return crewName;
+	}
+	public void setCrewName(String crewName) {
+		this.crewName = crewName;
+	}
+	public String getCrMemberNum() {
+		return crMemberNum;
+	}
+	public void setCrMemberNum(String crMemberNum) {
+		this.crMemberNum = crMemberNum;
 	}
 	
 	

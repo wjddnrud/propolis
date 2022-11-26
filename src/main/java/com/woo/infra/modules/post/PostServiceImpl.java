@@ -1,4 +1,4 @@
-package com.woo.infra.modules.community;
+package com.woo.infra.modules.post;
 
 import java.util.List;
 
@@ -9,19 +9,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.woo.infra.common.util.UtilUpload;
 
 @Service
-public class CommunityServiceImpl implements CommunityService{
+public class PostServiceImpl implements PostService{
 	
 
 	@Autowired
-	CommunityDao dao;
+	PostDao dao;
 	
 	@Override
-	public List<Community> selectList(CommunityVo vo) throws Exception {
+	public List<Post> selectList(PostVo vo) throws Exception {
 		return dao.selectList(vo);
 	}
 
 	@Override
-	public int insert(Community dto) throws Exception {
+	public int insert(Post dto) throws Exception {
 
 		int insert = dao.insert(dto);
 //		System.out.println("service insert : " + insert);
@@ -36,14 +36,14 @@ public class CommunityServiceImpl implements CommunityService{
             if(!myFile.isEmpty()) {
                 // postServiceImpl
                 String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-                UtilUpload.uploadCommunityImg(myFile, pathModule, dto);
+                UtilUpload.uploadPostImg(myFile, pathModule, dto);
 
                 dto.setType(2);
                 dto.setDefaultNY(j == 0 ? 1 : 0);
                 dto.setSort(j+1);
                 dto.setpSeq(pSeq);
 
-                dao.insertCommunityUpload(dto);
+                dao.insertPostUpload(dto);
                 j++;
             }
 
@@ -53,11 +53,11 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public Community selectOne(CommunityVo vo) throws Exception {
+	public Post selectOne(PostVo vo) throws Exception {
 		
 //		System.out.println("service : " + vo.getShSeq());
 		
-		Community selectOne = dao.selectOne(vo);
+		Post selectOne = dao.selectOne(vo);
 		
 //		System.out.println("service selectOne : " + selectOne);
 		
@@ -65,31 +65,31 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public int update(Community dto) throws Exception {
+	public int update(Post dto) throws Exception {
 		
 		return dao.update(dto);
 	}
 
 	@Override
-	public int ulete(Community dto) throws Exception {
+	public int ulete(Post dto) throws Exception {
 		
 		return dao.uelete(dto);
 	}
 
 	@Override
-	public int delete(CommunityVo vo) throws Exception {
+	public int delete(PostVo vo) throws Exception {
 		
 		return dao.delete(vo);
 	}
 
 	@Override
-	public Community selectCommunityImg(Community dto) throws Exception {
+	public Post selectPostImg(Post dto) throws Exception {
 
-		return dao.selectCommunityImg(dto);
+		return dao.selectPostImg(dto);
 	}
 
 	@Override
-	public List<Community> MyselectList(Community dto) throws Exception {
+	public List<Post> MyselectList(Post dto) throws Exception {
 		
 		System.out.println("getSeq : " + dto.getSeq());
 		
@@ -102,13 +102,13 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public int selectCountNewFromCategory(Community dto) throws Exception {
+	public int selectCountNewFromCategory(Post dto) throws Exception {
 		
 		return dao.selectCountNewFromCategory(dto);
 	}
 
 	@Override
-	public int selectOneCount(CommunityVo vo) throws Exception {
+	public int selectOneCount(PostVo vo) throws Exception {
 		return dao.selectOneCount(vo);
 	}
 	

@@ -1,8 +1,8 @@
-package com.woo.infra.modules.community;
+package com.woo.infra.modules.post;
 
-import com.woo.infra.modules.sportsGroup.SportsGroup;
+import com.woo.infra.modules.crew.Crew;
 
-public class Community extends SportsGroup {
+public class Post extends Crew {
 	
 	private String seq;
 	private String writer;

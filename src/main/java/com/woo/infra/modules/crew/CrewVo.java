@@ -1,8 +1,8 @@
-package com.woo.infra.modules.sportsGroup;
+package com.woo.infra.modules.crew;
 
 import com.woo.infra.common.util.BaseVo;
 
-public class SportsGroupVo extends BaseVo {
+public class CrewVo extends BaseVo {
 
 	//검색 조건
 	

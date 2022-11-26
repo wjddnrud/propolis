@@ -4,40 +4,40 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.woo.infra.modules.sportsGroup.SportsGroupMapper">
+<mapper namespace="com.woo.infra.modules.crew.CrewMapper">
 
-    <resultMap id="resultMapObj" type="com.woo.infra.modules.sportsGroup.SportsGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.crew.CrewMapper"></resultMap>
 	
 	<sql id="selectCommon">
-		FROM sportsGroup sg
+		FROM crew cr
 	</sql>
 	
 	<!-- paging -->
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
-		FROM sportsGroup
+		FROM crew
 	</select>
 	
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql"/>
 		SELECT
-			sg.seq
+			cr.seq
 			,mm.id as creator
-			,sg.group_name
-			,sg.sports
-			,sg.location 
-			,sg.people_number
-			,sg.startTime
-			,sg.endTime
-			,sg.detail
-			,sg.viewCount
-			,sg.map
-			,sg.playDate
-		    ,upsg.uuidName
-		    ,upsg.path
+			,cr.crewName
+			,cr.sports
+			,cr.location 
+			,cr.crMemberNum
+			,cr.startTime
+			,cr.endTime
+			,cr.detail
+			,cr.viewCount
+			,cr.map
+			,cr.playDate
+		    ,upcr.uuidName
+		    ,upcr.path
 		<include refid="selectCommon"/>
-		JOIN member mm ON sg.creator = mm.seq
-		LEFT JOIN uploadedSportsGroup upsg ON sg.seq = upsg.pSeq
+		JOIN member mm ON cr.creator = mm.seq
+		LEFT JOIN uploadedCrew upcr ON cr.seq = upcr.pSeq
 		ORDER BY seq DESC
 		<include refid="Base.orderByLimitForMysql"/>
 		<include refid="Base.selectListLowerForMysql"/>
@@ -46,49 +46,49 @@
 	
 	<select id="MyselectList" resultMap="resultMapObj">
 		SELECT
-			sg.seq
+			cr.seq
 			,mm.id as creator
-			,sg.group_name
-			,sg.sports
-			,sg.location 
-			,sg.people_number
-			,sg.startTime
-			,sg.endTime
-			,sg.detail
-			,sg.viewCount
-			,sg.map
-			,sg.playDate
-		    ,upsg.uuidName
-		    ,upsg.path
-		FROM sportsGroup sg
-		JOIN member mm ON sg.creator = mm.seq
-		JOIN uploadedSportsGroup upsg ON sg.seq = upsg.pSeq
+			,cr.crewName
+			,cr.sports
+			,cr.location 
+			,cr.crMemberNum
+			,cr.startTime
+			,cr.endTime
+			,cr.detail
+			,cr.viewCount
+			,cr.map
+			,cr.playDate
+		    ,upcr.uuidName
+		    ,upcr.path
+		FROM crew cr
+		JOIN member mm ON cr.creator = mm.seq
+		JOIN uploadedCrew upcr ON cr.seq = upcr.pSeq
 		WHERE 1=1
-			AND sg.creator = #{creator}
+			AND cr.creator = #{creator}
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			sg.seq
+			cr.seq
 			,mm.id
-			,sg.creator
-			,sg.group_name
-			,sg.sports
-			,sg.location 
-			,sg.people_number
-			,sg.startTime
-			,sg.endTime
-			,sg.detail
-			,sg.viewCount
-			,sg.map
-			,sg.playDate
+			,cr.creator
+			,cr.crewName
+			,cr.sports
+			,cr.location 
+			,cr.crMemberNum
+			,cr.startTime
+			,cr.endTime
+			,cr.detail
+			,cr.viewCount
+			,cr.map
+			,cr.playDate
 			,upmm.path
 			,upmm.uuidName
-		FROM sportsGroup sg
-		LEFT JOIN member mm ON mm.seq = sg.creator
+		FROM crew cr
+		LEFT JOIN member mm ON mm.seq = cr.creator
 		LEFT JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
 		WHERE 1=1
-			AND sg.seq=#{shSeq}
+			AND cr.seq=#{shSeq}
 	</select>
 	
 	<select id="sports" resultMap="resultMapObj">
@@ -102,12 +102,12 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO sportsGroup (
+		INSERT INTO crew (
 			creator
-			,group_name
+			,crewName
 			,sports
 			,location
-			,people_number
+			,crMemberNum
 			,playDate
 			,startTime
 			,endTime
@@ -116,10 +116,10 @@
 		)
 		VALUES (
 			#{creator}
-			,#{group_name}
+			,#{crewName}
 			,#{sports}
 			,#{location}
-			,#{people_number}
+			,#{crMemberNum}
 			,#{playDate}
 			,#{startTime}
 			,#{endTime}
@@ -131,13 +131,13 @@
 	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
 		SELECT
 			seq
-		FROM sportsGroup
+		FROM crew
 		ORDER BY seq DESC
 		LIMIT 1
 	</select>
 	
-	<insert id="groupImgUpload">
-		INSERT INTO uploadedSportsGroup (
+	<insert id="crewImgUpload">
+		INSERT INTO uploadedCrew (
 			<!-- seq -->
 			type
 			,defaultNY
@@ -171,20 +171,44 @@
 			AND pSeq = #{shSeq}
 	</select> -->
 	
-	<select id="participantList" resultMap="resultMapObj">
+	<select id="crMemberList" resultMap="resultMapObj">
 		SELECT
 			mm.seq
 			,mm.id
 			,mm.name
-		FROM  participant pc 
+		FROM  crMember crmm 
 		JOIN member mm 
         ON pc.member_seq = mm.seq
         WHERE 1=1
-        AND  pc.sportsGroup_seq = #{seq}
-		AND pc.creator_admin = 0
+        AND crmm.crSeq = #{seq}
+		AND crmm.crLeaderNy = 0
 	</select>
 	
+	<insert id="insertCrmm">
+		INSERT INTO crMember (
+			crLeaderNy
+			,mmSeq
+			,crSeq
+		)
+		VALUES (
+			#{}
+			,#{}
+			,#{}
+		)
+	</insert>
 	
+	<insert id="insertCrld">
+		INSER INTO crMember (
+			crLeaderNy
+			,mmSeq
+			,crSeq
+		)
+		VALUES (
+			#{}
+			,#{}
+			,#{}
+		)
+	</insert>	
 	
 
 </mapper>
