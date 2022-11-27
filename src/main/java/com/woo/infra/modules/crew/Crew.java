@@ -8,7 +8,7 @@ public class Crew extends Base{
 	private String crewName;
 	private String sports;
 	private String location;
-	private String crMemberNum;
+	private String crewMemberNum;
 	private String startTime;
 	private String endTime;
 	private String detail;
@@ -106,11 +106,11 @@ public class Crew extends Base{
 	public void setCrewName(String crewName) {
 		this.crewName = crewName;
 	}
-	public String getCrMemberNum() {
-		return crMemberNum;
+	public String getCrewMemberNum() {
+		return crewMemberNum;
 	}
-	public void setCrMemberNum(String crMemberNum) {
-		this.crMemberNum = crMemberNum;
+	public void setCrewMemberNum(String crewMemberNum) {
+		this.crewMemberNum = crewMemberNum;
 	}
 	
 	

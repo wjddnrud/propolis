@@ -52,7 +52,7 @@
 								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 								
-								<form name="communityForm" id="communityForm">
+								<form name="postForm" id="postForm">
 								
 									<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 									<input type="hidden" name="shSeq">
@@ -97,12 +97,12 @@
 										</table>
 										
 										<!-- pagination  -->
-										<%@include file="../../common/pagination.jsp"%>
+										<%@include file="resources/include/pagination.jsp"%>
 										
 										<br>
 										<center>
 											<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
-											<a href="/communityForm" class="button primary">작성</a>
+											<a href="/postForm" class="button primary">작성</a>
 											<a href="/main" class="button"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 											<!-- <a href="boardNotify.html" class="button" style="background-color: red; color: white;">🚨신고</a> -->
 										</center>
@@ -132,18 +132,18 @@
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript">
 			
-				var goUrlList = "/community/communityList";    /* # -> */
-				var goUrlInst = "/community/communityInst";    /* # -> */
-				var goUrlUpdt = "/community/communityUpdt";    /* # -> */
-				var goUrlUele = "/community/communityUele";    /* # -> */
-				var goUrlDele = "/community/communityDele";    /* # -> */		
+				var goUrlList = "/post/postList";    /* # -> */
+				var goUrlInst = "/post/postInst";    /* # -> */
+				var goUrlUpdt = "/post/postUpdt";    /* # -> */
+				var goUrlUele = "/post/postUele";    /* # -> */
+				var goUrlDele = "/post/postDele";    /* # -> */	
 			
-				var form = $('#communityForm')
+				var form = $('#postForm')
 				var viewSeq = $("input:hidden[name=shSeq]")
 				
 				viewForm = function(seq) {
 					viewSeq.attr("value", seq);
-					form.attr("action", "/community/communityView").submit();
+					form.attr("action", "/post/postView").submit();
 				}
 				
 				goList = function(thisPage) {
@@ -152,7 +152,7 @@
 				}
 				
 				
-				var excelUri = "/community/excelDownload"
+				var excelUri = "/post/excelDownload"
 				$("#btnExcel").on("click", function() {
 					
 					form.attr("action", excelUri).submit();

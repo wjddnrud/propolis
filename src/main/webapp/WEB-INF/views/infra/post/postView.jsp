@@ -64,7 +64,7 @@
 									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 									<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 									
-									<form name="formList">
+									<form name="postForm">
 									
 										<input type="hidden"id="post_seq" name="post_seq" value="${one.seq }">
 										<input type="hidden"id="writer" name="writer" value="${sessSeq}">
@@ -119,7 +119,7 @@
 											
 											<center style="margin-left: 12%; margin-bottom: 30px;">
 												<a href="#" class="button">💪추천</a>
-												<a href="/community/communityList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
+												<a href="/post/postList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 												<!-- <a href="/communityNotify" class="button" style="float: right;">🚨신고</a> -->
 											</center>
 											<hr>
@@ -179,7 +179,7 @@
 			<script type="text/javascript">
 				var goUrlInst = "/comment/commentInst";    /* # -> */
 				var seq = $("input:hidden[name=post_seq]");
-				var form = $("form[name=formList]");
+				var form = $("form[name=postForm]");
 			
 				$("#comment_input").on("click", function() {
 

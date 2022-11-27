@@ -47,7 +47,7 @@ public class CrewController {
 		
 		System.out.println("controller list : " + list);
 		
-		return "infra/SportsMate/findMate";
+		return "infra/crew/crewList";
 	}
 	
 	@RequestMapping(value = "crewView")
@@ -62,10 +62,10 @@ public class CrewController {
 		dto.setSeq(selectOne.getSeq());
 		System.out.println("dto.getSeq : " + dto.getSeq());
 		
-		List<Crew> participantList = service.crMemberList(dto);
-		model.addAttribute("part", participantList);
+		List<Crew> crMemberList = service.crMemberList(dto);
+		model.addAttribute("crMember", crMemberList);
 		
-		return "infra/SportsMate/findMateView";
+		return "infra/crew/crewView";
 	}
 	
 	@RequestMapping(value = "crewInst")
@@ -73,7 +73,7 @@ public class CrewController {
 		
 		service.insert(dto);
 		
-		return "redirect:/sportsGroup/sportsGroupList";
+		return "redirect:/crew/crewList";
 	}
 	
 	
@@ -87,7 +87,7 @@ public class CrewController {
 		model.addAttribute("sports",sports);
 		
 		
-		return "infra/SportsMate/findMateForm";
+		return "infra/crew/crewForm";
 	}
 	
 	@RequestMapping("excelDownload")

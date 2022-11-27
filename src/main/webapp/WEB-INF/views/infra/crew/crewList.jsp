@@ -15,7 +15,7 @@
 -->
 <html>
 	<head>
-		<title>FindMate</title>
+		<title>Crew</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -50,7 +50,7 @@
 									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 									
 									
-									<form name="findMateForm">
+									<form name="crewForm">
 									
 										<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 										<input type="hidden" name="shSeq">
@@ -87,13 +87,13 @@
 										</div>
 									</form>
 									
-									<!-- pagination -->
-									<%@include file="../../common/pagination.jsp"%>
+									<!-- pagination  -->
+										<%@include file="resources/include/pagination.jsp"%>
 									
 									<br>
 									<center>
 										<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
-										<a href="/findMateForm" class="button primary">등록</a>
+										<a href="/postForm" class="button primary">등록</a>
 										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
@@ -118,22 +118,22 @@
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
 			<script type="text/javascript">
 			
-			var goUrlList = "/sportsGroup/sportsGroupList";    /* # -> */
-			var goUrlInst = "/sportsGroup/sportsGroupInst";    /* # -> */
-			var goUrlUpdt = "/sportsGroup/sportsGroupUpdt";    /* # -> */
-			var goUrlUele = "/sportsGroup/sportsGroupUele";    /* # -> */
-			var goUrlDele = "/sportsGroup/sportsGroupDele";    /* # -> */	
+			var goUrlList = "/crew/crewList";    /* # -> */
+			var goUrlInst = "/crew/crewInst";    /* # -> */
+			var goUrlUpdt = "/crew/crewUpdt";    /* # -> */
+			var goUrlUele = "/crew/crewUele";    /* # -> */
+			var goUrlDele = "/crew/crewDele";    /* # -> */	
 			
-			var form = $("form[name=findMateForm]");
+			var form = $("form[name=crewForm]");
 			var viewSeq = $("input:hidden[name=shSeq]")
 			
 			viewform = function(seq) {
 				viewSeq.attr("value", seq);
-				form.attr("action", "/sportsGroup/sportsGroupView").submit();
+				form.attr("action", "/crew/crewView").submit();
 			}
 			
 			function regist() {
-				location.href = "/findMateForm";
+				location.href = "/crewForm";
 			}
 			
 			goList = function(thisPage) {
@@ -141,7 +141,7 @@
 				form.attr("action", goUrlList).submit();
 			}
 			
-			var excelUri = "/sportsGroup/excelDownload";
+			var excelUri = "/crew/excelDownload";
 			
 			$("#btnExcel").on("click", function(){
 				form.attr("action", excelUri).submit();

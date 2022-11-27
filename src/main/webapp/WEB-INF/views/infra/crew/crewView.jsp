@@ -14,7 +14,7 @@
 -->
 <html>
 	<head>
-		<title>FindMateView</title>
+		<title>CrewView</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -65,7 +65,7 @@
 						<div class="inner" style="width: 90%;">
 							<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 							<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
-							<form name="viewForm">
+							<form name="crewForm">
 							 
 								<input type="hidden" id="cuMember" name="cuMember" value="${one.creator }">
 								<input type="hidden" id="seq" name="seq" value="${one.seq }">
@@ -83,14 +83,14 @@
 										<div class="col-6" style="padding-left: 100px;">
 											<div class="row justify-content-center mb-3">
 												<div class="col">
-													<h3 class="mb-2 text-center"><b style="color: #6b33ed;"><c:out value="${one.group_name }"/></b></h3>
+													<h3 class="mb-2 text-center"><b style="color: #6b33ed;"><c:out value="${one.crewName }"/></b></h3>
 												</div>
 											</div>
 											<div class="row justify-content-center mb-5">
 												<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%; padding: 0;">
 												<div class="col">
-													<c:forEach items="${part}" var="part">
-														<span id="partName" onclick="memberProfile(${part.seq})" style="cursor: pointer; margin-bottom: 10px; hieght: 100px;">참여자 : <c:out value="${part.id}"/></span><br>
+													<c:forEach items="${crMember}" var="crMember">
+														<span id="crMemberName" onclick="crMember(${crMember.seq})" style="cursor: pointer; margin-bottom: 10px; hieght: 100px;">참여자 : <c:out value="${crMember.id}"/></span><br>
 													</c:forEach>
 												</div>
 											</div>
@@ -115,7 +115,7 @@
 													<span><b>모집인원</b></span>
 												</div>
 												<div class="col-9 text-start">
-													<span><c:out value="${one.people_number }"/>명</span>
+													<span><c:out value="${one.crMemberNum }"/>명</span>
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
@@ -192,7 +192,7 @@
 			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <!-- alert창 꾸미기 -->
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707"></script>
 			<script>
-				var form = $("form[name=viewForm]");
+				var form = $("form[name=crewForm]");
 			
 				$("#join").on("click", function() {
 					swal("Join 완료!", "마이페이지에서 join 정보를 확인하세요.", "success")
@@ -215,7 +215,7 @@
 					form.attr("action", "/chat/").submit();
 				}
 				
-				memberProfile = function(seq) {
+				crMember = function(seq) {
 					$("#seq").val(seq);
 					form.attr("action", "/myPageCommunityList").submit();
 				}

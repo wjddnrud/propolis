@@ -9,7 +9,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>FindMateForm</title>
+		<title>CrewForm</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -32,7 +32,7 @@
 					<article id="main">
 						<header>
 							<h2>findMate</h2>
-							<p>새로운 그룹을 만들어 mate를 모집하세요.</p>
+							<p>새로운 크루를 만들어 mate를 모집하세요.</p>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
@@ -43,7 +43,7 @@
 									<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 									<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 								
-									<form name="findMateForm" enctype="multipart/form-data" method="post">
+									<form name="crewForm" enctype="multipart/form-data" method="post">
 										
 										<!-- 그룹 생성자 (그룹장) -->
 										<input type="hidden" value="${sessSeq}" name="creator" id="creator">
@@ -89,7 +89,7 @@
 											
 											</div>
 											<div class="col-8 col-12-xsmall">
-												<input type="text" name="group_name" id="group_name" placeholder="그룹명을 입력해주세요." >
+												<input type="text" name="crewName" id="crewName" placeholder="크루명을 입력해주세요." >
 											</div>
 											
 											
@@ -118,7 +118,7 @@
 												<input type="text" name="location" id="location" placeholder="지역 (xx시 xx구)" />
 											</div>
 											<div class="col-2 col-12-xsmall">
-												<input type="text" name="people_number" id="people_number" placeholder="인원 (명)" />
+												<input type="text" name="crewMemberNum" id="crewMemberNum" placeholder="인원 (명)" />
 											</div>
 											<div class="col-12">
 												<textarea name="detail" id="detail" placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
@@ -128,7 +128,7 @@
 													<li><input type="reset" value="Reset"></li>
 													<li><a id="btnSave" class="button primary">Sign-up</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
-													<li><a href="/sportsGroup/sportsGroupList" class="button">Cancle</a></li>
+													<li><a href="/crew/crewList" class="button">Cancle</a></li>
 												</ul>
 											</div>
 										</div>
@@ -156,13 +156,13 @@
 			
 			<script type="text/javascript">
 			
-				var goUrlList = "/sportsGroup/sportsGroupList";    /* # -> */
-				var goUrlInst = "/sportsGroup/sportsGroupInst";    /* # -> */
-				var goUrlUpdt = "/sportsGroup/sportsGroupUpdt";    /* # -> */
-				var goUrlUele = "/sportsGroup/sportsGroupUele";    /* # -> */
-				var goUrlDele = "/sportsGroup/sportsGroupDele";    /* # -> */	
+				var goUrlList = "/crew/crewList";    /* # -> */
+				var goUrlInst = "/crew/crewInst";    /* # -> */
+				var goUrlUpdt = "/crew/crewUpdt";    /* # -> */
+				var goUrlUele = "/crew/crewUele";    /* # -> */
+				var goUrlDele = "/crew/crewDele";    /* # -> */		
 				
-				var form = $("form[name=findMateForm]");
+				var form = $("form[name=crewForm]");
 				var seq = $("input:hidden[name=seq]");
 				
 				/* 파일 첨부시 input 글씨 변경 */
@@ -204,11 +204,11 @@
 						return false;
 					}
 					
-					if($('#group_name').val() == "") {
-						alert("그룹 이름을 입력해주세요.");
+					if($('#crewName').val() == "") {
+						alert("크루 이름을 입력해주세요.");
 						
-						$("#group_name").val()="";
-						$("#group_name").focus();
+						$("#crewName").val()="";
+						$("#crewName").focus();
 						
 						return false;
 					}
@@ -249,17 +249,17 @@
 						return false;
 					}
 					
-					if(document.getElementById('people_number').value == "") {
+					if(document.getElementById('crewMemberNum').value == "") {
 						alert("모집 인원을 입력해주세요.");
 						
-						document.getElementById("people_number").value="";
-						document.getElementById("people_number").focus();
+						document.getElementById("crewMemberNum").value="";
+						document.getElementById("crewMemberNum").focus();
 						
 						return false;
 					}
 					
 					if(document.getElementById('detail').value == "") {
-						alert("그룹에 대한 세부 내용을 입력해주세요.");
+						alert("크루에 대한 세부 내용을 입력해주세요.");
 						
 						document.getElementById("detail").value="";
 						document.getElementById("detail").focus();

@@ -1,4 +1,4 @@
-package com.woo.infra.modules;
+package com.woo.infra.modules.base;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,17 +23,17 @@ import com.woo.infra.modules.post.Post;
 import com.woo.infra.modules.post.PostServiceImpl;
 
 @Controller
-public class CommonController {
+public class BaseController {
 
 	
 	@Autowired
 	MemberServiceImpl mmService;
 	
 	@Autowired
-	PostServiceImpl cmService;
+	PostServiceImpl poService;
 	
 	@Autowired
-	CrewServiceImpl sgService;
+	CrewServiceImpl crService;
 	
 	
 	//----------------------------- 페이지 이동
@@ -47,13 +47,13 @@ public class CommonController {
 	@RequestMapping(value = "main")
 	public String main(Model model) throws Exception {
 		
-		int dietCount = cmService.selectCountFromCategory(1);
+		int dietCount = poService.selectCountFromCategory(1);
 		model.addAttribute("dietCount", dietCount);
 		
-		int weightCount = cmService.selectCountFromCategory(2);
+		int weightCount = poService.selectCountFromCategory(2);
 		model.addAttribute("weightCount", weightCount);
 		
-		int foodCount = cmService.selectCountFromCategory(3);
+		int foodCount = poService.selectCountFromCategory(3);
 		model.addAttribute("foodCount", foodCount);
 		
 		
@@ -61,7 +61,7 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value="myPage")
-	public String myPage(Model model, Member mmdto, MemberVo vo, Post cmdto,  HttpSession httpSession) throws Exception {
+	public String myPage(Model model, Member mmdto, MemberVo vo, Post podto,  HttpSession httpSession) throws Exception {
 		
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 		
@@ -72,12 +72,12 @@ public class CommonController {
 		Member img = mmService.selectMemberImg(mmdto);
 		model.addAttribute("img",img);
 		
-		cmdto.setWriter("" + mmdto.getSeq());
-		List<Post> cmlist = cmService.MyselectList(cmdto);
+		podto.setWriter("" + mmdto.getSeq());
+		List<Post> cmlist = poService.MyselectList(podto);
 		model.addAttribute("cmlist", cmlist);
 			
-		cmdto.setCreator("" + mmdto.getSeq());
-		List<Crew> grlist = sgService.MyselectList(cmdto);
+		podto.setCreator("" + mmdto.getSeq());
+		List<Crew> grlist = crService.MyselectList(podto);
 		model.addAttribute("grlist", grlist); 
 		
 		vo.setShSeq(mmdto.getSeq());
@@ -101,7 +101,7 @@ public class CommonController {
 	
 	
 //	@RequestMapping(value = "/myPageGroupList") 
-//	public String myPageGroupList(Model model, Member mmdto, Community cmdto, HttpSession httpSession) throws Exception {
+//	public String myPageGroupList(Model model, Member mmdto, Community podto, HttpSession httpSession) throws Exception {
 //		
 //		int sessSeq = (int) httpSession.getAttribute("sessSeq");
 ////		System.out.println("getAttribute: " + sessSeq);
@@ -113,12 +113,12 @@ public class CommonController {
 //		Member img = mmService.selectMemberImg(mmdto);
 //		model.addAttribute("img",img);
 //		
-//		cmdto.setCreator("" + mmdto.getSeq());
-//		List<SportsGroup> grlist = sgService.MyselectList(cmdto);
+//		podto.setCreator("" + mmdto.getSeq());
+//		List<SportsGroup> grlist = crService.MyselectList(podto);
 //		model.addAttribute("grlist", grlist);
 //		
-//		cmdto.setWriter("" + mmdto.getSeq());
-//		List<Community> cmlist = cmService.MyselectList(cmdto);
+//		podto.setWriter("" + mmdto.getSeq());
+//		List<Community> cmlist = poService.MyselectList(podto);
 //		model.addAttribute("cmlist", cmlist);
 //		
 //		MemberVo vo = new  MemberVo(); 

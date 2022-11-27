@@ -12,7 +12,7 @@ public class Post extends Crew {
 	private String modiDate;
 	private String viewCount;
 	private String category;
-	private String MyCommunityCount;
+	private String MyPostCount;
 	
 	
 	public String getSeq() {
@@ -63,11 +63,11 @@ public class Post extends Crew {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getMyCommunityCount() {
-		return MyCommunityCount;
+	public String getMyPostCount() {
+		return MyPostCount;
 	}
-	public void setMyCommunityCount(String myCommunityCount) {
-		MyCommunityCount = myCommunityCount;
+	public void setMyPostCount(String myPostCount) {
+		MyPostCount = myPostCount;
 	}
 	
 	

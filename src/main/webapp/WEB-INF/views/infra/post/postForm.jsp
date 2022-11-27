@@ -14,7 +14,7 @@
 -->
 <html>
 	<head>
-		<title>CommunityForm</title>
+		<title>PostForm</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -43,7 +43,7 @@
 
 								<section>
 									<!-- enctype이 있어야 multipartfile 데이터를 바인딩 할수 있따!! 중요중요 -->
-									<form name="communityForm" enctype="multipart/form-data" method="post">
+									<form name="postForm" enctype="multipart/form-data" method="post">
 										<div class="row gtr-uniform">
 											<div class="col-4 col-12-xsmall">
 												<select id="category" name="category">
@@ -77,7 +77,7 @@
 													<li><input type="reset" value="Reset"></li>
 													<li><a id="btnSave" class="button primary">Sign-up</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
-													<li><a href="/community/communityList" class="button">Cancle</a></li>
+													<li><a href="/post/postList" class="button">Cancle</a></li>
 												</ul>
 											</div>
 										</div>
@@ -102,13 +102,13 @@
 			<script src="/resources/images/assets/js/main.js"></script>
 
 			<script type="text/javascript">
-				var goUrlList = "/community/communityList";    /* # -> */
-				var goUrlInst = "/community/communityInst";    /* # -> */
-				var goUrlUpdt = "/community/communityUpdt";    /* # -> */
-				var goUrlUele = "/community/communityUele";    /* # -> */
-				var goUrlDele = "/community/communityDele";    /* # -> */
+				var goUrlList = "/post/postList";    /* # -> */
+				var goUrlInst = "/post/postInst";    /* # -> */
+				var goUrlUpdt = "/post/postUpdt";    /* # -> */
+				var goUrlUele = "/post/postUele";    /* # -> */
+				var goUrlDele = "/post/postDele";    /* # -> */
 				
-				var form = $("form[name=communityForm]");
+				var form = $("form[name=postForm]");
 			
 			
 				$("#imgFile").on('change',function(){

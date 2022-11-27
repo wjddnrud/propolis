@@ -43,7 +43,7 @@ public class PostController {
 			model.addAttribute("list", list);
 		}
 		
-		return "infra/nationality/xdmin/nationalityList";
+		return "infra/post/postList";
 	}
 	
 	
@@ -54,7 +54,7 @@ public class PostController {
 		
 		service.insert(dto);
 
-		return "redirect:/community/communityList";
+		return "redirect:/post/postList";
 	}
 	
 	@RequestMapping(value = "postForm")
@@ -64,7 +64,7 @@ public class PostController {
 		model.addAttribute("one", selectOne);
 //		System.out.println("controller selectOne : " + selectOne);
 		
-		return "infra/SportsMate/communityForm";
+		return "infra/post/postForm";
 	}
 	
 	@RequestMapping(value = "postView")
@@ -85,7 +85,7 @@ public class PostController {
 		model.addAttribute("comments", comments);
 		
 		
-		return "infra/SportsMate/communityView";
+		return "infra/post/postView";
 	}
 	
 	
@@ -205,16 +205,16 @@ public class PostController {
 //		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
 	}
 	
-	@RequestMapping(value = "postAjaxList")
+	@RequestMapping(value = "myPostAjaxList")
 	public String postAjaxList(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 		
 		setSearch(vo);
 
-		return "infra/SportsMate/myPageAjaxList";
+		return "infra/post/myPostAjaxList";
 	}
 	
 	
-	@RequestMapping(value = "postAjaxLita")
+	@RequestMapping(value = "myPostAjaxLita")
 	public String postAjaxLita(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
@@ -224,7 +224,7 @@ public class PostController {
 			model.addAttribute("list", list);
 		}
 
-		return "resources/include/myPageAjaxLita";
+		return "infra/post/myPostAjaxLita";
 	}
 	 
 	

@@ -55,9 +55,9 @@ public class CrewDao {
 		return sports;
 	}
 	
-	public List<Crew> MyselectList(Crew sgdto) {
-		System.out.println("dao getCreator : " + sgdto.getCreator());
-		List<Crew> MyselectList = sqlSession.selectList(namespace + ".MyselectList", sgdto);
+	public List<Crew> MyselectList(Crew crdto) {
+		System.out.println("dao getCreator : " + crdto.getCreator());
+		List<Crew> MyselectList = sqlSession.selectList(namespace + ".MyselectList", crdto);
 		
 		return MyselectList;
 	}

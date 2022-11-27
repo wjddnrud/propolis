@@ -32,31 +32,4 @@ public class HomeController {
 			
 			return "home";
 		}
-		
-		@RequestMapping(value = "/a", method = RequestMethod.GET)
-		public String a(Locale locale, Model model) {
-			System.out.println("kjygfik");
-			return "aLIst";
-		}
-		
-		@RequestMapping(value = "/codeGroupList", method = RequestMethod.GET)
-		public String CGL(Locale locale, Model model) {
-			
-			return "codeGroupList";
-		}
-		
-		@RequestMapping(value = "/codeList", method = RequestMethod.GET)
-		public String codeList(Locale locale, Model model) {
-			
-			return "codeList";
-		}
-		
-		@RequestMapping(value = "/memberList", method = RequestMethod.GET)
-		public String memberList(Locale locale, Model model) {
-			
-			return "memberList";
-		}
-		
-		
-	
 }
