@@ -6,7 +6,7 @@
 
 <mapper namespace="com.woo.infra.modules.crew.CrewMapper">
 
-    <resultMap id="resultMapObj" type="com.woo.infra.modules.crew.CrewMapper"></resultMap>
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.crew.Crew"></resultMap>
 	
 	<sql id="selectCommon">
 		FROM crew cr
@@ -138,7 +138,7 @@
 	
 	<insert id="crewImgUpload">
 		INSERT INTO uploadedCrew (
-			<!-- seq -->
+			seq
 			type
 			,defaultNY
 			,sort
@@ -150,7 +150,7 @@
 			,pSeq
 		)
 		VALUES (
-			<!-- #{seq} -->
+			#{seq}
 			#{type}
 			,#{defaultNY}
 			,#{sort}
@@ -163,13 +163,13 @@
 		)
 	</insert>	
 	
-	<!-- <select id="selectGroupImg" resultMap="resultMapObj">
+	<select id="selectGroupImg" resultMap="resultMapObj">
 		SELECT
 			*
 		FROM uploadedSportsGroup
 		WHERE 1=1
 			AND pSeq = #{shSeq}
-	</select> -->
+	</select>
 	
 	<select id="crMemberList" resultMap="resultMapObj">
 		SELECT
@@ -178,13 +178,13 @@
 			,mm.name
 		FROM  crMember crmm 
 		JOIN member mm 
-        ON pc.member_seq = mm.seq
+        ON crmm.member_seq = mm.seq
         WHERE 1=1
         AND crmm.crSeq = #{seq}
 		AND crmm.crLeaderNy = 0
 	</select>
 	
-	<insert id="insertCrmm">
+	<!-- <insert id="insertCrmm">
 		INSERT INTO crMember (
 			crLeaderNy
 			,mmSeq
@@ -208,7 +208,6 @@
 			,#{}
 			,#{}
 		)
-	</insert>	
-	
+	</insert>	 -->
 
 </mapper>

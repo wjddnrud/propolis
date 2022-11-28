@@ -62,9 +62,6 @@
 										<li class="nav-item">
 											<a class="nav-link" href="javascript:goList('gr')">그룹 관리</a>
 										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="javascript:goList('dm')">메세지</a>
-										</li>
 									</ul>
 								</div>
 								<br>

@@ -141,26 +141,6 @@
 										<option value="1">블로그</option>
 									</select>
 								</div>
-								<!-- <div class="col-12 col-12-small" style="padding-top: 80px;">
-									<input type="checkbox" id="allAgree" name="allAgree" onclick="selectAll(this)">
-									<label for="allAgree">약관 전체 동의하기</label>
-								</div>
-								<div class="col-12 col-12-small">
-									<input type="checkbox" id="agree1" name="agree">
-									<label for="agree1">[필수] 개인정보 수집 및 이용 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
-								</div>
-								<div class="col-12 col-12-small">
-									<input type="checkbox" id="agree2" name="agree">
-									<label for="agree2">[필수] SPORTS MATE 이용 약관 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
-								</div>
-								<div class="col-12 col-12-small">
-									<input type="checkbox" id="agree3" name="agree">
-									<label for="agree3">[필수] 만 14세 미만 가입 제한</label>
-								</div>
-								<div class="col-12 col-12-small">
-									<input type="checkbox" id="agree4" name="agree">
-									<label for="agree4">[선택] 마케팅 활용 및 광고성 정보 수신 동의&nbsp;<a href="#" target="_blank">자세히</a></label>
-								</div> -->
 								<div class="col-12">
 									<ul class="actions fit" style="padding-top: 60px;">
 										<li><input type="reset" value="reset"></li>
@@ -168,10 +148,6 @@
 										<li><input type="button" id="cancle" value="cancle"></li>
 									</ul>
 								</div>
-							</div>
-							<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-							<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-							<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 							</div>
 						</form>
 					</section>

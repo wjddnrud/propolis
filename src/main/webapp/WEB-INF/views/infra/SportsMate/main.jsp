@@ -39,7 +39,7 @@
 							함께 운동할 친구를 찾아보세요.<br /></p>
 							<!-- crafted by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 							<ul class="actions special">
-								<li><a href="/sportsGroup/sportsGroupList" class="button primary">Find Mate</a></li>
+								<li><a href="/crew/crewList" class="button primary">Find Mate</a></li>
 							</ul>
 						</div>
 						<a href="#one" class="more scrolly">Learn More</a>
@@ -52,7 +52,7 @@
 								<h2>게시판을 통해 정보를 공유해 보세요.</h2>
 								<p>다양한 카테고리별로 유익한 정보를 함께 공유하실수 있습니다.<br>
 								</p>
-								<a href="/community/communityList" class="button primary">Community</a>
+								<a href="/post/postList" class="button primary">Community</a>
 							</header>
 						</div>
 					</section>

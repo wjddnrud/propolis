@@ -6,7 +6,7 @@
 
 <mapper namespace="com.woo.infra.modules.post.PostMapper">
 
-    <resultMap id="resultMapObj" type="com.woo.infra.modules.post.PostMapper"></resultMap>
+    <resultMap id="resultMapObj" type="com.woo.infra.modules.post.Post"></resultMap>
 	
 	<sql id="selectCommon">
 		FROM post po

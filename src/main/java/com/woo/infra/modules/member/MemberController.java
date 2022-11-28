@@ -165,7 +165,7 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	//휴대폰 인중
+	//휴대폰 인증
 	@ResponseBody
 	@RequestMapping(value = "checkPhone")
 	public Map<String, Object> checkPhone(Member dto) throws Exception {

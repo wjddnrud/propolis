@@ -69,7 +69,7 @@ public class CrewController {
 	}
 	
 	@RequestMapping(value = "crewInst")
-	public String sportsGroupInst(Model model, Crew dto, CrewVo vo) throws Exception {
+	public String crewInst(Model model, Crew dto, CrewVo vo) throws Exception {
 		
 		service.insert(dto);
 		
@@ -78,7 +78,7 @@ public class CrewController {
 	
 	
 	@RequestMapping(value = "crewForm")
-	public String sportsGroupForm(Model model, CrewVo vo, Crew dto) throws Exception {
+	public String crewForm(Model model, CrewVo vo, Crew dto) throws Exception {
 		
 		List<Crew> list = service.selectList(vo);
 		model.addAttribute("list",list);
@@ -194,7 +194,7 @@ public class CrewController {
 
 	        httpServletResponse.setContentType("ms-vnd/excel");
 //	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=example.xls");	// for xls
-	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=sportsGroupList.xlsx");
+	        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=crewList.xlsx");
 
 	        workbook.write(httpServletResponse.getOutputStream());
 	        workbook.close();

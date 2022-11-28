@@ -68,7 +68,7 @@
 														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
 															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
 														</c:forEach>
-														<span><c:out value="${list.group_name}"/></span></h3>
+														<span><c:out value="${list.crewName}"/></span></h3>
 													</div>
 												</div>
 												<ul class="sci">
@@ -88,7 +88,7 @@
 									</form>
 									
 									<!-- pagination  -->
-										<%@include file="resources/include/pagination.jsp"%>
+									<%@include file="/resources/include/pagination.jsp"%>
 									
 									<br>
 									<center>

@@ -16,8 +16,8 @@
 			        	</c:if>
 			            <c:if test="${sessSeq ne null}">   <!-- 로그인후 -->
 			                <li><a href="/main">Home</a></li>
-							<li><a href="/sportsGroup/sportsGroupList">Find Mate</a></li>
-							<li><a href="/community/communityList">Community</a></li>
+							<li><a href="/crew/crewList">Find Mate</a></li>
+							<li><a href="/post/postList">Community</a></li>
 							<li><a href="/myPage">MyPage</a></li>
 							<li><a href="/chat/">Message</a></li>
 							<li><a href="/logout">LOG-OUT</a></li>

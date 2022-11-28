@@ -3,6 +3,7 @@ package com.woo.infra.modules.crew;
 import com.woo.infra.modules.base.Base;
 
 public class Crew extends Base{
+	
 	private String seq;
 	private String creator;
 	private String crewName;

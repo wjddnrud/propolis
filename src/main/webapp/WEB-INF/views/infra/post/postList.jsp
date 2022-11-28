@@ -97,7 +97,7 @@
 										</table>
 										
 										<!-- pagination  -->
-										<%@include file="resources/include/pagination.jsp"%>
+										<%@include file="/resources/include/pagination.jsp"%>
 										
 										<br>
 										<center>
