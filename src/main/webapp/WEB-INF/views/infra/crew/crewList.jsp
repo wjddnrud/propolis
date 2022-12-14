@@ -61,28 +61,27 @@
 										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
 										
 										<c:forEach items="${list}" var="list" varStatus="statusList">
-											<div class="card">
-												<div class="content">
-													<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
-													<div class="contentBx">
-														<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
-															<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
-														</c:forEach>
-														<span><c:out value="${list.crewName}"/></span></h3>
+											<a href="javascript:viewform(${list.seq})">
+												<div class="card">
+													<div class="content">
+														<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
+														<div class="contentBx">
+															<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
+																<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
+															</c:forEach>
+															<span><c:out value="${list.crewName}"/></span></h3>
+														</div>
 													</div>
+													<%-- <ul class="sci">
+														<li style="--i:1">
+															<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
+														</li>
+														<li style="--i:2">
+															<a href="#"><i class="fa-regular fa-envelope"></i></a>
+														</li>
+													</ul> --%>
 												</div>
-												<ul class="sci">
-													<li style="--i:1">
-														<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
-													</li>
-													<li style="--i:2">
-														<a href="#"><i class="fa-regular fa-envelope"></i></a>
-													</li>
-													<!-- <li style="--i:3">
-														<a href="#"><i class="fa-regular fa-map"></i></a>
-													</li> -->
-												</ul>
-											</div>
+											</a>
 										</c:forEach>
 										</div>
 									</form>
@@ -92,7 +91,6 @@
 									
 									<br>
 									<center>
-										<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 										<a href="/postForm" class="button primary">등록</a>
 										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
@@ -140,12 +138,6 @@
 				$("input:hidden[name=thisPage]").val(thisPage);
 				form.attr("action", goUrlList).submit();
 			}
-			
-			var excelUri = "/crew/excelDownload";
-			
-			$("#btnExcel").on("click", function(){
-				form.attr("action", excelUri).submit();
-			});
 			
 			</script>
 	</body>

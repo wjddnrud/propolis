@@ -28,17 +28,15 @@
 				<!-- Main -->
 				<article id="main">
 					<header>
-						<h2>My page</h2>
-						<h4>마이페이지에서 내 정보를 수정하거나 게시했던 글들을 확인할 수 있습니다.</h4>
+						<h2>회원 정보</h2>
 					</header>
 					<section class="wrapper style5">
 						<div class="inner" style="width: 50%;">
 							<section>
-								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 								<div class="row pb-3">
-									<div class="col-6 pt-3" style="font-weight: bold; text-align: right; vertical-align: middle; height: 150px;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; border: 5px solid black; border-radius: 50%;">
-										<br/><a href="/member/memberUserForm" class="button small mt-3">정보 수정</a>
+									<div class="col-6 pt-3" style="font-weight: bold; text-align: right; vertical-align: middle;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;">
+										<br/><a href="/member/memberUserForm" class="button mt-3">정보 수정</a>
 									</div>
 									<div class="col-6" style="text-align: left;">
 										<b>[회원 정보]</b><br/><br/>
@@ -58,35 +56,33 @@
 								</div>
 								<div class="mt-3">
 									<ul class="nav nav-tabs">
-										<!-- <li class="nav-item">
-											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
-										</li> -->
 										<li class="nav-item">
-											<a class="nav-link" href="/myPageCommunityList">게시글 관리</a>
+											<a class="nav-link active" href="javascript:goList('cm')">게시글 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" href="/myPageGroupList">그룹 관리</a>
+											<a class="nav-link" href="javascript:goList('gr')">그룹 관리</a>
 										</li>
-										<!-- <li class="nav-item">
-											<a class="nav-link" href="/myPageMessegeList">메세지</a>
-										</li> -->
 									</ul>
 								</div>
 								<br>
 								
 								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
-								<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
-									
+								<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
+								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
+								
+								
 								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
 									
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
 									<!-- <input type="hidden" name="mainKey"> -->
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
-									<input type="hidden" id="shSeq" name="shSeq">
+									<input type="hidden" name="shSeq">
+									<input type="hidden" id="seq" name="seq" value="">
 									
-								
+									
 								<div class="table-wrapper">
+								
 									<table class="alt">
 										<thead>
 											<tr>
@@ -95,41 +91,41 @@
 													<label for="demo-human" style="color: white;">선택</label>
 												</th> -->
 												<th>No</th>
-												<th>운동종목</th>
-												<th>그룸이름</th>
-												<th>그룹리더</th>
-												<th>모집인원</th>
-												<th>장소</th>
+												<th>카테고리</th>
+												<th>제목</th>
+												<th>작성자</th>
+												<th>조회수</th>
+												<th>작성일자</th>
 											</tr>
 										</thead>
 										<tbody style="color: black;">
 											<c:choose>
-												<c:when test="${fn:length(grlist) eq 0}">
+												<c:when test="${fn:length(cmlist) eq 0}">
 													<tr>
 														<td class="text-center" colspan="8">There is no data!</td>
 													</tr>
 												</c:when>
 											</c:choose>
 											
-											<c:forEach items="${grlist}" var="list" varStatus="statusList">
-												<tr onclick="viewForm('${list.seq}')">
-													<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
-														<label for="checkbox${status.count }"></label>
-													</td> --%>
-													<td style="text-align: center;"><c:out value="${list.seq }"/></td>
-													<td style="text-align: center;">
-														<c:forEach items="${listCodeSports}" var="listSports" varStatus="statusSports">
-															<c:if test="${list.sports eq listSports.cc_key}"><c:out value="${listSports.cc_name }"/></c:if>
-														</c:forEach>
-													</td>
-													<%-- <td><c:out value="${list.category }"></c:out></td> --%>
-													<td><c:out value="${list.group_name }"></c:out></td>
-													<td style="text-align: center;"><c:out value="${list.creator }"></c:out></td>
-													<td style="text-align: center;"><c:out value="${list.people_number }"></c:out></td>
-													<td style="text-align: center;"><c:out value="${list.location }"></c:out></td>
-												</tr>
-											</c:forEach>
 											
+											<c:forEach items="${cmlist}" var="list" varStatus="statusList">
+													<tr onclick="viewForm('${list.seq}')">
+														<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
+															<label for="checkbox${status.count }"></label>
+														</td> --%>
+														<td style="text-align: center;"><c:out value="${list.seq }"/></td>
+														<td style="text-align: center;">
+															<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
+																<c:if test="${list.category eq listCategory.cc_key}"><c:out value="${listCategory.cc_name }"/></c:if>
+															</c:forEach>
+														</td>
+														<%-- <td><c:out value="${list.category }"></c:out></td> --%>
+														<td><c:out value="${list.title }"></c:out></td>
+														<td style="text-align: center;"><c:out value="${list.writer }"></c:out></td>
+														<td style="text-align: center;"><c:out value="${list.viewCount }"></c:out></td>
+														<td style="text-align: center;"><c:out value="${list.createDate }"></c:out></td>
+													</tr>
+												</c:forEach>
 											
 											
 										</tbody>
@@ -191,36 +187,46 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 			<script type="text/javascript">
-				
+			
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				// var form = $("#formList");  // id로 된거 사용
 				
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
 				
-				var goUrlList = "/codegroup/codeGroupList";    /* # -> */
-				var goUrlInst = "/codegroup/codeGroupInst";    /* # -> */
-				var goUrlUpdt = "/codegroup/codeGroupUpdt";    /* # -> */
-				var goUrlUele = "/codegroup/codeGroupUele";    /* # -> */
-				var goUrlDele = "/codegroup/codeGroupDele";    /* # -> */	
-				
-				goList = function(thisPage) {
-					$("input:hidden[name=thisPage]").val(thisPage);
-					form.attr("action", goUrlList).submit();
+				goList = function(key) {
+					
+					var url = "";
+					switch (key) {
+					case 'pr':
+					{
+						url = "";					
+					break;
+					}
+					case 'cm':
+						{
+						url = "/myPagePostList";		 				
+						break;
+						}
+					case 'gr':
+					{
+						alert("check");
+						url = "/myPageCrewList";		
+					break;
+					}
+					case 'dm':
+					{
+						url = "";					
+					break;
+					}
+					default:
+						break;
+					}
+					
+					form.attr("action", url).submit();
 				}
-				// 버튼을 submit 처리해서 action이 없어도 goUrlList로 submit 되게 해주는 기능 
 				
-				editForm = function(seq) {
-					editSeq.attr("value", seq);
-					form.attr("action", "/codegroup/codeGroupForm").submit();
-				}
 				
-				/* var viewSeq = $("input:hidden[name=shSeq]")
-				
-				viewForm = function(seq) {
-					viewSeq.attr("value", seq);
-					form.attr("action", "/community/communityView").submit();
-				} */
 			</script>
 
 

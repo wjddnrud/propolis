@@ -73,11 +73,11 @@
 											<table class="alt" style="pointer-events: none;">
 												<thead>
 													<tr>
-														<th>카테고리</th>
-														<th>작성자</th>
-														<th style="width: 600px;">제목</th>
-														<th>작성일자</th>
-														<th>추천수</th>
+														<th style="min-width: 200px;">카테고리</th>
+														<th style="min-width: 200px;">작성자</th>
+														<th style="min-width: 600px;">제목</th>
+														<th style="min-width: 200px;">작성일자</th>
+														<th style="min-width: 150px;">추천수</th>
 													</tr>
 												</thead>
 												<tbody>

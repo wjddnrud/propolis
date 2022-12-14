@@ -60,35 +60,56 @@
 				<!-- Two -->
 					<section id="two" class="wrapper alt style2">
 						<section class="spotlight">
-							<div class="image"><img src="/resources/images/images/요가.jpg" alt="" /></div><div class="content">
+							<div class="image">
+								<a href="/post/postList"><img src="/resources/images/images/요가.jpg" alt="" /></a>
+							</div>
+							<div class="content">
 								<h2>[diet]<br>
 								loose your weight</h2>
 								<c:choose>
-									<c:when test="${dietCountNew ne 0}">
-										<tr>
-											<p>New <c:out value="${dietCountNew}"/></p>
-										</tr>
+									<c:when test="${dietCountNew eq null || dietCountNew eq 0}">
 									</c:when>
+									<c:otherwise>
+										<p style="color: red;">새 게시물 +<c:out value="${dietCountNew}"/></p>
+									</c:otherwise>
 								</c:choose>
-								<p>TOTAL <c:out value="${dietCount}" /></p>
+								<p>총 게시물 <c:out value="${dietCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>
 						</section>
 						<section class="spotlight">
-							<div class="image"><img src="/resources/images/images/웨이트.jpg" alt="" /></div><div class="content">
+							<div class="image">
+								<a href="/post/postList"><img src="/resources/images/images/웨이트.jpg" alt="" /></a>
+							</div>
+							<div class="content">
 								<h2>[weight]<br>
 								grow up your muscle</h2>
-								<p>NEW <c:out value="${weightCountNew }"/></p>
-								<p>TOTAL <c:out value="${weightCount}" /></p>
+								<c:choose>
+									<c:when test="${weightCountNew eq null || weightCountNew eq 0}">
+									</c:when>
+									<c:otherwise>
+										<p style="color: red;">새 게시물 +<c:out value="${weightCountNew}"/></p>
+									</c:otherwise>
+								</c:choose>
+								<p>총 게시물 <c:out value="${weightCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>
 						</section>
 						<section class="spotlight">
-							<div class="image"><img src="/resources/images/images/food1.jpg" alt="" /></div><div class="content">
+							<div class="image">
+								<a href="/post/postList"><img src="/resources/images/images/food1.jpg" alt="" /></a>
+							</div>
+							<div class="content">
 								<h2>[food]<br>
 								healthy menu & recipe</h2>
-								<p>NEW <c:out value="${foodCountNew }"/></p>
-								<p>TOTAL <c:out value="${foodCount}" /></p>
+								<c:choose>
+									<c:when test="${foodCountNew eq null || foodCountNew eq 0}">
+									</c:when>
+									<c:otherwise>
+										<p style="color: red;">새 게시물 +<c:out value="${foodCountNew}"/></p>
+									</c:otherwise>
+								</c:choose>
+								<p>총 게시물 <c:out value="${foodCount}" /></p>
 								<!-- <button type="button" class="btn btn-outline-dark" href="#" style="border-radius: 0;">detail</button> -->
 							</div>
 						</section>

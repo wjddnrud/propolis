@@ -178,7 +178,7 @@
 			,mm.name
 		FROM  crMember crmm 
 		JOIN member mm 
-        ON crmm.member_seq = mm.seq
+        ON crmm.mmSeq = mm.seq
         WHERE 1=1
         AND crmm.crSeq = #{seq}
 		AND crmm.crLeaderNy = 0

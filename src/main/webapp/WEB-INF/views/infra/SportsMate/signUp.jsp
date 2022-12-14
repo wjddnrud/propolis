@@ -120,7 +120,7 @@
 									<label for="zipcode">Zip Code</label>
 									<input type="text" name="zipcode" id="zipcode" value="${one.zipcode }" placeholder="우편번호" />
 									<input type="button" onclick="searchAddress()" class="primary" value="주소 검색" style="margin-top: 10px;" />
-								</div>
+								</div> 
 								<div class="col-8 col-12-xsmall">
 									<label for="address">주소</label>
 									<input type="text" name="address" id="address" value="${one.address }" placeholder="주소" />
@@ -170,8 +170,8 @@
 	<script src="/resources/images/assets/js/main.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries=services,clusterer,drawing"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries=services"></script>
 	<!-- user function -->
 	<script src="/resources/xdmin/js/validationXdmin.js"></script>
 	
@@ -224,13 +224,7 @@
 		} );
 		
 		
-		// 우편번호 찾기 화면을 넣을 element
-	    var element_layer = document.getElementById('layer');
 	
-	    function closeDaumPostcode() {
-	        // iframe을 넣은 element를 안보이게 한다.
-	        element_layer.style.display = 'none';
-	    }
 	    function searchAddress() {
 	        new daum.Postcode({
 	            oncomplete: function(data) {
@@ -265,40 +259,8 @@
 			      		    }
 			    		   
 			      		});
+	            }}};
 		                
-	                // iframe을 넣은 element를 안보이게 한다.
-	                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-	                element_layer.style.display = 'none';
-	            },
-	            width : '100%',
-	            height : '100%',
-	            maxSuggestItems : 5
-	        }).embed(element_layer);
-	
-	        // iframe을 넣은 element를 보이게 한다.
-	        element_layer.style.display = 'block';
-	
-	        // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
-	        initLayerPosition();
-	    }
-	
-	    // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
-	    // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
-	    // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
-	    function initLayerPosition(){
-	        var width = 300; //우편번호서비스가 들어갈 element의 width
-	        var height = 400; //우편번호서비스가 들어갈 element의 height
-	        var borderWidth = 2; //샘플에서 사용하는 border의 두께
-	
-	        // 위에서 선언한 값들을 실제 element에 넣는다.
-	        element_layer.style.width = width + 'px';
-	        element_layer.style.height = height + 'px';
-	        element_layer.style.border = borderWidth + 'px solid';
-	        // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-	        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
-	        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
-	    }
-	    
 		function selectAll(selectAll)  {
 			const checkboxes 
 				= document.getElementsByName("agree");
@@ -380,9 +342,6 @@
 				});
 			}
 		});
-		
-		
-	
 		
 		
 		$('#signUp').on("click", function () {

@@ -38,7 +38,7 @@ public class BaseController {
 	
 	//----------------------------- 페이지 이동
 	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "")
 	public String classify() throws Exception {
 		
 		return "infra/SportsMate/index";
@@ -84,20 +84,45 @@ public class BaseController {
 		Member selectOne = mmService.selectOne(vo);
 		model.addAttribute("one", selectOne);
 		
-		return "infra/SportsMate/myPage/myPageCommunityList";
+		return "infra/SportsMate/myPage/myPagePostList";
 	}
 	
-	@RequestMapping(value="myCmList")
-	public String myCmList()throws Exception {
+	@RequestMapping(value="myPageCrewList")
+	public String myPageCrewList(Model model, Member mmdto, MemberVo vo, Post podto,  HttpSession httpSession) throws Exception {
 		
-		return "infra/SportsMate/main";
+		int sessSeq = (int) httpSession.getAttribute("sessSeq");
+		
+		if(mmdto.getSeq() == null) {			
+			mmdto.setSeq(sessSeq);					
+		}
+			
+		Member img = mmService.selectMemberImg(mmdto);
+		model.addAttribute("img",img);
+		
+		podto.setWriter("" + mmdto.getSeq());
+		List<Post> cmlist = poService.MyselectList(podto);
+		model.addAttribute("cmlist", cmlist);
+			
+		podto.setCreator("" + mmdto.getSeq());
+		List<Crew> grlist = crService.MyselectList(podto);
+		model.addAttribute("grlist", grlist); 
+		
+		vo.setShSeq(mmdto.getSeq());
+		Member selectOne = mmService.selectOne(vo);
+		model.addAttribute("one", selectOne);
+		
+		return "infra/SportsMate/myPage/myPageCrewList";
 	}
 	
-	@RequestMapping(value="mySgList")
-	public String mySgList()throws Exception {
-		
-		return "infra/SportsMate/main";
-	}
+	/*
+	 * @RequestMapping(value="myCmList") public String myCmList()throws Exception {
+	 * 
+	 * return "infra/SportsMate/main"; }
+	 * 
+	 * @RequestMapping(value="mySgList") public String mySgList()throws Exception {
+	 * 
+	 * return "infra/SportsMate/main"; }
+	 */
 	
 	
 //	@RequestMapping(value = "/myPageGroupList") 
@@ -159,8 +184,8 @@ public class BaseController {
 			
 //			String writer = signInCheck.getId();
 			
-			String adminNY = signInCheck.getAdminNY();
-			System.out.println("adminNY : " + signInCheck.getAdminNY());
+//			String adminNY = signInCheck.getAdminNY();
+//			System.out.println("adminNY : " + signInCheck.getAdminNY());
 			
 			returnMap.put("adminNY", signInCheck.getAdminNY());
 			returnMap.put("name", signInCheck.getName());

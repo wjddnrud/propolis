@@ -115,7 +115,7 @@
 													<span><b>모집인원</b></span>
 												</div>
 												<div class="col-9 text-start">
-													<span><c:out value="${one.crMemberNum }"/>명</span>
+													<span><c:out value="${one.crewMemberNum }"/>명</span> 
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
@@ -163,8 +163,8 @@
 								</div>
 								</center>
 								<center>
-									<a id="join" class="button primary">🤝JOIN</a>
-									<a href="/sportsGroup/sportsGroupList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
+									<a id="join" class="button primary">🤝JOIN</a> 
+									<a href="/crew/crewList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
 									<a href="javascript:message()" class="button"><i class="fa-regular fa-envelope"></i>message</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
@@ -188,16 +188,17 @@
 			<script src="/resources/images/assets/js/util.js"></script>
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://kit.fontawesome.com/f92c8dde3d.js" crossorigin="anonymous"></script>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries"></script>
+			
+			<!-- 카카오 지도 script 라이브러리 -->
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707&libraries=services,clusterer,drawing"></script>
 			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <!-- alert창 꾸미기 -->
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72452dcf97f9180781a4d13ee6bef707"></script>
 			<script>
 				var form = $("form[name=crewForm]");
 			
 				$("#join").on("click", function() {
 					swal("Join 완료!", "마이페이지에서 join 정보를 확인하세요.", "success")
 					.then(function() {
-						form.attr("action", "/myPageGroupList").submit();	
+						form.attr("action", "/myPageCrewList").submit();	
 					});
 				});
 			
@@ -217,7 +218,7 @@
 				
 				crMember = function(seq) {
 					$("#seq").val(seq);
-					form.attr("action", "/myPageCommunityList").submit();
+					form.attr("action", "/myPagePostList").submit();
 				}
 			</script>
 	</body>
