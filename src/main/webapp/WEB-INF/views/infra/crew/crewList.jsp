@@ -52,8 +52,8 @@
 									
 									<form name="crewForm">
 									
-										<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
-										<input type="hidden" name="shSeq">
+										<!-- seq 받아서 view로 seq 넘겨줄 hidden input -->
+										<input type="hidden" name="seq">
 										<!-- <input type="hidden" name="mainKey"> -->
 										<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 										<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
@@ -91,7 +91,7 @@
 									
 									<br>
 									<center>
-										<a href="/postForm" class="button primary">등록</a>
+										<a href="/crew/crewForm" class="button primary">등록</a>
 										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
@@ -123,21 +123,17 @@
 			var goUrlDele = "/crew/crewDele";    /* # -> */	
 			
 			var form = $("form[name=crewForm]");
-			var viewSeq = $("input:hidden[name=shSeq]")
+			var viewSeq = $("input:hidden[name=seq]");
 			
 			viewform = function(seq) {
 				viewSeq.attr("value", seq);
 				form.attr("action", "/crew/crewView").submit();
-			}
-			
-			function regist() {
-				location.href = "/crewForm";
-			}
+			};
 			
 			goList = function(thisPage) {
 				$("input:hidden[name=thisPage]").val(thisPage);
 				form.attr("action", goUrlList).submit();
-			}
+			};
 			
 			</script>
 	</body>

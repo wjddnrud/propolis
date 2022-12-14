@@ -27,9 +27,9 @@ public class CrewDao {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
-	public Crew selectOne(CrewVo vo) {
+	public Crew selectOne(Crew dto) {
 		
-		Crew selectOne = sqlSession.selectOne(namespace + ".selectOne", vo);
+		Crew selectOne = sqlSession.selectOne(namespace + ".selectOne", dto);
 //		System.out.println("dao selectOne : " + selectOne);
 		
 		return selectOne;
@@ -64,5 +64,7 @@ public class CrewDao {
 	
 	public int selectOneCount(BaseVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	
-	public List<Crew> crMemberList(Crew dto) {return sqlSession.selectList(namespace + ".crMemberList", dto);} 
+	public List<Crew> crMemberList(Crew dto) {return sqlSession.selectList(namespace + ".crMemberList", dto);}
+	
+	public int insertCrmm (Crew dto) {return sqlSession.insert(namespace + ".insertCrmm", dto);}
 }

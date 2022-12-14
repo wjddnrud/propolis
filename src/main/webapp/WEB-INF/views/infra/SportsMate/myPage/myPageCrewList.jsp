@@ -77,7 +77,7 @@
 								<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
 								<c:set var="listCodeSports" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
 									
-								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
+								<form name="formList" id="formList" method="post">
 									
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
 									<!-- <input type="hidden" name="mainKey"> -->

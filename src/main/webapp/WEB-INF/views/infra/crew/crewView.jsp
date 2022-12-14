@@ -69,7 +69,8 @@
 							 
 								<input type="hidden" id="cuMember" name="cuMember" value="${one.creator }">
 								<input type="hidden" id="seq" name="seq" value="${one.seq }">
-								<input type="hidden" id="shSeq" name="shSeq">
+								<input type="hidden" id="crLeaderNy" name="crLeaderNy" value="0">
+								<input type="hidden" id="mmSeq" name="mmSeq" value="${sessSeq }">
 								<%-- <input type="hidden" id="partSeq" name="partSeq" value="${part.seq }"> --%>
 								
 								<center>
@@ -198,7 +199,7 @@
 				$("#join").on("click", function() {
 					swal("Join 완료!", "마이페이지에서 join 정보를 확인하세요.", "success")
 					.then(function() {
-						form.attr("action", "/myPageCrewList").submit();	
+						form.attr("action", "/crew/crewMemberInst").submit();	
 					});
 				});
 			

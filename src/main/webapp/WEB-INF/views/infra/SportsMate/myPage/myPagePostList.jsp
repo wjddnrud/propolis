@@ -71,7 +71,7 @@
 								<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 								
 								
-								<form action="http://localhost:8080/codegroup/codeGroupSearch" name="formList" id="formList" method="post">
+								<form name="formList" id="formList" method="post">
 									
 									<!-- 가져온값 뒷단에 담아주는곳 hidddn -->
 									<!-- <input type="hidden" name="mainKey"> -->

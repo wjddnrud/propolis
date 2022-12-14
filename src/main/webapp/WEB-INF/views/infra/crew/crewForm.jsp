@@ -46,13 +46,11 @@
 									<form name="crewForm" enctype="multipart/form-data" method="post">
 										
 										<!-- 그룹 생성자 (그룹장) -->
-										<input type="hidden" value="${sessSeq}" name="creator" id="creator">
-										
-										<input type="hidden" name="seq" id="seq">
+										<input type="hidden" value="${sessSeq}" name="mmSeq" id="mmSeq">
+										<input type="hidden" name="crLeaderNy" value="1">
 										
 										<div class="row gtr-uniform">
-											<div class="col-4"></div>
-											<center>
+											<%-- <center>
 												<div class="col-4">
 													<div class="col-4">
 														<img id="imgProfile" src="" alt="프로필 이미지" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
@@ -63,15 +61,13 @@
 														<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);">
 													</div>
 												</div> 
-											</center>
-											<div class="col-4"></div>
+											</center> --%>
 											<div class="col-4 col-12-xsmall">
 												<%-- <select name="sports" id="sports">
 													<c:forEach items="${sports}" var="sports" varStatus="statusSports">
 														<option value="${sports.seq}" <c:if test="${one.sports eq sports.cc_key }">selected</c:if>><c:out value="${sports.cc_name }"/></option>
 													</c:forEach>												
 												</select> --%>
-												
 												<select name="sports" id="sports">
 													<option value="0">운동종목</option>
 													<option value="1" <c:if test="${one.sports eq 2 }" >selected</c:if>>축구</option>
@@ -84,12 +80,9 @@
 													<option value="8" <c:if test="${one.sports eq 8 }" >selected</c:if>>테니스</option>
 													<option value="9" <c:if test="${one.sports eq 9 }" >selected</c:if>>골프</option>
 												</select>
-												
-												
-											
 											</div>
 											<div class="col-8 col-12-xsmall">
-												<input type="text" name="crewName" id="crewName" placeholder="크루명을 입력해주세요." >
+												<input type="text" name="crewName" id="crewName" value=""${one.crewName } placeholder="크루명을 입력해주세요." >
 											</div>
 											
 											
@@ -106,22 +99,22 @@
 											
 											
 											<div class="col-2 col-12-xsmall">
-												<input name="playDate" id="playDate" type="text" placeholder="모임날짜">
+												<input name="playDate" id="playDate" type="text" value="${one.playDate }" placeholder="모임날짜">
 											</div>	
 											<div class="col-2 col-12-xsmall">
-												<input type="text" name="startTime" id="startTime" placeholder="시작시간 (00:00)" />
+												<input type="text" name="startTime" id="startTime" value="${one.startTime }" placeholder="시작시간 (00:00)" />
 											</div>
 											<div class="col-2 col-12-xsmall">
-												<input type="text" name="endTime" id="endTime" placeholder="종료시간 (00:00)" />
+												<input type="text" name="endTime" id="endTime" value=""${one.endTime } placeholder="종료시간 (00:00)" />
 											</div>
 											<div class="col-4 col-12-xsmall">
-												<input type="text" name="location" id="location" placeholder="지역 (xx시 xx구)" />
+												<input type="text" name="location" id="location" value="${one.location }" placeholder="지역 (xx시 xx구)" />
 											</div>
 											<div class="col-2 col-12-xsmall">
-												<input type="text" name="crewMemberNum" id="crewMemberNum" placeholder="인원 (명)" />
+												<input type="text" name="crewMemberNum" id="crewMemberNum" value="${one.crewMemberNum }" placeholder="인원 (명)" />
 											</div>
 											<div class="col-12">
-												<textarea name="detail" id="detail" placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
+												<textarea name="detail" id="detail" value="${one.detail }" placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
 											</div>
 											<div class="col-12">
 												<ul class="actions" style="justify-content: center;">

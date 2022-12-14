@@ -39,9 +39,9 @@ public class CrewServiceImpl implements CrewService{
 	}
 
 	@Override
-	public Crew selectOne(CrewVo vo) throws Exception {
+	public Crew selectOne(Crew dto) throws Exception {
 		
-		Crew selectOne = dao.selectOne(vo);
+		Crew selectOne = dao.selectOne(dto);
 		
 		if(selectOne.getPath() == null || selectOne.getUuidName() == null) {
 			selectOne.setPath("/resources/uploaded/member/");
@@ -58,6 +58,10 @@ public class CrewServiceImpl implements CrewService{
 
 		int insert = dao.insert(dto);
 		System.out.println("multipartfile : " + dto.getMultipartFile());
+		
+		System.out.println("dto.getSeq : " + dto.getSeq());
+		
+		dao.insertCrmm(dto);
 		
         int pSeq = dao.selectLastSeq();
         System.out.println("selectLastSeq : " + pSeq);
@@ -127,6 +131,15 @@ public class CrewServiceImpl implements CrewService{
 		
 		return dao.crMemberList(dto);
 	}
+
+	@Override
+	public int insertCrmm(Crew dto) throws Exception {
+		
+		return dao.insertCrmm(dto);
+	}
+
+	
+	
 	
 	
 	

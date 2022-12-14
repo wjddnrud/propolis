@@ -11,7 +11,7 @@ public interface CrewService {
 	
 	public List<Crew> selectList(CrewVo vo) throws Exception;
 	
-	public Crew selectOne(CrewVo vo) throws Exception;
+	public Crew selectOne(Crew dto) throws Exception;
 	
 	public int insert(Crew dto) throws Exception;
 	
@@ -24,5 +24,8 @@ public interface CrewService {
 	public Member selectMemberImg(Member dto) throws Exception;
 	
 	public List<Crew> crMemberList(Crew dto) throws Exception;
+	
+	public int insertCrmm(Crew dto) throws Exception;
+	
 	
 }

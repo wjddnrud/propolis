@@ -60,7 +60,7 @@ public class BaseController {
 		return "infra/SportsMate/main";
 	}
 	
-	@RequestMapping(value="myPage")
+	@RequestMapping(value="myPagePostList")
 	public String myPage(Model model, Member mmdto, MemberVo vo, Post podto,  HttpSession httpSession) throws Exception {
 		
 		int sessSeq = (int) httpSession.getAttribute("sessSeq");

@@ -88,7 +88,7 @@
 		LEFT JOIN member mm ON mm.seq = cr.creator
 		LEFT JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
 		WHERE 1=1
-			AND cr.seq=#{shSeq}
+			AND cr.seq = #{seq}
 	</select>
 	
 	<select id="sports" resultMap="resultMapObj">
@@ -115,7 +115,7 @@
 			,map
 		)
 		VALUES (
-			#{creator}
+			#{mmSeq}
 			,#{crewName}
 			,#{sports}
 			,#{location}
@@ -126,6 +126,9 @@
 			,#{detail}
 			,#{map}
 		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
@@ -168,7 +171,7 @@
 			*
 		FROM uploadedSportsGroup
 		WHERE 1=1
-			AND pSeq = #{shSeq}
+			AND pSeq = #{seq}
 	</select>
 	
 	<select id="crMemberList" resultMap="resultMapObj">
@@ -184,30 +187,17 @@
 		AND crmm.crLeaderNy = 0
 	</select>
 	
-	<!-- <insert id="insertCrmm">
+	<insert id="insertCrmm">
 		INSERT INTO crMember (
 			crLeaderNy
 			,mmSeq
 			,crSeq
 		)
 		VALUES (
-			#{}
-			,#{}
-			,#{}
-		)
+			#{crLeaderNy}
+			,#{mmSeq}
+			,#{seq}
+		)		
 	</insert>
-	
-	<insert id="insertCrld">
-		INSER INTO crMember (
-			crLeaderNy
-			,mmSeq
-			,crSeq
-		)
-		VALUES (
-			#{}
-			,#{}
-			,#{}
-		)
-	</insert>	 -->
 
 </mapper>

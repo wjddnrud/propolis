@@ -4,7 +4,8 @@ import com.woo.infra.modules.base.Base;
 
 public class Crew extends Base{
 	
-	private String seq;
+	/* crew dto */
+	private String seq; //crSeq
 	private String creator;
 	private String crewName;
 	private String sports;
@@ -18,8 +19,16 @@ public class Crew extends Base{
 	private String viewCount;
 	private String createDate;
 	
+	/* crewMember dto */
+	private Integer crmmSeq;
+	private Integer crLeaderNy;
+	private Integer mmSeq;
+	
+	
+	
 	private String id;
 	private String name;
+	
 	
 	
 	
@@ -112,6 +121,24 @@ public class Crew extends Base{
 	}
 	public void setCrewMemberNum(String crewMemberNum) {
 		this.crewMemberNum = crewMemberNum;
+	}
+	public Integer getCrLeaderNy() {
+		return crLeaderNy;
+	}
+	public void setCrLeaderNy(Integer crLeaderNy) {
+		this.crLeaderNy = crLeaderNy;
+	}
+	public Integer getMmSeq() {
+		return mmSeq;
+	}
+	public void setMmSeq(Integer mmSeq) {
+		this.mmSeq = mmSeq;
+	}
+	public Integer getCrmmSeq() {
+		return crmmSeq;
+	}
+	public void setCrmmSeq(Integer crmmSeq) {
+		this.crmmSeq = crmmSeq;
 	}
 	
 	
