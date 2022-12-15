@@ -23,6 +23,7 @@ public class Crew extends Base{
 	private Integer crmmSeq;
 	private Integer crLeaderNy;
 	private Integer mmSeq;
+	private Integer crmmCount;
 	
 	
 	
@@ -139,6 +140,12 @@ public class Crew extends Base{
 	}
 	public void setCrmmSeq(Integer crmmSeq) {
 		this.crmmSeq = crmmSeq;
+	}
+	public Integer getCrmmCount() {
+		return crmmCount;
+	}
+	public void setCrmmCount(Integer crmmCount) {
+		this.crmmCount = crmmCount;
 	}
 	
 	

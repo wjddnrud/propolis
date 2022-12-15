@@ -98,10 +98,10 @@
 											</div>
 											<div class="row justify-content-between mb-2">
 												<div class="col-4 text-start">
-													<span><b>작성자 ID</b></span>
+													<span><b>크루리더</b></span>
 												</div>
 												<div class="col-8 text-start">
-													<span><c:out value="${one.id }"/></span>
+													<span onclick="crMember(${one.creator})" style="cursor: pointer; color: gold;"><c:out value="${one.id }"/></span>
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
@@ -109,7 +109,11 @@
 													<span><b>운동종목</b></span>
 												</div>
 												<div class="col-8 text-start">
-													<span><c:out value="${one.sports }"/></span>
+													<span>
+													<c:forEach items="${listCodeSports}" var="list" varStatus="statusSports">
+														<c:if test="${one.sports eq list.cc_key }"><c:out value="${list.cc_name }"/></c:if>
+													</c:forEach>
+													</span>
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
@@ -125,7 +129,7 @@
 													<span><b>현재인원</b></span>
 												</div>
 												<div class="col-8 text-start">
-													<span><c:out value=""/>명</span> 
+													<span><c:out value="${one.crmmCount }"/>명</span> 
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">

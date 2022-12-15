@@ -84,13 +84,7 @@
 			,cr.playDate
 			,upmm.path
 			,upmm.uuidName
-			
-			,AS count
-			SELECT
-			
-			FROM
-			
-			
+			,(SELECT COUNT(*) FROM crMember WHERE 1=1 AND crSeq = #{seq}) AS crmmCount
 		FROM crew cr
 		LEFT JOIN member mm ON mm.seq = cr.creator
 		LEFT JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
