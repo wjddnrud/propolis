@@ -48,9 +48,11 @@
 										<!-- 그룹 생성자 (그룹장) -->
 										<input type="hidden" value="${sessSeq}" name="mmSeq" id="mmSeq">
 										<input type="hidden" name="crLeaderNy" value="1">
+										<!-- crew seq를 받는지 확인하는 input 작성으로 들어오면 null view에서 수정으로 들어오면 게시물 seq값이 들어옴 -->
+										<input type="hidden" name="seq" id="seq">
 										
 										<div class="row gtr-uniform">
-											<%-- <center>
+											<center>
 												<div class="col-4">
 													<div class="col-4">
 														<img id="imgProfile" src="" alt="프로필 이미지" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
@@ -61,7 +63,7 @@
 														<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);">
 													</div>
 												</div> 
-											</center> --%>
+											</center>
 											<div class="col-4 col-12-xsmall">
 												<%-- <select name="sports" id="sports">
 													<c:forEach items="${sports}" var="sports" varStatus="statusSports">
@@ -86,33 +88,35 @@
 											</div>
 											
 											
-											<div class="col-8 col-12-xsmall">
-												<label for="address">주소</label>
-												<input type="text" name="address" id="address" value="" placeholder="주소" />
+											<div class="col-5 col-12-xsmall">
+												<!-- <label for="address">주소</label> -->
+												<input type="text" name="address" id="address" value="" placeholder="도로명주소" />
 												<input type="text" name="address_detail" id="address_detail" value="" placeholder="상세주소" style="margin-top: 10px;" />
 											</div>
-											<div class="col-4 col-12-xsmall">
-												<label for="zipcode">Zip Code</label>
+											<div class="col-5 col-12-xsmall">
+												<!-- <label for="address">주소</label> -->
+												<input type="text" name="jibunAddress" id="jibunAddress" value="" placeholder="지번주소" />
+												<input type="text" name="location" id="location" value="${one.location }" placeholder="참고주소" style="margin-top: 10px;" />
+											</div>
+											<div class="col-2 col-12-xsmall">
+												<!-- <label for="zipcode">Zip Code</label> -->
 												<input type="text" name="zipcode" id="zipcode" value="" placeholder="우편번호" />
 												<input type="button" onclick="searchAddress()" class="primary" value="주소 검색" style="margin-top: 10px;" />
 											</div>
 											
-											
-											<div class="col-2 col-12-xsmall">
+											<div class="col-3 col-12-xsmall">
 												<input name="playDate" id="playDate" type="text" value="${one.playDate }" placeholder="모임날짜">
 											</div>	
-											<div class="col-2 col-12-xsmall">
-												<input type="text" name="startTime" id="startTime" value="${one.startTime }" placeholder="시작시간 (00:00)" />
+											<div class="col-3 col-12-xsmall">
+												<input type="text" name="startTime" id="startTime" value="${one.startTime }" placeholder="시작시간 ex) 13" />
 											</div>
-											<div class="col-2 col-12-xsmall">
-												<input type="text" name="endTime" id="endTime" value=""${one.endTime } placeholder="종료시간 (00:00)" />
+											<div class="col-3 col-12-xsmall">
+												<input type="text" name="endTime" id="endTime" value=""${one.endTime } placeholder="종료시간 ex) 15" />
 											</div>
-											<div class="col-4 col-12-xsmall">
-												<input type="text" name="location" id="location" value="${one.location }" placeholder="지역 (xx시 xx구)" />
-											</div>
-											<div class="col-2 col-12-xsmall">
+											<div class="col-3 col-12-xsmall">
 												<input type="text" name="crewMemberNum" id="crewMemberNum" value="${one.crewMemberNum }" placeholder="인원 (명)" />
 											</div>
+											
 											<div class="col-12">
 												<textarea name="detail" id="detail" value="${one.detail }" placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
 											</div>
@@ -146,6 +150,8 @@
 			<script src="/resources/images/assets/js/main.js"></script>
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+			<!-- 카카오 주소검색 -->
+			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			
 			<script type="text/javascript">
 			
@@ -318,7 +324,7 @@
 			                        $("#aaa0").attr("src", fileReader.result);		/* #-> */
 			                    } else {
 
-			                    }
+			                    } 
 			                    /* $("#aaa"+i+"").attr("src", fileReader.result);		/* #-> */
 			                    /* $("#aaa1").attr("src", fileReader.result);		/* #-> */
 			                }
@@ -342,6 +348,50 @@
 			        }
 			        return false;
 			    }
+		</script>
+		<script>
+		    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+		    function searchAddress() {
+		        new daum.Postcode({
+		            oncomplete: function(data) {
+		                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+		
+		                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+		                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+		                var roadAddr = data.roadAddress; // 도로명 주소 변수
+		                var extraRoadAddr = ''; // 참고 항목 변수
+		
+		                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+		                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+		                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		                    extraRoadAddr += data.bname;
+		                }
+		                // 건물명이 있고, 공동주택일 경우 추가한다.
+		                if(data.buildingName !== '' && data.apartment === 'Y'){
+		                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		                }
+		                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+		                if(extraRoadAddr !== ''){
+		                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+		                }
+		
+		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+		                document.getElementById('zipcode').value = data.zonecode;
+		                document.getElementById("address").value = roadAddr;
+		                document.getElementById("jibunAddress").value = data.jibunAddress;
+		                
+		                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+		                if(roadAddr !== ''){
+		                    document.getElementById("location").value = extraRoadAddr;
+		                } else {
+		                    document.getElementById("location").value = '';
+		                }
+		                
+		             	// 커서를 상세주소 필드로 이동한다.
+		                document.getElementById("address_detail").focus();
+		            }
+		        }).open();
+		    }
 		</script>
 	</body>
 </html>

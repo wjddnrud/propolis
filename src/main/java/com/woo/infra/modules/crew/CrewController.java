@@ -63,7 +63,7 @@ public class CrewController {
 
 		service.insert(dto);
 		
-		return "infra/crew/crewView";
+		return "redirect:/crew/crewView";
 	}
 
 	@RequestMapping(value = "crewForm")

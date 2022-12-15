@@ -84,6 +84,13 @@
 			,cr.playDate
 			,upmm.path
 			,upmm.uuidName
+			
+			,AS count
+			SELECT
+			
+			FROM
+			
+			
 		FROM crew cr
 		LEFT JOIN member mm ON mm.seq = cr.creator
 		LEFT JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
@@ -142,7 +149,7 @@
 	<insert id="crewImgUpload">
 		INSERT INTO uploadedCrew (
 			seq
-			type
+			,type
 			,defaultNY
 			,sort
 			,originalName
@@ -154,7 +161,7 @@
 		)
 		VALUES (
 			#{seq}
-			#{type}
+			,#{type}
 			,#{defaultNY}
 			,#{sort}
 			,#{originalName}

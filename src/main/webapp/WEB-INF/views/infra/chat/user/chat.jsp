@@ -252,21 +252,22 @@
 <body> 
 	<!-- header -->
 	<%@include file="/resources/include/header.jsp" %>
-	
-	<div class="container">
-        <div class="page-content">
+	 
+	<div class="container" style="margin: 0px; margin-left: auto; margin-right: auto; margin-top: 8%;">     
+        <div class="page-content" style="width: 100%; height: 600px;">
         	<form id="mainForm" method="POST">
         		<input type="hidden" id="selectedRoom">
-	        	<div class="row justify-content-center h-100">
+	        	<div class="row justify-content-center h-100"> 
 	                <div class="col-md-4 col-xl-3 chat">
-	                    <div class="card mb-sm-3 mb-md-0 contacts_card">
-	                        <div class="card-header" style="display: none;">
+	                    <div class="card mb-sm-3 mb-md-0 contacts_card" style="height: 600px;">
+	                        <!-- <div class="card-header" style="display: none;">
 	                            <div class="input-group">
 	                                <input type="text" placeholder="대화상대의 Seq를 입력해주세요." id="cuMember" name="cuMember" class="form-control search">
 	                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
 	                            </div>
-	                        </div>
-	                        <div class="card-body contacts_body">
+	                        </div> -->
+	                        <div class="card-header" style="width: 230px;"></div>
+	                        <div class="card-body contacts_body" style="width: 230px; height: 600px;"> 
 	                            <ui class="contacts" id="chatList">
 	                            
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
@@ -292,18 +293,18 @@
 	                             
 	                            </ui>
 	                        </div>
-	                        <div class="card-footer"></div>
+	                        <div class="card-footer" style="width: 230px;"></div>
 	                    </div>
 	                </div>
-	                <div class="col-md-8 col-xl-6 chat">
-	                    <div class="card">	                       
-	                        <div id="chatBox" class="card-body msg_card_body">
+	                <div class="col-md-8 col-xl-6 chat" style="width: 600px; height: 600px;"> 
+	                    <div class="card" style="width: 600px; height: 600px;">	                       
+	                        <div id="chatBox" class="card-body msg_card_body" style="width: 580px; height: 600px;">  
 	
 													<!-- 채팅 메세지 박스 -->
 	
 	                        </div>
-	                        <div class="card-footer">
-	                            <div class="input-group">
+	                        <div class="card-footer" style="width: 580px;">
+	                            <div class="input-group" style="width: 100%;">
 	                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 	                                <textarea id="chatMessage" class="form-control type_msg"
 	                                    placeholder="메세지를 입력해주세요."></textarea>
@@ -321,7 +322,7 @@
 	</div>
 	
 	<!-- footer -->
-	<%@include file="/resources/include/footer.jsp"%>
+	<%-- <%@include file="/resources/include/footer.jsp"%> --%>
 	
 	<!-- scripts -->
 	<script src="https://kit.fontawesome.com/63aa3074b3.js" crossorigin="anonymous"></script>
