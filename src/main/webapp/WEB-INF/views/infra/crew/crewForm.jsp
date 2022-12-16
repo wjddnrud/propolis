@@ -52,18 +52,22 @@
 										<input type="hidden" name="seq" id="seq">
 										
 										<div class="row gtr-uniform">
-											<center>
+											<%-- <center>
 												<div class="col-4">
 													<div class="col-4">
-														<img id="imgProfile" src="" alt="프로필 이미지" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
+														<img id="imgProfile" src="" alt="" style="padding-top: 10px; width:300px; height:300px; border-color: solid black 2px;">
 													</div>
 													<div id="ifmmUploadedImage1View" class="col-8 col-12-xsmall filebox">
 														<input class="upload-name" placeholder="첨부파일">
-														<label for="imgFile" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
 														<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);">
-													</div>
+													</div> 
 												</div> 
-											</center>
+											</center> --%>
+											<div id="ifmmUploadedImage1View" class="col-12 justify-content-center" class="filebox" style="text-align: center;">
+												<img id="imgProfile" src="/resources/uploaded/crew/basicImg.jpg" alt="" style="width:150px; height:150px; border-radius: 50%;"><br>
+												<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="width: 101px; margin-top: 10px;">   
+			 								</div> 
+											
 											<div class="col-4 col-12-xsmall">
 												<%-- <select name="sports" id="sports">
 													<c:forEach items="${sports}" var="sports" varStatus="statusSports">
@@ -86,23 +90,28 @@
 											<div class="col-8 col-12-xsmall">
 												<input type="text" name="crewName" id="crewName" value=""${one.crewName } placeholder="크루명을 입력해주세요." >
 											</div>
-											
-											
-											<div class="col-5 col-12-xsmall">
-												<!-- <label for="address">주소</label> -->
-												<input type="text" name="address" id="address" value="" placeholder="도로명주소" />
-												<input type="text" name="address_detail" id="address_detail" value="" placeholder="상세주소" style="margin-top: 10px;" />
+											<div class="col-2 col-12-xsmall">
+												<input type="button" onclick="searchAddress()" class="primary" value="주소 검색"  />
 											</div>
 											<div class="col-5 col-12-xsmall">
-												<!-- <label for="address">주소</label> -->
-												<input type="text" name="jibunAddress" id="jibunAddress" value="" placeholder="지번주소" />
-												<input type="text" name="location" id="location" value="${one.location }" placeholder="참고주소" style="margin-top: 10px;" />
+												<input type="text" name="location" id="location" value="${one.location }" placeholder="지번주소" />
+											</div>
+											<div class="col-5 col-12-xsmall">
+												<input type="text" name="locationDetail" id="locationDetail" value="" placeholder="상세주소" />
+											</div>
+											
+											<!-- <div class="col-5 col-12-xsmall">
+												<label for="address">주소</label>
+												<input type="text" name="address" id="address" value="" placeholder="도로명주소" />
+											</div>
+											<div class="col-5 col-12-xsmall">
+												<label for="address">주소</label>
+												<input type="text" name="extraAddress" id="extraAddress" value="" placeholder="참고주소" style="margin-top: 10px;" />
 											</div>
 											<div class="col-2 col-12-xsmall">
-												<!-- <label for="zipcode">Zip Code</label> -->
+												<label for="zipcode">Zip Code</label>
 												<input type="text" name="zipcode" id="zipcode" value="" placeholder="우편번호" />
-												<input type="button" onclick="searchAddress()" class="primary" value="주소 검색" style="margin-top: 10px;" />
-											</div>
+											</div> -->
 											
 											<div class="col-3 col-12-xsmall">
 												<input name="playDate" id="playDate" type="text" value="${one.playDate }" placeholder="모임날짜">
@@ -360,6 +369,7 @@
 		                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 		                var roadAddr = data.roadAddress; // 도로명 주소 변수
 		                var extraRoadAddr = ''; // 참고 항목 변수
+		                var jibunAddr = data.jibunAddress; //지번 주소 변수
 		
 		                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
 		                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
@@ -376,19 +386,15 @@
 		                }
 		
 		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-		                document.getElementById('zipcode').value = data.zonecode;
-		                document.getElementById("address").value = roadAddr;
-		                document.getElementById("jibunAddress").value = data.jibunAddress;
+		                document.getElementById("location").value = jibunAddr;
 		                
-		                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-		                if(roadAddr !== ''){
-		                    document.getElementById("location").value = extraRoadAddr;
-		                } else {
-		                    document.getElementById("location").value = '';
+		                // 지번주소가 여러개여서 안들어갈 경우 도로명 주소를 넣는다.
+		                if(jibunAddr == ''){
+		                    document.getElementById("location").value = roadAddr; 
 		                }
 		                
 		             	// 커서를 상세주소 필드로 이동한다.
-		                document.getElementById("address_detail").focus();
+		                document.getElementById("locationDetail").focus();
 		            }
 		        }).open();
 		    }

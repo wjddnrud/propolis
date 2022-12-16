@@ -18,7 +18,7 @@
 			                <li><a href="/main">Home</a></li>
 							<li><a href="/crew/crewList">Find Mate</a></li>
 							<li><a href="/post/postList">Community</a></li>
-							<li><a href="/myPage">MyPage</a></li>
+							<li><a href="/myPagePostList">MyPage</a></li>
 							<li><a href="/chat/">Message</a></li>
 							<li><a href="/logout">LOG-OUT</a></li>
 						</c:if>

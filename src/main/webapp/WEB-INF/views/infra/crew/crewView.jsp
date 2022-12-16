@@ -129,7 +129,14 @@
 													<span><b>현재인원</b></span>
 												</div>
 												<div class="col-8 text-start">
-													<span><c:out value="${one.crmmCount }"/>명</span> 
+													<c:choose>
+														<c:when test="${one.crmmCount eq one.crewMemberNum}">
+															<span style="color: #FAB150;">모집완료!</span>
+														</c:when>
+														<c:otherwise>
+															<span><c:out value="${one.crmmCount }"/>명</span>
+														</c:otherwise>
+													</c:choose> 
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">

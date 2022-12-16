@@ -44,8 +44,8 @@ public class CrewServiceImpl implements CrewService{
 		Crew selectOne = dao.selectOne(dto);
 		
 		if(selectOne.getPath() == null || selectOne.getUuidName() == null) {
-			selectOne.setPath("/resources/uploaded/member/");
-			selectOne.setUuidName("noprofil.jpg");
+			selectOne.setPath("/resources/uploaded/crew/");
+			selectOne.setUuidName("basicImg.jpg");
 		}
 		
 //		System.out.println("selectOne dao : " + selectOne);

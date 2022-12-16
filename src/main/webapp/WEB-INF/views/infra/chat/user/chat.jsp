@@ -171,9 +171,9 @@
             margin-bottom: auto;
             margin-left: 10px;
             border-radius: 25px;
-            background-color: #27292A;
+            background-color: #585858;
             color: white;
-            padding: 10px;
+            padding: 10px 15px 10px 15px;
             position: relative;
         }
 
@@ -181,11 +181,11 @@
             margin-top: auto;
             margin-bottom: auto;
             margin-right: 10px;
-            border-radius: 25px;
-            background-color: #6B33ED;
-            color: white;
-            padding: 10px;
-            position: relative;
+            border-radius: 25px; 
+            background-color: #FAB150;
+            color: black;
+            padding: 10px 15px 10px 15px;
+            position: relative; 
         }
 
         .msg_time {
@@ -193,7 +193,7 @@
             left: 0;
             margin-left: 10px;
             min-width: 100px;
-            bottom: -15px;
+            bottom: -20px;
             color: rgba(255, 255, 255, 0.5);
             font-size: 10px;
         }
@@ -203,7 +203,7 @@
             right: 0;
             margin-right: 10px;
             min-width: 100px;
-            bottom: -15px;
+            bottom: -20px;
             color: rgba(255, 255, 255, 0.5);
             font-size: 10px;
             text-align:end; 
@@ -245,7 +245,8 @@
         }
         
         .room:hover {
-        	background: #6B33ED;
+        	background: #FAB150; 
+        	border-radius: 10px;
         }
 	</style>
 </head>
@@ -253,13 +254,13 @@
 	<!-- header -->
 	<%@include file="/resources/include/header.jsp" %>
 	 
-	<div class="container" style="margin: 0px; margin-left: auto; margin-right: auto; margin-top: 8%;">     
+	<div class="container" style="margin: 0px; margin-left: auto; margin-right: auto; margin-top: 5%;">     
         <div class="page-content" style="width: 100%; height: 600px;">
         	<form id="mainForm" method="POST">
         		<input type="hidden" id="selectedRoom">
 	        	<div class="row justify-content-center h-100"> 
 	                <div class="col-md-4 col-xl-3 chat">
-	                    <div class="card mb-sm-3 mb-md-0 contacts_card" style="height: 600px;">
+	                    <div class="card mb-sm-3 mb-md-0 contacts_card" style="height: 500px;">
 	                        <!-- <div class="card-header" style="display: none;">
 	                            <div class="input-group">
 	                                <input type="text" placeholder="대화상대의 Seq를 입력해주세요." id="cuMember" name="cuMember" class="form-control search">
@@ -267,7 +268,7 @@
 	                            </div>
 	                        </div> -->
 	                        <div class="card-header" style="width: 230px;"></div>
-	                        <div class="card-body contacts_body" style="width: 230px; height: 600px;"> 
+	                        <div class="card-body contacts_body" style="width: 230px; height: 500px;"> 
 	                            <ui class="contacts" id="chatList">
 	                            
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
@@ -282,9 +283,9 @@
 														</c:if>
                                							 " class="rounded-circle user_img">
 		                                        </div>
-		                                        <div class="chat_product_info">
+		                                        <div class="chat_product_info" style="padding-top: 7px;">
 		                                            <span class="status"><c:out value="${list.id }"/></span>
-					                                 			<p>마지막 대화 내용</p>
+	                                 				<!-- <p>대화중...</p> -->
 		                                        </div>
 		                                    </div>
 		                                </li>
@@ -296,9 +297,9 @@
 	                        <div class="card-footer" style="width: 230px;"></div>
 	                    </div>
 	                </div>
-	                <div class="col-md-8 col-xl-6 chat" style="width: 600px; height: 600px;"> 
-	                    <div class="card" style="width: 600px; height: 600px;">	                       
-	                        <div id="chatBox" class="card-body msg_card_body" style="width: 580px; height: 600px;">  
+	                <div class="col-md-8 col-xl-6 chat" style="width: 600px; height: 500px;"> 
+	                    <div class="card" style="width: 600px; height: 500px;">	                       
+	                        <div id="chatBox" class="card-body msg_card_body" style="width: 580px; height: 500px;">  
 	
 													<!-- 채팅 메세지 박스 -->
 	
@@ -322,7 +323,7 @@
 	</div>
 	
 	<!-- footer -->
-	<%-- <%@include file="/resources/include/footer.jsp"%> --%>
+	<%@include file="/resources/include/footer.jsp"%>
 	
 	<!-- scripts -->
 	<script src="https://kit.fontawesome.com/63aa3074b3.js" crossorigin="anonymous"></script>

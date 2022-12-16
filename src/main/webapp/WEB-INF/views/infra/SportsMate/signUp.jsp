@@ -55,7 +55,7 @@
 							
 								<div id="ifmmUploadedImage1View" class="col-12 justify-content-center" class="filebox" style="text-align: center;">
 									<img id="imgProfile" src="/resources/uploaded/member/noprofil.jpg" alt="이미지" style="width:150px; height:150px; border-radius: 50%;"><br>
-									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="width: 90px;">
+									<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);" style="width: 101px;">
  								</div>
  								
 								 

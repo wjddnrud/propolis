@@ -26,12 +26,12 @@
 			,cr.crewName
 			,cr.sports
 			,cr.location 
+			,cr.locationDetail
 			,cr.crewMemberNum
 			,cr.startTime
 			,cr.endTime
 			,cr.detail
 			,cr.viewCount
-			,cr.map
 			,cr.playDate
 		    ,upcr.uuidName
 		    ,upcr.path
@@ -56,7 +56,7 @@
 			,cr.endTime
 			,cr.detail
 			,cr.viewCount
-			,cr.map
+			,cr.locationDetail
 			,cr.playDate
 		    ,upcr.uuidName
 		    ,upcr.path
@@ -80,7 +80,7 @@
 			,cr.endTime
 			,cr.detail
 			,cr.viewCount
-			,cr.map
+			,cr.locationDetail
 			,cr.playDate
 			,upmm.path
 			,upmm.uuidName
@@ -113,7 +113,7 @@
 			,startTime
 			,endTime
 			,detail
-			,map
+			,locationDetail
 		)
 		VALUES (
 			#{mmSeq}
@@ -125,7 +125,7 @@
 			,#{startTime}
 			,#{endTime}
 			,#{detail}
-			,#{map}
+			,#{locationDetail}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
