@@ -73,11 +73,11 @@
 											<table class="alt" style="pointer-events: none;">
 												<thead>
 													<tr>
-														<th style="min-width: 200px;">카테고리</th>
-														<th style="min-width: 200px;">작성자</th>
-														<th style="min-width: 600px;">제목</th>
-														<th style="min-width: 200px;">작성일자</th>
-														<th style="min-width: 150px;">추천수</th>
+														<th style="min-width: 120px;">카테고리</th>
+														<th style="min-width: 120px;">작성자</th>
+														<th style="min-width: 520px;">제목</th>
+														<th style="min-width: 120px;">작성일자</th>
+														<!-- <th style="min-width: 70px;">추천수</th> -->
 													</tr>
 												</thead>
 												<tbody>
@@ -90,26 +90,19 @@
 														<td style="text-align: center;"><c:out value="${one.writer }"/></td>
 														<td style="text-align: center;"><c:out value="${one.title}"/></td>
 														<td style="text-align: center;"><c:out value="${one.createDate }"/></td>
-														<td style="text-align: center;"><c:out value="${one.viewCount }"/></td>
+														<%-- <td style="text-align: center;"><c:out value="${one.viewCount }"/></td> --%>
 													</tr>
-													<tr style="height: 500px;">
+													<tr style="height: 350px;">
 														<td colspan="5" style="text-align: start; vertical-align: middle; padding-left: 30px;">
-															<div style="width: 300px; height: 230px; background: lightgray;">
-															
-															
-																<%-- <c:if test="${sessSeq eq null}">   <!-- 로그인전 -->
-												                	<li><a href="/signUp">SIGN UP</a></li>
-																	<li><a href="/signIn">SIGN IN</a></li>
-													        	</c:if>
-													            <c:if test="${ ne null}">   <!-- 로그인후 -->
-													                <img name="" alt="" src="${img.path}${img.uuidName}" style="width: 300px; height: 250px;">
-																</c:if>
-															
-																<c:if test="${img.path eq null}${img.uuidName eq null }">""</c:if> --%>
-													        	
-													        	
-														        <img name="" alt="첨부파일 없음" src="${img.path}${img.uuidName}" style="max-width: 100%; max-height: 100%;">
-														    </div>
+												        	<c:choose>
+													        		<c:when test="${img.path eq null || img.uuidName eq null }">
+													        		</c:when>
+													        		<c:otherwise>
+																		<div style="width: 300px; height: 230px;">
+																	        <img name="" alt="첨부파일 없음" src="${img.path}${img.uuidName}" style="max-width: 100%; max-height: 100%;">
+																	    </div>
+													        		</c:otherwise>
+												        	</c:choose>
 														    <br/>
 															<c:out value="${fn:replace(one.contents, br, '<br/>')}"/>
 														</td>
@@ -117,15 +110,14 @@
 												</tbody>
 											</table>
 											
-											<center style="margin-left: 12%; margin-bottom: 30px;">
-												<a href="#" class="button">💪추천</a>
+											<center style="margin-left: 10%; margin-bottom: 30px;">
+												<!-- <a href="#" class="button">💪추천</a> -->
 												<a href="/post/postList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 												<!-- <a href="/communityNotify" class="button" style="float: right;">🚨신고</a> -->
 											</center>
-											<hr>
 											
 											
-											<!-- 댓글 comment 부분 -->
+											<%-- <!-- 댓글 comment 부분 -->
 											
 											<div class="row" style="width:100%;">
 												<div class="col-10">
@@ -150,10 +142,8 @@
 													</div>
 												</c:forEach>
 												
-												<!-- append -->
+												<!-- append --> --%>
 											</div>
-											
-											
 										</div>
 									</form>
 								</section>

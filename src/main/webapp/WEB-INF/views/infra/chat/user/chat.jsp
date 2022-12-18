@@ -283,9 +283,9 @@
 														</c:if>
                                							 " class="rounded-circle user_img">
 		                                        </div>
-		                                        <div class="chat_product_info" style="padding-top: 7px;">
+		                                        <div class="chat_product_info">
 		                                            <span class="status"><c:out value="${list.id }"/></span>
-	                                 				<!-- <p>대화중...</p> -->
+	                                 				<p>click here!</p>
 		                                        </div>
 		                                    </div>
 		                                </li>

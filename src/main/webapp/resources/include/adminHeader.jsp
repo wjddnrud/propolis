@@ -20,7 +20,6 @@
 							<li><a href="/signIn">SIGN IN</a></li>
 			        	</c:if>
 						<c:if test="${sessAdminNY eq 2}">
-							<li><a href="#">Administor</a></li>
 							<li><a href="/codegroup/codeGroupList">CodeGroupList</a></li>
 							<li><a href="/code/codeList">CodeList</a></li>
 							<li><a href="/member/memberList">MemberList</a></li>

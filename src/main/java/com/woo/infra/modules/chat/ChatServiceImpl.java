@@ -46,6 +46,13 @@ public class ChatServiceImpl implements ChatService{
 		dto.setCuMember(chatUserB);
 		dao.insertChatUser(dto);
 		
+		dao.selectOneChat(dto);
+		
+//		if(dao.selectOneChat(dto).getPath() == null || dao.selectOneChat(dto).getUuidName() == null) {
+//			dao.selectOneChat(dto).setPath("/resources/uploaded/member/");
+//			dao.selectOneChat(dto).setUuidName("noprofil.jpg");
+//		}
+		
 		return dao.selectOneChat(dto);
 	}
 

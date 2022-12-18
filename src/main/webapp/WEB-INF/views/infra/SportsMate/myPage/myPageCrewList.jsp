@@ -44,9 +44,9 @@
 										<b>[회원 정보]</b><br/><br/>
 										<b>이름: </b><c:out value="${one.name }"/><br>
 										<b>ID: </b><c:out value="${one.id }"/><br>
-										<c:forEach items="${listCodeGender }" var="listGender" varStatus="statusGender">
+										<%-- <c:forEach items="${listCodeGender }" var="listGender" varStatus="statusGender">
 											<b>성별: </b><c:if test="${one.gender eq listGender.cc_key }"><c:out value="${listGender.cc_name }"/></c:if><br>
-										</c:forEach>
+										</c:forEach> --%>
 										<b>직업: </b><c:out value="${one.job }"/><br>
 										<b>생년월일: </b><c:out value="${one.dob }"/><br> 
 										<b>주소: </b><c:out value="${one.address }"/><br>
@@ -123,9 +123,9 @@
 														</c:forEach>
 													</td>
 													<%-- <td><c:out value="${list.category }"></c:out></td> --%>
-													<td><c:out value="${list.group_name }"></c:out></td>
+													<td><c:out value="${list.crewName }"></c:out></td>
 													<td style="text-align: center;"><c:out value="${list.creator }"></c:out></td>
-													<td style="text-align: center;"><c:out value="${list.people_number }"></c:out></td>
+													<td style="text-align: center;"><c:out value="${list.crewMemberNum }"></c:out></td>
 													<td style="text-align: center;"><c:out value="${list.location }"></c:out></td>
 												</tr>
 											</c:forEach>
@@ -143,9 +143,9 @@
 									<%-- <%@include file="../../codegroup/xdmin/pagination.jsp"%> --%>
 									<!-- pagination e -->
 									
-									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
+									<!-- <button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
 									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
-									<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
+									<button type="button" class="btn btn-success me-1" style="float: right;"><i class="fa-solid fa-file-excel"></i></button> -->
 									
 								</div>
 								</form> 

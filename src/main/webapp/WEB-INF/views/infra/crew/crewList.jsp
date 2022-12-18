@@ -91,8 +91,8 @@
 									
 									<br>
 									<center>
+										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>홈으로</a>
 										<a href="/crew/crewForm" class="button primary">등록</a>
-										<a href="/main" class="button" style="background-color: white; color: black; margin-left: 10px;"><i class="fa-solid fa-house"></i>&nbsp;홈으로</a>
 										<!-- <a href="findMateNotify.html" class="button" style="background-color: red;">🚨신고</a> -->
 									</center>
 								</section>

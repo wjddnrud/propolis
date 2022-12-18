@@ -226,6 +226,13 @@ public class PostController {
 
 		return "infra/post/myPostAjaxLita";
 	}
+	
+	@RequestMapping(value="postSearch")
+	public String postSearch(PostVo vo) throws Exception {
+		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
+				
+		return "infra/post/postList";
+	}
 	 
 	
 	

@@ -210,7 +210,6 @@
 						}
 					case 'gr':
 					{
-						alert("check");
 						url = "/myPageCrewList";		
 					break;
 					}

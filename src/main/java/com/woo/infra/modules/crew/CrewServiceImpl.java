@@ -23,18 +23,31 @@ public class CrewServiceImpl implements CrewService{
 	@Override
 	public List<Crew> selectList(CrewVo vo) throws Exception {
 		
-		
 		List<Crew> selectList = dao.selectList(vo);
 		
 		System.out.println("selectList : " + selectList);
+		System.out.println("selectList.size : " + selectList.size());
 		
 //		sportgroup List 에 이미지 없이 생성한 방의 기본 이미지 지정 로직
 		
-//		if(selectList.getPath() == null || selectList.getUuidName() == null) {
-//			selectList.setPath("/resources/uploaded/sportsgroup/");
-//			selectList.setUuidName("basicImg.jpg");
+		
+//		for(int i = 0; i < selectList.size(); i++) {
+//			System.out.println("for문 들어옴");
+//			if(selectList.get(i).getPath() == null) {
+//				System.out.println("getPath: " + selectList.get(i).getPath());
+//				System.out.println("getUuidName: " + selectList.get(i).getUuidName());
+//				selectList.get(i).setPath("/resources/uploaded/crew/");
+//				selectList.get(i).setUuidName("basicImg.jpg");
+//				System.out.println("getPath: " + selectList.get(i).getPath());
+//				System.out.println("getUuidName: " + selectList.get(i).getUuidName());
+//			} else if(selectList.get(i).getUuidName() == null) {
+//				System.out.println("getUuidName: " + selectList.get(i).getUuidName());
+//				selectList.get(i).setPath("/resources/uploaded/crew/");
+//				selectList.get(i).setUuidName("basicImg.jpg");
+//				System.out.println("getUuidName: " + selectList.get(i).getUuidName());
+//			}
 //		}
-		 
+		
 		return dao.selectList(vo);
 	}
 
@@ -44,8 +57,8 @@ public class CrewServiceImpl implements CrewService{
 		Crew selectOne = dao.selectOne(dto);
 		
 		if(selectOne.getPath() == null || selectOne.getUuidName() == null) {
-			selectOne.setPath("/resources/uploaded/crew/");
-			selectOne.setUuidName("basicImg.jpg");
+			selectOne.setPath("/resources/uploaded/member/");
+			selectOne.setUuidName("noprofil.jpg");
 		}
 		
 //		System.out.println("selectOne dao : " + selectOne);
@@ -86,7 +99,7 @@ public class CrewServiceImpl implements CrewService{
 
         }
 		
-		return insert;
+		return insert; 
 	}
 	
 	@Override

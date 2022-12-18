@@ -60,9 +60,9 @@
  								
 								 
 								<div class="col-6 col-4-medium">
-									<label for="id_input">ID</label>
-									<input type="text" name="id" id="id_input" value="${one.id }" placeholder="영문,숫자 5~10자" />
-									<span id="idCheck_span"></span>
+									<label for="id">ID</label>
+									<input type="text" name="id" id="id" value="${one.id }" placeholder="영문,숫자 5~10자" />
+									<span id="id_check"></span>
 									<input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
 								</div>
 								<div class="col-6 col-12-xsmall">
@@ -186,11 +186,11 @@
 	
 		
 		
-		validationInst = function() {
+		/* validationInst = function() {
 			if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
 			if(!checkPassword('password', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
 			if(!checkPasswordAndRe('password', 2, "패스워드가 일치하지 않습니다")) return false;
-		}
+		} */
 		
 		/* 프로필 이미지 */
 		/* id 가 imgFile인것이 내용이 바뀌면 filename 은 imgfile 의 값이 들어가고
@@ -265,42 +265,46 @@
 		/* === checkId === */
 		$("#id").on("focusout", function(){ 
 			
-			if(!checkId('id', 2, 0, "영대소문자, 숫자, 특수문자(-_.), 4~10자리만 입력 가능합니다")) {
+			/* if(!checkId('id', 2, 0, "영대소문자, 숫자, 특수문자(-_.), 4~10자리만 입력 가능합니다")) {
 				return false;
-			} else {
+			} else { */
 				$.ajax({
 					url: "/member/checkId",
 					type: "post",
 					dataType:"json",
-					data : { id : $("#id").val()}
+					data : { 
+						id : $("#id").val()
+						}
 					,success: function(response) {
 						if(response.rt == "success") {
-							$("#id").classList.add('is-valid');
+							/* $("#id").classList.add('is-valid');
 							$("#idFeedback").classList.remove('invalid-feedback')
 							$("#idFeedback").classList.add('valid-feedback');
-							$("#idFeedback").innerText = "사용가능한 아이디입니다.";
+							$("#idFeedback").innerText = "사용가능한 아이디입니다."; */
 							/* $('#idAllowedNy').value = 1; */
+
+							$("#id_check").text("사용가능한 아이디입니다.");
+							$("#id_check").css("color", "lightgreen");
 							
-							/* $("#id_check").text("사용가능한 아이디입니다.");
-							$("#id_check").css("color", "lightgreen"); */
 						} else if(response.rt == "fail") {
-							$("#id").classList.add('is-valid');
+							/* $("#id").classList.add('is-valid');
 							$('#idFeedback').classList.remove('valid-feedback');
 							$("#idFeedback").classList.add('invalid-feedback');
-							$('#idFeedback').innerText = "이미 사용중인 아이디입니다.";
+							$('#idFeedback').innerText = "이미 사용중인 아이디입니다."; */
 							/* $("#idAllowedNy").value = 0; */
 							
-							/* $("#id").val("");
+							$("#id").val("");
 							$("#id_check").text("이미 사용중인 아이디입니다.");
 							$("#id_check").css("color", "red");
-							$("#id").focus(); */
+							$("#id").focus();
+							
 						}
 					}
 					,error : function(){
 						alert("ajax error....");
 					} 
 				});
-			}
+			/* } */
 		});
 		
 		
@@ -408,7 +412,7 @@
 			
 			if (seq.val() == "0" || seq.val() == ""){
 		   		// insert
-		   		if (validationInst() == false) return false;
+		   		/* if (validationInst() == false) return false; */
 	 			/* setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
 				setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy")); */
 		   		form.attr("action", goUrlInst).submit();

@@ -14,6 +14,7 @@
 	<!-- datepicker jquery script import -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<link rel="icon" href="/resources/images/images/favicon.ico">
 	<title>Admin_CodeGroupList</title>
 	<style type="text/css">
 			.on:hover {
@@ -172,8 +173,8 @@
 									<%@include file="pagination.jsp"%>
 									<!-- pagination e -->
 									
-									<button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
-									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button>
+									<!-- <button type="button" class="btn btn-danger" da ta-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>
+									<button type="button" class="btn btn-danger" onclick=""><i class="fa-solid fa-trash-can"></i></button> -->
 									<button type="button" class="btn btn-primary" style="float: right;" onclick="regist();"><i class="fa-solid fa-plus"></i></button>
 									<button type="button" class="btn btn-success me-1" id="btnExcel" style="float: right;"><i class="fa-solid fa-file-excel"></i></button>
 									
@@ -185,7 +186,7 @@
 					</article>
 					
 				<!-- Modal -->
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+				<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 					aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
@@ -202,7 +203,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- Footer -->
 				<%@include file="/resources/include/footer.jsp"%>

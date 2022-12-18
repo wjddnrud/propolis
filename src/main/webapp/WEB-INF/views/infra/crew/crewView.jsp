@@ -145,6 +145,7 @@
 												</div>
 												<div class="col-8 text-start">
 													<span><c:out value="${one.location }"/></span>
+													<span><c:out value="${one.locationDetail }"/></span>
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">

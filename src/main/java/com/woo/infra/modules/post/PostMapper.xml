@@ -168,6 +168,41 @@
 		WHERE 1=1
 			AND pSeq = #{pSeq}
 	</select>
+	
+	<select id="search" resultMap="resultMapObj">
+		SELECT
+			seq
+	    	,ccg_name
+	    	,useNY
+	    	,delNY
+	    	,createDate
+	    	,modiDate
+	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
+		FROM ccg a
+		WHERE 1=1
+		<choose>
+			<when test="shUseNY == null"></when>
+			<when test="shUseNY == 1"> AND useNY LIKE 1 </when>
+			<when test="shUseNY == 2"> AND useNY LIKE 2 </when>
+		</choose>
+		
+		<choose>
+			<when test="shDelNY == null"></when>
+			<when test="shDelNY == 1"> AND delNY LIKE 1</when>
+			<when test="shDelNY == 2"> AND delNY LIKE 2</when>
+		</choose>
+		
+		<choose>
+			<when test="shDate == null"></when>
+			<when test="shDate == 1"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shDate == 2"> AND modiDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == null"></when>
+			<when test="shOption == 1">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
+		</choose>
+	</select>
 
 
 </mapper>

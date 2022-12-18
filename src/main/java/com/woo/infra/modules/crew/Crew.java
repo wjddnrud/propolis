@@ -14,7 +14,7 @@ public class Crew extends Base{
 	private String startTime;
 	private String endTime;
 	private String detail;
-	private String map;
+	private String locationDetail;
 	private String playDate;
 	private String viewCount;
 	private String createDate;
@@ -74,12 +74,6 @@ public class Crew extends Base{
 	}
 	public void setDetail(String detail) {
 		this.detail = detail;
-	}
-	public String getMap() {
-		return map;
-	}
-	public void setMap(String map) {
-		this.map = map;
 	}
 	public String getPlayDate() {
 		return playDate;
@@ -146,6 +140,12 @@ public class Crew extends Base{
 	}
 	public void setCrmmCount(Integer crmmCount) {
 		this.crmmCount = crmmCount;
+	}
+	public String getLocationDetail() {
+		return locationDetail;
+	}
+	public void setLocationDetail(String locationDetail) {
+		this.locationDetail = locationDetail;
 	}
 	
 	
