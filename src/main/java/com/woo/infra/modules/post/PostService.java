@@ -26,4 +26,8 @@ public interface PostService {
 	
 	public int selectOneCount(PostVo vo) throws Exception;
 	
+	public int thumbUp(Post dto) throws Exception;
+	
+	public int thumbDown(Post dto) throws Exception;
+	
 }

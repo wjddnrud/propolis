@@ -111,6 +111,20 @@ public class PostServiceImpl implements PostService{
 	public int selectOneCount(PostVo vo) throws Exception {
 		return dao.selectOneCount(vo);
 	}
+
+	@Override
+	public int thumbUp(Post dto) throws Exception {
+		
+		return dao.thumbUp(dto);
+	}
+
+	@Override
+	public int thumbDown(Post dto) throws Exception {
+		
+		return dao.thumbDown(dto);
+	}
+	
+	
 	
 	
 	

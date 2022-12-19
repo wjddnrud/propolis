@@ -203,6 +203,24 @@
 			<when test="shOption == 1">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>
 	</select>
+	
+	<insert id="thumbUp">
+		INSERT INTO thumbUp (
+			poSeq
+			,mmSeq
+		)
+		VALUES (
+			#{poSeq}
+			,#{mmSeq}
+		)
+	</insert>
+	
+	<delete id="thumbDown">
+		Delete
+		FROM thumbUp
+		WHERE poSeq = #{poSeq}
+			AND mmSeq = #{mmSeq}
+	</delete>
 
 
 </mapper>

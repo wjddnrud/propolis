@@ -66,8 +66,8 @@
 									
 									<form name="postForm">
 									
-										<input type="hidden"id="post_seq" name="post_seq" value="${one.seq }">
-										<input type="hidden"id="writer" name="writer" value="${sessSeq}">
+										<input type="hidden" id="post_seq" name="post_seq" value="${one.seq }">
+										<input type="hidden" id="writer" name="writer" value="${sessSeq}">
 										
 										<div class="table-wrapper">
 											<table class="alt" style="pointer-events: none;">
@@ -77,7 +77,7 @@
 														<th style="min-width: 120px;">작성자</th>
 														<th style="min-width: 520px;">제목</th>
 														<th style="min-width: 120px;">작성일자</th>
-														<!-- <th style="min-width: 70px;">추천수</th> -->
+														<th style="min-width: 70px;">추천수</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -90,6 +90,7 @@
 														<td style="text-align: center;"><c:out value="${one.writer }"/></td>
 														<td style="text-align: center;"><c:out value="${one.title}"/></td>
 														<td style="text-align: center;"><c:out value="${one.createDate }"/></td>
+														<td style="text-align: center;"></td>
 														<%-- <td style="text-align: center;"><c:out value="${one.viewCount }"/></td> --%>
 													</tr>
 													<tr style="height: 350px;">
@@ -111,7 +112,7 @@
 											</table>
 											
 											<center style="margin-left: 10%; margin-bottom: 30px;">
-												<!-- <a href="#" class="button">💪추천</a> -->
+												<a id="thumbUp" class="button" style="background-color: white;">💪추천</a> 
 												<a href="/post/postList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 												<!-- <a href="/communityNotify" class="button" style="float: right;">🚨신고</a> -->
 											</center>
@@ -210,8 +211,123 @@
 						
 					});
 					
-					
 				});
+				
+				
+				
+				/* 추천 */
+				
+				$("#thumbUp").on("click", function() {
+					
+					var thumbUrl = "";
+					var status = $("#thumbUp").css('background-color');
+					
+					if(status == "white") {
+						thumbUrl = "/post/thumbUp";
+					} else {
+						thumbUrl = "/post/thumbDown";
+					}
+					
+					$.ajax({
+						url: thumbUrl
+						,type: 'POST'
+						,dataType: 'json'
+						,data: {
+							poSeq: $("#post_seq").val()
+							,mmSeq: $("#writer").val()
+						},
+						success: function(result) {
+							
+						}
+					})
+				});
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				/* 추천 */
+				/* thumbUp = function(key){
+					
+					var likedUrl ="";
+					var likedBtn = $("#likedBtn"+key);
+					var status = $("#likedBtn"+key).css('color');
+					
+					if(status == "rgb(0, 0, 0)") {
+						likedUrl = "/diary/addLiked";
+					} else {
+						likedUrl = "/diary/removeLiked";
+					}
+					
+					$.ajax({
+						url: likedUrl
+						,type: 'POST'
+						,dataType: 'json'
+						,data: {
+							//게시물 seq
+							ifdaSeq : key
+							//누가 눌렀는지 seq
+							,loginUser : $("#loginUser").val()
+						},
+						success:function(result){
+							if(result.list != null){
+			    				//좋아요 count 숫자 변경 
+			        			$("#postlikeCount"+key).html(result.likeCount);
+								
+			    				if(status == "rgb(0, 0, 0)"){
+					    			//https://webstudynote.tistory.com/95
+					    			//채워주고
+					    			//빨간색으로
+					    			likedBtn.removeClass('fa-regular');
+					    			likedBtn.addClass('fa-solid');
+					    			//https://zetawiki.com/wiki/JQuery_CSS_%EC%86%8D%EC%84%B1_%EB%B3%80%EA%B2%BD 
+					    			likedBtn.css("color",'red');
+			    				} else {
+			    					//비워주고
+			    	    			//검정색으로
+			    	    			likedBtn.removeClass('fa-solid');
+			    	    			likedBtn.addClass('fa-regular');
+			    	    			likedBtn.css("color",'black');
+			    				}
+							}
+						},
+						error:function(){
+							alert("ajax error..!");
+						}
+						
+					});
+					
+				}; */
 
 			</script>
 	</body>

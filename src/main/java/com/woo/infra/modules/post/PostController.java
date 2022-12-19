@@ -1,6 +1,8 @@
 package com.woo.infra.modules.post;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.woo.infra.modules.comment.Comment;
 import com.woo.infra.modules.comment.CommentServiceImpl;
@@ -232,6 +235,28 @@ public class PostController {
 		vo.setStartRnumForMysql((vo.getThisPage()-1) * vo.getRowNumToShow());
 				
 		return "infra/post/postList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="thumbUp")
+	public Map<String, Object> thumbUp(Post dto) throws Exception {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		int thumbUp = service.thumbUp(dto);
+		
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="thumbDown")
+	public Map<String, Object> thumbDown(Post dto) throws Exception {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		int thumbDown = service.thumbDown(dto);
+		
+		return result;
 	}
 	 
 	

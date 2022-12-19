@@ -79,5 +79,9 @@ public class PostDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	public int thumbUp(Post dto) {return sqlSession.insert(namespace + ".thumbUp", dto);}
+	
+	public int thumbDown(Post dto) {return sqlSession.delete(namespace + ".thumbDown", dto);}
+	
 
 }
