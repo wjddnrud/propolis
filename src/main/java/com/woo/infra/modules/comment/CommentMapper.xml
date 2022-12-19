@@ -23,7 +23,7 @@
 		VALUES (
 			#{writer}
 			,#{contents}
-			,#{post_seq}
+			,#{poSeq}
 		)
 	</insert>
 
@@ -39,7 +39,7 @@
 		JOIN member mm ON mm.seq = cmt.writer
 		JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
 		WHERE 1=1
-			AND post_seq = #{post_seq}
+			AND post_seq = #{poSeq}
 		ORDER BY seq DESC 
 	</select>
 	

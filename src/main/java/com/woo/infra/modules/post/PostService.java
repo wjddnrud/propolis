@@ -30,4 +30,6 @@ public interface PostService {
 	
 	public int thumbDown(Post dto) throws Exception;
 	
+	public List<Post> thumbUpList(Post dto) throws Exception;
+	
 }

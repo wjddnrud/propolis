@@ -18,6 +18,10 @@ public class PostVo extends BaseVo{
 	
 	
 	
+	private Integer poSeq;
+	
+	
+	
 	public String getShValue() {
 		return shValue;
 	}
@@ -65,6 +69,12 @@ public class PostVo extends BaseVo{
 	}
 	public void setShSeq(Integer shSeq) {
 		this.shSeq = shSeq;
+	}
+	public Integer getPoSeq() {
+		return poSeq;
+	}
+	public void setPoSeq(Integer poSeq) {
+		this.poSeq = poSeq;
 	}
 	
 	

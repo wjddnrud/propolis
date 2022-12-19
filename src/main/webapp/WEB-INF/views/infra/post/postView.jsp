@@ -66,7 +66,7 @@
 									
 									<form name="postForm">
 									
-										<input type="hidden" id="post_seq" name="post_seq" value="${one.seq }">
+										<input type="hidden" id="poSeq" name="poSeq" value="${one.seq }">
 										<input type="hidden" id="writer" name="writer" value="${sessSeq}">
 										
 										<div class="table-wrapper">
@@ -90,8 +90,7 @@
 														<td style="text-align: center;"><c:out value="${one.writer }"/></td>
 														<td style="text-align: center;"><c:out value="${one.title}"/></td>
 														<td style="text-align: center;"><c:out value="${one.createDate }"/></td>
-														<td style="text-align: center;"></td>
-														<%-- <td style="text-align: center;"><c:out value="${one.viewCount }"/></td> --%>
+														<td style="text-align: center;" id="thumbUpCount"><c:out value="${one.thumbUpCount }"/></td>
 													</tr>
 													<tr style="height: 350px;">
 														<td colspan="5" style="text-align: start; vertical-align: middle; padding-left: 30px;">
@@ -169,7 +168,7 @@
 			
 			<script type="text/javascript">
 				var goUrlInst = "/comment/commentInst";    /* # -> */
-				var seq = $("input:hidden[name=post_seq]");
+				var seq = $("input:hidden[name=poSeq]");
 				var form = $("form[name=postForm]");
 			
 				$("#comment_input").on("click", function() {
@@ -183,7 +182,7 @@
 						data: {
 							writer : $("#writer").val(),
 							contents :$("#contents").val(),
-							post_seq :$("#post_seq").val()
+							post_seq :$("#poSeq").val()
 						},
 						success:function(result){
 							
@@ -233,11 +232,26 @@
 						,type: 'POST'
 						,dataType: 'json'
 						,data: {
-							poSeq: $("#post_seq").val()
+							poSeq: $("#poSeq").val()
 							,mmSeq: $("#writer").val()
 						},
 						success: function(result) {
-							
+							if(result.list != null) {
+								
+								console.log(result.list.length);
+								/* 추천 클릭시 count 숫자 변경 */
+								$("#thumbUpCount").html(result.list.length);
+								
+								if(status == "white") {
+									$("#thumbUp").css('background-color', "pink");
+								} else {
+									$("#thumbUp").css('background-color', "white");
+								}
+								
+							}
+						},
+						error: function() {
+							alert("ajax error...!");
 						}
 					})
 				});

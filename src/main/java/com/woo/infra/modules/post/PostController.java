@@ -243,7 +243,18 @@ public class PostController {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
-		int thumbUp = service.thumbUp(dto);
+		service.thumbUp(dto);
+		
+		System.out.println("dto.getShSeq :" + dto.getPoSeq());
+		List<Post> list = service.thumbUpList(dto);
+		
+		if(list != null) {
+			result.put("rt", "success");
+			result.put("list", list);
+			
+		} else {
+			result.put("rt", "fail");
+		}
 		
 		return result;
 	}
@@ -254,7 +265,17 @@ public class PostController {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
-		int thumbDown = service.thumbDown(dto);
+		service.thumbDown(dto);
+		
+		List<Post> list = service.thumbUpList(dto);
+		
+		if(list != null) {
+			result.put("rt", "success");
+			result.put("list", list);
+			
+		} else {
+			result.put("rt", "fail");
+		}
 		
 		return result;
 	}

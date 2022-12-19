@@ -26,8 +26,6 @@
 			,po.title
 			,po.contents
 			,po.createDate
-			,po.modiDate
-			,po.viewCount
 		<include refid="selectCommon"/>
 		JOIN member mm ON mm.seq = po.writer 
 		ORDER BY seq DESC
@@ -44,8 +42,6 @@
 			,po.title
 			,po.contents
 			,po.createDate
-			,po.modiDate
-			,po.viewCount
 		FROM post po
 		JOIN member mm ON mm.seq = po.writer 
 		WHERE 1=1
@@ -75,7 +71,7 @@
 			,po.title
 			,po.contents
 			,po.createDate
-			,po.viewCount
+			,(SELECT COUNT(*) FROM thumbUp WHERE poSeq = #{shSeq}) AS thumbUpCount
 		From post po
 		JOIN member mm ON mm.seq = po.writer 
 		WHERE 1=1
@@ -91,8 +87,6 @@
 			,cm.title
 			,cm.contents
 			,cm.createDate
-			,cm.modiDate
-			,cm.viewCount
 		From community cm
 		JOIN member mm ON mm.seq = cm.writer
 		WHERE 1=1
@@ -166,17 +160,17 @@
 			,path
 		FROM uploadedPost
 		WHERE 1=1
-			AND pSeq = #{pSeq}
+			AND pSeq = #{shSeq}
 	</select>
 	
-	<select id="search" resultMap="resultMapObj">
+	<!-- search -->
+	<!-- <select id="search" resultMap="resultMapObj">
 		SELECT
 			seq
 	    	,ccg_name
 	    	,useNY
 	    	,delNY
 	    	,createDate
-	    	,modiDate
 	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
 		FROM ccg a
 		WHERE 1=1
@@ -202,7 +196,7 @@
 			<when test="shOption == null"></when>
 			<when test="shOption == 1">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>
-	</select>
+	</select> -->
 	
 	<insert id="thumbUp">
 		INSERT INTO thumbUp (
@@ -210,17 +204,26 @@
 			,mmSeq
 		)
 		VALUES (
-			#{poSeq}
+			#{shSeq}
 			,#{mmSeq}
 		)
 	</insert>
 	
 	<delete id="thumbDown">
-		Delete
+		DELETE
 		FROM thumbUp
-		WHERE poSeq = #{poSeq}
+		WHERE poSeq = #{shSeq}
 			AND mmSeq = #{mmSeq}
 	</delete>
-
+	
+	<select id="thumbUpList">
+		SELECT
+			seq
+			,poSeq
+			,mmSeq
+		FROM thumbUp 
+		WHERE poSeq = #{shSeq}
+	</select>
+	
 
 </mapper>

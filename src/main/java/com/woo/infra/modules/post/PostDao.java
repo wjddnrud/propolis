@@ -83,5 +83,7 @@ public class PostDao {
 	
 	public int thumbDown(Post dto) {return sqlSession.delete(namespace + ".thumbDown", dto);}
 	
+	public List<Post> thumbUpList(Post dto){return sqlSession.selectList(namespace + ".thumbUpList", dto);}
+	
 
 }

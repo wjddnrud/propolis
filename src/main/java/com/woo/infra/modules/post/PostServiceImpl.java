@@ -123,6 +123,14 @@ public class PostServiceImpl implements PostService{
 		
 		return dao.thumbDown(dto);
 	}
+
+	@Override
+	public List<Post> thumbUpList(Post dto) throws Exception {
+		
+		return dao.thumbUpList(dto);
+	}
+	
+	
 	
 	
 	
