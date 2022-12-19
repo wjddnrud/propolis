@@ -67,4 +67,8 @@ public class CrewDao {
 	public List<Crew> crMemberList(Crew dto) {return sqlSession.selectList(namespace + ".crMemberList", dto);}
 	
 	public int insertCrmm (Crew dto) {return sqlSession.insert(namespace + ".insertCrmm", dto);}
+	
+	public int joinCheck(Crew dto) {return sqlSession.selectOne(namespace + ".joinCheck", dto);}
+	
+	public int joinDel(Crew dto) {return sqlSession.delete(namespace + ".joinDel", dto);}
 }

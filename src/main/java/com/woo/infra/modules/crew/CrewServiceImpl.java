@@ -26,10 +26,9 @@ public class CrewServiceImpl implements CrewService{
 		List<Crew> selectList = dao.selectList(vo);
 		
 		System.out.println("selectList : " + selectList);
-		System.out.println("selectList.size : " + selectList.size());
+//		System.out.println("selectList.size : " + selectList.size());
 		
 //		sportgroup List 에 이미지 없이 생성한 방의 기본 이미지 지정 로직
-		
 		
 //		for(int i = 0; i < selectList.size(); i++) {
 //			System.out.println("for문 들어옴");
@@ -79,25 +78,25 @@ public class CrewServiceImpl implements CrewService{
         int pSeq = dao.selectLastSeq();
         System.out.println("selectLastSeq : " + pSeq);
 
-        int j = 0;
-        for(MultipartFile myFile : dto.getMultipartFile()) {
-
-            if(!myFile.isEmpty()) {
-                // postServiceImpl
-                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-                UtilUpload.uploadCrewImg(myFile, pathModule, dto);
-
-                dto.setType(2);
-                dto.setDefaultNY(j == 0 ? 1 : 0);
-                dto.setSort(j+1);
-                dto.setpSeq(pSeq);
-//                업데이트하려면 pSeq말고 dto 담아서 레츠기릿
-
-                dao.crewImgUpload(dto);
-                j++;
-            }
-
-        }
+//        int j = 0;
+//        for(MultipartFile myFile : dto.getMultipartFile()) {
+//
+//            if(!myFile.isEmpty()) {
+//                // postServiceImpl
+//                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//                UtilUpload.uploadCrewImg(myFile, pathModule, dto);
+//
+//                dto.setType(2);
+//                dto.setDefaultNY(j == 0 ? 1 : 0);
+//                dto.setSort(j+1);
+//                dto.setpSeq(pSeq);
+////                업데이트하려면 pSeq말고 dto 담아서 레츠기릿
+//
+//                dao.crewImgUpload(dto);
+//                j++;
+//            }
+//
+//        }
 		
 		return insert; 
 	}
@@ -149,6 +148,18 @@ public class CrewServiceImpl implements CrewService{
 	public int insertCrmm(Crew dto) throws Exception {
 		
 		return dao.insertCrmm(dto);
+	}
+
+	@Override
+	public int joinCheck(Crew dto) throws Exception {
+		
+		return dao.joinCheck(dto);
+	}
+
+	@Override
+	public int joinDel(Crew dto) throws Exception {
+		
+		return dao.joinDel(dto);
 	}
 
 	

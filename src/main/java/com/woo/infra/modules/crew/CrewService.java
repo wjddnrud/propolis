@@ -27,5 +27,9 @@ public interface CrewService {
 	
 	public int insertCrmm(Crew dto) throws Exception;
 	
+	public int joinCheck(Crew dto) throws Exception;
+	
+	public int joinDel(Crew dto) throws Exception;
+	
 	
 }

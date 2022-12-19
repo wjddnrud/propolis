@@ -56,6 +56,11 @@ public class BaseController {
 		int foodCount = poService.selectCountFromCategory(3);
 		model.addAttribute("foodCount", foodCount);
 		
+		int memberCount = mmService.memberCount();
+		model.addAttribute("memberCount", memberCount);
+		
+		int postCount = dietCount + weightCount + foodCount;
+		model.addAttribute("postCount", postCount);
 		
 		return "infra/SportsMate/main";
 	}

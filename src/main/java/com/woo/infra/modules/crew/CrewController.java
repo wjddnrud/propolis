@@ -1,6 +1,8 @@
 package com.woo.infra.modules.crew;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 //import com.woo.infra.modules.post.Post;
 //import com.woo.infra.modules.post.PostVo;
@@ -41,20 +44,21 @@ public class CrewController {
 		List<Crew> list = service.selectList(vo);
 		model.addAttribute("list", list);
 
-		System.out.println("controller list : " + list);
-
 		return "infra/crew/crewList";
 	}
 
 	@RequestMapping(value = "crewView")
 	public String crewView(Model model, Crew dto) throws Exception {
-		System.out.println(dto.getSeq());
+		
 		Crew selectOne = service.selectOne(dto);
 		model.addAttribute("one", selectOne);
 
 		List<Crew> crMemberList = service.crMemberList(dto);
 		model.addAttribute("crMember", crMemberList);
-
+		
+		int joinCheck = service.joinCheck(dto);
+		model.addAttribute("joinCheck", joinCheck);
+		
 		return "infra/crew/crewView";
 	}
 
@@ -63,7 +67,7 @@ public class CrewController {
 
 		service.insert(dto);
 		
-		return "redirect:/crew/crewView";
+		return "redirect:/crew/crewList";
 	}
 
 	@RequestMapping(value = "crewForm")
@@ -174,4 +178,32 @@ public class CrewController {
 		return "infra/crew/crewView";
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "crMemberList")
+	public Map<String, Object> crMemberList(Crew dto) throws Exception {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		List<Crew> list = service.crMemberList(dto);
+		
+		if(list != null) {
+			result.put("rt", "success");
+			result.put("list", list);
+		} else {
+			result.put("rt", "fail");
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value="joinDel")
+	public String joinDel(Crew dto) throws Exception {
+		
+			service.joinDel(dto);
+			
+		return "redirect:/crew/crewList";
+	}
+
+	
+	
 }

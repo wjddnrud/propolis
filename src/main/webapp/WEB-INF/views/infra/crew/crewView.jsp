@@ -24,12 +24,80 @@
 		<link rel="icon" href="/resources/images/images/favicon.ico">
 		
 		<style type="text/css">
-			div {
-				/* border: solid red 1px; */
+			.modal-close {
+			    color: #999;
+			    position: absolute;
+			    right: 15px;
+			    top: 10px;
+			    text-decoration-line: none;
 			}
-			/* p {
-				margin-bottom: 0;
-			} */
+			
+			.modal-content {
+			    background-color: #fff;
+			    width: 350px;
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    border-radius: 10px;
+			    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+			    text-align: center; 
+			    padding: 10px;
+			}
+			
+			.modal {
+			    background-color: rgba(0, 0, 0, 0.4);
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    height: 100vh;
+			    width: 100%;
+			    /* display: none; */
+			} 
+			
+			.modal.active {
+			    display: block;
+			}
+			
+			.modal-body {
+			    /* background-color: rgb(224, 224, 224); */ 
+			    width: 100%;
+			    height: 300px;
+			    border-radius: 5px;
+			    overflow-y: auto;
+			}
+			
+			.modal-body::-webkit-scrollbar { 
+			    display: none; /* Chrome, Safari, Opera*/
+			}
+			
+			.modal-block{ 
+			    width: 100%;
+			    height: 40px;
+			    display: flex;
+			    align-items: center;
+			    border-bottom: 1px solid #e0e0e0;
+				margin-bottom: 10px;
+				padding: 0px 0px 10px 0px;
+			}
+			
+			.modal-block img{
+				object-fit:auto;
+				width: 30px; 
+				height: 30px;
+			}
+			
+			.modal_overlay {
+			  position: fixed;
+			  top:0;
+			  left:0;
+			  z-index: 100;
+			  width: 100%;
+			  height: 100%;
+			  background-color: rgba(0,0,0,0.3);
+			  backdrop-filter: blur(10px);
+			  transition: all 0.3s;
+			}
 		</style>
 		<style type="text/css">
 			@font-face {
@@ -72,7 +140,9 @@
 								<input type="hidden" id="crLeaderNy" name="crLeaderNy" value="0">
 								<input type="hidden" id="mmSeq" name="mmSeq" value="${sessSeq }">
 								<input type="hidden" id="poAddress" name="poAddress" value="${one.location }">
-								<%-- <input type="hidden" id="partSeq" name="partSeq" value="${part.seq }"> --%>
+								<input type="hidden" id="crmmCount" name="crmmCount" value="${one.crmmCount}">
+								<input type="hidden" id="crewMemberNum" name="crewMemberNum" value="${one.crewMemberNum }">
+
 								
 								<center>
 								<div class="container mb-5" style="width: 70%;">
@@ -89,12 +159,7 @@
 												</div>
 											</div>
 											<div class="row justify-content-center mb-5">
-												<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%; padding: 0;">
-												<div class="col">
-													<c:forEach items="${crMember}" var="crMember">
-														<span id="crMemberName" onclick="crMember(${crMember.seq})" style="cursor: pointer; margin-bottom: 10px; hieght: 100px;">참여자 : <c:out value="${crMember.id}"/></span><br>
-													</c:forEach>
-												</div>
+												<img src="${one.path}${one.uuidName}" style="width: 100px; height: 100px; border-radius: 50%; padding: 0;"> 
 											</div>
 											<div class="row justify-content-between mb-2">
 												<div class="col-4 text-start">
@@ -137,6 +202,7 @@
 															<span><c:out value="${one.crmmCount }"/>명</span>
 														</c:otherwise>
 													</c:choose> 
+													<a type="button" style="padding-left:5px; padding-right:5px; border: 3px solid black; border-radius: 10px;" onclick="crMemberList()">크루멤버</a> 
 												</div>
 											</div>
 											<div class="row justify-content-between mb-2">
@@ -185,11 +251,30 @@
 								</div>
 								</center>
 								<center>
-									<a id="join" class="button primary">🤝JOIN</a> 
+									<c:if test="${joinCheck eq 0}">
+										<a id="join" class="button primary">🤝JOIN</a>	
+									</c:if>
+									<c:if test="${joinCheck ne 0}">
+										<a id="joinDel" class="button primary">🤝CANCLE</a>	
+									</c:if>
 									<a href="/crew/crewList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
 									<a href="javascript:message()" class="button"><i class="fa-regular fa-envelope"></i>message</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
+								
+								<!-- 팔로우 모달 창 -->
+								<div class="modal"  id="modal-notice">
+									<div class="modal-content">
+										<a href="javascript:closeModal('modal-notice')" class="modal-close">x</a>
+										<span id="followTitle" style="font-weight:bold; font-size: 13pt; margin-bottom:5px;">크루멤버 리스트</span>
+										<div id="modaldata" class="modal-body">
+										
+										<!-- 지원자 정보 들어가는 곳  -->
+										            
+										</div>
+									</div>	
+								</div>
+								
 							</form>
 						</div>
 					</section>
@@ -218,12 +303,42 @@
 				var form = $("form[name=crewForm]");
 			
 				$("#join").on("click", function() {
-					swal("Join 완료!", "마이페이지에서 join 정보를 확인하세요.", "success")
-					.then(function() {
-						form.attr("action", "/crew/crewMemberInst").submit();	
-					});
+					
+					if($("#crmmCount").val() == $("#crewMemberNum").val()) {
+						
+						swal ( "멤버 모집이 종료되었습니다!" , "" , "error" );
+					} else {
+						swal("Join 완료!", "마이페이지에서 join 정보를 확인하세요.", "success")
+						.then(function() {
+							form.attr("action", "/crew/crewMemberInst").submit();	
+						});
+					}
+				});
+				
+				$("#joinDel").on("click", function() {
+					
+					swal({
+						  title: "JOIN을 취소하시겠어요?",
+						  icon: "warning",
+						  buttons: true,
+						  dangerMode: true,
+						})
+						.then((willDelete) => {
+						  if (willDelete) {
+						    swal("JOIN 취소가 완료되었습니다!", {
+						      icon: "success",
+						    })
+						    .then(function() {
+								form.attr("action", "/crew/joinDel").submit();
+						    });
+						  } else {
+						    swal("변동사항 없습니다");
+						  }
+						});
+					
 				});
 			
+				
 				message = function(){
 					form.attr("action", "/chat/").submit();
 				}
@@ -232,6 +347,7 @@
 					$("#seq").val(seq);
 					form.attr("action", "/myPagePostList").submit();
 				}
+				
 			</script>
 			<script>
 				/* 카카오 지도 */ 
@@ -274,6 +390,61 @@
 					    });
 				});
 				
+				
+				crMemberList = function() {
+					
+					$('#modaldata').html('');
+					
+					$.ajax({
+						
+						url: '/crew/crMemberList',
+						type: 'POST',
+						datatype: 'json',
+						data: {
+							seq : $("#seq").val()
+						},
+						success:function(result) {
+							if(result.rt == "success") {
+								var txt = "";
+								
+								for(var i = 0; i < result.list.length; i++) {
+									
+									var imgSrc = "/resources/uploaded/member/noprofil.jpg";
+									
+									if(result.list[i].path != null)
+										imgSrc = result.list[i].path + result.list[i].uuidName;
+									
+									txt += '<div class="row modal-block">'
+									txt += '<div class="col-2">'
+									txt += '<img src="'+ imgSrc +'" alt="" width="100%" height="100%" style="border-radius:50%;">'
+									txt += '</div>'
+									txt += '<div class="col-6 text-start" style="cursor:pointer; font-size:10pt;" onclick="runForm(' + result.list[i].seq +')">'+result.list[i].name+'</div>'
+									txt += '<div class="col-3 text-end"></div>'
+									txt += '</div>'
+								}
+								
+								$('#modaldata').html(txt); 
+							}
+						},
+						error:function(){
+							alert("ajax error..!");
+						}
+						
+					});
+					
+					$("#modal-notice").addClass('active');
+						
+				};
+				
+				//모달 닫기
+				closeModal = function(modal) {
+					$("#"+modal).removeClass('active');
+				};
+				
+				runForm = function(seq) {
+					$("#seq").val(seq);
+					form.attr("action", "/myPagePostList").submit();
+				}
 			</script>
 	</body>
 </html>

@@ -62,10 +62,10 @@
 											<a class="nav-link" href="#"><i class="fa-solid fa-house-chimney"></i></a>
 										</li> -->
 										<li class="nav-item">
-											<a class="nav-link" href="/myPagePostList">게시글 관리</a>
+											<a class="nav-link" href="javascript:goList('cm')">게시글 관리</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link active" href="/myPageCrewList">그룹 관리</a>
+											<a class="nav-link active" href="javascript:goList('gr')">그룹 관리</a>
 										</li>
 										<!-- <li class="nav-item">
 											<a class="nav-link" href="/myPageMessegeList">메세지</a>
@@ -84,6 +84,7 @@
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" id="shSeq" name="shSeq">
+									<input type="hidden" id="seq" name="seq" value="${one.seq }">
 									
 								
 								<div class="table-wrapper">
@@ -176,7 +177,40 @@
 				var form = $("form[name=formList]"); // name으로 된거 사용
 				// var form = $("#formList");  // id로 된거 사용
 				
-				
+				goList = function(key) {
+					
+					var url = "";
+					switch (key) {
+					case 'pr':
+					{
+						url = "";					
+					break;
+					}
+					case 'cm':
+						{
+						url = "/myPagePostList";
+						
+						form.attr("action", url).submit();
+						break;
+						}
+					case 'gr':
+					{
+						url = "/myPageCrewList";
+						
+						form.attr("action", url).submit();
+					break;
+					}
+					case 'dm':
+					{
+						url = "";					
+					break;
+					}
+					default:
+						break;
+					}
+					
+					form.attr("action", url).submit();
+				}
 				
 			</script>
 

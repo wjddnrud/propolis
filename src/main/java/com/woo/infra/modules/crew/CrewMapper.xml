@@ -178,14 +178,15 @@
 	<select id="crMemberList" resultMap="resultMapObj">
 		SELECT
 			mm.seq
-			,mm.id
-			,mm.name
-		FROM  crMember crmm 
-		JOIN member mm 
-        ON crmm.mmSeq = mm.seq
-        WHERE 1=1
-        AND crmm.crSeq = #{seq}
-		AND crmm.crLeaderNy = 0
+		    ,mm.name
+		    ,upmm.path
+		    ,upmm.uuidName
+		FROM crew cr
+		JOIN crMember crmm ON crmm.crSeq = cr.seq
+		JOIN member mm ON mm.seq = crmm.mmSeq
+		LEFT JOIN uploadedMember upmm ON upmm.pSeq = mm.seq
+		WHERE 1=1
+			AND cr.seq = #{seq}
 	</select>
 	
 	<insert id="insertCrmm">
@@ -200,5 +201,25 @@
 			,#{seq}
 		)		
 	</insert>
-
+	
+	<select id="joinCheck" resultType="Integer">
+	select
+	count(*)
+	from crMember
+	where 1=1
+		and crSeq = #{seq}
+	    and mmSeq = #{mmSeq}
+	    and crLeaderNy = 0
+	</select>
+	
+	<delete id="joinDel">
+	DELETE
+	from crMember
+	where 1=1
+		and crSeq = #{seq}
+	    and mmSeq = #{mmSeq}
+	    and crLeaderNy = 0
+	</delete>	
+	
+	
 </mapper>

@@ -168,12 +168,16 @@ public class MemberServiceImpl implements MemberService{
 		
 		return dao.kakaoSignInCheck(dto);
 	}
+
+	@Override
+	public int memberCount() throws Exception {
+		
+		return dao.memberCount();
+	}
 	
 	
 
 
-
-	
 	
 	
 	

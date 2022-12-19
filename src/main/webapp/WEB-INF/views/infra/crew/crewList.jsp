@@ -57,6 +57,8 @@
 										<!-- <input type="hidden" name="mainKey"> -->
 										<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 										<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+										<input type="hidden" id="mmSeq" name="mmSeq" value="${sessSeq }">
+										
 										
 										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
 										
@@ -64,7 +66,14 @@
 											<a href="javascript:viewform(${list.seq})">
 												<div class="card">
 													<div class="content">
-														<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
+														<c:choose>
+															<c:when test="${list.path eq null}">
+																<div class="imgBx"><img src="/resources/uploaded/crew/basicImg.jpg"></div>
+															</c:when>
+															<c:otherwise>
+																<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
+															</c:otherwise>
+														</c:choose>
 														<div class="contentBx">
 															<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
 																<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>

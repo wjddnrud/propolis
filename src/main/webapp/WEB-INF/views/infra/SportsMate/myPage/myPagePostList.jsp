@@ -78,7 +78,7 @@
 									<!-- <input type="hidden" name="checkboxSeqArray"> -->
 									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" name="shSeq">
-									<input type="hidden" id="seq" name="seq" value="">
+									<input type="hidden" id="seq" name="seq" value="${one.seq }">
 									
 									
 								<div class="table-wrapper">
@@ -205,12 +205,16 @@
 					}
 					case 'cm':
 						{
-						url = "/myPagePostList";		 				
+						url = "/myPagePostList";
+						
+						form.attr("action", url).submit();
 						break;
 						}
 					case 'gr':
 					{
-						url = "/myPageCrewList";		
+						url = "/myPageCrewList";
+						
+						form.attr("action", url).submit();
 					break;
 					}
 					case 'dm':
