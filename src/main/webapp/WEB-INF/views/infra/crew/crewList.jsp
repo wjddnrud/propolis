@@ -57,8 +57,19 @@
 										<!-- <input type="hidden" name="mainKey"> -->
 										<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 										<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-										<input type="hidden" id="mmSeq" name="mmSeq" value="${sessSeq }">
+										<input type="hidden" id="mmSeq" name="mmSeq" value="${sessSeq }"> 
 										
+										
+										<div class="row">
+											<div class="col d-flex justify-content-center">
+												<select class="form-select form-control text-center p-0" id="shSports" name="shSports" style="width:200px; color: white;">
+													<option value="">운동종목</option>
+													<c:forEach items="${listCodeSports}" var="listSports" varStatus="statusList">
+														<option id="sports${listSports.cc_key}" name="sports${listSports.cc_key}" onclick="sports(${listSports.cc_key})" value="${listSports.cc_key}" <c:if test="${listSports.cc_key eq listSports.cc_key }" >selected</c:if>><c:out value="${listSports.cc_name }"/></option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
 										
 										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
 										
@@ -143,6 +154,13 @@
 				$("input:hidden[name=thisPage]").val(thisPage);
 				form.attr("action", goUrlList).submit();
 			};
+			
+			/* 운동종목으로 리스트 분류 구현 */
+			sports = function(key) {
+				
+				/* shSports: $("#sports" + key).val() */
+				alert("ardf");
+			}
 			
 			</script>
 	</body>

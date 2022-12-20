@@ -38,6 +38,12 @@
 		<include refid="selectCommon"/>
 		JOIN member mm ON cr.creator = mm.seq
 		LEFT JOIN uploadedCrew upcr ON cr.seq = upcr.pSeq
+		WHERE 1=1
+			<!-- <choose>
+				<when test="shSports != null">
+					cr.sports = #{shSports}
+				</when>
+			</choose> --> 
 		ORDER BY seq DESC
 		<include refid="Base.orderByLimitForMysql"/>
 		<include refid="Base.selectListLowerForMysql"/>

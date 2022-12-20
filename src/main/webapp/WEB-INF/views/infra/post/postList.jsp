@@ -65,9 +65,9 @@
 								<div class="col-3">
 									<select class="form-select form-control me-1 text-center" id="shCategory" name="shCategory">
 										<option value="">카테고리</option>
-										<option value="1" <c:if test="${one.sports eq 1 }" >selected</c:if>>Diet</option>
-										<option value="2" <c:if test="${one.sports eq 2 }" >selected</c:if>>Weight</option>
-										<option value="3" <c:if test="${one.sports eq 3 }" >selected</c:if>>Food</option>
+										<option value="1" <c:if test="${one.category eq 1 }" >selected</c:if>>Diet</option>
+										<option value="2" <c:if test="${one.category eq 2 }" >selected</c:if>>Weight</option>
+										<option value="3" <c:if test="${one.category eq 3 }" >selected</c:if>>Food</option>
 									</select>
 								</div>
 								<div class="col-3">
