@@ -111,7 +111,14 @@
 											</table>
 											
 											<center style="margin-left: 10%; margin-bottom: 30px;">
-												<a id="thumbUp" class="button" style="background-color: white;">💪추천</a> 
+											<c:choose>
+												<c:when test="${one.thumbUping eq 0}">
+													<a id="thumbUp" class="button" style="background-color: rgb(255, 255, 255);">💪추천</a> 
+												</c:when>
+												<c:otherwise>
+													<a id="thumbUp" class="button" style="background-color: #FAB150;">💪추천취소</a>
+												</c:otherwise>
+											</c:choose>
 												<a href="/post/postList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 												<!-- <a href="/communityNotify" class="button" style="float: right;">🚨신고</a> -->
 											</center>
@@ -221,19 +228,19 @@
 					var thumbUrl = "";
 					var status = $("#thumbUp").css('background-color');
 					
-					if(status == "white") {
+					if(status == "rgb(255, 255, 255)") {
 						thumbUrl = "/post/thumbUp";
 					} else {
 						thumbUrl = "/post/thumbDown";
 					}
-					
+					 
 					$.ajax({
 						url: thumbUrl
 						,type: 'POST'
 						,dataType: 'json'
 						,data: {
-							poSeq: $("#poSeq").val()
-							,mmSeq: $("#writer").val()
+							shSeq: $("#poSeq").val()
+							,writer: $("#writer").val()
 						},
 						success: function(result) {
 							if(result.list != null) {
@@ -241,11 +248,13 @@
 								console.log(result.list.length);
 								/* 추천 클릭시 count 숫자 변경 */
 								$("#thumbUpCount").html(result.list.length);
-								
-								if(status == "white") {
-									$("#thumbUp").css('background-color', "pink");
+								 
+								if(status == "rgb(255, 255, 255)") {
+									$("#thumbUp").css('background', "#FAB150");
+									$("#thumbUp").text("💪추천취소");
 								} else {
-									$("#thumbUp").css('background-color', "white");
+									$("#thumbUp").css('background', "white");
+									$("#thumbUp").text("💪추천");
 								}
 								
 							}

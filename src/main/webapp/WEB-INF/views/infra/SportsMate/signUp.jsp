@@ -43,7 +43,7 @@
 				<h2>sports Mate 회원가입</h2>
 				<p>멤버가 되어 sports mate가 제공하는 다양한 정보와 친구들을 만나보세요.</p>
 			</header>
-			<section class="wrapper style5" >
+			<section class="wrapper style5">
 				<div class="inner" style="width: 50%;">
 					<section>
 						<!-- <h2>회원가입</h2> -->

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -53,7 +54,7 @@ public class PostController {
 	@RequestMapping(value = "postInst")
 	public String postInst(Model model, Post dto) throws Exception {
 		
-		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
+//		System.out.println("dto.getMultipartFile : " + dto.getMultipartFile().length);
 		
 		service.insert(dto);
 
@@ -71,16 +72,17 @@ public class PostController {
 	}
 	
 	@RequestMapping(value = "postView")
-	public String postView(Model model, Post dto, PostVo vo, CommentVo cmvo) throws Exception {
+	public String postView(Model model, Post dto, PostVo vo, CommentVo cmvo, HttpSession httpSession) throws Exception {
 		
 //		System.out.println("service : " + vo.getShSeq());
 		
+		vo.setWriter((int)httpSession.getAttribute("sessSeq"));
 		Post selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
 //		System.out.println("controller selectOne : " + selectOne);
 		
 		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
-		Post img = service.selectPostImg(dto);
+		Post img = service.selectPostImg(vo);
 		model.addAttribute("img",img);
 		
 		cmvo.setPost_seq(Integer.parseInt(selectOne.getSeq()));
@@ -239,14 +241,13 @@ public class PostController {
 	
 	@ResponseBody
 	@RequestMapping(value="thumbUp")
-	public Map<String, Object> thumbUp(Post dto) throws Exception {
+	public Map<String, Object> thumbUp(Post dto, PostVo vo) throws Exception {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
-		service.thumbUp(dto);
+		service.thumbUp(vo);
 		
-		System.out.println("dto.getShSeq :" + dto.getPoSeq());
-		List<Post> list = service.thumbUpList(dto);
+		List<Post> list = service.thumbUpList(vo);
 		
 		if(list != null) {
 			result.put("rt", "success");
@@ -261,13 +262,13 @@ public class PostController {
 	
 	@ResponseBody
 	@RequestMapping(value="thumbDown")
-	public Map<String, Object> thumbDown(Post dto) throws Exception {
+	public Map<String, Object> thumbDown(Post dto, PostVo vo) throws Exception {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
-		service.thumbDown(dto);
+		service.thumbDown(vo);
 		
-		List<Post> list = service.thumbUpList(dto);
+		List<Post> list = service.thumbUpList(vo);
 		
 		if(list != null) {
 			result.put("rt", "success");

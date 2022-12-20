@@ -46,6 +46,7 @@
 
 			<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 			<input type="hidden" name="shSeq" id="shSeq">
+			
 			<!-- <input type="hidden" name="mainKey"> -->
 			<input type="hidden" name="thisPage"
 				value="<c:out value="${vo.thisPage}" default="1"/>"> <input

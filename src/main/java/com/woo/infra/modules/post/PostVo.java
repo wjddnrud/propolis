@@ -18,7 +18,7 @@ public class PostVo extends BaseVo{
 	
 	
 	
-	private Integer poSeq;
+	private Integer writer;
 	
 	
 	
@@ -70,11 +70,11 @@ public class PostVo extends BaseVo{
 	public void setShSeq(Integer shSeq) {
 		this.shSeq = shSeq;
 	}
-	public Integer getPoSeq() {
-		return poSeq;
+	public Integer getWriter() {
+		return writer;
 	}
-	public void setPoSeq(Integer poSeq) {
-		this.poSeq = poSeq;
+	public void setWriter(Integer writer) {
+		this.writer = writer;
 	}
 	
 	

@@ -83,9 +83,9 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public Post selectPostImg(Post dto) throws Exception {
+	public Post selectPostImg(PostVo vo) throws Exception {
 
-		return dao.selectPostImg(dto);
+		return dao.selectPostImg(vo);
 	}
 
 	@Override
@@ -113,21 +113,21 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public int thumbUp(Post dto) throws Exception {
+	public int thumbUp(PostVo vo) throws Exception {
 		
-		return dao.thumbUp(dto);
+		return dao.thumbUp(vo);
 	}
 
 	@Override
-	public int thumbDown(Post dto) throws Exception {
+	public int thumbDown(PostVo vo) throws Exception {
 		
-		return dao.thumbDown(dto);
+		return dao.thumbDown(vo);
 	}
 
 	@Override
-	public List<Post> thumbUpList(Post dto) throws Exception {
+	public List<Post> thumbUpList(PostVo vo) throws Exception {
 		
-		return dao.thumbUpList(dto);
+		return dao.thumbUpList(vo);
 	}
 	
 	

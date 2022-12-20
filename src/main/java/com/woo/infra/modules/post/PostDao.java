@@ -56,8 +56,8 @@ public class PostDao {
 	
 	public int insertPostUpload(Post dto) throws Exception {return sqlSession.insert(namespace + ".insertPostUpload", dto);}
 
-	public Post selectPostImg(Post dto) {
-		return sqlSession.selectOne(namespace + ".selectPostImg", dto);
+	public Post selectPostImg(PostVo vo) {
+		return sqlSession.selectOne(namespace + ".selectPostImg", vo);
 	}
 	
 	public List<Post> MyselectList(Post dto) throws Exception {
@@ -79,11 +79,11 @@ public class PostDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
-	public int thumbUp(Post dto) {return sqlSession.insert(namespace + ".thumbUp", dto);}
+	public int thumbUp(PostVo vo) {return sqlSession.insert(namespace + ".thumbUp", vo);}
 	
-	public int thumbDown(Post dto) {return sqlSession.delete(namespace + ".thumbDown", dto);}
+	public int thumbDown(PostVo vo) {return sqlSession.delete(namespace + ".thumbDown", vo);}
 	
-	public List<Post> thumbUpList(Post dto){return sqlSession.selectList(namespace + ".thumbUpList", dto);}
+	public List<Post> thumbUpList(PostVo vo){return sqlSession.selectList(namespace + ".thumbUpList", vo);}
 	
 
 }

@@ -19,6 +19,7 @@ public class Post extends Crew {
 	private Integer poSeq;
 	private Integer mmSeq;
 	private Integer thumbUpCount;
+	private Integer thumbUping;
 	
 	
 	public String getSeq() {
@@ -92,6 +93,12 @@ public class Post extends Crew {
 	}
 	public void setThumbUpCount(Integer thumbUpCount) {
 		this.thumbUpCount = thumbUpCount;
+	}
+	public Integer getThumbUping() {
+		return thumbUping;
+	}
+	public void setThumbUping(Integer thumbUping) {
+		this.thumbUping = thumbUping;
 	}
 	
 	

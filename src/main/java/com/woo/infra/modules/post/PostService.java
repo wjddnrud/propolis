@@ -16,7 +16,7 @@ public interface PostService {
 	
 	public int delete(PostVo vo) throws Exception;
 
-	public Post selectPostImg(Post dto) throws Exception;
+	public Post selectPostImg(PostVo vo) throws Exception;
 	
 	public List<Post> MyselectList(Post dto) throws Exception;
 
@@ -26,10 +26,10 @@ public interface PostService {
 	
 	public int selectOneCount(PostVo vo) throws Exception;
 	
-	public int thumbUp(Post dto) throws Exception;
+	public int thumbUp(PostVo vo) throws Exception;
 	
-	public int thumbDown(Post dto) throws Exception;
+	public int thumbDown(PostVo vo) throws Exception;
 	
-	public List<Post> thumbUpList(Post dto) throws Exception;
+	public List<Post> thumbUpList(PostVo vo) throws Exception;
 	
 }

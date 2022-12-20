@@ -46,7 +46,7 @@
 						<div class="inner">
 							<h2>Sports Mate</h2>
 							<p>만나서 반갑습니다!<br /></p>
-							<section class="wrapper style6">
+							<section class="wrapper style6" style="margin: 0 35% 0 35%;">
 								<div class="inner">
 									<section>
 										<div class="row gtr-uniform">
@@ -82,11 +82,11 @@
 													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
 											</div>
-											<div class="d-grid gap-2 mt-3">
+											<div class="d-grid gap-2 mt-4">
 												<ul class="actions stacked">
-													<li id="GgCustomLogin"><a href="javascript:void(0)" class="button small">Google</a></li>
-													<li><a class="button small" id="kakaoBtn">Kakao</a></li>
-													<li><a class="button small" id="naverIdLogin">Naver</a></li>
+													<li id="GgCustomLogin"><a href="javascript:void(0)" class="button small" style="background: silver; color: white;">Google</a></li>
+													<li><a class="button small" id="kakaoBtn" style="background: yellow;">Kakao</a></li>
+													<li><a class="button small" id="naverIdLogin" style="background: green; color: white;">Naver</a></li>
 												</ul>
 											</div>
 										</div>

@@ -71,7 +71,19 @@
 			,po.title
 			,po.contents
 			,po.createDate
-			,(SELECT COUNT(*) FROM thumbUp WHERE poSeq = #{shSeq}) AS thumbUpCount
+			,(
+				SELECT 
+					COUNT(*) 
+				FROM thumbUp 
+				WHERE poSeq = #{shSeq}
+			) AS thumbUpCount
+			,(
+				SELECT 
+					COUNT(*) 
+					FROM thumbUp 
+					WHERE poSeq = #{shSeq} 
+					AND mmSeq = #{writer}
+			) AS thumbUping
 		From post po
 		JOIN member mm ON mm.seq = po.writer 
 		WHERE 1=1
@@ -205,7 +217,7 @@
 		)
 		VALUES (
 			#{shSeq}
-			,#{mmSeq}
+			,#{writer}
 		)
 	</insert>
 	
@@ -213,10 +225,10 @@
 		DELETE
 		FROM thumbUp
 		WHERE poSeq = #{shSeq}
-			AND mmSeq = #{mmSeq}
+			AND mmSeq = #{writer}
 	</delete>
 	
-	<select id="thumbUpList">
+	<select id="thumbUpList" resultMap="resultMapObj">
 		SELECT
 			seq
 			,poSeq
