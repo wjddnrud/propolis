@@ -15,9 +15,10 @@ public class PostVo extends BaseVo{
 	private Integer shUseNY;
 	private Integer shDelNY;
 	private Integer shDate;
+	private Integer shCategory;
 	
 	
-	
+	/* post dto에 있는 작성자 이름을 쓰고싶어서 */
 	private Integer writer;
 	
 	
@@ -75,6 +76,12 @@ public class PostVo extends BaseVo{
 	}
 	public void setWriter(Integer writer) {
 		this.writer = writer;
+	}
+	public Integer getShCategory() {
+		return shCategory;
+	}
+	public void setShCategory(Integer shCategory) {
+		this.shCategory = shCategory;
 	}
 	
 	

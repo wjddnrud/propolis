@@ -129,6 +129,14 @@ public class PostServiceImpl implements PostService{
 		
 		return dao.thumbUpList(vo);
 	}
+
+	@Override
+	public List<Post> searchPost(PostVo vo) throws Exception {
+		
+		return dao.searchPost(vo);
+	}
+	
+	
 	
 	
 	

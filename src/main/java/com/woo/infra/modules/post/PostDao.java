@@ -27,6 +27,11 @@ public class PostDao {
 		return selectList;
 	}
 	
+	public List<Post> searchPost(PostVo vo) {
+		
+		return sqlSession.selectList(namespace + ".searchPost", vo);
+	}
+	
 	public int insert(Post dto) {
 		
 		

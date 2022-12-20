@@ -47,6 +47,21 @@ public class PostController {
 			model.addAttribute("list", list);
 		}
 		
+		
+		return "infra/post/postList";
+	}
+	
+	@RequestMapping(value="searchPost")
+	public String searchPost(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
+		
+		setSearch(vo);
+		vo.setParamsPaging(service.selectOneCount(vo));
+
+		if (vo.getTotalRows() > 0) {
+			List<Post> list = service.searchPost(vo);
+			model.addAttribute("list", list);
+		}
+		
 		return "infra/post/postList";
 	}
 	

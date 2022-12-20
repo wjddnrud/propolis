@@ -41,8 +41,7 @@
 
 		<form name="postForm" id="postForm" style="margin-bottom: 0px;">
 			<!-- 가져온 캐시코드로 jsp단에 보여주기 -->
-			<c:set var="listCodeCategory"
-				value="${CodeServiceImpl.selectListCachedCode('3')}" />
+			<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('3')}" />
 
 			<!-- shSeq 받아서 view로 seq 넘겨줄 hidden input -->
 			<input type="hidden" name="shSeq" id="shSeq">
@@ -61,10 +60,10 @@
 				</header>
 				<section class="wrapper style5">
 					<div class="inner">
-						<%-- <section style="height: 100px;">
+						<section style="height: 100px;">
 							<div class="row gtr-uniform" style="padding-left: 15px;">
 								<div class="col-3">
-									<select class="form-select form-control me-1 text-center" id="category" name="category">
+									<select class="form-select form-control me-1 text-center" id="shCategory" name="shCategory">
 										<option value="">카테고리</option>
 										<option value="1" <c:if test="${one.sports eq 1 }" >selected</c:if>>Diet</option>
 										<option value="2" <c:if test="${one.sports eq 2 }" >selected</c:if>>Weight</option>
@@ -75,18 +74,18 @@
 									<select id="shOption" name="shOption" class="form-select text-center">
 										<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
 										<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>제목</option>
-										<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>작성자</option>
+										<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>작성자</option>
 									</select>
 								</div>
 								<div class="col-3">
 									<input autocomplete="off" value="${vo.shValue }" id="<c:out value="${vo.shValue }"/>" name="shValue"  class="form-control me-1" type="text" placeholder="검색어">
 								</div>
 								<div class="col-3">
-									<button class="btn btn-success me-1" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+									<button class="btn btn-success me-1" onclick="searchPost()"><i class="fa-solid fa-magnifying-glass"></i></button>
 									<button class="btn btn-warning" type="reset" onclick="location.href='/post/postList'"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 								</div>	
 							</div>
-						</section> --%>
+						</section>
 						
 						<section>
 							<div class="table-wrapper">
@@ -97,28 +96,31 @@
 											<th>카테고리</th>
 											<th>제목</th>
 											<th>작성자</th>
-											<!-- <th>조회수</th> -->
+											<th>추천수</th>
 											<th>작성일자</th>
 										</tr>
 									</thead>
 									<tbody>
-											
+										<c:choose>
+											<c:when test="${fn:length(list) eq 0}">
+												<tr>
+													<td class="text-center" colspan="6">데이터가 없습니다.</td>
+												</tr>
+											</c:when>
+										</c:choose>
 										<c:forEach items="${list}" var="list" varStatus="statusList">
 											<tr onclick="viewForm('${list.seq}')" class="on">
 												<td style="text-align: center;"><c:out
 														value="${list.seq }" /></td>
-												<td style="text-align: center;"><c:forEach
-														items="${listCodeCategory}" var="listCategory"
-														varStatus="statusCategory">
+												<td style="text-align: center;">
+													<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
 														<c:if test="${list.category eq listCategory.cc_key}">
 															<c:out value="${listCategory.cc_name }" />
 														</c:if>
 													</c:forEach></td>
-												<%-- <td><c:out value="${list.category }"></c:out></td> --%>
 												<td><c:out value="${list.title }"></c:out></td>
-												<td style="text-align: center;"><c:out
-														value="${list.writer }"></c:out></td>
-												<%-- <td style="text-align: center;"><c:out value="${list.viewCount }"></c:out></td> --%>
+												<td style="text-align: center;"><c:out value="${list.writer }"></c:out></td>
+												<td style="text-align: center;"><c:out value="${list.thumbUpCount }"></c:out></td>
 												<td style="text-align: center;"><c:out value="${list.createDate }"></c:out></td>
 											</tr>
 										</c:forEach>
@@ -190,6 +192,11 @@
 
 			form.attr("action", excelUri).submit();
 		});
+		
+		searchPost = function() {
+			
+			form.attr("action", "/post/searchPost").submit();
+		}
 	</script>
 
 </body>

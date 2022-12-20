@@ -6,6 +6,8 @@ public interface PostService {
 	
 	public List<Post> selectList(PostVo vo) throws Exception;
 	
+	public List<Post> searchPost(PostVo vo) throws Exception;
+	
 	public int insert(Post dto) throws Exception;
 	
 	public Post selectOne(PostVo vo) throws Exception;

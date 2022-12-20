@@ -26,6 +26,12 @@
 			,po.title
 			,po.contents
 			,po.createDate
+			,(
+				SELECT 
+					COUNT(*) 
+				FROM thumbUp 
+				WHERE poSeq = po.seq
+			) AS thumbUpCount
 		<include refid="selectCommon"/>
 		JOIN member mm ON mm.seq = po.writer 
 		ORDER BY seq DESC
@@ -176,39 +182,40 @@
 	</select>
 	
 	<!-- search -->
-	<!-- <select id="search" resultMap="resultMapObj">
+	<select id="searchPost" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql"/>
 		SELECT
-			seq
-	    	,ccg_name
-	    	,useNY
-	    	,delNY
-	    	,createDate
-	   		,(SELECT COUNT(ccg_seq) FROM cc where ccg_seq = a.seq) as xCodeCount
-		FROM ccg a
+			po.seq
+			,po.category
+			,mm.id as writer
+			,po.title
+			,po.contents
+			,po.createDate
+			,(
+				SELECT 
+					COUNT(*) 
+				FROM thumbUp 
+				WHERE poSeq = po.seq
+			) AS thumbUpCount
+		<include refid="selectCommon"/>
+		JOIN member mm ON mm.seq = po.writer 
 		WHERE 1=1
 		<choose>
-			<when test="shUseNY == null"></when>
-			<when test="shUseNY == 1"> AND useNY LIKE 1 </when>
-			<when test="shUseNY == 2"> AND useNY LIKE 2 </when>
-		</choose>
-		
-		<choose>
-			<when test="shDelNY == null"></when>
-			<when test="shDelNY == 1"> AND delNY LIKE 1</when>
-			<when test="shDelNY == 2"> AND delNY LIKE 2</when>
-		</choose>
-		
-		<choose>
-			<when test="shDate == null"></when>
-			<when test="shDate == 1"> AND createDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
-			<when test="shDate == 2"> AND modiDate BETWEEN #{shStartDate} AND #{shEndDate}</when>
+			<when test="shCategory == null"></when>
+			<when test="shCategory == 1"> AND po.category LIKE 1 </when>
+			<when test="shCategory == 2"> AND po.category LIKE 2 </when>
+			<when test="shCategory == 3"> AND po.category LIKE 3 </when>
 		</choose>
 		
 		<choose>
 			<when test="shOption == null"></when>
-			<when test="shOption == 1">AND ccg_name LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND po.title LIKE CONCAT ('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND mm.id LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>
-	</select> -->
+		ORDER BY seq DESC
+		<include refid="Base.orderByLimitForMysql"/>
+		<include refid="Base.selectListLowerForMysql"/>
+	</select>
 	
 	<insert id="thumbUp">
 		INSERT INTO thumbUp (
