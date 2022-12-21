@@ -116,7 +116,7 @@
 													<a id="thumbUp" class="button" style="background-color: rgb(255, 255, 255);">💪추천</a> 
 												</c:when>
 												<c:otherwise>
-													<a id="thumbUp" class="button" style="background-color: #FAB150;">💪추천취소</a>
+													<a id="thumbUp" class="button" style="background-color: #6b33ed; color: white;">💪추천취소</a>
 												</c:otherwise>
 											</c:choose>
 												<a href="/post/postList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
@@ -149,8 +149,8 @@
 													</div>
 												</c:forEach>
 												
-												<!-- append --> --%>
-											</div>
+												<!-- append --> 
+											</div>--%>
 										</div>
 									</form>
 								</section>
@@ -209,7 +209,6 @@
 							
 							$("#comment_area").prepend(txt);
 							
-							form
 						},
 						error:function(){
 							alert("ajax.. error..");
@@ -245,15 +244,17 @@
 						success: function(result) {
 							if(result.list != null) {
 								
-								console.log(result.list.length);
 								/* 추천 클릭시 count 숫자 변경 */
 								$("#thumbUpCount").html(result.list.length);
-								 
+								
+								/* status에 따라 버튼 디자인 변경 */
 								if(status == "rgb(255, 255, 255)") {
-									$("#thumbUp").css('background', "#FAB150");
+									$("#thumbUp").css('background', "#6b33ed");
+									$("#thumbUp").css('color', "white");
 									$("#thumbUp").text("💪추천취소");
 								} else {
 									$("#thumbUp").css('background', "white");
+									$("#thumbUp").css('color', "black");
 									$("#thumbUp").text("💪추천");
 								}
 								
@@ -264,94 +265,6 @@
 						}
 					})
 				});
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				/* 추천 */
-				/* thumbUp = function(key){
-					
-					var likedUrl ="";
-					var likedBtn = $("#likedBtn"+key);
-					var status = $("#likedBtn"+key).css('color');
-					
-					if(status == "rgb(0, 0, 0)") {
-						likedUrl = "/diary/addLiked";
-					} else {
-						likedUrl = "/diary/removeLiked";
-					}
-					
-					$.ajax({
-						url: likedUrl
-						,type: 'POST'
-						,dataType: 'json'
-						,data: {
-							//게시물 seq
-							ifdaSeq : key
-							//누가 눌렀는지 seq
-							,loginUser : $("#loginUser").val()
-						},
-						success:function(result){
-							if(result.list != null){
-			    				//좋아요 count 숫자 변경 
-			        			$("#postlikeCount"+key).html(result.likeCount);
-								
-			    				if(status == "rgb(0, 0, 0)"){
-					    			//https://webstudynote.tistory.com/95
-					    			//채워주고
-					    			//빨간색으로
-					    			likedBtn.removeClass('fa-regular');
-					    			likedBtn.addClass('fa-solid');
-					    			//https://zetawiki.com/wiki/JQuery_CSS_%EC%86%8D%EC%84%B1_%EB%B3%80%EA%B2%BD 
-					    			likedBtn.css("color",'red');
-			    				} else {
-			    					//비워주고
-			    	    			//검정색으로
-			    	    			likedBtn.removeClass('fa-solid');
-			    	    			likedBtn.addClass('fa-regular');
-			    	    			likedBtn.css("color",'black');
-			    				}
-							}
-						},
-						error:function(){
-							alert("ajax error..!");
-						}
-						
-					});
-					
-				}; */
-
 			</script>
 	</body>
 </html>

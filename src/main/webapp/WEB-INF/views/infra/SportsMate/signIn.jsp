@@ -82,9 +82,9 @@
 													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
 											</div>
-											<div class="d-grid gap-2 mt-4">
+											<div class="d-grid gap-1 mt-4">
 												<ul class="actions stacked">
-													<li id="GgCustomLogin"><a href="javascript:void(0)" class="button small" style="background: silver; color: white;">Google</a></li>
+													<!-- <li id="GgCustomLogin"><a href="javascript:void(0)" class="button small" style="background: silver; color: white;">Google</a></li> -->
 													<li><a class="button small" id="kakaoBtn" style="background: yellow;">Kakao</a></li>
 													<li><a class="button small" id="naverIdLogin" style="background: green; color: white;">Naver</a></li>
 												</ul>

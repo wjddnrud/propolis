@@ -239,9 +239,8 @@
 										</tfoot>
 									</table>
 									
-									<!-- pagination s -->
-										<%@include file="pagination.jsp"%>
-									<!-- pagination e -->
+									<!-- pagination -->
+									<%@include file="/resources/include/pagination.jsp"%>
 									
 									
 									<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eraser"></i></button>

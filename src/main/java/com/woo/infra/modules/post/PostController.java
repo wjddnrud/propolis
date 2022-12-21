@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.woo.infra.modules.comment.Comment;
 import com.woo.infra.modules.comment.CommentServiceImpl;
 import com.woo.infra.modules.comment.CommentVo;
+import com.woo.infra.modules.member.MemberVo;
 
 @Controller
 @RequestMapping(value = "/post/")
@@ -36,16 +37,30 @@ public class PostController {
 	@Autowired
 	CommentServiceImpl cmService;
 	
+	public void setParamsPaging(PostVo vo) throws Exception {
+
+		vo.setParamsPaging(service.selectOneCount(vo));
+		System.out.println("controller vo.getRowNumToShow : " + vo.getRowNumToShow());
+		System.out.println("controller vo.getStartRnumForMysql : " + vo.getStartRnumForMysql());
+
+	}
+	
 	@RequestMapping(value = "postList")
 	public String postList(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 
-		setSearch(vo);
-		vo.setParamsPaging(service.selectOneCount(vo));
+		vo.setStartRnumForMysql((vo.getThisPage() - 1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
+		
+		List<Post> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		
+//		아래와 같이 돌리고 있었는데 관리자 controller에 있는대로 가져온게 위에 코드
+//		vo.setParamsPaging(service.selectOneCount(vo));
 
-		if (vo.getTotalRows() > 0) {
-			List<Post> list = service.selectList(vo);
-			model.addAttribute("list", list);
-		}
+//		if (vo.getTotalRows() > 0) {
+//			List<Post> list = service.selectList(vo);
+//			model.addAttribute("list", list);
+//		}
 		
 		
 		return "infra/post/postList";
@@ -54,13 +69,18 @@ public class PostController {
 	@RequestMapping(value="searchPost")
 	public String searchPost(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 		
-		setSearch(vo);
-		vo.setParamsPaging(service.selectOneCount(vo));
-
-		if (vo.getTotalRows() > 0) {
-			List<Post> list = service.searchPost(vo);
-			model.addAttribute("list", list);
-		}
+		vo.setStartRnumForMysql((vo.getThisPage() - 1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
+		
+		List<Post> list = service.searchPost(vo);
+		model.addAttribute("list", list);
+		
+//		vo.setParamsPaging(service.selectOneCount(vo));
+//
+//		if (vo.getTotalRows() > 0) {
+//			List<Post> list = service.searchPost(vo);
+//			model.addAttribute("list", list);
+//		}
 		
 		return "infra/post/postList";
 	}
@@ -216,20 +236,18 @@ public class PostController {
 	/* community list ajax로 구현 */
 	
 	
-	public void setSearch(PostVo vo) throws Exception {
-			
+//	public void setSearch(PostVo vo) throws Exception {
+//			
 //		vo.setShUseNy(vo.getShUseNy() == null ? 1 : vo.getShUseNy());
 //		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 //		vo.setShOptionDate(vo.getShOptionDate() == null ? null : vo.getShOptionDate());
 //		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
 //		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
-	}
+//	}
 	
 	@RequestMapping(value = "myPostAjaxList")
 	public String postAjaxList(@ModelAttribute("vo") PostVo vo, Model model) throws Exception {
 		
-		setSearch(vo);
-
 		return "infra/post/myPostAjaxList";
 	}
 	

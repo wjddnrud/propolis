@@ -14,6 +14,7 @@ public class CrewVo extends BaseVo {
 	private Integer shUseNY;
 	private Integer shDelNY;
 	private Integer shDate;
+	private Integer shSports;
 	
 	
 	public String getShValue() {
@@ -63,6 +64,12 @@ public class CrewVo extends BaseVo {
 	}
 	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
+	}
+	public Integer getShSports() {
+		return shSports;
+	}
+	public void setShSports(Integer shSports) {
+		this.shSports = shSports;
 	}
 	
 	

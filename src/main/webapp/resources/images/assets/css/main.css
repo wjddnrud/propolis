@@ -3451,7 +3451,7 @@ input, select, textarea {
 		}
 
 	body.is-menu-visible #page-wrapper {
-		opacity: 0.35;
+		opacity: 0.5;  
 	}
 
 		body.is-menu-visible #page-wrapper:before {
@@ -3709,19 +3709,21 @@ input, select, textarea {
 				position: absolute;
 				width: 1.5em;
 			}
+			
 		/* 메인 상단 이미지로 바뀌기 전 컬러 */
+		/* 배너 배경 이지인아웃 시간 및 색상 관리 부분 */
 		#banner:after {
 			pointer-events: none;
-			-moz-transition: opacity 3s ease-in-out;
-			-webkit-transition: opacity 3s ease-in-out;
-			-ms-transition: opacity 3s ease-in-out;
-			transition: opacity 3s ease-in-out;
-			-moz-transition-delay: 1.25s;
-			-webkit-transition-delay: 1.25s;
-			-ms-transition-delay: 1.25s;
-			transition-delay: 1.25s;
+			-moz-transition: opacity 2s ease-in-out;
+			-webkit-transition: opacity 2s ease-in-out;
+			-ms-transition: opacity 2s ease-in-out;
+			transition: opacity 2s ease-in-out;
+			-moz-transition-delay: 0.2s;
+			-webkit-transition-delay: 0.2s;
+			-ms-transition-delay: 0.2s;
+			transition-delay: 0.2s;
 			content: '';
-			background: #2e3842;
+			background: #1C1C1C; 
 			display: block;
 			width: 100%;
 			height: 100%;

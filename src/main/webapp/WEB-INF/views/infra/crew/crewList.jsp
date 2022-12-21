@@ -62,47 +62,48 @@
 										
 										<div class="row">
 											<div class="col d-flex justify-content-center">
-												<select class="form-select form-control text-center p-0" id="shSports" name="shSports" style="width:200px; color: white;">
+												<select class="form-select form-control text-center p-0" id="shSports" name="shSports" style="width:200px; color: white;" onchange="sports()">
 													<option value="">운동종목</option>
 													<c:forEach items="${listCodeSports}" var="listSports" varStatus="statusList">
-														<option id="sports${listSports.cc_key}" name="sports${listSports.cc_key}" onclick="sports(${listSports.cc_key})" value="${listSports.cc_key}" <c:if test="${listSports.cc_key eq listSports.cc_key }" >selected</c:if>><c:out value="${listSports.cc_name }"/></option>
+														<%-- <option id="sports${listSports.cc_key}" name="sports${listSports.cc_key}" onclick="sports(${listSports.cc_key})" value="${listSports.cc_key}" <c:if test="${vo.shSports eq listSports.cc_key }" >selected</c:if>><c:out value="${listSports.cc_name }"/></option> --%>
+														<option id="sports${listSports.cc_key}" name="sports${listSports.cc_key}" value="${listSports.cc_key}"><c:out value="${listSports.cc_name }"/></option>
 													</c:forEach>
 												</select>
 											</div>
 										</div>
 										
-										<div class="container">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
-										
-										<c:forEach items="${list}" var="list" varStatus="statusList">
-											<a href="javascript:viewform(${list.seq})">
-												<div class="card">
-													<div class="content">
-														<c:choose>
-															<c:when test="${list.path eq null}">
-																<div class="imgBx"><img src="/resources/uploaded/crew/basicImg.jpg"></div>
-															</c:when>
-															<c:otherwise>
-																<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
-															</c:otherwise>
-														</c:choose>
-														<div class="contentBx">
-															<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
-																<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
-															</c:forEach>
-															<span><c:out value="${list.crewName}"/></span></h3>
+										<div id="crewCard_area">
+										<div class="container" id="crewCard">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
+											<c:forEach items="${list}" var="list" varStatus="statusList">
+												<a href="javascript:viewform(${list.seq})">
+													<div class="card">
+														<div class="content">
+															<c:choose>
+																<c:when test="${list.path eq null}">
+																	<div class="imgBx"><img src="/resources/uploaded/crew/basicImg.jpg"></div>
+																</c:when>
+																<c:otherwise>
+																	<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>
+																</c:otherwise>
+															</c:choose>
+															<div class="contentBx">
+																<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">
+																	<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>
+																</c:forEach>
+																<span><c:out value="${list.crewName}"/></span></h3>
+															</div>
 														</div>
+														<%-- <ul class="sci">
+															<li style="--i:1">
+																<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
+															</li>
+															<li style="--i:2">
+																<a href="#"><i class="fa-regular fa-envelope"></i></a>
+															</li>
+														</ul> --%>
 													</div>
-													<%-- <ul class="sci">
-														<li style="--i:1">
-															<a href="javascript:viewform(${list.seq})"><i class="fa-solid fa-magnifying-glass"></i></a>
-														</li>
-														<li style="--i:2">
-															<a href="#"><i class="fa-regular fa-envelope"></i></a>
-														</li>
-													</ul> --%>
-												</div>
-											</a>
-										</c:forEach>
+												</a>
+											</c:forEach>
 										</div>
 									</form>
 									
@@ -156,10 +157,80 @@
 			};
 			
 			/* 운동종목으로 리스트 분류 구현 */
-			sports = function(key) {
+			
+			sports = function() {
 				
-				/* shSports: $("#sports" + key).val() */
-				alert("ardf");
+				/* select태그에 선택된 옵션 선언 */
+				var selectedElement = $("#shSports");
+				
+				/* 선택한 option의 value, 텍스트, 선택된 위치 선언 */
+				var optionVal = $("#shSports option:selected").val();
+				var optionTxt = $("#shSports option:selected").text();
+				var index = $("#shSports option").index($("#shSports option:selected"));
+				
+				/* option 클릭시 status alert */
+				alert("value : " + optionVal + ", " + "txt : " + optionTxt + ", " + "index : " + index);
+				
+				$.ajax({
+					url: '/crew/ajaxCrewList'
+					,type: 'POST'
+					,datatyp: 'json'
+					,data: {
+						shSports: optionVal
+					}
+					,success: function(result) {
+						
+						if(result.list != null) {
+							
+							/* 카드 div 제거 */
+							$("#crewCard").remove();
+							
+							/* 카드 반복 생성 */
+							for(int i = 0; i < result.list.length; i++) {
+								
+								var txt = "";
+								
+								<c:forEach items="${list}" var="list" varStatus="statusList">
+									txt += '<div class="container" id="crewCard">'
+									txt += '<c:forEach items="${list}" var="list" varStatus="statusList">'
+									txt += '<a href="javascript:viewform(${list.seq})">'
+									txt += '<div class="card">'
+									txt += '<div class="content">'
+									txt += '<c:choose>'
+									txt += '<c:when test="${list.path eq null}">'
+									txt += '<div class="imgBx"><img src="/resources/uploaded/crew/basicImg.jpg"></div>'
+									txt += '</c:when>'
+									txt += '<c:otherwise>'
+									txt += '<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>'
+									txt += '</c:otherwise>'
+									txt += '</c:choose>'
+									txt += '<div class="contentBx">'
+									txt += '<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">'
+									txt += '<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>'
+									txt += '</c:forEach>'
+									txt += '<span><c:out value="${list.crewName}"/></span></h3>'
+									txt += '</div>'
+									txt += '</div>'
+									txt += '</div>'
+									txt += '</a>'
+									txt += '</c:forEach>'
+									txt += '</div>'
+								</c:forEach>
+								
+								$("#crewCard_area").prepend(txt);
+								
+							}
+							
+						}
+						
+					}
+					,error: function() {
+						alert("ajax error....!");
+					}
+				});
+				
+				
+				
 			}
 			
 			</script>

@@ -39,11 +39,11 @@
 		JOIN member mm ON cr.creator = mm.seq
 		LEFT JOIN uploadedCrew upcr ON cr.seq = upcr.pSeq
 		WHERE 1=1
-			<!-- <choose>
+			<choose>
 				<when test="shSports != null">
-					cr.sports = #{shSports}
+					AND cr.sports = #{shSports}
 				</when>
-			</choose> --> 
+			</choose> 
 		ORDER BY seq DESC
 		<include refid="Base.orderByLimitForMysql"/>
 		<include refid="Base.selectListLowerForMysql"/>

@@ -43,8 +43,30 @@ public class CrewController {
 
 		List<Crew> list = service.selectList(vo);
 		model.addAttribute("list", list);
-
+		
 		return "infra/crew/crewList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="ajaxCrewList")
+	public Map<String, Object> crewList(Crew dto, CrewVo vo, Model model) throws Exception {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		vo.setStartRnumForMysql((vo.getThisPage() - 1) * vo.getRowNumToShow());
+		setParamsPaging(vo);
+
+		List<Crew> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		
+		if(list != null) {
+			result.put("rt", "success");
+			result.put("list", list);
+		} else {
+			result.put("rt", "fail");
+		}
+		
+		return result;
 	}
 
 	@RequestMapping(value = "crewView")

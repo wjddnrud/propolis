@@ -29,10 +29,9 @@ import net.nurigo.sdk.message.exception.NurigoMessageNotReceivedException;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
-
-
 @Controller
 @RequestMapping(value = "/member/")
+
 public class MemberController {
 
 	@Autowired

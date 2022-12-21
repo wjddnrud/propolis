@@ -65,14 +65,14 @@
 								<div class="col-3">
 									<select class="form-select form-control me-1 text-center" id="shCategory" name="shCategory">
 										<option value="">카테고리</option>
-										<option value="1" <c:if test="${one.category eq 1 }" >selected</c:if>>Diet</option>
-										<option value="2" <c:if test="${one.category eq 2 }" >selected</c:if>>Weight</option>
-										<option value="3" <c:if test="${one.category eq 3 }" >selected</c:if>>Food</option>
+										<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusList">
+											<option value="${listCategory.cc_key}" <c:if test="${vo.shCategory eq listCategory.cc_key}" >selected</c:if>><c:out value="${listCategory.cc_name }"/></option>
+										</c:forEach>
 									</select>
 								</div>
 								<div class="col-3">
 									<select id="shOption" name="shOption" class="form-select text-center">
-										<option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색 구분</option>
+										<option value="">검색 구분</option>
 										<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>제목</option>
 										<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>작성자</option>
 									</select>
