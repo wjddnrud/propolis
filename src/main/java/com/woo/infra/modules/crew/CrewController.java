@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.woo.infra.modules.code.CodeServiceImpl;
+
 //import com.woo.infra.modules.post.Post;
 //import com.woo.infra.modules.post.PostVo;
 
@@ -59,7 +61,13 @@ public class CrewController {
 		List<Crew> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
+		
+		
 		if(list != null) {
+			/* 운동 종목 */
+			for (Crew crew : list) {
+				crew.setSports(CodeServiceImpl.convertSportsCodeToString(crew.getSports()));
+			}
 			result.put("rt", "success");
 			result.put("list", list);
 		} else {

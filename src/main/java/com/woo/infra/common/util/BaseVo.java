@@ -55,6 +55,12 @@ public class BaseVo {
 			setEndPage(getTotalPages());
 		}
 		
+		if (thisPage == 1) {
+			setStartRnumForMysql(0);
+		} else {
+			setStartRnumForMysql((getRowNumToShow() * (getThisPage()-1)));
+		}
+		
 //		setEndRnumForOracle((getRowNumToShow() * getThisPage()));
 //		setStartRnumForOracle((getEndRnumForOracle() - getRowNumToShow()) + 1);
 //		if (getStartRnumForOracle() < 1) setStartRnumForOracle(1);

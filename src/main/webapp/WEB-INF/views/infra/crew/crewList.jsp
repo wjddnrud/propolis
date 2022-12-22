@@ -72,7 +72,6 @@
 											</div>
 										</div>
 										
-										<div id="crewCard_area">
 										<div class="container" id="crewCard">   <!-- container에 카드 모양 구성 조건이 들어있어서 있어야한다. -->
 											<c:forEach items="${list}" var="list" varStatus="statusList">
 												<a href="javascript:viewform(${list.seq})">
@@ -169,7 +168,7 @@
 				var index = $("#shSports option").index($("#shSports option:selected"));
 				
 				/* option 클릭시 status alert */
-				alert("value : " + optionVal + ", " + "txt : " + optionTxt + ", " + "index : " + index);
+				/* alert("value : " + optionVal + ", " + "txt : " + optionTxt + ", " + "index : " + index); */
 				
 				$.ajax({
 					url: '/crew/ajaxCrewList'
@@ -182,44 +181,38 @@
 						
 						if(result.list != null) {
 							
-							/* 카드 div 제거 */
-							$("#crewCard").remove();
+							/* alert("분류 기능 구현중입니다..."); */
+							
+							var txt = "";
 							
 							/* 카드 반복 생성 */
-							for(int i = 0; i < result.list.length; i++) {
+							for(var i = 0; i < result.list.length; i++) {
 								
-								var txt = "";
+								var basicImg = "/resources/uploaded/crew/basicImg.jpg";
 								
-								<c:forEach items="${list}" var="list" varStatus="statusList">
-									txt += '<div class="container" id="crewCard">'
-									txt += '<c:forEach items="${list}" var="list" varStatus="statusList">'
-									txt += '<a href="javascript:viewform(${list.seq})">'
+								if(result.list[i].path != null) {
+									
+									basicImg = result.list[i].path + result.list[i].uuidName;
+								}
+									
+									txt += '<div id="card">'
+									txt += '<a href="javascript:viewform(' + result.list[i].seq + ')">'
 									txt += '<div class="card">'
 									txt += '<div class="content">'
-									txt += '<c:choose>'
-									txt += '<c:when test="${list.path eq null}">'
-									txt += '<div class="imgBx"><img src="/resources/uploaded/crew/basicImg.jpg"></div>'
-									txt += '</c:when>'
-									txt += '<c:otherwise>'
-									txt += '<div class="imgBx"><img src="${list.path}${list.uuidName}"></div>'
-									txt += '</c:otherwise>'
-									txt += '</c:choose>'
+									txt += '<div class="imgBx"><img src="'+ basicImg +'"></div>'
 									txt += '<div class="contentBx">'
-									txt += '<c:forEach items="${listCodeSports}" var="listSports" varStatus="status">'
-									txt += '<c:if test="${list.sports eq listSports.cc_key }"><h3><c:out value="${listSports.cc_name }"/><br></c:if>'
-									txt += '</c:forEach>'
-									txt += '<span><c:out value="${list.crewName}"/></span></h3>'
+									txt += '<h3>' + result.list[i].sports + '<br>'
+									txt += '<span>'+ result.list[i].crewName+'</span></h3>'
 									txt += '</div>'
 									txt += '</div>'
 									txt += '</div>'
 									txt += '</a>'
-									txt += '</c:forEach>'
 									txt += '</div>'
-								</c:forEach>
-								
-								$("#crewCard_area").prepend(txt);
 								
 							}
+							
+								/* 새로 불러온 리스트를 html로 덮어주기 */
+								$("#crewCard").html(txt);
 							
 						}
 						

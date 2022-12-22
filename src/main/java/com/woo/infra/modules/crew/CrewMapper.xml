@@ -16,6 +16,12 @@
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		FROM crew
+		WHERE 1=1
+		<choose>
+			<when test="shSports != null">
+				AND sports = #{shSports}
+			</when>
+		</choose> 
 	</select>
 	
 	<select id="selectList" resultMap="resultMapObj">
@@ -24,7 +30,7 @@
 			cr.seq
 			,mm.id as creator
 			,cr.crewName
-			,cr.sports
+			,cr.sports 
 			,cr.location 
 			,cr.locationDetail
 			,cr.crewMemberNum
