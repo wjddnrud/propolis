@@ -42,7 +42,7 @@
 							<section>
 								<div class="row pb-3">
 									<div class="col-6 pt-3" style="font-weight: bold; text-align: right;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;"><br/>
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border-radius: 50%;"><br/>
 										<c:choose>
 											<c:when test="${one.seq eq sessSeq}">
 												<a href="/member/memberUserForm" class="button mt-3">정보 수정</a>

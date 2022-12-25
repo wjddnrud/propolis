@@ -92,7 +92,7 @@
 															<c:if test="${one.category eq listCategory.cc_key }"><c:out value="${listCategory.cc_name }"/></c:if>
 														</c:forEach>
 														</td>
-														<td style="text-align: center;" onClick="runForm(${one.writer})"><c:out value="${one.id }"/>sdfsdf</td> 
+														<td style="text-align: center;" onClick="runForm(${one.writer})"><c:out value="${one.id }"/></td> 
 														<td style="text-align: center;"><c:out value="${one.title}"/></td>
 														<td style="text-align: center;"><c:out value="${one.createDate }"/></td>
 														<td style="text-align: center;" id="thumbUpCount"><c:out value="${one.thumbUpCount }"/></td>
