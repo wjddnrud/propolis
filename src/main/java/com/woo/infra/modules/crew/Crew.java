@@ -30,6 +30,9 @@ public class Crew extends Base{
 	private String id;
 	private String name;
 	
+	/* view로 들어갈때 마이페이지에서인지 리스트에서인지 구별하기위해 */
+	private Integer fromMyPage;
+	
 	
 	
 	
@@ -146,6 +149,12 @@ public class Crew extends Base{
 	}
 	public void setLocationDetail(String locationDetail) {
 		this.locationDetail = locationDetail;
+	}
+	public Integer getFromMyPage() {
+		return fromMyPage;
+	}
+	public void setFromMyPage(Integer fromMyPage) {
+		this.fromMyPage = fromMyPage;
 	}
 	
 	

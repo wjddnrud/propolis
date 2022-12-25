@@ -73,7 +73,8 @@
 		SELECT
 			po.seq
 			,po.category
-			,mm.id as writer
+			,mm.id 
+			,po.writer
 			,po.title
 			,po.contents
 			,po.createDate

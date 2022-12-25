@@ -20,7 +20,7 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link rel="stylesheet" href="/resources/images/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/images/assets/css/noscript.css" /></noscript>
-		<link rel="icon" href="/resources/images/images/favicon.ico">
+<!-- 		<link rel="icon" href="/resources/images/images/favicon.ico"> -->
 		
 		<style type="text/css">
 			.graphBox{
@@ -55,7 +55,7 @@
 					<section id="banner">
 						<div class="inner">
 							<h2>Sports Mate</h2>
-							<p><b>[<c:out value="${sessName }" />]</b> 회원님 방문해주셔서 감사합니다!</p>
+							<p><b>[<c:out value="${sessId }" />]</b> 회원님 방문해주셔서 감사합니다!</p>
 							<div class="row" style="margin-top: 150px;"> 
 								<div class="col col-6">
 									<p>함께 운동할 친구를 찾아보세요.<br /></p>
@@ -85,28 +85,28 @@
 										<span style="font-size: 50pt; color: white;">통계현황</span>
 									</div>
 								</div>
-								<div class="row d-flex" style="justify-content:space-between; align-items:center; padding-left: 10px;padding-right: 10px; width: 100%;">
+								<div class="row d-flex" style="justify-content:space-between; align-items:center; padding-right: 10px; width: 100%;">
 									<div class="col-4" style="margin-bottom: 30px;">
-								        <div class="row" style="width:250px; height:150px; border:none; border-radius:10px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); background: #757575; margin: 25px;">
+								        <div class="row" style="width:250px; height:150px; border:none; border-radius:10px; background: #6b33ed; margin: 25px;">
 								            <div class="col-8" style="padding-top:36px; padding-left: 30px;">
 								                <div class="row"> 
 								                    <span style="font-size:26pt; font-weight:bold; color: white;"><c:out value="${memberCount }"></c:out></span>
 								                </div>
 								                <div class="row">
-								                    <span style="color:#fcfc; font-size:12pt; font-weight:500; padding-left:15px; padding-top: 10px;">회원수</span>   
+								                    <span style="color: white; font-size:12pt; font-weight:500; padding-left:15px; padding-top: 10px;">회원수</span>   
 								                </div>
 								            </div>
 								            <div class="col text-center" style="padding-top:50px;">
 								                <i style="color:#101010; font-size:36pt; margin-top:auto;" class="fa-solid fa-user"></i> 
 								            </div>
 								        </div>
-								        <div class="row" style="width:250px; height:150px; border:none; border-radius:10px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); background: #757575; margin-left: 25px;ss">
+								        <div class="row" style="width:250px; height:150px; border:none; border-radius:10px; background: #6b33ed; margin-left: 25px;ss">
 								            <div class="col-7" style="padding-top:36px; padding-left: 30px;">
 								                <div class="row"> 
 								                    <span style="font-size:26pt; font-weight:bold; color: white;"><c:out value="${postCount }"></c:out></span>
 								                </div>
 								                <div class="row">
-								                    <span style="color:#fcfc; font-size:12pt; font-weight:500; padding-left:15px; padding-top: 10px;">게시물 수</span>   
+								                    <span style="color: white; font-size:12pt; font-weight:500; padding-left:15px; padding-top: 10px;">게시물 수</span>   
 								                </div>
 								            </div> 
 								            <div class="col text-center" style="padding-top:50px;">
@@ -121,7 +121,7 @@
 								        			<canvas id="myChart"></canvas> 
 								        		</div>
 								        		<div class="box">	        			
-								        			<canvas id="myChart2"></canvas> 
+								        			<canvas id="myChart2" style="height: 100%; width: 300px; "></canvas> 
 								        		</div>
 								        	</div>
 								        </div>
@@ -224,8 +224,8 @@
 					    datasets: [{
 							label: '회원수',
 							data: [
-						    	  21, 
-						    	  15
+						    	  ${menCount}, 
+						    	  ${womenCount}
 						   	  ]
 						    }]
 						  },
@@ -246,7 +246,7 @@
 			        			'웨이트', 
 			        			'푸드'],
 					        datasets: [{
-					            label: '공고 게시물 수',
+					            label: '커뮤니티 게시물 수',
 					            data: [
 					            	${dietCount}, 
 					            	${weightCount}, 

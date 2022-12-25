@@ -64,22 +64,23 @@
 												<input class="upload-name" placeholder="첨부파일">
 												<label for="imgFile" style="margin: 0; padding-top: 5px; background-color: rgb(240, 240, 240); color: rgb(100, 100, 100);  ">파일찾기</label>
 												<input id="imgFile" name="multipartFile" type="file" onChange="upload('imgFile', 0, 1, 1, 0, 0, 3);">
-											</div>
+											</div> 
 											<div class="col-4">
-												<img id="imgProfile" src="" alt="이미지" style="padding-top: 10px; width:100px; height:100px; border-color: solid black 2px;">
+												<img id="imgProfile" src="" alt="이미지 미리보기" style="padding-top: 10px; width:100px; height:100px; border-color: solid black 2px;">
 											</div>
 											
 											<div class="col-12">
 												<textarea id="contents" name="contents" placeholder="여기에 내용을 입력해주세요." rows="15"></textarea>
 											</div>
-											<div class="col-12">
+											<div class="col-3"></div>
+											<div class="col-6">
 												<ul class="actions" style="justify-content: center;">
-													<li><input type="reset" value="Reset"></li>
-													<li><a id="btnSave" class="button primary">Sign-up</a></li>
+													<li><a id="btnSave" class="button primary">등록</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
-													<li><a href="/post/postList" class="button">Cancle</a></li>
+													<li><a href="/post/postList" class="button">취소</a></li>
 												</ul>
 											</div>
+											<div class="col-3"></div>
 										</div>
 									</form>
 								</section>

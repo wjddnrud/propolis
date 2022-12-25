@@ -54,10 +54,14 @@
 									
 										<!-- seq 받아서 view로 seq 넘겨줄 hidden input -->
 										<input type="hidden" name="seq">
+										
 										<!-- <input type="hidden" name="mainKey"> -->
 										<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 										<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 										<input type="hidden" id="mmSeq" name="mmSeq" value="${sessSeq }"> 
+										
+										<!-- view로 가져갈때 마이페이지에서인지 list에서 들어가는건지 구분하는 값 -->
+										<input type="hidden" id="fromMyPage" name="fromMyPage" value="0">	
 										
 										
 										<div class="row">
@@ -173,7 +177,7 @@
 				$.ajax({
 					url: '/crew/ajaxCrewList'
 					,type: 'POST'
-					,datatyp: 'json'
+					,datatype: 'json'
 					,data: {
 						shSports: optionVal
 					}

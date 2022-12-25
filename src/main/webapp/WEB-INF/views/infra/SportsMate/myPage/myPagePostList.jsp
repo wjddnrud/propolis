@@ -17,6 +17,12 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<link rel="icon" href="/resources/images/images/favicon.ico">
 	<title>MyPage</title>
+	
+	<style type="text/css">
+		.on:hover {
+				cursor: pointer;
+		}
+	</style>
 </head>
 	<body class="is-preload">
 			<!-- Page Wrapper -->
@@ -28,26 +34,31 @@
 				<!-- Main -->
 				<article id="main">
 					<header>
-						<h2>회원 정보</h2>
+						<h2>My page</h2>
+						<h4>마이페이지에서 내 정보를 수정하거나 게시했던 글들을 확인할 수 있습니다.</h4>
 					</header>
 					<section class="wrapper style5">
 						<div class="inner" style="width: 50%;">
 							<section>
 								<div class="row pb-3">
-									<div class="col-6 pt-3" style="font-weight: bold; text-align: right; vertical-align: middle;">
-										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;">
-										<br/><a href="/member/memberUserForm" class="button mt-3">정보 수정</a>
+									<div class="col-6 pt-3" style="font-weight: bold; text-align: right;">
+										<img id="imgProfile" src="${img.path}${img.uuidName}" alt="이미지 없음" style="overflow: hidden; width:150px; height:150px; text-align: center; vertical-align: middle; border: 5px solid black; border-radius: 50%;"><br/>
+										<c:choose>
+											<c:when test="${one.seq eq sessSeq}">
+												<a href="/member/memberUserForm" class="button mt-3">정보 수정</a>
+											</c:when>
+										</c:choose>
 									</div>
-									<div class="col-6" style="text-align: left;">
+									<div class="col-6" style="text-align: left; padding-top: 50px;">
 										<b>[회원 정보]</b><br/><br/>
-										<b>이름: </b><c:out value="${one.name }"/><br>
+										<%-- <b>이름: </b><c:out value="${one.name }"/><br> --%>
 										<b>ID: </b><c:out value="${one.id }"/><br>
-										<c:forEach items="${listCodeGender }" var="listGender" varStatus="statusGender">
+										<%-- <c:forEach items="${listCodeGender }" var="listGender" varStatus="statusGender">
 											<b>성별: </b><c:if test="${one.gender eq listGender.cc_key }"><c:out value="${listGender.cc_name }"/></c:if><br>
-										</c:forEach>
-										<b>직업: </b><c:out value="${one.job }"/><br>
-										<b>생년월일: </b><c:out value="${one.dob }"/><br> 
-										<b>주소: </b><c:out value="${one.address }"/><br>
+										</c:forEach> --%>
+										<%-- <b>직업: </b><c:out value="${one.job }"/><br> --%>
+										<%-- <b>생년월일: </b><c:out value="${one.dob }"/><br> --%> 
+										<%-- <b>주소: </b><c:out value="${one.address }"/><br> --%>
 										<%-- <b>게시글 수: </b><c:out value="${cmlist[0].MyCommunityCount }"/><br> --%>
 										<!-- fn:length(리스트) 불러온 리스트의 크기를 알려준다. -->
 										<b>게시글 수: </b><c:out value="${fn:length(cmlist) }"/><br>
@@ -57,10 +68,10 @@
 								<div class="mt-3">
 									<ul class="nav nav-tabs">
 										<li class="nav-item">
-											<a class="nav-link active" href="javascript:goList('cm')">게시글 관리</a>
+											<a class="nav-link active" href="javascript:goList('cm')">게시글</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="javascript:goList('gr')">그룹 관리</a>
+											<a class="nav-link" href="javascript:goList('gr')">운동크루</a>
 										</li>
 									</ul>
 								</div>
@@ -79,6 +90,8 @@
 									<!-- <form class="d-flex" role="search"> -->
 									<input type="hidden" name="shSeq">
 									<input type="hidden" id="seq" name="seq" value="${one.seq }">
+									<!-- view로 가져갈때 마이페이지에서인지 list에서 들어가는건지 구분하는 값 -->
+									<input type="hidden" id="fromMyPage" name="fromMyPage" value="1">
 									
 									
 								<div class="table-wrapper">
@@ -109,7 +122,7 @@
 											
 											
 											<c:forEach items="${cmlist}" var="list" varStatus="statusList">
-													<tr onclick="viewForm('${list.seq}')">
+													<tr onclick="viewForm('${list.seq}')" class="on">
 														<%-- <td><input type="checkbox" id="checkbox${status.count }" name="checkbox" value="${list.seq }">
 															<label for="checkbox${status.count }"></label>
 														</td> --%>
@@ -193,6 +206,14 @@
 				
 				var editSeq = $("input:hidden[name=shSeq]");
 				/* name이 seq인 hidden type의 input을 editSeq로 정해준다. */
+				
+				var viewSeq = $("input:hidden[name=shSeq]")
+				
+
+				viewForm = function(seq) {
+					viewSeq.attr("value", seq);
+					form.attr("action", "/post/postView").submit();
+				}
 				
 				goList = function(key) {
 					

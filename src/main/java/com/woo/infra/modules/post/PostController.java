@@ -107,14 +107,13 @@ public class PostController {
 	}
 	
 	@RequestMapping(value = "postView")
-	public String postView(Model model, Post dto, PostVo vo, CommentVo cmvo, HttpSession httpSession) throws Exception {
+	public String postView(Model model, Post dto, @ModelAttribute("vo") PostVo vo, CommentVo cmvo, HttpSession httpSession) throws Exception {
 		
 //		System.out.println("service : " + vo.getShSeq());
 		
 		vo.setWriter((int)httpSession.getAttribute("sessSeq"));
 		Post selectOne = service.selectOne(vo);
 		model.addAttribute("one", selectOne);
-//		System.out.println("controller selectOne : " + selectOne);
 		
 		dto.setpSeq(vo.getShSeq()); /* vo로 seq를 받아온것을 pSeq에 set해줘야지 src확인 가능 */
 		Post img = service.selectPostImg(vo);

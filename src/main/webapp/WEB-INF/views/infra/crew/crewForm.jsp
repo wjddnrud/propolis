@@ -129,14 +129,15 @@
 											<div class="col-12">
 												<textarea name="detail" id="detail" value="${one.detail }" placeholder="여기에 그룹의 자세한 내용을 입력해주세요." rows="15"></textarea>
 											</div>
-											<div class="col-12">
+											<div class="col-3"></div>
+											<div class="col-6">
 												<ul class="actions" style="justify-content: center;">
-													<li><input type="reset" value="Reset"></li>
-													<li><a id="btnSave" class="button primary">Sign-up</a></li>
+													<li><a id="btnSave" class="button primary">등록</a></li>
 													<!-- <li><button type="submit" class="button primary">Sign-up(제출)</button></li> -->
-													<li><a href="/crew/crewList" class="button">Cancle</a></li>
+													<li><a href="/crew/crewList" class="button">취소</a></li>
 												</ul>
 											</div>
+											<div class="col-3"></div>
 										</div>
 									</form>
 								</section>

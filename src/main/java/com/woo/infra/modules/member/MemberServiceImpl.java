@@ -170,9 +170,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int memberCount() throws Exception {
+	public int memberCount(int i) throws Exception {
 		
-		return dao.memberCount();
+		return dao.memberCount(i);
 	}
 	
 	

@@ -78,7 +78,7 @@ public class CrewController {
 	}
 
 	@RequestMapping(value = "crewView")
-	public String crewView(Model model, Crew dto) throws Exception {
+	public String crewView(Model model, @ModelAttribute("dto") Crew dto) throws Exception {
 		
 		Crew selectOne = service.selectOne(dto);
 		model.addAttribute("one", selectOne);

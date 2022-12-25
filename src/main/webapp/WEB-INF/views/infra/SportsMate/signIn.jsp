@@ -78,8 +78,8 @@
 											</div> -->
 											<div class="col-12">
 												<ul class="actions stacked">
-													<li><input type="button" value="Sign-in" class="button primary small" id="signIn" onclick="signIn()"></li>
-													<li><input type="button" class="button small" value="Sign-up" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
+													<li><input type="button" value="로그인" class="button primary small" id="signIn"></li>
+													<li><input type="button" class="button small" value="회원가입" id="signUp" onclick="location.href='/signUp'" style="background-color: aliceblue;"></li>
 												</ul>
 											</div>
 											<div class="d-grid gap-1 mt-4">
@@ -150,7 +150,7 @@
 						,data : { "id" : $("#id").val(), "password" : $("#password").val() }
 						,success: function(response) {
 							if(response.rt == "success") {
-								swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
+								swal("로그인 성공!", response.id + " 회원님 로그인되었습니다.", "success")
 								.then(function() {
 									if(response.adminNY == 1) {
 										location.href="/main";  //일반 사용자
@@ -205,7 +205,7 @@
 							}
 							,success: function(response) {
 								if(response.rt == "success") {
-									swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
+									swal("로그인 성공!", response.id + " 회원님 로그인되었습니다.", "success")
 									.then(function() {
 										if(response.adminNY == 1) {
 											location.href="/main";  //일반 사용자

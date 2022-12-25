@@ -142,6 +142,9 @@
 								<input type="hidden" id="poAddress" name="poAddress" value="${one.location }">
 								<input type="hidden" id="crmmCount" name="crmmCount" value="${one.crmmCount}">
 								<input type="hidden" id="crewMemberNum" name="crewMemberNum" value="${one.crewMemberNum }">
+								
+								<!-- view로 가져갈때 마이페이지에서인지 list에서 들어가는건지 구분하는 값 -->
+										<input type="hidden" id="fromMyPage" name="fromMyPage" value="${dto.fromMyPage}">
 
 								
 								<center>
@@ -252,13 +255,13 @@
 								</center>
 								<center>
 									<c:if test="${joinCheck eq 0}">
-										<a id="join" class="button primary">🤝JOIN</a>	
-									</c:if>
+										<a id="join" class="button primary" <c:if test="${one.creator eq sessSeq}">hidden</c:if>>🤝JOIN</a>	
+									</c:if>  
 									<c:if test="${joinCheck ne 0}">
 										<a id="joinDel" class="button primary">🤝CANCLE</a>	
 									</c:if>
-									<a href="/crew/crewList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
-									<a href="javascript:message()" class="button"><i class="fa-regular fa-envelope"></i>message</a>
+									<a id="back" href="/crew/crewList" class="button"><i class="fa-solid fa-arrow-left"></i>back</a>
+									<a href="javascript:message()" class="button" <c:if test="${one.creator eq sessSeq}">hidden</c:if>><i class="fa-regular fa-envelope"></i>message</a>
 									<!-- <a href="/findMateNotify" class="button primary" style="float: right;">🚨신고</a> -->
 								</center>
 								
@@ -301,6 +304,19 @@
 			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    <!-- alert창 꾸미기 -->
 			<script>
 				var form = $("form[name=crewForm]");
+				
+				
+				
+				// seq 값 다르게 들어가서 name id 확인해야함
+				/* $("#back").on("click", function() {
+					
+					if($("fromMyPage").val() == "0") {
+						form.attr("action", "/crew/crewList").submit();
+					} else {
+						form.attr("action", "/crew/crewList").submit();
+					}
+				}); */
+				
 			
 				$("#join").on("click", function() {
 					

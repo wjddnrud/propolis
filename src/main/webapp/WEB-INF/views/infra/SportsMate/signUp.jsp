@@ -48,7 +48,7 @@
 					<section>
 						<!-- <h2>회원가입</h2> -->
 						<form name="signUpForm" enctype="multipart/form-data" method="post">
-							<input type="hidden" name="seq" value="${sessSeq}">
+							<input type="hidden" name="seq" id="seq" value="${sessSeq}">
 							<input type="hidden" name="delNY">
 							
 							<div class="row gtr-uniform">
@@ -61,7 +61,14 @@
 								 
 								<div class="col-6 col-4-medium">
 									<label for="id">ID</label>
-									<input type="text" name="id" id="id" value="${one.id }" placeholder="영문,숫자 5~10자" />
+									<c:choose>
+										<c:when test="${sessSeq eq null }">
+											<input type="text" name="id" id="id" placeholder="영문,숫자 5~10자" />
+										</c:when>
+										<c:otherwise>
+											<input type="text" name="id" id="id" value="${one.id }" readonly />
+										</c:otherwise>
+									</c:choose>
 									<span id="id_check"></span>
 									<input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
 								</div>
@@ -79,9 +86,9 @@
 									<label for="gender">성별</label>
 									<select name="gender" id="gender" value="${one.gender}">
 										<option value="">- 선택 -</option>
-										<option value="1">남성</option>
-										<option value="2">여성</option>
-										<option value="3">기타</option>
+										<option value="1" <c:if test="${one.gender eq  1}">selected</c:if>>남성</option>
+										<option value="2" <c:if test="${one.gender eq  2}">selected</c:if>>여성</option>
+										<option value="3" <c:if test="${one.gender eq  3}">selected</c:if>>기타</option>
 									</select>
 								</div>
 								<div class="col-6 col-12-xsmall">
@@ -93,28 +100,48 @@
 									<!-- <input type="text" name="dob" id="dob" value="" placeholder="ex)19951027(년도월일)" /> -->
 									<input value="${one.dob }" autocomplete="off" class="form-control me-1" name="dob" type="text" placeholder="" id="datepicker">
 								</div>
-								<div class="col-2">
-									<label for="telecom">통신사</label>
-									<select name="telecom" id="telecom" value="${one.telecom }">
-										<option value="">- 선택 -</option>
-										<option value="1">SKT</option>
-										<option value="2">KT</option>
-										<option value="3">LG</option>
-									</select>
-								</div>
-								<div class="col-5 col-12-xsmall">
-									<label for="phone">휴대전화</label>
-									<input type="text" name="phoneNumber" id="phoneNumber" value="${one.phoneNumber }" placeholder="'-'없이 번호만 입력해주세요." />
-									<input type="hidden" id="phonecheckcode">
-									<input id="checkPhone" type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
-								</div>
-								<div class="col-5 col-12-xsmall">
-									<label for="phCerti">휴대전화 인증</label>
-									<input type="text" name="phCerti" id="phCerti" placeholder="인증번호를 입력해주세요." />
-									<span id="phone_check"></span>
-									<input type="button" class="primary" id="authNumb" value="확인" style="margin-top: 10px;" />
-									
-								</div>
+								<c:choose>
+									<c:when test="${sessSeq eq null}">
+										<div class="col-2">
+											<label for="telecom">통신사</label>
+											<select name="telecom" id="telecom" value="${one.telecom }">
+												<option value="">- 선택 -</option>
+												<option value="1" <c:if test="${one.telecom eq  1}">selected</c:if>>SKT</option>
+												<option value="2" <c:if test="${one.telecom eq  2}">selected</c:if>>KT</option>
+												<option value="3" <c:if test="${one.telecom eq  3}">selected</c:if>>LG</option>
+											</select>
+										</div>
+										<div class="col-5 col-12-xsmall">
+											<label for="phone">휴대전화</label>
+											<input type="text" name="phoneNumber" id="phoneNumber" value="${one.phoneNumber }" placeholder="'-'없이 번호만 입력해주세요." />
+											<input type="hidden" id="phonecheckcode">
+											<input id="checkPhone" type="button" class="primary" value="인증번호 전송" style="margin-top: 10px;" />
+										</div>
+										<div class="col-5 col-12-xsmall">
+											<label for="phCerti">휴대전화 인증</label>
+											<input type="text" name="phCerti" id="phCerti" placeholder="인증번호를 입력해주세요." />
+											<span id="phone_check"></span>
+											<input type="button" class="primary" id="authNumb" value="확인" style="margin-top: 10px;" />
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="col-2">
+											<label for="telecom">통신사</label>
+											<select name="telecom" id="telecom" value="${one.telecom }">
+												<option value="">- 선택 -</option>
+												<option value="1" <c:if test="${one.telecom eq  1}">selected</c:if>>SKT</option>
+												<option value="2" <c:if test="${one.telecom eq  2}">selected</c:if>>KT</option>
+												<option value="3" <c:if test="${one.telecom eq  3}">selected</c:if>>LG</option>
+											</select>
+										</div>
+										<div class="col-5 col-12-xsmall">
+											<label for="phone">휴대전화</label>
+											<input type="text" name="phoneNumber" id="phoneNumber" value="${one.phoneNumber }" placeholder="'-'없이 번호만 입력해주세요." />
+											<input type="hidden" id="phonecheckcode">
+										</div>
+										<div class="col-5"></div> 
+									</c:otherwise>
+								</c:choose>
 								
 								<div class="col-4 col-12-xsmall">
 									<label for="zipcode">Zip Code</label>
@@ -135,19 +162,35 @@
 									<label for="way_to_regist">가입경로</label>
 									<select name="way_to_regist" id="way_to_regist" value="${one.way_to_regist }">
 										<option value="">- 선택 -</option>
-										<option value="1">지인추천</option>
-										<option value="1">인터넷 광고</option>
-										<option value="1">유튜브</option>
-										<option value="1">블로그</option>
+										<option value="1" <c:if test="${one.way_to_regist eq  1}">selected</c:if>>지인추천</option>
+										<option value="2" <c:if test="${one.way_to_regist eq  2}">selected</c:if>>인터넷 광고</option>
+										<option value="3" <c:if test="${one.way_to_regist eq  3}">selected</c:if>>유튜브</option>
+										<option value="4" <c:if test="${one.way_to_regist eq  4}">selected</c:if>>블로그</option>
 									</select>
 								</div>
-								<div class="col-12">
-									<ul class="actions fit" style="padding-top: 60px;">
-										<li><input type="reset" value="reset"></li>
-										<li><a id="signUp" class="button primary">sign-up</a></li>
-										<li><input type="button" id="cancle" value="cancle"></li>
-									</ul>
-								</div>
+								
+								<c:choose>
+									<c:when test="${sessSeq eq null}">
+										<div class="col-3"></div>
+										<div class="col-6">
+											<ul class="actions fit" style="padding-top: 60px;">
+												<li><a id="signUp" class="button primary">회원가입</a></li>
+												<li><input type="button" id="cancle" value="취소"></li>
+											</ul>
+										</div>
+										<div class="col-3"></div>
+									</c:when>
+									<c:otherwise>
+										<div class="col-3"></div>
+										<div class="col-6">
+											<ul class="actions fit" style="padding-top: 60px;">
+												<li><a id="signUp" class="button primary">정보수정</a></li>
+												<li><input type="button" id="cancle" value="취소"></li>
+											</ul>
+										</div>
+										<div class="col-3"></div> 
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</form>
 					</section>
@@ -179,7 +222,7 @@
 	
 		var goUrlInst = "/signUpInst";    /* # -> */
 		var goUrlUpdt = "/memberUserUpdt";
-		var goUrlMyPage = "/myPageCommunityList";
+		var goUrlMyPage = "/myPagePostList";
 		
 		var form = $("form[name=signUpForm]");
 		var seq = $("input:hidden[name=seq]");
@@ -265,24 +308,26 @@
 		/* === checkId === */
 		$("#id").on("focusout", function(){ 
 			
-			/* if(!checkId('id', 2, 0, "영대소문자, 숫자, 특수문자(-_.), 4~10자리만 입력 가능합니다")) {
+	 		if($("#seq").val() != null) {
 				return false;
-			} else { */
+				
+	 		} else { 
 				$.ajax({
 					url: "/member/checkId",
 					type: "post",
 					dataType:"json",
 					data : { 
 						id : $("#id").val()
-						}
+						} 
 					,success: function(response) {
+						
 						if(response.rt == "success") {
 							/* $("#id").classList.add('is-valid');
 							$("#idFeedback").classList.remove('invalid-feedback')
 							$("#idFeedback").classList.add('valid-feedback');
 							$("#idFeedback").innerText = "사용가능한 아이디입니다."; */
 							/* $('#idAllowedNy').value = 1; */
-
+							
 							$("#id_check").text("사용가능한 아이디입니다.");
 							$("#id_check").css("color", "lightgreen");
 							
@@ -304,7 +349,7 @@
 						alert("ajax error....");
 					} 
 				});
-			/* } */
+			} 
 		});
 		
 		

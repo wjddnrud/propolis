@@ -56,7 +56,13 @@ public class BaseController {
 		int foodCount = poService.selectCountFromCategory(3);
 		model.addAttribute("foodCount", foodCount);
 		
-		int memberCount = mmService.memberCount();
+		int menCount = mmService.memberCount(1);
+		model.addAttribute("menCount", menCount);
+		
+		int womenCount = mmService.memberCount(2);
+		model.addAttribute("womenCount", womenCount);
+		
+		int memberCount = menCount + womenCount;
 		model.addAttribute("memberCount", memberCount);
 		
 		int postCount = dietCount + weightCount + foodCount;
@@ -194,6 +200,7 @@ public class BaseController {
 			
 			returnMap.put("adminNY", signInCheck.getAdminNY());
 			returnMap.put("name", signInCheck.getName());
+			returnMap.put("id", signInCheck.getId());
 			
 			
 		} else {

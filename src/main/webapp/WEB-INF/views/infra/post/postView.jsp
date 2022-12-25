@@ -69,6 +69,11 @@
 										<input type="hidden" id="poSeq" name="poSeq" value="${one.seq }">
 										<input type="hidden" id="writer" name="writer" value="${sessSeq}">
 										
+										<!-- view로 가져갈때 마이페이지에서인지 list에서 들어가는건지 구분하는 값 -->
+										<input type="hidden" id="fromMyPage" name="fromMyPage" value="${vo.fromMyPage}">
+										
+										<!-- <input type="hidden" id="seq" name="seq"> -->
+										
 										<div class="table-wrapper">
 											<table class="alt" style="pointer-events: none;">
 												<thead>
@@ -87,7 +92,7 @@
 															<c:if test="${one.category eq listCategory.cc_key }"><c:out value="${listCategory.cc_name }"/></c:if>
 														</c:forEach>
 														</td>
-														<td style="text-align: center;"><c:out value="${one.writer }"/></td>
+														<td style="text-align: center;" onClick="runForm(${one.writer})"><c:out value="${one.id }"/>sdfsdf</td> 
 														<td style="text-align: center;"><c:out value="${one.title}"/></td>
 														<td style="text-align: center;"><c:out value="${one.createDate }"/></td>
 														<td style="text-align: center;" id="thumbUpCount"><c:out value="${one.thumbUpCount }"/></td>
@@ -119,7 +124,7 @@
 													<a id="thumbUp" class="button" style="background-color: #6b33ed; color: white;">💪추천취소</a>
 												</c:otherwise>
 											</c:choose>
-												<a href="/post/postList" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
+												<a id="back" class="button"><i class="fa-solid fa-arrow-left"></i>&nbsp;back</a>
 												<!-- <a href="/communityNotify" class="button" style="float: right;">🚨신고</a> -->
 											</center>
 											
@@ -177,7 +182,29 @@
 				var goUrlInst = "/comment/commentInst";    /* # -> */
 				var seq = $("input:hidden[name=poSeq]");
 				var form = $("form[name=postForm]");
+				var fromMyPage = $("#fromMyPage").val();
 			
+				
+			
+				
+				// 작성자 이름 눌러서 그 회원 정보 페이지로 가기
+				/* runForm = function(seq) {
+					alert("asdf");
+					$("#seq").val(seq);
+					form.attr("action", "/myPagePostList").submit();
+				} */
+				
+				$("#back").on("click", function() {
+					
+					if(fromMyPage == 0){
+						form.attr("action", "/post/postList").submit();
+					} else {
+						form.attr("action", "/myPagePostList").submit();
+					}
+				});
+				
+				
+				
 				$("#comment_input").on("click", function() {
 
 					//form.attr("action", goUrlInst).submit();

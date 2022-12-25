@@ -21,6 +21,9 @@ public class PostVo extends BaseVo{
 	/* post dto에 있는 작성자 이름을 쓰고싶어서 */
 	private Integer writer;
 	
+	/* view로 들어갈때 마이페이지에서인지 리스트에서인지 구별하기위해 */
+	private Integer fromMyPage;
+	
 	
 	
 	public String getShValue() {
@@ -83,7 +86,12 @@ public class PostVo extends BaseVo{
 	public void setShCategory(Integer shCategory) {
 		this.shCategory = shCategory;
 	}
-	
+	public Integer getFromMyPage() {
+		return fromMyPage;
+	}
+	public void setFromMyPage(Integer fromMyPage) {
+		this.fromMyPage = fromMyPage;
+	}
 	
 	
 	

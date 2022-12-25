@@ -30,7 +30,7 @@ public interface MemberService {
 	
 	public Member kakaoSignInCheck(Member dto) throws Exception;
 	
-	public int memberCount() throws Exception;
+	public int memberCount(int i) throws Exception;
 	
 	
 }

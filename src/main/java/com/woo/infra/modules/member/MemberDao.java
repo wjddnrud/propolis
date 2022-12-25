@@ -121,6 +121,6 @@ public class MemberDao {
 		return kakaoSignInCheck;
 	}
 	
-	public int memberCount() {return sqlSession.selectOne(namespace + ".memberCount", "");}
+	public int memberCount(int i) {return sqlSession.selectOne(namespace + ".memberCount", i);}
 	
 }

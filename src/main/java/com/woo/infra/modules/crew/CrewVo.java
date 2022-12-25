@@ -17,6 +17,10 @@ public class CrewVo extends BaseVo {
 	private Integer shSports;
 	
 	
+	
+	
+	
+	
 	public String getShValue() {
 		return shValue;
 	}
