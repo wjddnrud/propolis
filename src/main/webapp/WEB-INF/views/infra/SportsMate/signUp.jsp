@@ -74,8 +74,8 @@
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<label for="password">PASSWORD</label>
-									<input type="password" name="password" id="password" placeholder="숫자,영문,특수문자 조합 최소 8자" />
-									<input type="password" name="passwordRe" id="passwordRe" placeholder="비밀번호 재입력" style="margin-top: 10px;" />
+									<input type="password" name="password" id="password" placeholder="숫자,영문,특수문자 조합 최소 8자" <c:if test="${sessSeq ne null}">disabled</c:if>/>
+									<input type="password" name="passwordRe" id="passwordRe" placeholder="비밀번호 재입력" style="margin-top: 10px;" <c:if test="${sessSeq ne null}">disabled</c:if>/>
 									<span id="pwCheck"></span>
 								</div>
 								<div class="col-6 col-12-xsmall">
